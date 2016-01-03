@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include <stdio.h>
 float a, b;
 
 long long plus(long long A,long long B){
