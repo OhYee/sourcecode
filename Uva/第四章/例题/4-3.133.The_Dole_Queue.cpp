@@ -1,11 +1,15 @@
-#include<cstdio>
+#include <cstdio>
 using namespace std;
 
 const int maxn=25;
 int L[maxn],R[maxn];//L逆时针 R顺时针
 bool B[maxn]={0};
 int num=0;
+
 void init(int n){
+        num=0;
+        for(int i=0;i<maxn;i++)B[i]=0;
+
         for(int i=1;i<=n;i++){
                 L[i]=i-1;
                 R[i]=i+1;
@@ -13,6 +17,7 @@ void init(int n){
         R[n]=1;
         L[1]=n;
 }
+
 void del(int i){
         R[L[i]]=R[i];
         L[R[i]]=L[i];
@@ -21,10 +26,9 @@ void del(int i){
         //printf("\n    del %d\n",i);
 }
 
-
-int main(){
+bool Do(){
         int n,k,m;
-        scanf("%d%d%d",&n,&k,&m);
+        if(scanf("%d%d%d",&n,&k,&m),n==0&&k==0&&m==0)return false;
         init(n);
 
         int a=1,b=n;
@@ -40,10 +44,10 @@ int main(){
                 printf("\n");
                 */
 
-                printf("%d",a);
+                printf("%3d",a);
                 del(a);
                 if(a!=b){
-                        printf(" %d",b);
+                        printf("%3d",b);
                         del(b);
                 }
 
@@ -65,7 +69,12 @@ int main(){
                 //b=L[b];
                 printf(",");
         }
+        printf("\n");
+        return true;
+}
 
+int main(){
+        freopen("in.txt","r",stdin);
+        while(Do());
         return 0;
-
 }

@@ -1,14 +1,15 @@
-#include<cstdio>
-#include<iostream>
-#include<cmath>
-#include<cstring>
-#include<algorithm>
+#include <cstdio>
+#include <iostream>
+#include <cmath>
+#include <cstring>
+#include <algorithm>
 using namespace std;
 
-string s1,s2;
-
+char s1[110],s2[110];
 void Do(){
-        int len=s1.size();
+
+
+        int len=strlen(s1);
         int a[26]={0};
         int b[26]={0};
         for(int i=0;i<len;i++){
@@ -21,11 +22,11 @@ void Do(){
                 if(a[i]!=b[i]){printf("NO");return;}
         }
         printf("YES");
-
+        return;
 }
 int main(){
-        freopen("in.txt","r",stdin);
-        while(cin>>s1>>s2){
+        //freopen("in.txt","r",stdin);
+        while(scanf("%s%s",&s1,&s2)!=EOF){
                 Do();
                 printf("\n");
         }

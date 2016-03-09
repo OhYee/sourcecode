@@ -1,5 +1,5 @@
-#include<cstdio>
-#include<iostream>
+#include <cstdio>
+#include <iostream>
 using namespace std;
 int main(){
         //freopen("in.txt","r",stdin);
