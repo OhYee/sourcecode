@@ -1,15 +1,26 @@
 #include <cstdio>
 #include <cstring>
-int main(){
-	char c[10]="\17\08";
+#include <cmath>
+#include <cstring>
+#define REP(n) for(int o=0;o<n;o++)
 
-	for(int i=0;i<10;i++)
-		printf("%d %d %c\n",i, c[i],c[i]);
-	printf("%s\n",c);
-	printf("\n%d",strlen("\18\08"));
-	printf("\n%d",strlen("\18"));
-	printf("\n%d",strlen("\1"));
-	printf("\n");
-	printf("\41");
-	printf("\18");
+
+bool is_prime[510];
+
+void prime() {
+	memset(is_prime,1,sizeof(is_prime));
+	int len = (int)sqrt(505 + 0.5);
+	for(int i = 2;i <= len;i++)
+		if(is_prime[i])
+			for(int j = i*i;j < 505;j += i)
+				is_prime[j] = 0;
+	is_prime[1] = 0;
+}
+
+int main(){
+	freopen("in.txt","w",stdout);
+	prime();
+	REP(505){
+		printf("%d,",is_prime[o]);
+	}
 }
