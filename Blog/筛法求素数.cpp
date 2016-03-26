@@ -11,19 +11,19 @@ int main(){
     long prime[maxn]={0},num_prime=0;
     bool isNotPrime[maxn]={1,1};
 
-    for(long i=2;i<maxn;i++){//´Ó2¿ªÊ¼
-        if(!isNotPrime[i])prime[num_prime++]=i;//Èç¹ûÊÇËØÊý£¬¼ÇÂ¼i
-        for(long j=0;j<num_prime&&i*prime[j]<maxn;j++){//´Ó0¿ªÊ¼
-            isNotPrime[i*prime[j]]=true;//²»ÊÇËØÊý
+    for(long i=2;i<maxn;i++){//ä»Ž2å¼€å§‹
+        if(!isNotPrime[i])prime[num_prime++]=i;//å¦‚æžœæ˜¯ç´ æ•°ï¼Œè®°å½•i
+        for(long j=0;j<num_prime&&i*prime[j]<maxn;j++){//ä»Ž0å¼€å§‹
+            isNotPrime[i*prime[j]]=true;//ä¸æ˜¯ç´ æ•°
             if(!(i%prime[j]))break;//
         }
     }
 
     for(int num=1;num<100;num++){
         if(isNotPrime[num]!=true){
-            cout<<num<<"ÊÇËØÊý"<<endl;
+            cout<<num<<"æ˜¯ç´ æ•°"<<endl;
         }else{
-            cout<<num<<"²»ÊÇËØÊý"<<endl;
+            cout<<num<<"ä¸æ˜¯ç´ æ•°"<<endl;
         }
     }
 

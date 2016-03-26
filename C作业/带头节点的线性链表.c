@@ -1,19 +1,3 @@
-#include "stdafx.h"
-//====================================================================
-
-//#include <cstdio>
-//#include <algorithm>
-//#include <cstring>
-//#include <cmath>
-//#include <string>
-//#include <iostream>
-//#include <vector>
-//#include <list>
-//#include <stack>
-//using namespace std;
-//
-//#define REP(n) for(int o=0;o<n;o++)
-
 #include "stdio.h"
 #include "malloc.h"
 
@@ -21,18 +5,18 @@
 #define TRUE 1
 #define FALSE 0
 
-//ç»“æ„ä½“å®šä¹‰
+//½á¹¹Ìå¶¨Òå
 struct LinkList {
 	char elem;
 	LinkList *next;
 };
 
-//åˆå§‹åŒ–é“¾è¡¨
+//³õÊ¼»¯Á´±í
 void InitList(LinkList *L) {
 	L->next = NULL;
 }
 
-//åœ¨å‰æ–¹æ’å…¥
+//ÔÚÇ°·½²åÈë
 void PushFront(LinkList *L,char e) {
 	LinkList *t = (LinkList*)malloc(sizeof(LinkList));
 	t->elem = e;
@@ -40,7 +24,7 @@ void PushFront(LinkList *L,char e) {
 	L->next = t;
 }
 
-//åœ¨åæ–¹æ’å…¥
+//ÔÚºó·½²åÈë
 void PushBack(LinkList *L,char e) {
 	LinkList *t = (LinkList*)malloc(sizeof(LinkList));
 	t->elem = e;
@@ -51,7 +35,7 @@ void PushBack(LinkList *L,char e) {
 	it->next = t;
 }
 
-//æ‰“å°
+//´òÓ¡
 void Print(LinkList *L) {
 	LinkList *it = L->next;
 	while(it != NULL) {
@@ -60,7 +44,7 @@ void Print(LinkList *L) {
 	}
 }
 
-//æŸ¥æ‰¾å…ƒç´ æ˜¯å¦å­˜åœ¨
+//²éÕÒÔªËØÊÇ·ñ´æÔÚ
 Status Find(LinkList *L,char e) {
 	LinkList *it = L->next;
 	while(it != NULL) {
@@ -71,7 +55,7 @@ Status Find(LinkList *L,char e) {
 	return FALSE;
 }
 
-//åˆ é™¤å…ƒç´ 
+//É¾³ıÔªËØ
 Status Delete(LinkList *L,int k) {
 	LinkList *it = L->next;
 	for(int i = 0;i < k - 1;i++) {
@@ -85,7 +69,7 @@ Status Delete(LinkList *L,int k) {
 	return TRUE;
 }
 
-//é€’å½’åˆ é™¤é“¾è¡¨
+//µİ¹éÉ¾³ıÁ´±í
 void DFS_Destory(LinkList *L) {
 	if(L == NULL)
 		return;
@@ -93,12 +77,12 @@ void DFS_Destory(LinkList *L) {
 	free(L);
 }
 
-//ä¸åˆ é™¤å¤´èŠ‚ç‚¹
+//²»É¾³ıÍ·½Úµã
 void Destory(LinkList *L) {
 	DFS_Destory(L->next);
 }
 
-//è¿”å›é“¾è¡¨é•¿åº¦
+//·µ»ØÁ´±í³¤¶È
 int Length(LinkList *L) {
 	LinkList *it = L->next;
 	int len = 0;
@@ -109,72 +93,60 @@ int Length(LinkList *L) {
 	return len;
 }
 
-int vs_main() {
-	printf("å£°æ˜é“¾è¡¨\n");
+int main() {
+	printf("ÉùÃ÷Á´±í\n");
 	LinkList L;
-	//å¤´èŠ‚ç‚¹çš„å…ƒç´ ä¸ä¼šè¢«æ˜¾ç¤º
+	//Í·½ÚµãµÄÔªËØ²»»á±»ÏÔÊ¾
 	L.elem = 'X';
 
-	printf("åˆå§‹åŒ–é“¾è¡¨\n");
+	printf("³õÊ¼»¯Á´±í\n");
 	InitList(&L);
 
-	printf("é“¾è¡¨é•¿åº¦ä¸º%d\n",Length(&L));
+	printf("Á´±í³¤¶ÈÎª%d\n",Length(&L));
 
-	printf("åœ¨å‰æ–¹æ’å…¥a\n");
+	printf("ÔÚÇ°·½²åÈëa\n");
 	PushFront(&L,'a');
-	printf("åœ¨å‰æ–¹æ’å…¥b\n");
+	printf("ÔÚÇ°·½²åÈëb\n");
 	PushFront(&L,'b');
-	printf("åœ¨å‰æ–¹æ’å…¥c\n");
+	printf("ÔÚÇ°·½²åÈëc\n");
 	PushFront(&L,'c');
 
-	printf("é“¾è¡¨æ‰“å°:\n");
+	printf("Á´±í´òÓ¡:\n");
 	Print(&L);
 
-	printf("æ£€æµ‹æ˜¯å¦å­˜åœ¨d\n");
+	printf("¼ì²âÊÇ·ñ´æÔÚd\n");
 	if(Find(&L,'d') == TRUE)
-		printf("å­˜åœ¨\n");
+		printf("´æÔÚ\n");
 	else
-		printf("ä¸å­˜åœ¨\n");
+		printf("²»´æÔÚ\n");
 
-	printf("åœ¨åæ–¹æ’å…¥d\n");
+	printf("ÔÚºó·½²åÈëd\n");
 	PushBack(&L,'d');
-	printf("åœ¨åæ–¹æ’å…¥e\n");
+	printf("ÔÚºó·½²åÈëe\n");
 	PushBack(&L,'e');
-	printf("åœ¨åæ–¹æ’å…¥f\n");
+	printf("ÔÚºó·½²åÈëf\n");
 	PushBack(&L,'f');
 
-	printf("é“¾è¡¨æ‰“å°:\n");
+	printf("Á´±í´òÓ¡:\n");
 	Print(&L);
 
-	printf("æ£€æµ‹æ˜¯å¦å­˜åœ¨d\n");
+	printf("¼ì²âÊÇ·ñ´æÔÚd\n");
 	if(Find(&L,'d') == TRUE)
-		printf("å­˜åœ¨\n");
+		printf("´æÔÚ\n");
 	else
-		printf("ä¸å­˜åœ¨\n");
+		printf("²»´æÔÚ\n");
 
-	printf("é“¾è¡¨é•¿åº¦ä¸º%d\n",Length(&L));
+	printf("Á´±í³¤¶ÈÎª%d\n",Length(&L));
 
-	printf("åˆ é™¤ä¸‹æ ‡ä¸º3çš„å…ƒç´ ");
+	printf("É¾³ıÏÂ±êÎª3µÄÔªËØ");
 	Delete(&L,3);
 
-	printf("é“¾è¡¨æ‰“å°:\n");
+	printf("Á´±í´òÓ¡:\n");
 	Print(&L);
 
 
-	printf("é”€æ¯é“¾è¡¨:\n");
+	printf("Ïú»ÙÁ´±í:\n");
 	Destory(&L);
 
-	return 0;
-}
-
-//====================================================================
-int main() {
-	int start = clock();
-	freopen("in.txt","r",stdin);
-	//freopen("out.txt","w",stdout);
-	vs_main();
-	printf("\n===================\n");
-	printf("Time:%.5lf\n",double(clock() - start) / CLOCKS_PER_SEC);
-	//system("pause");
 	return 0;
 }
