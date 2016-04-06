@@ -131,3 +131,4 @@ int vs_main() {
 	printf("%d",(cnt!=-1)?(m - cnt):-1);
 	return 0;
 }
+P

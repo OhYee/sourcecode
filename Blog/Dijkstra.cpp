@@ -8,28 +8,28 @@ using namespace std;
 class Dijkstra{
     private:
         const int INF=100000;
-        struct Edge{//边
+        struct Edge{//锟斤拷
             int to,weight;
         };
-        struct Weight{//用于优先队列的比较
+        struct Weight{//锟斤拷锟斤拷锟斤拷锟饺讹拷锟叫的比斤拷
             int weight,n;
             bool operator < (const Weight& rhs)const{
-                return weight>rhs.weight;//权值越大，优先度越小
+                return weight>rhs.weight;//权值越锟斤拷锟斤拷锟斤拷锟饺讹拷越小
             }
         };
 
-        struct Tree{//树
+        struct Tree{//锟斤拷
             vector<vector<Edge> > node;
-            vector<int> d;//到各个节点的最小值
-            int N;//节点数目
+            vector<int> d;//锟斤拷锟斤拷锟斤拷锟节碉拷锟斤拷锟斤拷小值
+            int N;//锟节碉拷锟斤拷目
 
-            void init(int NodeNumber){//初始化
+            void init(int NodeNumber){//锟斤拷始锟斤拷
                 node.resize(NodeNumber);
                 d.resize(NodeNumber);
                 N=NodeNumber;
             }
 
-            void Add(int from,int to,int weight){//添加边
+            void Add(int from,int to,int weight){//锟斤拷锟接憋拷
                 node[from].push_back((Edge){to,weight});
             }
         };
@@ -42,34 +42,34 @@ class Dijkstra{
         void init(int NodeNumber){
             T.init(NodeNumber);
         }
-        void dijkstra(int v){//Dijkstra主算法
-            vector<int>done;//访问标记
+        void dijkstra(int v){//Dijkstra锟斤拷锟姐法
+            vector<int>done;//锟斤拷锟绞憋拷锟斤拷
             done.resize(T.N);
             for(int i=0;i<T.d.size();i++){
                 T.d[i]=INF;
                 done[i]=0;
             }
-            priority_queue <Weight> Q;//优先队列
-            Q.push((Weight){0,v});//从第一个点开始
+            priority_queue <Weight> Q;//锟斤拷锟饺讹拷锟斤拷
+            Q.push((Weight){0,v});//锟接碉拷一锟斤拷锟姐开始
             T.d[v]=0;
 
             //BFS
-            while(!Q.empty()){//只要队列不空就走下去
-                int u=Q.top().n;//获得优先度最高的节点
+            while(!Q.empty()){//只要锟斤拷锟叫诧拷锟秸撅拷锟斤拷锟斤拷去
+                int u=Q.top().n;//锟斤拷锟斤拷锟斤拷锟饺讹拷锟斤拷锟竭的节碉拷
                 Q.pop();
-                if(done[u])continue;//如果已经访问过就跳过
-                done[u]=1;//访问标记
-                for(int i=0;i<T.node[u].size();i++){//该节点可以访问的节点
+                if(done[u])continue;//锟斤拷锟斤拷锟窖撅拷锟斤拷锟绞癸拷锟斤拷锟斤拷锟斤拷
+                done[u]=1;//锟斤拷锟绞憋拷锟斤拷
+                for(int i=0;i<T.node[u].size();i++){//锟矫节碉拷锟斤拷锟皆凤拷锟绞的节碉拷
                     Edge& next=T.node[u][i];
-                    if(T.d[u]+next.weight<T.d[next.to]){//如果距离更短，则更新
+                    if(T.d[u]+next.weight<T.d[next.to]){//锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟教ｏ拷锟斤拷锟斤拷锟斤拷
                         T.d[next.to]=T.d[u]+next.weight;
                         Q.push((Weight){next.weight,next.to});
-                        //可以在这里加上一个vector，用来记录路径
+                        //锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷一锟斤拷vector锟斤拷锟斤拷锟斤拷锟斤拷录路锟斤拷
                     }
                 }
             }
         }
-        int get(int n){//返回到达指定节点的最短距离
+        int get(int n){//锟斤拷锟截碉拷锟斤拷指锟斤拷锟节碉拷锟斤拷锟斤拷锟教撅拷锟斤拷
             return T.d[n];
         }
 };
