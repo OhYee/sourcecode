@@ -11,7 +11,7 @@ using namespace std;
 
 #define REP(n) for(int o=0;o<n;o++)
 
-int N,M;
+int N,M;//N水果数 M钱数
 const int maxn = 15;
 const int maxm = 205;
 long long d[maxm];
@@ -23,7 +23,16 @@ bool Do() {
 	REP(N)
 		scanf("%d",&price[o + 1]);
 
-	memset(d,0,sizeof(d));
+    //d[i][j]=d[i-1][j]+d[i][j-price[i]];
+    /*买前i件物品，用去j元钱时，方案总数d[i][j]为
+        (买上一个物品用去j元钱d[i-1][j])
+            与
+        (再买一个这个物品d[i][j-price[i]])的和加1
+        
+        (j-price[i])/price[i] 为第i件买的个数
+	*/
+    
+    memset(d,0,sizeof(d));
 	for(int i = 1;i <= N;i++)
 		for(int j = 1;j <= M;j++)
 			d[j] +=  ((j - price[i] >= 0) ? (d[j - price[i]] + 1) : 0);
