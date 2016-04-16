@@ -4,9 +4,9 @@ Github:OhYee
 Email:oyohyee@oyohyee.com
 Blog:http://www.cnblogs.com/ohyee/
 
-¤«¤·¤³¤¤¤«¤ï¤¤¤¤£¿
-¥¨¥ê©`¥Á¥«£¡
-ÒªĞ´³öÀ´§·§à§â§à§ê§àµÄ´úÂëÅ¶~
+ã‹ã—ã“ã„ã‹ã‚ã„ã„ï¼Ÿ
+ã‚¨ãƒªãƒ¼ãƒã‚«ï¼
+è¦å†™å‡ºæ¥Ğ¥Ğ¾Ñ€Ğ¾ÑˆĞ¾çš„ä»£ç å“¦~
 */
 #include <cstdio>
 #include <algorithm>
@@ -23,7 +23,7 @@ using namespace std;
 //DEBUG MODE
 #define debug 0
 
-//Ñ­»·
+//å¾ªç¯
 #define REP(n) for(int o=0;o<n;o++)
 
 const int mod = 1000000007;
@@ -31,7 +31,7 @@ const int maxn = 2005;
 typedef unsigned long long LL;
 LL dp[maxn][5];
 
-//n²ãÊı mÁ¬ĞøÊıÄ¿
+//nå±‚æ•° mè¿ç»­æ•°ç›®
 LL DP(int n, int m) {
 	if (n == 0) {
 		if (m == 1)
