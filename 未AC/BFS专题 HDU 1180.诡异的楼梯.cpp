@@ -46,25 +46,23 @@ struct point {
 };
 
 int BFS(int s1,int s2,int v1,int v2) {
-	priority_queue<pair<int,point>,> Q;
-	//queue<point> Q;
+	queue<point> Q;
 	int dis[maxn][maxn];
 	memset(dis,-1,sizeof(dis));
 
-	#define distance(x1,y1) (-(abs(x1-v1)+abs(y1-v2)))
-
-	Q.push(pair<int,point>(distance(s1,s2),point(s1,s2,false)));
+	Q.push(point(s1,s2,false));
 	dis[s1][s2] = 0;
 	while(!Q.empty()) {
-		point temp = Q.top().second;
+		point temp = Q.front();
 		Q.pop();
 
 		int x = temp.x;
 		int y = temp.y;
 		bool time = temp.time;
 
-
-
+		if(x == v1 && y == v2)
+			break;
+		
 		REP(4) {
 			int xx = x + delta[o];
 			int yy = y + delta[3 - o];
@@ -73,33 +71,24 @@ int BFS(int s1,int s2,int v1,int v2) {
 			if(xx < 0 || xx >= n || yy < 0 || yy >= m
 				|| Map[xx][yy] == '*')
 				continue;
-			if(((Map[xx][yy] == '-'&& tt) || (Map[xx][yy] == '|'&&time)) && xx == x)
+			if(((Map[xx][yy] == '-'&& tt) || (Map[xx][yy] == '|'&&time)) && xx == x) 
 				yy += yy - y;
 			if(((Map[xx][yy] == '-'&& time) || (Map[xx][yy] == '|'&&tt)) && yy == y)
 				xx += xx - x;
-			if(xx < 0 || xx >= n || yy < 0 || yy >= m
-				|| Map[xx][yy] != '.')
-				continue;
-
-
-
-
+				//printf("%d %d %d %d\n", xx, yy, tt, dd);
 			if(dis[xx][yy] == -1) {
 				dis[xx][yy] = dis[x][y] + 1;
-				if(xx == v1 && yy == v2)
-					break;
-				Q.push(pair<int,point>(distance(xx,yy),point(xx,yy,tt)));
+				Q.push(point(xx,yy,tt));
 			}
 		}
 	}
-
 	return dis[v1][v2];
 }
 
 bool Do() {
 	int s1,v1;
 	int s2,v2;
-	if(scanf("%d%d\n",&n,&m) == EOF)
+	if(scanf("%d%d\n",&n,&m)==EOF)
 		return false;
 	for(int i = 0; i < n; i++)
 		for(int j = 0; j < m; j++) {

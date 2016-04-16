@@ -34,7 +34,7 @@
   
    * F.ROLL不是处女座
 
-  * (2016.04.16)
+  * [2016.04.16](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=113042#overview)
    
    * B.Max Sum
    
