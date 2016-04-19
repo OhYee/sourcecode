@@ -51,7 +51,7 @@ struct point {
 
 const int delta[] = {1,-1,0,0};
 
-int BFS(int s1,int s2,int v1,int v2) {
+int BFS(int s1,int s2) {
 	priority_queue<point> Q;
 	bool visited[maxn][maxn];
 	memset(visited,false,sizeof(visited));
@@ -60,36 +60,34 @@ int BFS(int s1,int s2,int v1,int v2) {
 	Q.push(point(s1,s2,0));
 	dis[s1][s2] = 0;
 
-	while (!Q.empty()) {
-
-		int th1 = Q.top().x;
-		int th2 = Q.top().y;
-		int thdis = Q.top().dis;
+	while(!Q.empty()) {
+		int x = Q.top().x;
+		int y = Q.top().y;
+		int dist = Q.top().dis;
 
 		Q.pop();
 
-		if (visited[th1][th2] == true)
+		if(visited[x][y] == true)
 			continue;
-		visited[th1][th2] = true;
-
-		//达到终点
-		//if (th1 == N - 1 && th2 == M - 1)
-		//	return dis[N - 1][M - 1];
+		visited[x][y] = true;
 
 		//拓展节点
 		REP(4) {
-			int next1 = th1 + delta[o];
-			int next2 = th2 + delta[3 - o];
+			int xx = x + delta[o];
+			int yy = y + delta[3 - o];
 
-			if (Map[next1][next2] != '#' && next1 >= 0 && next1 < N && next2 >= 0 && next2 < M) {
-				int dd = thdis + 1;
+			if(xx >= 0 && xx < N && yy >= 0 && yy < M && Map[xx][yy] != '#' && visited[xx][yy] == false) {
+				int dd = dist + 1;
 
-				if (Map[next1][next2] == 'x')
+				if(Map[xx][yy] == 'x')
 					dd++;
 
-				dis[next1][next2] = ((dis[next1][next2] == -1) ? dd : min(dd,dis[next1][next2]));
+				dis[xx][yy] = ((dis[xx][yy] == -1) ? dd : min(dd,dis[xx][yy]));
 
-				Q.push(point(next1,next2,dis[next1][next2]));
+				if(Map[xx][yy] == 'r')
+					return dis[xx][yy];
+
+				Q.push(point(xx,yy,dis[xx][yy]));
 
 			}
 
@@ -97,32 +95,36 @@ int BFS(int s1,int s2,int v1,int v2) {
 
 	}
 
-	return dis[v1][v2];
+	return -1;
 
 }
 
 bool Do() {
-	if (scanf("%d%d",&N,&M) == EOF)
+	if(scanf("%d%d",&N,&M) == EOF)
 		return false;
-	int s1,s2,v1,v2;
-	for (int i = 0; i < N; i++)
-		for (int j = 0; j < M; j++) {
+
+	int s1,s2;
+	for(int i = 0; i < N; i++)
+		for(int j = 0; j < M; j++) {
 			scanf("\n%c\n",&Map[i][j]);
-			if (Map[i][j] == 'a') {
-				Map[i][j] = '.';
-				v1 = i;
-				v2 = j;
-			}
-			if (Map[i][j] == 'r') {
+			if(Map[i][j] == 'a') {
 				Map[i][j] = '.';
 				s1 = i;
 				s2 = j;
 			}
 		}
 
-	int ans = BFS(s1,s2,v1,v2);
+	#if debug
+	for(int i = 0; i < N; i++) {
+		for(int j = 0; j < M; j++)
+			printf("%c",Map[i][j]);
+		printf("\n");
+	}
+	#endif
 
-	if (ans == -1)
+	int ans = BFS(s1,s2);
+
+	if(ans == -1)
 		printf("Poor ANGEL has to stay in the prison all his life.\n");
 	else
 		printf("%d\n",ans);
@@ -130,7 +132,8 @@ bool Do() {
 	return true;
 }
 
-int main() {
-	while (Do());
+int vs_main() {
+	while(Do());
 	return 0;
 }
+
