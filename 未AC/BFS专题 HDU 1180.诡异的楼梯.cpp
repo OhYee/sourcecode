@@ -26,18 +26,15 @@ using namespace std;
 //循环
 #define REP(n) for(int o=0;o<n;o++)
 
-
-
-const int maxn = 10;
+const int maxn = 30;
 int n,m;
 char Map[maxn][maxn];
-
 
 const int delta[4] = {1,-1,0,0};
 
 struct point {
 	int x,y;
-	bool time;
+	bool time;//楼梯是否已变化
 	point(int a,int b,bool c) {
 		x = a;
 		y = b;
@@ -52,6 +49,7 @@ int BFS(int s1,int s2,int v1,int v2) {
 
 	Q.push(point(s1,s2,false));
 	dis[s1][s2] = 0;
+
 	while(!Q.empty()) {
 		point temp = Q.front();
 		Q.pop();
@@ -60,38 +58,39 @@ int BFS(int s1,int s2,int v1,int v2) {
 		int y = temp.y;
 		bool time = temp.time;
 
-		if(x == v1 && y == v2)
-			break;
-		
 		REP(4) {
 			int xx = x + delta[o];
 			int yy = y + delta[3 - o];
 			bool tt = !time;
 
-			if(xx < 0 || xx >= n || yy < 0 || yy >= m
-				|| Map[xx][yy] == '*')
+			if(xx < 0 || xx >= m || yy < 0 || yy >= n || Map[xx][yy] == '*')
 				continue;
-			if(((Map[xx][yy] == '-'&& tt) || (Map[xx][yy] == '|'&&time)) && xx == x) 
+			if(((Map[xx][yy] == '-' && tt) || (Map[xx][yy] == '|' && time)) && xx == x)
 				yy += yy - y;
-			if(((Map[xx][yy] == '-'&& time) || (Map[xx][yy] == '|'&&tt)) && yy == y)
+			if(((Map[xx][yy] == '-' && time) || (Map[xx][yy] == '|' && tt)) && yy == y)
 				xx += xx - x;
-				//printf("%d %d %d %d\n", xx, yy, tt, dd);
+			if(xx < 0 || xx >= m || yy < 0 || yy >= n || Map[xx][yy] != '.')
+				continue;
+
 			if(dis[xx][yy] == -1) {
 				dis[xx][yy] = dis[x][y] + 1;
+				if(xx == v1 && yy == v2)
+					break;
 				Q.push(point(xx,yy,tt));
 			}
 		}
 	}
+
 	return dis[v1][v2];
 }
 
 bool Do() {
 	int s1,v1;
 	int s2,v2;
-	if(scanf("%d%d\n",&n,&m)==EOF)
+	if(scanf("%d%d\n",&m,&n) == EOF)
 		return false;
-	for(int i = 0; i < n; i++)
-		for(int j = 0; j < m; j++) {
+	for(int i = 0; i < m; i++)
+		for(int j = 0; j < n; j++) {
 			scanf("\n%c\n",&Map[i][j]);
 			if(Map[i][j] == 'S') {
 				s1 = i;
@@ -104,13 +103,21 @@ bool Do() {
 				Map[i][j] = '.';
 			}
 		}
+
+	#ifdef debug
+	for(int i = 0;i < m;i++) {
+		for(int j = 0;j < n;j++)
+			printf("%c",Map[i][j]);
+		printf("\n");
+	}
+	#endif
+
 	printf("%d\n",BFS(s1,s2,v1,v2));
 	return true;
 }
 
 
-int main() {
+int vs_main() {
 	while(Do());
-
 	return 0;
 }
