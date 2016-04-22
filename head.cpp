@@ -4,8 +4,8 @@ REP(n) for(int o=0;o<n;o++)
 inline int read_int() {
     char c;
     int ans = 0;
-    while(c = getchar(),!(c >= '0'&&c < '9'));
-    while(c >= '0'&&c < '9') {
+    while(c = getchar(),!(c >= '0'&&c <= '9'));
+    while(c >= '0'&&c <= '9') {
         ans *= 10;
         ans += (int)c - '0';
         c = getchar();
