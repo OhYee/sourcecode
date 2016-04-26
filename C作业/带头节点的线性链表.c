@@ -5,18 +5,18 @@
 #define TRUE 1
 #define FALSE 0
 
-//½á¹¹Ìå¶¨Òå
+//ç»“æ„ä½“å®šä¹‰
 struct LinkList {
 	char elem;
 	LinkList *next;
 };
 
-//³õÊ¼»¯Á´±í
+//åˆå§‹åŒ–é“¾è¡¨
 void InitList(LinkList *L) {
 	L->next = NULL;
 }
 
-//ÔÚÇ°·½²åÈë
+//åœ¨å‰æ–¹æ’å…¥
 void PushFront(LinkList *L,char e) {
 	LinkList *t = (LinkList*)malloc(sizeof(LinkList));
 	t->elem = e;
@@ -24,7 +24,7 @@ void PushFront(LinkList *L,char e) {
 	L->next = t;
 }
 
-//ÔÚºó·½²åÈë
+//åœ¨åæ–¹æ’å…¥
 void PushBack(LinkList *L,char e) {
 	LinkList *t = (LinkList*)malloc(sizeof(LinkList));
 	t->elem = e;
@@ -35,7 +35,7 @@ void PushBack(LinkList *L,char e) {
 	it->next = t;
 }
 
-//´òÓ¡
+//æ‰“å°
 void Print(LinkList *L) {
 	LinkList *it = L->next;
 	while(it != NULL) {
@@ -44,7 +44,7 @@ void Print(LinkList *L) {
 	}
 }
 
-//²éÕÒÔªËØÊÇ·ñ´æÔÚ
+//æŸ¥æ‰¾å…ƒç´ æ˜¯å¦å­˜åœ¨
 Status Find(LinkList *L,char e) {
 	LinkList *it = L->next;
 	while(it != NULL) {
@@ -55,7 +55,7 @@ Status Find(LinkList *L,char e) {
 	return FALSE;
 }
 
-//É¾³ıÔªËØ
+//åˆ é™¤å…ƒç´ 
 Status Delete(LinkList *L,int k) {
 	LinkList *it = L->next;
 	for(int i = 0;i < k - 1;i++) {
@@ -69,7 +69,7 @@ Status Delete(LinkList *L,int k) {
 	return TRUE;
 }
 
-//µİ¹éÉ¾³ıÁ´±í
+//é€’å½’åˆ é™¤é“¾è¡¨
 void DFS_Destory(LinkList *L) {
 	if(L == NULL)
 		return;
@@ -77,12 +77,12 @@ void DFS_Destory(LinkList *L) {
 	free(L);
 }
 
-//²»É¾³ıÍ·½Úµã
+//ä¸åˆ é™¤å¤´èŠ‚ç‚¹
 void Destory(LinkList *L) {
 	DFS_Destory(L->next);
 }
 
-//·µ»ØÁ´±í³¤¶È
+//è¿”å›é“¾è¡¨é•¿åº¦
 int Length(LinkList *L) {
 	LinkList *it = L->next;
 	int len = 0;
@@ -94,58 +94,58 @@ int Length(LinkList *L) {
 }
 
 int main() {
-	printf("ÉùÃ÷Á´±í\n");
+	printf("å£°æ˜é“¾è¡¨\n");
 	LinkList L;
-	//Í·½ÚµãµÄÔªËØ²»»á±»ÏÔÊ¾
+	//å¤´èŠ‚ç‚¹çš„å…ƒç´ ä¸ä¼šè¢«æ˜¾ç¤º
 	L.elem = 'X';
 
-	printf("³õÊ¼»¯Á´±í\n");
+	printf("åˆå§‹åŒ–é“¾è¡¨\n");
 	InitList(&L);
 
-	printf("Á´±í³¤¶ÈÎª%d\n",Length(&L));
+	printf("é“¾è¡¨é•¿åº¦ä¸º%d\n",Length(&L));
 
-	printf("ÔÚÇ°·½²åÈëa\n");
+	printf("åœ¨å‰æ–¹æ’å…¥a\n");
 	PushFront(&L,'a');
-	printf("ÔÚÇ°·½²åÈëb\n");
+	printf("åœ¨å‰æ–¹æ’å…¥b\n");
 	PushFront(&L,'b');
-	printf("ÔÚÇ°·½²åÈëc\n");
+	printf("åœ¨å‰æ–¹æ’å…¥c\n");
 	PushFront(&L,'c');
 
-	printf("Á´±í´òÓ¡:\n");
+	printf("é“¾è¡¨æ‰“å°:\n");
 	Print(&L);
 
-	printf("¼ì²âÊÇ·ñ´æÔÚd\n");
+	printf("æ£€æµ‹æ˜¯å¦å­˜åœ¨d\n");
 	if(Find(&L,'d') == TRUE)
-		printf("´æÔÚ\n");
+		printf("å­˜åœ¨\n");
 	else
-		printf("²»´æÔÚ\n");
+		printf("ä¸å­˜åœ¨\n");
 
-	printf("ÔÚºó·½²åÈëd\n");
+	printf("åœ¨åæ–¹æ’å…¥d\n");
 	PushBack(&L,'d');
-	printf("ÔÚºó·½²åÈëe\n");
+	printf("åœ¨åæ–¹æ’å…¥e\n");
 	PushBack(&L,'e');
-	printf("ÔÚºó·½²åÈëf\n");
+	printf("åœ¨åæ–¹æ’å…¥f\n");
 	PushBack(&L,'f');
 
-	printf("Á´±í´òÓ¡:\n");
+	printf("é“¾è¡¨æ‰“å°:\n");
 	Print(&L);
 
-	printf("¼ì²âÊÇ·ñ´æÔÚd\n");
+	printf("æ£€æµ‹æ˜¯å¦å­˜åœ¨d\n");
 	if(Find(&L,'d') == TRUE)
-		printf("´æÔÚ\n");
+		printf("å­˜åœ¨\n");
 	else
-		printf("²»´æÔÚ\n");
+		printf("ä¸å­˜åœ¨\n");
 
-	printf("Á´±í³¤¶ÈÎª%d\n",Length(&L));
+	printf("é“¾è¡¨é•¿åº¦ä¸º%d\n",Length(&L));
 
-	printf("É¾³ıÏÂ±êÎª3µÄÔªËØ");
+	printf("åˆ é™¤ä¸‹æ ‡ä¸º3çš„å…ƒç´ ");
 	Delete(&L,3);
 
-	printf("Á´±í´òÓ¡:\n");
+	printf("é“¾è¡¨æ‰“å°:\n");
 	Print(&L);
 
 
-	printf("Ïú»ÙÁ´±í:\n");
+	printf("é”€æ¯é“¾è¡¨:\n");
 	Destory(&L);
 
 	return 0;
