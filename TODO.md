@@ -10,11 +10,13 @@
  
  * DP [基础DP专题](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=110508#overview) 密码：akak
  
+ * DP [POJ训练计划（DP）（初级）](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=99272#overview) 密码：akak
+ 
  * BFS [BFS专题](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=87959#overview) 密码：akak
  
  * [POJ训练计划第一周基本算法](POJ训练计划第一周基本算法) 密码：akak
  
- * 搜索基础[搜索基础专题](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=101987#overview) 密码：akak
+ * 搜索基础 [搜索基础专题](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=101987#overview) 密码：akak
 
 * 博客
 
