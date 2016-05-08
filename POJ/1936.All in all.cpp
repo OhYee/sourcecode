@@ -5,9 +5,9 @@ HomePage:http://www.oyohyee.com
 Email:oyohyee@oyohyee.com
 Blog:http://www.cnblogs.com/ohyee/
 
-¤«¤·¤³¤¤¤«¤ï¤¤¤¤£¿
-¥¨¥ê©`¥Á¥«£¡
-ÒªĞ´³öÀ´§·§à§â§à§ê§àµÄ´úÂëÅ¶~
+ã‹ã—ã“ã„ã‹ã‚ã„ã„ï¼Ÿ
+ã‚¨ãƒªãƒ¼ãƒã‚«ï¼
+è¦å†™å‡ºæ¥Ğ¥Ğ¾Ñ€Ğ¾ÑˆĞ¾çš„ä»£ç å“¦~
 */
 
 #include <cstdio>
@@ -21,39 +21,38 @@ Blog:http://www.cnblogs.com/ohyee/
 #include <queue>
 #include <stack>
 #include <map>
-#include <array>
 using namespace std;
 
 //DEBUG MODE
 #define debug 0
 
-//Ñ­»·
+//å¾ªç¯
 #define REP(n) for(int o=0;o<n;o++)
 
 const int maxn = 100005;
 
 bool Do() {
-  char s[maxn],t[maxn];
-  if(scanf("%s%s",s,t) == EOF)
-    return false;
-  
-  int t_len = strlen(t);
-  int s_len = strlen(s);
+	char s[maxn],t[maxn];
+	if(scanf("%s%s",s,t) == EOF)
+		return false;
+	
+	int t_len = strlen(t);
+	int s_len = strlen(s);
 
-  int it = 0;
-  for(int i = 0;i < t_len;i++) {
-    if(s[it] == t[i])
-      it++;
-    if(it == s_len)
-      break;
-  }
+	int it = 0;
+	for(int i = 0;i < t_len;i++) {
+		if(s[it] == t[i])
+			it++;
+		if(it == s_len)
+			break;
+	}
 
-  printf("%s\n",(it == s_len) ? "Yes" : "No");
+	printf("%s\n",(it == s_len) ? "Yes" : "No");
 
-  return true;
+	return true;
 }
 
 int main() {
-  while(Do());
-  return 0;
+	while(Do());
+	return 0;
 }
