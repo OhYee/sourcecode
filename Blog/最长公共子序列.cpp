@@ -2,8 +2,8 @@
 //输入字符串a 及其长度 字符串b 及其长度 保存最长公共子序列的数组
 //字符从0开始
 int LCS(char *a,char *b,char s[] = NULL) {
-	int len1 = strlen(a) - 1;
-	int len2 = strlen(b) - 1;
+	int len1 = strlen(a);
+	int len2 = strlen(b);
 	char *aa = a - 1;
 	char *bb = b - 1;
 
