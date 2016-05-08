@@ -1,9 +1,11 @@
 //最长公共子序列
 //输入字符串a 及其长度 字符串b 及其长度 保存最长公共子序列的数组
-//字符从1开始
+//字符从0开始
 int LCS(char *a,char *b,char s[] = NULL) {
-	int len1 = strlen(a)-1;
-	int len2 = strlen(b)-1;
+	int len1 = strlen(a) - 1;
+	int len2 = strlen(b) - 1;
+	char *aa = a - 1;
+	char *bb = b - 1;
 
 	//声明二维数组
 	int * m = new int[(len1 + 1)*(len2 + 1)];
@@ -20,7 +22,7 @@ int LCS(char *a,char *b,char s[] = NULL) {
 	//动态规划
 	for(int i = 1;i <= len1;i++)
 		for(int j = 1;j <= len2;j++)
-			if(a[i] == b[j])
+			if(aa[i] == bb[j])
 				dp[i][j] = dp[i - 1][j - 1] + 1;
 			else
 				dp[i][j] = max(dp[i - 1][j],dp[i][j - 1]);
@@ -42,15 +44,15 @@ int LCS(char *a,char *b,char s[] = NULL) {
 	int it = ans;
 	s[it] = '\0';
 	while(it) {
-		if(dp[x-1][y] == it) {
+		if(dp[x - 1][y] == it) {
 			x--;
 			continue;
 		}
-		if(dp[x][y-1] == it) {
+		if(dp[x][y - 1] == it) {
 			y--;
 			continue;
 		}
-		s[--it] = a[x];
+		s[--it] = aa[x];
 		x--;
 		y--;
 	}
