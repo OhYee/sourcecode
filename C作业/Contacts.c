@@ -29,7 +29,7 @@
         
         程序仅供于参考，不建议抄袭。
         已上传GitHub以证明版权所有：
-			https://github.com/OhYee/ACM.github.io/blob/master/C%E4%BD%9C%E4%B8%9A/Contacts.cpp
+			https://github.com/OhYee/ACM.github.io/blob/master/C%E4%BD%9C%E4%B8%9A/Contacts.c
         2016/5/10
 */
 
