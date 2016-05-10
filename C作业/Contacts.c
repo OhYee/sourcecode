@@ -62,7 +62,7 @@
 /*==============
 结构体定义
 ==============*/
-struct People {
+typedef struct {
 	char name[SIZE_NAME];
 	char phone[SIZE_PHONE];
 	char email[SIZE_EMAIL];
@@ -79,7 +79,7 @@ struct People {
 		strcpy(email,c);
 		QQ = d;
 	}
-};
+}People;
 
 /*==============
 全局变量定义部分
