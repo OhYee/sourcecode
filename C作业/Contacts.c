@@ -1,5 +1,5 @@
 /*
-    小组成员：
+	小组成员：
 		孔晨皓	P21514131
 		刘天生	P21514109
 		赵永登	P21514093
@@ -7,31 +7,31 @@
 		董超	P21514087
 		赵泉景	P21514121
 
-        
-    程序介绍：
-        有通讯录显示、查找、添加、修改、删除和排序功能的通讯录管理程序
-        按照以下要求编写程序：
-            （1）通讯录人数为30。 
-            （2）通讯录信息包括姓名、电话、邮箱、QQ号。
-            （3）可显示所有信息。
-            （4）可增加记录，并完成信息的录入。
-            （5）可根据姓名、电话来查找记录，并逐项进行修改。
-            （6）可根据姓名、电话来查找记录，并判断有无满足条件的记录。
-            （7）排序功能，可以根据姓名进行排序。
-            
-        并自行添加了如下功能：
-            （1）保存功能，将数据存储在save.sav文件中
-            （2）额外对较低版本C标准环境下的成功运行
-            
-        由于使用了中文字符，请自行调整编码（本文件采用UTF-8编码），需要GBK编码支持
-        本程序在以下环境成功编译并运行：
-            Microsoft Visual Studio 2015 + Windows 10
-            Sublime Text 3 + MinGW + Window 10
-        
-        程序仅供于参考，不建议抄袭。
-        已上传GitHub以证明版权所有：
-			https://github.com/OhYee/ACM.github.io/blob/master/C%E4%BD%9C%E4%B8%9A/Contacts.c
-        2016/5/10
+
+	程序介绍：
+		有通讯录显示、查找、添加、修改、删除和排序功能的通讯录管理程序
+		按照以下要求编写程序：
+			（1）通讯录人数为30。
+			（2）通讯录信息包括姓名、电话、邮箱、QQ号。
+			（3）可显示所有信息。
+			（4）可增加记录，并完成信息的录入。
+			（5）可根据姓名、电话来查找记录，并逐项进行修改。
+			（6）可根据姓名、电话来查找记录，并判断有无满足条件的记录。
+			（7）排序功能，可以根据姓名进行排序。
+
+	并自行添加了如下功能：
+		（1）保存功能，将数据存储在save.sav文件中
+		（2）额外对较低版本C标准环境下的成功运行
+
+	由于使用了中文字符，请自行调整编码（本文件采用UTF-8编码），需要GBK编码支持
+		本程序在以下环境成功编译并运行：
+			Microsoft Visual Studio 2015 + Windows 10
+			Sublime Text 3 + MinGW + Window 10
+
+	程序仅供于参考，不建议抄袭。
+	已上传GitHub以证明版权所有：
+	https://github.com/OhYee/ACM.github.io/blob/master/C%E4%BD%9C%E4%B8%9A/Contacts.c
+	2016/5/10
 */
 
 #include <stdio.h>
@@ -89,9 +89,9 @@ People p[MAXSIZE];
 int num = 0;
 int o,i;//循环用，兼容低版本C标准
 
-/*==============
-函数声明部分
-==============*/
+		/*==============
+		函数声明部分
+		==============*/
 void Do();
 void head();
 bool menu();
@@ -107,7 +107,7 @@ void Sort();
 
 bool Compare(char a[SIZE_NAME],char b[SIZE_NAME]);
 void Swap(People &a,People &b);
-int Find(char id[],int type);
+int Find();
 
 /*==============
 函数定义部分
@@ -159,23 +159,8 @@ void Show() {
 }
 void Search() {
 	head();
-	int com = 0;
-	while(!(com >= 1 && com <= 2)) {
-		printf("使用以下为索引值搜索(1.姓名 2.手机 -1.返回主界面):");
-		scanf("%d",&com);
-		if(com == -1)
-			return;
-	}
-	char f[max(SIZE_NAME,SIZE_PHONE)];
-	printf("输入要查找的值:");
-	scanf("%s",f);
-	int it = Find(f,com);
-	if(it == -1) {
-		printf("未找到该数据\n");
-	} else {
-		printf("找到数据，索引值为:%d\n",o);
-		p[o].print();
-	}
+
+	Find();
 }
 void Insert() {
 	head();
@@ -202,13 +187,9 @@ void Insert() {
 void Change() {
 	head();
 	printf("改变已有数据：\n");
-	int index = -2;
-	while(!(index >= 0 && index < num)) {
-		printf("请输入索引值(可通过查找功能获取索引值，输入-1返回主界面):\n");
-		scanf("%d",&index);
-		if(index == -1)
-			return;
-	}
+	int index=Find();
+	if(index == -1)
+		return;
 	printf("输入姓名：");
 	scanf("%s",p[index].name);
 	printf("输入手机号：");
@@ -222,13 +203,9 @@ void Change() {
 void Delete() {
 	head();
 	printf("删除已有数据：\n");
-	int index = -2;
-	while(!(index >= 0 && index < num)) {
-		printf("请输入索引值(可通过查找功能获取索引值，输入-1返回主界面):\n");
-		scanf("%d",&index);
-		if(index == -1)
-			return;
-	}
+	int index = Find();
+	if(index == -1)
+		return;
 	for(i = index;i < num;i++)
 		memcpy(&p[i],&p[i + 1],sizeof(p[i + 1]));
 	num--;
@@ -302,20 +279,43 @@ void Swap(People &a,People &b) {
 }
 
 //查找指定特征值的记录，type 1 按照姓名查找 2 按照手机查找 返回数组下标
-int Find(char id[],int type) {
+int Find() {
+
+	int com = 0;
+	while(!(com >= 1 && com <= 2)) {
+		printf("使用以下为索引值搜索(1.姓名 2.手机 -1.返回主界面):");
+		scanf("%d",&com);
+		if(com == -1)
+			return -1;
+	}
+	char f[max(SIZE_NAME,SIZE_PHONE)];
+	printf("输入要查找的值:");
+	scanf("%s",f);
+
 	int it = -1;
-	if(type == 1)
-		REP(num)
-		if(strcmp(id,p[o].name) == 0) {
-			it = o;
-			break;
-		} else
-			REP(num)
-			if(strcmp(id,p[o].phone) == 0) {
+	if(com == 1) {
+		REP(num) {
+			if(strcmp(f,p[o].name) == 0) {
 				it = o;
 				break;
 			}
-		return it;
+		}
+	} else {
+		REP(num) {
+			if(strcmp(f,p[o].phone) == 0) {
+				it = o;
+				break;
+			}
+		}
+	}
+
+	if(it == -1) {
+		printf("未找到该数据\n");
+	} else {
+		printf("找到数据，索引值为:%d\n",o);
+		p[o].print();
+	}
+	return it;
 }
 
 //循环主体
