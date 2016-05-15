@@ -1,7 +1,3 @@
-
-#include "stdafx.h"
-//====================================================================
-
 /*
 By:OhYee
 Github:OhYee
@@ -39,7 +35,7 @@ int a[maxn];
 int ans;
 
 //将已经排好序的a[l]~a[mid] a[mid+1]~a[r]拼合起来
-void merge(int a[],int l,int mid,int r){
+void merge(int a[],int l,int mid,int r) {
 	int pos1 = l;//左侧的指针
 	int pos2 = mid + 1;//右侧的指针
 	int *temp = new int[r - l + 1];
@@ -56,7 +52,7 @@ void merge(int a[],int l,int mid,int r){
 				temp[pos++] = a[pos1++];
 			} else {
 				temp[pos++] = a[pos2++];
-				ans+=mid-pos1+1;//交换
+				ans += mid - pos1 + 1;//交换
 			}
 		}
 	}
@@ -76,7 +72,7 @@ void mergesort(int a[],int l,int r) {
 
 bool Do() {
 	int n;
-	if(scanf("%d",&n),n==0)
+	if(scanf("%d",&n),n == 0)
 		return false;
 
 	REP(n)
@@ -85,28 +81,14 @@ bool Do() {
 	ans = 0;
 	mergesort(a,0,n - 1);
 	printf("%d\n",ans);
-	REP(n)
+	/*REP(n)
 		printf("%d ",a[o]);
-	printf("\n");
+	printf("\n");*/
 
 	return true;
 }
 
 int vs_main() {
 	while(Do());
-	return 0;
-}
-
-
-//====================================================================
-int main() {
-	int start = clock();
-	freopen("in.txt","r",stdin);
-	//freopen("out.txt","w",stdout);
-	printf("#===================#\n");
-	vs_main();
-	printf("#===================#\n");
-	printf("Time:%.5lf\n",double(clock() - start) / CLOCKS_PER_SEC);
-	//system("pause");
 	return 0;
 }
