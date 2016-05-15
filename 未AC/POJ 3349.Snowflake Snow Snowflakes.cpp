@@ -29,13 +29,11 @@ using namespace std;
 //循环
 #define REP(n) for(int o=0;o<n;o++)
 
-const int maxn = 30005;
-
 //hash
-int hash(int a[6]){
+int HASH(int a[6]) {
 	int Min = 999999;
-	for(int i = 0;i < 6;i++){ //初始位置
-		for(int k = -1;k == 1 || k == -1;k++) {//方向
+	for(int i = 0;i < 6;i++) { //初始位置
+		for(int k = -1;k == 1 || k == -1;k+=2) {//方向
 			int temp = 0;
 			for(int j = 0;j < 6;j++) {//计数
 				int pos = i + j*k;
@@ -51,26 +49,34 @@ int hash(int a[6]){
 	}
 	return Min;
 }
+const int maxn = 1000010;
+bool has[maxn];
 
 bool Do() {
 	int n;
-	if(scanf("%d%d",&n)==EOF)
-		return false;
+	scanf("%d",&n);
+	/*if(scanf("%d",&n) == EOF)
+		return false;*/
+	memset(has,false,sizeof(has));
 	bool Finded = false;
 	int a[6];
 	REP(n) {
 		for(int i = 0;i < 6;i++)
-			scanf("%d",a[i]);
+			scanf("%d",&a[i]);
+		int h = HASH(a);
+		if(has[h]) {
+			Finded = true;
+		} else {
+			has[h] = true;
+		}
 	}
-
-
 
 	if(Finded)
 		printf("Twin snowflakes found.\n");
 	else
 		printf("No two snowflakes are alike.\n");
 
-	return true;
+	return false;
 }
 
 int vs_main() {
