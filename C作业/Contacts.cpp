@@ -37,6 +37,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 /*==============
 宏定义部分
@@ -69,15 +70,15 @@ typedef struct {
 	char email[SIZE_EMAIL];
 	int QQ;
 	void print() {
-		printf("姓名:%s\n",name);
-		printf("    手机号码:%s\n",phone);
-		printf("    电子邮件:%s\n",email);
-		printf("    QQ:%d\n",QQ);
+		printf("姓名:%s\n", name);
+		printf("    手机号码:%s\n", phone);
+		printf("    电子邮件:%s\n", email);
+		printf("    QQ:%d\n", QQ);
 	}
-	void insert(char a[SIZE_NAME],char b[SIZE_PHONE],char c[SIZE_EMAIL],int d) {
-		strcpy(name,a);
-		strcpy(phone,b);
-		strcpy(email,c);
+	void insert(char a[SIZE_NAME], char b[SIZE_PHONE], char c[SIZE_EMAIL], int d) {
+		strcpy(name, a);
+		strcpy(phone, b);
+		strcpy(email, c);
 		QQ = d;
 	}
 }People;
@@ -87,11 +88,11 @@ typedef struct {
 ==============*/
 People p[MAXSIZE];
 int num = 0;
-int o,i;//循环用，兼容低版本C标准
+int o, i;//循环用，兼容低版本C标准
 
-		/*==============
-		函数声明部分
-		==============*/
+/*==============
+函数声明部分
+==============*/
 void Do();
 void head();
 bool menu();
@@ -105,8 +106,8 @@ void Change();
 void Delete();
 void Sort();
 
-bool Compare(char a[SIZE_NAME],char b[SIZE_NAME]);
-void Swap(People &a,People &b);
+bool Compare(char a[SIZE_NAME], char b[SIZE_NAME]);
+void Swap(People &a, People &b);
 int Find();
 
 /*==============
@@ -117,14 +118,20 @@ int Find();
 inline void head() {
 	system("cls");
 	LINE;
-	printf("=========通讯录========\n");
+	printf("=========你的通讯录========\n");
+	struct tm *local;
+	time_t t;
+	t = time(NULL);
+	local = localtime(&t);
+	printf("今天向您问好，o(*￣▽￣*)ブ很高兴见到您\n");
+	printf("现在时间为:%s", asctime(local));
 	LINE;
 }
 
 //主菜单
 bool menu() {
+	system("color f3");
 	head();
-
 	printf("1.显示通讯录所有内容\n");
 	printf("2.查找联系人\n");
 	printf("3.插入联系人\n");
@@ -134,20 +141,25 @@ bool menu() {
 	printf("7.退出\n");
 	LINE;
 
-	int com = 0;
-	while(!(com >= 1 && com <= 7)) {
+	int com = 0; char c;
+	while (!(com >= 1 && com <= 7)) {
 		printf("输入您的操作(1~7):");
-		scanf("%d",&com);
-		rewind(stdin);//清除键盘缓冲区
+		scanf("%d", &com);
+		rewind(stdin);
 	}
-	switch(com) {
-		case 1:Show();break;
-		case 2:Search();break;
-		case 3:Insert();break;
-		case 4:Change();break;
-		case 5:Delete();break;
-		case 6:Sort();break;
-		case 7:return false;
+	switch (com) {
+	case 1:Show(); break;
+	case 2:Search(); break;
+	case 3:Insert(); break;
+	case 4:Change(); break;
+	case 5:Delete(); break;
+	case 6:Sort(); break;
+	case 7:printf("(T_T)亲确定要这么做吗？输入Y退出，输入其他字符取消：\n");
+		scanf("%c", &c);
+		if(c=='y'||c=='Y')
+			return false;
+		else
+			return true;
 	}
 	system("pause");
 	return true;
@@ -165,156 +177,159 @@ void Search() {
 }
 void Insert() {
 	head();
-	if(num == MAXSIZE) {
-		printf("内存已满\n");
-	} else {
+	if (num == MAXSIZE) {
+		printf("(；′⌒`)数据过长内存已满\n");
+	}
+	else {
 		char name[SIZE_NAME];
 		char phone[SIZE_PHONE];
 		char email[SIZE_EMAIL];
 		int QQ;
 		printf("插入数据：\n");
-		printf("输入姓名：");
-		scanf("%s",name);
-		printf("输入手机号：");
-		scanf("%s",phone);
-		printf("输入邮件：");
-		scanf("%s",email);
-		printf("输入QQ：");
-		scanf("%d",&QQ);
-		p[num++].insert(name,phone,email,QQ);
-		printf("修改完成\n");
+		printf("请输入姓名：");
+		scanf("%s", name);
+		printf("请输入手机号：");
+		scanf("%s", phone);
+		printf("请输入邮件：");
+		scanf("%s", email);
+		printf("请输入QQ：");
+		scanf("%d", &QQ);
+		p[num++].insert(name, phone, email, QQ);
+		printf("修改完成了哦o(*￣▽￣*)ブ，可以随时查阅您的联系人了\n");
 	}
 }
 void Change() {
 	head();
 	printf("改变已有数据：\n");
 	int index = Find();
-	if(index == -1)
+	if (index == -1)
 		return;
-	printf("输入姓名：");
-	scanf("%s",p[index].name);
-	printf("输入手机号：");
-	scanf("%s",p[index].phone);
-	printf("输入邮件：");
-	scanf("%s",p[index].email);
-	printf("输入QQ：");
-	scanf("%d",&p[index].QQ);
-	printf("修改完成\n");
+	printf("请输入姓名：");
+	scanf("%s", p[index].name);
+	printf("请输入手机号：");
+	scanf("%s", p[index].phone);
+	printf("请输入邮件：");
+	scanf("%s", p[index].email);
+	printf("请输入QQ：");
+	scanf("%d", &p[index].QQ);
+	printf("已修改完成o(*￣▽￣*)ブ\n");
 }
 void Delete() {
 	head();
-	printf("删除已有数据：\n");
+	printf("想要删除哪个已有数据>_ < ?：\n");
 	int index = Find();
-	if(index == -1)
+	if (index == -1)
 		return;
-	for(i = index;i < num;i++)
-		memcpy(&p[i],&p[i + 1],sizeof(p[i + 1]));
+	for (i = index; i < num; i++)
+		memcpy(&p[i], &p[i + 1], sizeof(p[i + 1]));
 	num--;
-	printf("删除完成\n");
+	printf("删除完成o(*￣▽￣*)ブ\n");
 }
 void Sort() {
 	//使用冒泡排序进行排序
-	int j,k;
+	int j, k;
 	bool flag;
 
 	k = num;
 	flag = true;
-	while(flag) {
+	while (flag) {
 		flag = false;
-		for(j = 1; j < k; j++)
-			if(Compare(p[j - 1].name,p[j].name)) {
-				Swap(p[j - 1],p[j]);
+		for (j = 1; j < k; j++)
+			if (Compare(p[j - 1].name, p[j].name)) {
+				Swap(p[j - 1], p[j]);
 				flag = true;
 			}
 		k--;
 	}
-	printf("排序完成\n");
+	printf("排序完成o(*￣▽￣*)ブ\n");
 }
 
 //从文件读取数据
 void Read() {
 	FILE * f;
-	f = fopen("save.sav","r");
-	if(f) {
+	f = fopen("save.sav", "r");
+	if (f) {
 		char name[SIZE_NAME];
 		char phone[SIZE_PHONE];
 		char email[SIZE_EMAIL];
 		int QQ;
-		while(fscanf(f,"%s%s%s%d",name,phone,email,&QQ) != EOF)
-			p[num++].insert(name,phone,email,QQ);
+		while (fscanf(f, "%s%s%s%d", name, phone, email, &QQ) != EOF)
+			p[num++].insert(name, phone, email, QQ);
 		fclose(f);
 	}
 }
 //写入数据到文件
 void Save() {
 	FILE * f;
-	f = fopen("save.sav","w");
+	f = fopen("save.sav", "w");
 	REP(num)
-		fprintf(f,"%s %s %s %d\n",p[o].name,p[o].phone,p[o].email,p[o].QQ);
+		fprintf(f, "%s %s %s %d\n", p[o].name, p[o].phone, p[o].email, p[o].QQ);
 	fclose(f);
 }
 
 //比较两个字符串的大小，按照字典序比较，若a>b返回true
-bool Compare(char a[SIZE_NAME],char b[SIZE_NAME]) {
+bool Compare(char a[SIZE_NAME], char b[SIZE_NAME]) {
 	int it1 = strlen(a) - 1;
 	int it2 = strlen(b) - 1;
-	while(1) {
-		if(a[it1] != b[it2]) {
-			if(a[it1] > b[it2])
+	while (1) {
+		if (a[it1] != b[it2]) {
+			if (a[it1] > b[it2])
 				return true;
 			else
 				return false;
 		}
-		it1--;it2--;
-		if(it1 == -1 || it2 == -1)
+		it1--; it2--;
+		if (it1 == -1 || it2 == -1)
 			return it1 < it2;
 	}
 }
 
 //交换
-void Swap(People &a,People &b) {
+void Swap(People &a, People &b) {
 	People temp;
-	memcpy(&temp,&a,sizeof(a));
-	memcpy(&a,&b,sizeof(b));
-	memcpy(&b,&temp,sizeof(temp));
+	memcpy(&temp, &a, sizeof(a));
+	memcpy(&a, &b, sizeof(b));
+	memcpy(&b, &temp, sizeof(temp));
 }
 
 //查找指定特征值的记录，type 1 按照姓名查找 2 按照手机查找 返回数组下标
 int Find() {
 
 	int com = 0;
-	while(!(com >= 1 && com <= 2)) {
-		printf("使用以下为索引值搜索(1.姓名 2.手机 -1.返回主界面):");
-		scanf("%d",&com);
-		rewind(stdin);//清除键盘缓冲区
-		if(com == -1)
+	while (!(com >= 1 && com <= 2)) {
+		printf("请使用以下为索引值搜索(1.姓名 2.手机 -1.返回主界面):");
+		scanf("%d", &com);
+		rewind(stdin);
+		if (com == -1)
 			return -1;
 	}
-	char f[max(SIZE_NAME,SIZE_PHONE)];
-	printf("输入要查找的值:");
-	scanf("%s",f);
+	char f[max(SIZE_NAME, SIZE_PHONE)];
+	printf("请输入要查找的值╮(╯-╰)╭:");
+	scanf("%s", f);
 
 	int it = -1;
-	if(com == 1) {
+	if (com == 1) {
 		REP(num) {
-			if(strcmp(f,p[o].name) == 0) {
+			if (strcmp(f, p[o].name) == 0) {
 				it = o;
 				break;
 			}
 		}
-	} else {
+	}
+	else {
 		REP(num) {
-			if(strcmp(f,p[o].phone) == 0) {
+			if (strcmp(f, p[o].phone) == 0) {
 				it = o;
 				break;
 			}
 		}
 	}
 
-	if(it == -1) {
-		printf("未找到该数据\n");
-	} else {
-		printf("找到数据，索引值为:%d\n",o);
+	if (it == -1) {
+		printf("抱歉，我们未找到该数据呢(；′⌒`)\n");
+	}
+	else {
+		printf("找到数据啦o(*￣▽￣*)ブ，索引值为:%d\n", o);
 		p[o].print();
 	}
 	return it;
@@ -323,7 +338,7 @@ int Find() {
 //循环主体
 void Do() {
 	Read();
-	while(menu());
+	while (menu());
 	Save();
 }
 
