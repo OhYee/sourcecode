@@ -138,6 +138,7 @@ bool menu() {
 	while(!(com >= 1 && com <= 7)) {
 		printf("输入您的操作(1~7):");
 		scanf("%d",&com);
+		rewind(stdin);//清除键盘缓冲区
 	}
 	switch(com) {
 		case 1:Show();break;
@@ -187,7 +188,7 @@ void Insert() {
 void Change() {
 	head();
 	printf("改变已有数据：\n");
-	int index=Find();
+	int index = Find();
 	if(index == -1)
 		return;
 	printf("输入姓名：");
@@ -285,6 +286,7 @@ int Find() {
 	while(!(com >= 1 && com <= 2)) {
 		printf("使用以下为索引值搜索(1.姓名 2.手机 -1.返回主界面):");
 		scanf("%d",&com);
+		rewind(stdin);//清除键盘缓冲区
 		if(com == -1)
 			return -1;
 	}
