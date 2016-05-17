@@ -6,14 +6,15 @@
 #define random(x) (rand()%x)
 #define REP(n) for(int o=0;o<n;o++)
 
+const bool SHOW=1;
 const int size=10;
-
 const int MAX=1000;
-
 const int TIME=10;
 
 int a[size];
 int b[size];
+
+long long start;
 
 //冒泡排序
 void BubbleSort(int a[],int n) {
@@ -98,31 +99,41 @@ void Do(){
 	REP(size)
 		a[o]=random(MAX);
 	//输出随机数
-	printf("生成随机数：	");
+	printf("生成随机数	：	");
+	if(SHOW)
 	REP(size)
 		printf("%d ",a[o]);
 	printf("\n");
 	
 	//测试1 - 冒泡排序
-	printf("冒泡排序：	");
+	printf("冒泡排序");
 	memcpy(b,a,sizeof(a));
+	start=clock();
 	BubbleSort(b,size);
+	printf("%.4fs	:	",double(clock()-start)/ CLOCKS_PER_SEC);
+	if(SHOW)
 	REP(size)
 		printf("%d ",b[o]);
 	printf("\n");
 
 	//测试2 - 归并排序
-	printf("归并排序：	");
+	printf("归并排序");
 	memcpy(b,a,sizeof(a));
+	start=clock();
 	MergeSort(b,0,size-1);
+	printf("%.4fs	:	",double(clock()-start)/ CLOCKS_PER_SEC);
+	if(SHOW)
 	REP(size)
 		printf("%d ",b[o]);
 	printf("\n");
 
 	//测试3 - 快速排序
-	printf("快速排序：	");
+	printf("快速排序");
 	memcpy(b,a,sizeof(a));
+	start=clock();
 	QuickSort(b,0,size-1);
+	printf("%.4fs	:	",double(clock()-start)/ CLOCKS_PER_SEC);
+	if(SHOW)
 	REP(size)
 		printf("%d ",b[o]);
 	printf("\n");
