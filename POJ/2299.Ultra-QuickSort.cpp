@@ -32,7 +32,7 @@ using namespace std;
 const int maxn = 500005;
 int a[maxn];
 
-int ans;
+long long ans;
 
 //将已经排好序的a[l]~a[mid] a[mid+1]~a[r]拼合起来
 void merge(int a[],int l,int mid,int r) {
@@ -80,15 +80,15 @@ bool Do() {
 
 	ans = 0;
 	mergesort(a,0,n - 1);
-	printf("%d\n",ans);
+	printf("%lld\n",ans);
 	/*REP(n)
-		printf("%d ",a[o]);
+	printf("%d ",a[o]);
 	printf("\n");*/
 
 	return true;
 }
 
-int vs_main() {
+int main() {
 	while(Do());
 	return 0;
 }
