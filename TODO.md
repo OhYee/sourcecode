@@ -46,4 +46,4 @@
    
    * F.The Next
    
-   * G.逆序数
+   * <del> G.逆序数 <del>
