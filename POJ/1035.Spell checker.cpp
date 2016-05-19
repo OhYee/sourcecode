@@ -30,45 +30,45 @@ using namespace std;
 #define REP(n) for(int o=0;o<n;o++)
 
 int ok;
-int ldic,lstr;
-string current;
-vector<string> dic;
+int ldict,lstr;
+string temp;
+vector<string> dict;
 
 
-void replace(string dic) {
+void replace(string dict) {
 	int count = 0;
-	for(size_t i = 0; i < dic.length(); i++) {
-		if(current[i] != dic[i]) count++;
+	for(size_t i = 0; i < dict.length(); i++) {
+		if(temp[i] != dict[i]) count++;
 		if(count > 1) return;
 	}
 	ok = 1;
-	cout << " " + dic;
+	cout << " " + dict;
 }
 
-void insert(string dic) {
+void insert(string dict) {
 	string tmp;
-	for(size_t i = 0; i < current.length(); i++) {
-		if(current[i] != dic[i]) {
-			tmp = dic;
-			tmp.insert(i,1,current[i]);
-			if(tmp == current) {
+	for(size_t i = 0; i < temp.length(); i++) {
+		if(temp[i] != dict[i]) {
+			tmp = dict;
+			tmp.insert(i,1,temp[i]);
+			if(tmp == temp) {
 				ok = 1;
-				cout << " " + dic;
+				cout << " " + dict;
 			}
 			return;
 		}
 	}
 }
 
-void del(string dic) {
+void del(string dict) {
 	string tmp;
-	for(size_t i = 0; i < dic.length(); i++) {
-		if(current[i] != dic[i]) {
-			tmp = dic;
+	for(size_t i = 0; i < dict.length(); i++) {
+		if(temp[i] != dict[i]) {
+			tmp = dict;
 			tmp.erase(i,1);
-			if(tmp == current) {
+			if(tmp == temp) {
 				ok = 1;
-				cout << " " + dic;
+				cout << " " + dict;
 			}
 			return;
 		}
@@ -77,22 +77,22 @@ void del(string dic) {
 
 bool Do() {
 	while(1) {
-		if(!(cin >> current))
+		if(!(cin >> temp))
 			return false;
-		if(current == "#") break;
-		dic.push_back(current);
+		if(temp == "#") break;
+		dict.push_back(temp);
 	}
 
 	while(1) {
-		cin >> current;
-		if(current == "#") break;
+		cin >> temp;
+		if(temp == "#") break;
 
 		ok = -1;
-		lstr = current.length();
+		lstr = temp.length();
 
-		for(size_t i = 0; i < dic.size(); i++) {
-			if(dic[i] == current) {
-				cout << current + " is correct";
+		for(size_t i = 0; i < dict.size(); i++) {
+			if(dict[i] == temp) {
+				cout << temp + " is correct";
 				ok = 0;
 				break;
 			}
@@ -100,15 +100,15 @@ bool Do() {
 
 
 		if(ok < 0) {
-			cout << current + ':';
-			for(size_t i = 0; i < dic.size(); i++) {
-				ldic = dic[i].length();
-				if(lstr == ldic) {
-					replace(dic[i]);
-				} else if(lstr == ldic + 1) {
-					insert(dic[i]);
-				} else if(lstr == ldic - 1) {
-					del(dic[i]);
+			cout << temp + ':';
+			for(size_t i = 0; i < dict.size(); i++) {
+				ldict = dict[i].length();
+				if(lstr == ldict) {
+					replace(dict[i]);
+				} else if(lstr == ldict + 1) {
+					insert(dict[i]);
+				} else if(lstr == ldict - 1) {
+					del(dict[i]);
 				}
 			}
 		}
