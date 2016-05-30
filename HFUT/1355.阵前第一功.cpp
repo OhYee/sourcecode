@@ -2,7 +2,7 @@
 By:OhYee
 Github:OhYee
 HomePage:http://www.oyohyee.com
-Email:oyohyee@oyohye`e.com
+Email:oyohyee@oyohyee.com
 Blog:http://www.cnblogs.com/ohyee/
 
 かしこいかわいい？
