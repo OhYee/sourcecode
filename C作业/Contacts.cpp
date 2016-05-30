@@ -70,15 +70,15 @@ typedef struct {
 	char email[SIZE_EMAIL];
 	int QQ;
 	void print() {
-		printf("姓名:%s\n", name);
-		printf("    手机号码:%s\n", phone);
-		printf("    电子邮件:%s\n", email);
-		printf("    QQ:%d\n", QQ);
+		printf("姓名:%s\n",name);
+		printf("    手机号码:%s\n",phone);
+		printf("    电子邮件:%s\n",email);
+		printf("    QQ:%d\n",QQ);
 	}
-	void insert(char a[SIZE_NAME], char b[SIZE_PHONE], char c[SIZE_EMAIL], int d) {
-		strcpy(name, a);
-		strcpy(phone, b);
-		strcpy(email, c);
+	void insert(char a[SIZE_NAME],char b[SIZE_PHONE],char c[SIZE_EMAIL],int d) {
+		strcpy(name,a);
+		strcpy(phone,b);
+		strcpy(email,c);
 		QQ = d;
 	}
 }People;
@@ -88,8 +88,7 @@ typedef struct {
 ==============*/
 People p[MAXSIZE];
 int num = 0;
-int o, i;//循环用，兼容低版本C标准
-
+int o,i;//循环用，兼容低版本C标准
 /*==============
 函数声明部分
 ==============*/
@@ -106,14 +105,21 @@ void Change();
 void Delete();
 void Sort();
 
-bool Compare(char a[SIZE_NAME], char b[SIZE_NAME]);
-void Swap(People &a, People &b);
+bool Compare(char a[SIZE_NAME],char b[SIZE_NAME]);
+void Swap(People &a,People &b);
 int Find();
 
 /*==============
 函数定义部分
 ==============*/
-
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      head
+// 功能:      显示界面头部信息(包含当前时间)
+// 算法:      
+// 参数:
+// 返回:
+// 注意事项:
+///////////////////////////////////////////////////////////////////////////////////////
 //界面_头部部分
 inline void head() {
 	system("cls");
@@ -124,10 +130,18 @@ inline void head() {
 	t = time(NULL);
 	local = localtime(&t);
 	printf("今天向您问好，o(*￣▽￣*)ブ很高兴见到您\n");
-	printf("现在时间为:%s", asctime(local));
+	printf("现在时间为:%s",asctime(local));
 	LINE;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      menu
+// 功能:      显示主菜单，在该函数中进行操作的选择
+// 算法:      
+// 参数:
+// 返回:		返回true表示继续循环；返回false表示结束程序
+// 注意事项:
+///////////////////////////////////////////////////////////////////////////////////////
 //主菜单
 bool menu() {
 	system("color f3");
@@ -142,101 +156,148 @@ bool menu() {
 	LINE;
 
 	int com = 0; char c;
-	while (!(com >= 1 && com <= 7)) {
+	while(!(com >= 1 && com <= 7)) {
 		printf("输入您的操作(1~7):");
-		scanf("%d", &com);
+		scanf("%d",&com);
 		rewind(stdin);
 	}
-	switch (com) {
-	case 1:Show(); break;
-	case 2:Search(); break;
-	case 3:Insert(); break;
-	case 4:Change(); break;
-	case 5:Delete(); break;
-	case 6:Sort(); break;
-	case 7:printf("(T_T)亲确定要这么做吗？输入Y退出，输入其他字符取消：\n");
-		scanf("%c", &c);
-		if(c=='y'||c=='Y')
-			return false;
-		else
-			return true;
+	switch(com) {
+		case 1:Show(); break;
+		case 2:Search(); break;
+		case 3:Insert(); break;
+		case 4:Change(); break;
+		case 5:Delete(); break;
+		case 6:Sort(); break;
+		case 7:printf("(T_T)亲确定要这么做吗？输入Y退出，输入其他字符取消：\n");
+			scanf("%c",&c);
+			if(c == 'y' || c == 'Y')
+				return false;
+			else
+				return true;
 	}
 	system("pause");
 	return true;
 }
-
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      Show
+// 功能:      显示所有联系人
+// 算法:      
+// 参数:
+// 返回:
+// 注意事项:
+///////////////////////////////////////////////////////////////////////////////////////
 void Show() {
 	head();
 	REP(num)
 		p[o].print();
 }
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      Search
+// 功能:      查找指定联系人
+// 算法:      
+// 参数:
+// 返回:
+// 注意事项:
+///////////////////////////////////////////////////////////////////////////////////////
 void Search() {
 	head();
-
 	Find();
 }
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      Insert
+// 功能:      插入指定联系人
+// 算法:      
+// 参数:
+// 返回:
+// 注意事项:
+///////////////////////////////////////////////////////////////////////////////////////
 void Insert() {
 	head();
-	if (num == MAXSIZE) {
+	if(num == MAXSIZE) {
 		printf("(；′⌒`)数据过长内存已满\n");
-	}
-	else {
+	} else {
 		char name[SIZE_NAME];
 		char phone[SIZE_PHONE];
 		char email[SIZE_EMAIL];
 		int QQ;
 		printf("插入数据：\n");
 		printf("请输入姓名：");
-		scanf("%s", name);
+		scanf("%s",name);
 		printf("请输入手机号：");
-		scanf("%s", phone);
+		scanf("%s",phone);
 		printf("请输入邮件：");
-		scanf("%s", email);
+		scanf("%s",email);
 		printf("请输入QQ：");
-		scanf("%d", &QQ);
-		p[num++].insert(name, phone, email, QQ);
+		scanf("%d",&QQ);
+		p[num++].insert(name,phone,email,QQ);
 		printf("修改完成了哦o(*￣▽￣*)ブ，可以随时查阅您的联系人了\n");
 	}
 }
+
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      Find
+// 功能:      改变指定联系人
+// 算法:      
+// 参数:
+// 返回:
+// 注意事项:
+///////////////////////////////////////////////////////////////////////////////////////
 void Change() {
 	head();
 	printf("改变已有数据：\n");
 	int index = Find();
-	if (index == -1)
+	if(index == -1)
 		return;
 	printf("请输入姓名：");
-	scanf("%s", p[index].name);
+	scanf("%s",p[index].name);
 	printf("请输入手机号：");
-	scanf("%s", p[index].phone);
+	scanf("%s",p[index].phone);
 	printf("请输入邮件：");
-	scanf("%s", p[index].email);
+	scanf("%s",p[index].email);
 	printf("请输入QQ：");
-	scanf("%d", &p[index].QQ);
+	scanf("%d",&p[index].QQ);
 	printf("已修改完成o(*￣▽￣*)ブ\n");
 }
+
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      Delete
+// 功能:      删除指定联系人
+// 算法:      
+// 参数:
+// 返回:
+// 注意事项:
+///////////////////////////////////////////////////////////////////////////////////////
 void Delete() {
 	head();
 	printf("想要删除哪个已有数据>_ < ?：\n");
 	int index = Find();
-	if (index == -1)
+	if(index == -1)
 		return;
-	for (i = index; i < num; i++)
-		memcpy(&p[i], &p[i + 1], sizeof(p[i + 1]));
+	for(i = index; i < num; i++)
+		memcpy(&p[i],&p[i + 1],sizeof(p[i + 1]));
 	num--;
 	printf("删除完成o(*￣▽￣*)ブ\n");
 }
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      Sort
+// 功能:      将联系人按照名字排序
+// 算法:      冒泡排序算法
+// 参数:
+// 返回:
+// 注意事项:	通过compare函数进行字典序排序，使用swap函数交换数据项
+///////////////////////////////////////////////////////////////////////////////////////
 void Sort() {
 	//使用冒泡排序进行排序
-	int j, k;
+	int j,k;
 	bool flag;
 
 	k = num;
 	flag = true;
-	while (flag) {
+	while(flag) {
 		flag = false;
-		for (j = 1; j < k; j++)
-			if (Compare(p[j - 1].name, p[j].name)) {
-				Swap(p[j - 1], p[j]);
+		for(j = 1; j < k; j++)
+			if(Compare(p[j - 1].name,p[j].name)) {
+				Swap(p[j - 1],p[j]);
 				flag = true;
 			}
 		k--;
@@ -244,104 +305,160 @@ void Sort() {
 	printf("排序完成o(*￣▽￣*)ブ\n");
 }
 
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      Read
+// 功能:      从Save.sav读入数据
+// 算法:      
+// 参数:
+// 返回:
+// 注意事项:	使用文件指针读入数据
+///////////////////////////////////////////////////////////////////////////////////////
 //从文件读取数据
 void Read() {
 	FILE * f;
-	f = fopen("save.sav", "r");
-	if (f) {
+	f = fopen("save.sav","r");
+	if(f) {
 		char name[SIZE_NAME];
 		char phone[SIZE_PHONE];
 		char email[SIZE_EMAIL];
 		int QQ;
-		while (fscanf(f, "%s%s%s%d", name, phone, email, &QQ) != EOF)
-			p[num++].insert(name, phone, email, QQ);
+		while(fscanf(f,"%s%s%s%d",name,phone,email,&QQ) != EOF)
+			p[num++].insert(name,phone,email,QQ);
 		fclose(f);
 	}
 }
+
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      Save
+// 功能:      写出数据到文件Save.sav
+// 算法:      
+// 参数:
+// 返回:
+// 注意事项:	使用文件指针写出数据
+///////////////////////////////////////////////////////////////////////////////////////
 //写入数据到文件
 void Save() {
 	FILE * f;
-	f = fopen("save.sav", "w");
+	f = fopen("save.sav","w");
 	REP(num)
-		fprintf(f, "%s %s %s %d\n", p[o].name, p[o].phone, p[o].email, p[o].QQ);
+		fprintf(f,"%s %s %s %d\n",p[o].name,p[o].phone,p[o].email,p[o].QQ);
 	fclose(f);
 }
 
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      Compare
+// 功能:      按照字典序对两个字符串进行比较大小操作
+// 算法:      字典序比较
+// 参数:		char a[SIZE_NAME]		//待比较的字符串a
+			Char b[SIZE_NAME]		//待比较的字符串b
+// 返回:		若字符串a字典序大于字符串b则返回true，否则返回false
+// 注意事项:	
+///////////////////////////////////////////////////////////////////////////////////////
 //比较两个字符串的大小，按照字典序比较，若a>b返回true
-bool Compare(char a[SIZE_NAME], char b[SIZE_NAME]) {
+bool Compare(char a[SIZE_NAME],char b[SIZE_NAME]) {
 	int it1 = strlen(a) - 1;
 	int it2 = strlen(b) - 1;
-	while (1) {
-		if (a[it1] != b[it2]) {
-			if (a[it1] > b[it2])
+	while(1) {
+		if(a[it1] != b[it2]) {
+			if(a[it1] > b[it2])
 				return true;
 			else
 				return false;
 		}
 		it1--; it2--;
-		if (it1 == -1 || it2 == -1)
+		if(it1 == -1 || it2 == -1)
 			return it1 < it2;
 	}
 }
 
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      Swap
+// 功能:      交换两个数据
+// 算法:      
+// 参数:		People &a		//待交换的数据a(引用传参形式传入)
+			People &b		//待交换的数据a(引用传参形式传入)
+// 返回:
+// 注意事项:	采用内存复制函数memcpy函数进行复制操作
+///////////////////////////////////////////////////////////////////////////////////////
 //交换
-void Swap(People &a, People &b) {
+void Swap(People &a,People &b) {
 	People temp;
-	memcpy(&temp, &a, sizeof(a));
-	memcpy(&a, &b, sizeof(b));
-	memcpy(&b, &temp, sizeof(temp));
+	memcpy(&temp,&a,sizeof(a));
+	memcpy(&a,&b,sizeof(b));
+	memcpy(&b,&temp,sizeof(temp));
 }
+
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      Find
+// 功能:      查找指定的数据，并返回索引值
+// 算法:      顺序查找算法
+// 参数:		
+// 返回:		返回要查找的数据的索引值，若不存在返回-1
+// 注意事项:	
+///////////////////////////////////////////////////////////////////////////////////////
 
 //查找指定特征值的记录，type 1 按照姓名查找 2 按照手机查找 返回数组下标
 int Find() {
 
 	int com = 0;
-	while (!(com >= 1 && com <= 2)) {
+	while(!(com >= 1 && com <= 2)) {
 		printf("请使用以下为索引值搜索(1.姓名 2.手机 -1.返回主界面):");
-		scanf("%d", &com);
+		scanf("%d",&com);
 		rewind(stdin);
-		if (com == -1)
+		if(com == -1)
 			return -1;
 	}
-	char f[max(SIZE_NAME, SIZE_PHONE)];
+	char f[max(SIZE_NAME,SIZE_PHONE)];
 	printf("请输入要查找的值╮(╯-╰)╭:");
-	scanf("%s", f);
+	scanf("%s",f);
 
 	int it = -1;
-	if (com == 1) {
+	if(com == 1) {
 		REP(num) {
-			if (strcmp(f, p[o].name) == 0) {
+			if(strcmp(f,p[o].name) == 0) {
 				it = o;
 				break;
 			}
 		}
-	}
-	else {
+	} else {
 		REP(num) {
-			if (strcmp(f, p[o].phone) == 0) {
+			if(strcmp(f,p[o].phone) == 0) {
 				it = o;
 				break;
 			}
 		}
 	}
 
-	if (it == -1) {
+	if(it == -1) {
 		printf("抱歉，我们未找到该数据呢(；′⌒`)\n");
-	}
-	else {
-		printf("找到数据啦o(*￣▽￣*)ブ，索引值为:%d\n", o);
+	} else {
+		printf("找到数据啦o(*￣▽￣*)ブ，索引值为:%d\n",o);
 		p[o].print();
 	}
 	return it;
 }
-
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      Do
+// 功能:      程序主体，确保menu函数的循环，并且读入输出数据文件
+// 算法:      
+// 参数:		
+// 返回:
+// 注意事项:	
+///////////////////////////////////////////////////////////////////////////////////////
 //循环主体
 void Do() {
 	Read();
-	while (menu());
+	while(menu());
 	Save();
 }
-
+///////////////////////////////////////////////////////////////////////////////////////
+// 名称:      main
+// 功能:      程序入口
+// 算法:      
+// 参数:		
+// 返回:
+// 注意事项:	
+///////////////////////////////////////////////////////////////////////////////////////
 //程序入口
 int main() {
 	Do();
