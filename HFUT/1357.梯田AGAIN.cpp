@@ -33,21 +33,26 @@ const int maxh = 1000005;
 int cnt[maxh];
 int ans[maxh];
 
+int Max = -1;
+
 int Ans(int h) {
-	if(h = -1)
+	if(h > Max)
 		return 0;
 	if(ans[h] == -1)
-		return cnt[h] + Ans(h - 1);
-	else
-		return ans[h];
+		ans[h] = cnt[h] + Ans(h + 1);
+
+	return ans[h];
 }
 
 void Do() {
 	memset(cnt,0,sizeof(cnt));
 	memset(ans,-1,sizeof(cnt));
+	Max = -1;
+
+
 	int n,m,q;
 	scanf("%d%d%d",&n,&m,&q);
-	int Max = 0;
+	
 	for(int i = 0;i < n;i++)
 		for(int j = 0;j < m;j++) {
 			int temp;
@@ -59,17 +64,14 @@ void Do() {
 	REP(q) {
 		int h;
 		scanf("%d",&h);
-		int ans = 0;
-		for(int i = h + 1;i <= Max;i++)
-			ans += cnt[i];
-		printf("%d\n",ans);
+		printf("%d\n",Ans(h)-cnt[h]);
 	}
 }
 
 int main() {
 	int T;
 	scanf("%d",&T);
-	while(T--) 
+	while(T--)
 		Do();
 	return 0;
-}s
+}
