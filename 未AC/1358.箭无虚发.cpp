@@ -1,5 +1,3 @@
-#include "stdafx.h"
-//====================================================================
 /*
 By:OhYee
 Github:OhYee
@@ -32,109 +30,61 @@ using namespace std;
 #define REP(n) for(int o=0;o<n;o++)
 
 const int maxn = 1005;
+const int maxt = 1000005;
 
 struct Node {
-	int Arrow;
-	int TimeLeft;
-	int Perfect;
-	Node(int c,int a,int b) {
-		TimeLeft = a;
-		Perfect = b;
-		Arrow = c;
-	}
+	int a;
+	int c;
 };
 
-struct Time {
-	int a,b,c;
-};
-
-int n;
-int LastArrow,ans;
-Time UseTime[maxn];
-
-void DFS(int Arrow,int TimeLeft,int Perfect) {
-
-	LastArrow = Arrow;
-	ans = max(ans,Perfect);
-
-	if(TimeLeft == 0)
-		return;
-
-	int LT = TimeLeft - UseTime[Arrow + 1].a;
-	if(LT >= 0 && Arrow + 1 < n)
-		DFS(Arrow + 1,LT,Perfect + 1);
-
-	LT = TimeLeft - UseTime[Arrow + 1].c;
-	if(LT >= 0 && Arrow + 1 < n)
-		DFS(Arrow + 1,LT,Perfect);
-}
+Node UseTime[maxn];
+int dp[maxt];
 
 void Do() {
-	
-	int t;
+	memset(dp,-1,sizeof(dp));
+
+	int n,t;
 	scanf("%d",&n);
-	//Time *UseTime = new Time[n+1];
 	REP(n)
-		scanf("%d%d%d",&UseTime[o].a,&UseTime[o].b,&UseTime[o].c);
+		scanf("%d%*d%d",&UseTime[o + 1].a,&UseTime[o + 1].c);
 	scanf("%d",&t);
 
-	ans = -1;
-	LastArrow = -1;
-
-	DFS(-1,t,0);
-
-	//queue<Node> Q;
-	//Q.push(Node(-1,t,0));
-
-	//while(!Q.empty()) {
-	//	int Arrow = Q.front().Arrow;
-	//	int TimeLeft = Q.front().TimeLeft;
-	//	int Perfect = Q.front().Perfect;
-	//	Q.pop();
-
-	//	ans = max(ans,Perfect);
-	//	LastArrow = Arrow;
-	//	if(TimeLeft == 0)
-	//		continue;
-
-	//	int LT = TimeLeft - UseTime[Arrow + 1].a;
-	//	if(LT>=0 && Arrow+1 < n)
- //			Q.push(Node(Arrow + 1,LT,Perfect + 1));
-
-	//	LT = TimeLeft - UseTime[Arrow + 1].b;
-	//	if(LT >= 0 && Arrow + 1 < n)
-	//		Q.push(Node(Arrow + 1,LT,Perfect));
-
-	//	LT = TimeLeft - UseTime[Arrow + 1].c;
-	//	if(LT >= 0 && Arrow + 1 < n)
-	//		Q.push(Node(Arrow + 1,LT,Perfect));
-	//}
-
-	if(LastArrow!=n-1)
-		printf("Oh，my god!\n");
-	else
-		printf("%d\n",ans);
-
-	//delete UseTime;
+	dp[0] = 0;
+	//背包问题 dp[j]用去j时间的最多perfect
+	for(int i = 1;i <= n;i++) {
+		bool ThisISwap = false;
+		for(int j = t;j >= 0;j--) {
+			bool ThisJSwap = false;
+			if(j - UseTime[i].c >= 0 && dp[j - UseTime[i].c] != -1) {
+				dp[j] = dp[j - UseTime[i].c];
+				ThisISwap = true;
+				ThisJSwap = true;
+			} else {
+				if(!ThisJSwap)
+					dp[j] = -1;
+			}
+			if(j - UseTime[i].a >= 0 && dp[j - UseTime[i].a] != -1) {
+				dp[j] = max(dp[j - UseTime[i].a] + 1,dp[j]);
+				ThisISwap = true;
+				ThisJSwap = true;
+			} else {
+				if(!ThisJSwap)
+					dp[j] = -1;
+			}
+		}
+		if(!ThisISwap) {
+			printf("Oh，my god!\n");
+			return;
+		}
+	}
+	printf("%d\n",dp[t]);
+	return;
 }
 
-int vs_main() {
+int main() {
 	int T;
 	scanf("%d",&T);
 	while(T--)
 		Do();
-	return 0;
-}
-
-//====================================================================
-int main() {
-	int start = clock();
-	freopen("in.txt","r",stdin);
-	//freopen("out.txt","w",stdout);
-	printf("#===================#\n");
-	vs_main();
-	printf("#===================#\n");
-	printf("Time:%.4lfs\n",double(clock() - start) / CLOCKS_PER_SEC);
-	//system("pause");
 	return 0;
 }
