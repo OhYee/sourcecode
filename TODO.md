@@ -20,6 +20,8 @@
  
  * 数据结构 [POJ数据结构专题](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=100412#overview) 密码：akak
 
+ * Google 40题 [40题](http://www.cnblogs.com/kuangbin/archive/2012/12/12/2814575.html)
+
 * 博客
 
  *  网络预选赛
