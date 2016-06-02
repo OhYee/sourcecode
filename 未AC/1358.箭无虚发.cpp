@@ -18,6 +18,7 @@ Blog:http://www.cnblogs.com/ohyee/
 #include <iostream>
 #include <vector>
 #include <list>
+#include <set>
 #include <queue>
 #include <stack>
 #include <map>
@@ -30,55 +31,78 @@ using namespace std;
 #define REP(n) for(int o=0;o<n;o++)
 
 const int maxn = 1005;
-const int maxt = 1000005;
+
+//使用HASH判重
 
 struct Node {
-	int a;
-	int c;
+	int Arrow;
+	int TimeLeft;
+	int Perfect;
+	Node(int a,int b,int c) {
+		Arrow = a;
+		TimeLeft = b;
+		Perfect = c;
+	}
+	bool operator < (const Node & rhs)const {
+		return true;
+	}
 };
 
-Node UseTime[maxn];
-int dp[maxt];
+struct Time {
+	int a,c;
+};
+
+int n;
+int ans;
+Time UseTime[maxn];
+
+set<Node> s;
+
+
+void DFS(int Arrow,int TimeLeft,int Perfect) {
+	if(Arrow == n-1) {
+		ans = max(ans,Perfect);
+		return;
+	}
+
+	size_t t = s.size();
+	s.insert(Node(Arrow,TimeLeft,Perfect));
+	if(s.size() == t)
+		return;
+
+	int LT = TimeLeft - UseTime[Arrow + 1].a;
+	if(LT >= 0)
+		DFS(Arrow + 1,LT,Perfect + 1);
+
+	LT = TimeLeft - UseTime[Arrow + 1].c;
+	if(LT >= 0)
+		DFS(Arrow + 1,LT,Perfect);
+}
 
 void Do() {
-	memset(dp,-1,sizeof(dp));
-
-	int n,t;
+	int t;
 	scanf("%d",&n);
-	REP(n)
-		scanf("%d%*d%d",&UseTime[o + 1].a,&UseTime[o + 1].c);
+
+	int sum = 0;
+	REP(n) {
+		scanf("%d%*d%d",&UseTime[o].a,&UseTime[o].c);
+		sum += UseTime[o].c;
+	}
+
 	scanf("%d",&t);
 
-	dp[0] = 0;
-	//背包问题 dp[j]用去j时间的最多perfect
-	for(int i = 1;i <= n;i++) {
-		bool ThisISwap = false;
-		for(int j = t;j >= 0;j--) {
-			bool ThisJSwap = false;
-			if(j - UseTime[i].c >= 0 && dp[j - UseTime[i].c] != -1) {
-				dp[j] = dp[j - UseTime[i].c];
-				ThisISwap = true;
-				ThisJSwap = true;
-			} else {
-				if(!ThisJSwap)
-					dp[j] = -1;
-			}
-			if(j - UseTime[i].a >= 0 && dp[j - UseTime[i].a] != -1) {
-				dp[j] = max(dp[j - UseTime[i].a] + 1,dp[j]);
-				ThisISwap = true;
-				ThisJSwap = true;
-			} else {
-				if(!ThisJSwap)
-					dp[j] = -1;
-			}
-		}
-		if(!ThisISwap) {
-			printf("Oh，my god!\n");
-			return;
-		}
+	if(sum > t) {
+		printf("Oh，my god!\n");
+		return;
 	}
-	printf("%d\n",dp[t]);
-	return;
+
+	ans = 0;
+	s.erase(s.begin(),s.end());
+	DFS(-1,t,0);
+
+	printf("%d\n",ans);
+
+
 }
 
 int main() {
