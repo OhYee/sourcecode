@@ -49,3 +49,6 @@
    * F.The Next
    
    * <del> G.逆序数 <del>
+  
+  * 省赛
+  
