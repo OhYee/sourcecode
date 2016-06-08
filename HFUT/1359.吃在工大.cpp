@@ -35,9 +35,8 @@ int n;
 bool HasLoop() {
 	//判断是否存在环
 	for(int i = 1;i <= n;i++)
-		for(int j = 1;j <= n;j++)
-			if(G[i][j])
-				return false;
+		if(!vis[i])
+			return false;
 	return true;
 }
 
