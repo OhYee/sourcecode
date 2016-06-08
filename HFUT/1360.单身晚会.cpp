@@ -48,10 +48,10 @@ void Do() {
 
 	for(int i = 1;i <= p;i++)
 		Road[i][i] = 0;
+        
 	for(int k = 1;k <= p;k++)
 		for(int i = 1;i <= p;i++)
 			for(int j = 1;j <= p;j++)
-
 				Road[i][j] = min(Road[i][k] + Road[k][j],Road[i][j]);
 
 	/*for(int i = 1;i <= p;i++) {
