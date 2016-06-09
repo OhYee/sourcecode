@@ -56,7 +56,7 @@ int Do(int N,int M) {
 int main() {
 	int a,b;
 	while(scanf("%d%d",&a,&b) != EOF) {
-		printf("%d\n",,Do(a,b));
+		printf("%d\n",Do(a,b));
 	}
 	return 0;
 }

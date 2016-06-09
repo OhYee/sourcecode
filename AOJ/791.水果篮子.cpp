@@ -41,7 +41,7 @@ bool Do() {
 	return true;
 }
 
-int vs_main() {
+int main() {
 	while(Do());
 	return 0;
 }
