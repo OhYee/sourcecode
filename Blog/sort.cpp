@@ -1,19 +1,15 @@
-
-#include "stdafx.h"
-//====================================================================
-
-
 #include <cstdio> 
 #include <cstdlib> 
 #include <ctime> 
 #include <memory> 
+#include <algorithm>
 
 #define random(x) (rand()%x) 
 #define REP(n) for(int o=0;o<n;o++) 
 
-const bool SHOW = 1;
-const int size = 10;
-const int MAX = 100;
+const bool SHOW = 0;
+const int size = 10000;
+const int MAX = 100000;
 const int TIME = 10;
 
 int a[size];
@@ -115,19 +111,21 @@ void QuickSort(int a[],int l,int r) {
 void AdjustHeap(int a[],int i,int n) {
 	int left = (i + 1) * 2 - 1;
 	int right = (i + 1) * 2;
-	if(left<n && a[left]>a[i]) {
-		int temp = a[left];
-		a[left] = a[i];
-		a[i] = temp;
-		AdjustHeap(a,left,n);
-	}
-	if(right<n && a[right]>a[i]) {
-		int temp = a[right];
-		a[right] = a[i];
-		a[i] = temp;
-		AdjustHeap(a,right,n);
-	}
 
+	int Max = i;
+
+	if(left<n && a[left]>a[Max]) {
+		Max = left;
+	}
+	if(right<n && a[right]>a[Max]) {
+		Max = right;
+	}
+	if(i != Max) {
+		int temp = a[Max];
+		a[Max] = a[i];
+		a[i] = temp;
+		AdjustHeap(a,Max,n);
+	}
 }
 
 //堆排序
@@ -142,6 +140,128 @@ void HeapSort(int a[],int n) {
 		AdjustHeap(a,0,n - i - 1);
 	}
 }
+
+//基数排序 LSD
+void LSD(int a[],int n,int bit = 1) {
+	int bucket[10];
+	int rear[10];
+	int *link = new int[n];
+	int *next = new int[n];
+	bool flag = false;
+	for(int i = 0;i < 10;i++)
+		bucket[i] = rear[i] = -1;
+	for(int i = 0;i < n;i++)
+		next[i] = -1;
+	int pos = 0;
+	for(int i = 0;i < n;i++) {
+		int h = a[i] / bit % 10;
+		if(h)
+			flag = true;
+		if(bucket[h] == -1) {
+			bucket[h] = pos;
+		} else {
+			next[rear[h]] = pos;
+		}
+		rear[h] = pos;
+		link[pos++] = a[i];
+	}
+
+	if(flag) {
+		for(int bu = 0,pos = 0;pos < n;bu++) {
+			int t = bucket[bu];
+			while(t != -1) {
+				a[pos++] = link[t];
+				t = next[t];
+			}
+		}
+		LSD(a,n,bit * 10);
+	}
+	delete[] next;
+	delete[] link;
+}
+
+//计数排序
+void ArraySort(int a[],int n) {
+	int Min = a[0];
+	int Max = a[0];
+	for(int i = 0;i < n;i++) {
+		(a[i] < Min) ? (Min = a[i]) : Min;
+		(a[i] > Max) ? (Max = a[i]) : Max;
+	}
+	int *arr = new int[Max - Min + 1];
+	for(int i = 0;i < Max - Min + 1;i++)
+		arr[i] = 0;
+	for(int i = 0;i < n;i++)
+		arr[a[i] - Min]++;
+	int pos = 0;
+	for(int i = 0;i < Max - Min + 1 && pos < n;i++)
+		for(int j = 0;j < arr[i];j++)
+			a[pos++] = i + Min;
+	delete[]arr;
+}
+
+//qsort
+int comp(const void*a,const void*b) {
+	return *(int*)a - *(int*)b;
+}
+
+
+//插入排序
+void InsertSort(int a[],int n) {
+	int *link = new int[n];
+	int *next = new int[n];
+
+	for(int i = 0;i < n;i++)
+		next[i] = -1;
+
+	int pos = 0;
+	link[pos++] = a[0];
+
+	int f = 0;
+	for(int i = 1;i < n;i++) {
+		if(link[f] > a[i]) {
+			next[pos] = f;
+			f = pos;
+		} else {
+			int t = f;
+			while(next[t] != -1 && a[i] > link[next[t]])
+				t = next[t];
+			next[pos] = next[t];
+			next[t] = pos;
+		}
+		link[pos++] = a[i];
+	}
+
+	int t = f;
+	pos = 0;
+	while(t != -1) {
+		a[pos++] = link[t];
+		t = next[t];
+	}
+
+	delete[] link;
+	delete[] next;
+
+}
+
+//选择排序
+void SelectSort(int a[],int n) {
+	for(int i = 0;i < n-1;i++) {
+		int Min = a[i + 1];
+		int pos = i + 1;
+
+		for(int j = i;j < n;j++) {
+			if(Min > a[j]) {
+				Min = a[j];
+				pos = j;
+			}
+		}
+		int temp = a[i];
+		a[i] = a[pos];
+		a[pos] = temp;
+	}
+}
+
 
 
 void Do() {
@@ -206,6 +326,86 @@ void Do() {
 		printf("Wrong");
 	printf("\n");
 
+	//测试5 - 基数排序
+	printf("基数排序");
+	memcpy(b,a,sizeof(a));
+	start = clock();
+	LSD(b,size);
+	printf("%.4fs	:	",double(clock() - start) / CLOCKS_PER_SEC);
+	if(SHOW)
+		REP(size)
+		printf("%d ",b[o]);
+	if(memcmp(ans,b,sizeof(b)) != 0)
+		printf("Wrong");
+	printf("\n");
+
+	//测试6 - 计数排序
+	printf("计数排序");
+	memcpy(b,a,sizeof(a));
+	start = clock();
+	ArraySort(b,size);
+	printf("%.4fs	:	",double(clock() - start) / CLOCKS_PER_SEC);
+	if(SHOW)
+		REP(size)
+		printf("%d ",b[o]);
+	if(memcmp(ans,b,sizeof(b)) != 0)
+		printf("Wrong");
+	printf("\n");
+
+
+	//测试7 - sort排序
+	printf("sort\t");
+	memcpy(b,a,sizeof(a));
+	start = clock();
+	std::sort(b,b + size);
+	printf("%.4fs	:	",double(clock() - start) / CLOCKS_PER_SEC);
+	if(SHOW)
+		REP(size)
+		printf("%d ",b[o]);
+	if(memcmp(ans,b,sizeof(b)) != 0)
+		printf("Wrong");
+	printf("\n");
+
+
+	//测试8 - qsort排序
+	printf("qsort\t");
+	memcpy(b,a,sizeof(a));
+	start = clock();
+	std::qsort(b,size,sizeof(int),comp);
+	printf("%.4fs	:	",double(clock() - start) / CLOCKS_PER_SEC);
+	if(SHOW)
+		REP(size)
+		printf("%d ",b[o]);
+	if(memcmp(ans,b,sizeof(b)) != 0)
+		printf("Wrong");
+	printf("\n");
+
+	//测试8 - 插入排序
+	printf("插入排序");
+	memcpy(b,a,sizeof(a));
+	start = clock();
+	InsertSort(b,size);
+	printf("%.4fs	:	",double(clock() - start) / CLOCKS_PER_SEC);
+	if(SHOW)
+		REP(size)
+		printf("%d ",b[o]);
+	if(memcmp(ans,b,sizeof(b)) != 0)
+		printf("Wrong");
+	printf("\n");
+
+	//测试9 - 选择排序
+	printf("选择排序");
+	memcpy(b,a,sizeof(a));
+	start = clock();
+	SelectSort(b,size);
+	printf("%.4fs	:	",double(clock() - start) / CLOCKS_PER_SEC);
+	if(SHOW)
+		REP(size)
+		printf("%d ",b[o]);
+	if(memcmp(ans,b,sizeof(b)) != 0)
+		printf("Wrong");
+	printf("\n");
+
 	printf("\n");
 
 }
@@ -214,19 +414,5 @@ int vs_main() {
 	srand((int)time(0));
 	REP(TIME)
 		Do();
-	return 0;
-}
-
-
-//====================================================================
-int main() {
-	int start = clock();
-	freopen("in.txt","r",stdin);
-	//freopen("out.txt","w",stdout);
-	printf("#===================#\n");
-	vs_main();
-	printf("#===================#\n");
-	printf("Time:%.5lf\n",double(clock() - start) / CLOCKS_PER_SEC);
-	//system("pause");
 	return 0;
 }
