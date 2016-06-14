@@ -22,6 +22,12 @@
 
  * Google 40题 [40题](http://www.cnblogs.com/kuangbin/archive/2012/12/12/2814575.html)
 
+ * 红黑书
+
+ * 线段树
+ 
+ * KMP
+
 * 博客
 
  *  网络预选赛
