@@ -24,11 +24,7 @@ Email:oyohyee@oyohyee.com
 #include <functional>
 using namespace std;
 
-const int maxl = 1000005;
-const int maxn = 10005;
-
-
-
+const int maxl = 1000001;
 
 struct Node {
 	int l,r;
@@ -40,11 +36,10 @@ struct Node {
 list<Node> List;
 list<Node>::iterator it;
 
-void Init() {
-
-
+inline void Init() {
+	List.clear();
+	List.insert(List.end(),Node(0,maxl));
 }
-
 void Color(int a,int b) {
 	for(it = List.begin();it != List.end();it++) {
 		if(it->r < a)
@@ -58,45 +53,57 @@ void Color(int a,int b) {
 			it->l = b;
 			break;
 		}
-		if(a < it->l && it->r < b) {
-			List.erase(it);
+		if(a <= it->l && it->r <= b) {
+			it = List.erase(it);
+			continue;
 		}
 
-		if(a < it->l && b < it->r) {
+		if(a <= it->l && b <= it->r) {
 			it->l = b;
 		}
-		if(it->l < a && it->r < b) {
+		if(it->l <= a && it->r <= b) {
 			it->r = a;
 		}
 	}
 }
+int ColorLen(int a,int b) {
+	int cnt = 0;
+	for(it = List.begin();it != List.end();it++) {
+		if(it->r <= a)
+			continue;
+		if(it->l >= b)
+			break;
+		cnt++;
+	}
+	return cnt;
+}
 
 void Do() {
+	Init();
+
 	int n,q;
 	scanf("%d%d",&n,&q);
 
-
 	for(int i = 0;i < n;i++) {
 		int a,b;
 		scanf("%d%d",&a,&b);
-		Color(&t,a,b);
+		Color(a,b);
 	}
 
-	for(int i = 0;i < n;i++) {
+	for(int i = 0;i < q;i++) {
 		int a,b;
 		scanf("%d%d",&a,&b);
-		printf("%d\n",ColorLen(&t,a,b));
+		printf("%d\n",ColorLen(a,b));
 	}
-
 	printf("\n");
-
 	return;
 }
 
 int vs_main() {
 	int T;
 	scanf("%d",&T);
-	while(T--)
+	while(T--) {
 		Do();
+	}
 	return 0;
 }
