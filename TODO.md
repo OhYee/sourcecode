@@ -48,13 +48,13 @@
 
   * [2016.04.16](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=113042#overview)
    
-   * B.Max Sum
+   * ~~B.Max Sum~~
    
    * D.推箱子
    
    * F.The Next
    
-   * ~~ G.逆序数 ~~
+   * ~~G.逆序数~~
   
   * 省赛
   
