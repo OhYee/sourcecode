@@ -24,6 +24,7 @@ Email:oyohyee@oyohyee.com
 using namespace std;
 
 const int maxl = 1000005;
+const interestingma
 
 struct Node {
 	int l,r;
