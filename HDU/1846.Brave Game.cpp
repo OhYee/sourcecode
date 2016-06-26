@@ -34,7 +34,7 @@ void Do() {
 		printf("second\n");
 }
 
-int vs_main() {
+int main() {
 	int T;
 	scanf("%d",&T);
 	while(T--) {
