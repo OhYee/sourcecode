@@ -1,3 +1,5 @@
+#include "stdafx.h"
+//====================================================================
 /*
 By:OhYee
 Github:OhYee
@@ -24,7 +26,6 @@ Email:oyohyee@oyohyee.com
 using namespace std;
 
 const int maxl = 1000005;
-const interestingma
 
 struct Node {
 	int l,r;
@@ -39,138 +40,123 @@ bool colored[maxl];
 
 vector<Node> v;
 
-inline void Init() {
-	List.clear();
-	List.insert(List.end(),Node(0,maxl));
-	memset(colored,false,sizeof(colored));
+//线段树
+struct Tree {
+	int l;
+	int r;
+	char Covered;//-1全部未染色 0 部分染色 1全部染色
+};
+Tree T[maxl * 4];
+void Build(int l,int r,int n = 1) {
+	T[n].l = l;
+	T[n].r = r;
+	T[n].Covered = -1;
+	if(r - l == 1)
+		return;
+	int mid = (l + r) / 2;
+	Build(l,mid,2 * n);
+	Build(mid,r,2 * n + 1);
 }
+void Cover(int l,int r,int n = 1) {
+	if(T[n].Covered != 1) {
+		int mid = (T[n].l + T[n].r) / 2;
 
-void Color(int a,int b) {
-	for(it = List.begin();it != List.end();it++) {
-	mark:;
+		if(l == T[n].l && r == T[n].r) {
+			T[n].Covered = 1;
+		} else {
+			if(T[n].r - T[n].l == 1)
+				return;
 
-		if(it->r < a)
-			continue;
-		if(it->l > b)
-			break;
-
-		if(a <= it->l && it->r <= b) {
-			it = List.erase(it);
-			goto mark;
-		}
-
-		if(it->l < a && b < it->r) {
-			List.insert(it,Node(it->l,a));
-			it->l = b;
-			break;
-		}
-
-		if(a <= it->l && b <= it->r) {
-			it->l = b;
-		}
-		if(it->l <= a && it->r <= b) {
-			it->r = a;
+			if(r <= mid)
+				Cover(l,r,2 * n);
+			if(mid < l)
+				Cover(l,r,2 * n + 1);
+			if(l <= mid && mid < r) {
+				Cover(l,mid,2 * n);
+				Cover(mid,r,2 * n + 1);
+			}
+			if(T[2 * n].Covered == 1 && T[2 * n + 1].Covered == 1)
+				T[n].Covered = 1;
+			else
+				if(T[2 * n].Covered != -1 || T[2 * n + 1].Covered != -1)
+					T[n].Covered = 0;
 		}
 	}
 }
-int ColorLen(int a,int b) {
-	int cnt = 0;
-	for(it = List.begin();it != List.end();it++) {
-		if(it->r <= a)
-			continue;
-		if(it->l >= b)
-			break;
-		//cnt++;
-		cnt += min(it->r,b) - max(it->l,a)+1;
+void Uncovered(int l,int r,int &ans,int n = 1) {
+	static int last;
+	if(n == 1)
+		last = -1;
+
+	if(T[n].r == T[n].l || r < T[n].l || T[n].r < l)
+		return;
+	if(T[n].Covered == 1)
+		return;
+	if(T[n].Covered == -1) {
+		if(l == T[n].l || (l <= T[n].l && T[n].r <= r)) {
+			if(last != T[n].l)
+				ans++;
+			last = T[n].r;
+		}
+		return;
 	}
-	return cnt;
+
+	if(T[n].r - T[n].l == 1) {
+		if(l == T[n].l || (l <= T[n].l && T[n].r <= r)) {
+			if(last != T[n].l)
+				ans++;
+			last = T[n].r;
+		}
+
+	} else {
+		int mid = (T[n].l + T[n].r) / 2;
+		Uncovered(l,r,ans,n * 2);
+		Uncovered(l,r,ans,2 * n + 1);
+	}
 }
 
-void Color2(int a,int b) {
-	for(int i = a;i < b;i++)
-		colored[i] = true;
-}
-int ColorLen2(int a,int b) {
-	int cnt = 0;
-	for(int i = a;i <= b;i++)
-		if(!colored[i])
-			cnt++;
-	return cnt;
-}
 
-
-void Do() {
-	Init();
-
+void Do2() {
+	Build(0,maxl);
 	int n,q;
 	scanf("%d%d",&n,&q);
 
 	for(int i = 0;i < n;i++) {
 		int a,b;
 		scanf("%d%d",&a,&b);
-		Color(a,b);
-		Color2(a,b);
+		Cover(a,b);
 	}
 
 	for(int i = 0;i < q;i++) {
 		int a,b;
 		scanf("%d%d",&a,&b);
-		printf("%d\n",ColorLen(a,b));
+		int ans = 0;
+		Uncovered(a,b,ans);
+		printf("%d\n",ans);
 	}
+
 	printf("\n");
 	return;
 }
 
-void test() {
-	int n,q;
-	n = rand() % 100;
-	q = rand() % 100000;
-	v.clear();
-	Init();
-	bool out = false;
-
-	int delta;
-	for(int i = 0;i < n;i++) {
-		delta = rand() % (100000 - 1);
-		int a = rand() % (100000 - delta);
-		int b = a + delta;
-		Color(a,b);
-		Color2(a,b);
-		v.push_back(Node(a,b));
-	}
-	for(int i = 0;i < n;i++) {
-		delta = rand() % (100000- 1);
-		int a = rand() % (100000- delta);
-		int b = a + delta;
-
-		int t1 = ColorLen(a,b);
-		int t2 = ColorLen2(a,b);
-
-		if(t1 != t2) {
-			if(!out) {
-				out = true;
-				printf("Color:\n");
-				for(size_t j = 0;j < v.size();j++)
-						printf("%d %d\n",v[j].l,v[j].r);
-			}
-
-			printf("\nX (%d,%d) (%d) (%d)\n",a,b,t1,t2);
-		}
-
-	}
-	printf("End\n");
-	if(out)
-	system("pause");
-}
 
 int vs_main() {
-	/*srand((int)time(0));
-	while(1)
-		test();*/
 	int T;
 	scanf("%d",&T);
 	while(T--) {
-		Do();
+		Do2();
 	}
+	return 0;
+}
+//====================================================================
+int main() {
+	int start = clock();
+	freopen("in.txt","r",stdin);
+	//freopen("out.txt","w",stdout);
+	printf("#===================#\n");
+	vs_main();
+	printf("#===================#\n");
+	printf("Time:%.5lf\n",double(clock() - start) / CLOCKS_PER_SEC);
+	//system("pause");
 	return 0;
 }
