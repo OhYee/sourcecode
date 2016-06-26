@@ -1,5 +1,3 @@
-#include "stdafx.h"
-//====================================================================
 /*
 By:OhYee
 Github:OhYee
@@ -26,19 +24,8 @@ Email:oyohyee@oyohyee.com
 using namespace std;
 
 const int maxl = 1000005;
-
-struct Node {
-	int l,r;
-	Node(int a,int b) {
-		l = a,r = b;
-	}
-};
-
-list<Node> List;
-list<Node>::iterator it;
-bool colored[maxl];
-
-vector<Node> v;
+const int maxn = 10005;
+const int maxq = 100005;
 
 //线段树
 struct Tree {
@@ -115,25 +102,78 @@ void Uncovered(int l,int r,int &ans,int n = 1) {
 	}
 }
 
+//离散化
+map<int,int> m;
+int m2[2 * (maxn + maxq)];
+int pos;
+int c1[maxn][2];
+int c2[maxq][2];
+bool has[maxl];
 
 void Do2() {
-	Build(0,maxl);
+	//Build(0,maxl);
+	int pos = 0;
+	m.clear();
+	memset(has,false,sizeof(has));
+
+	m2[pos++] = 0;
+	has[0] = true;
+
 	int n,q;
 	scanf("%d%d",&n,&q);
 
 	for(int i = 0;i < n;i++) {
-		int a,b;
-		scanf("%d%d",&a,&b);
-		Cover(a,b);
+		scanf("%d%d",&c1[i][0],&c1[i][1]);
+		if(!has[c1[i][0]]) {
+			m2[pos++] = c1[i][0];
+			has[c1[i][0]] = true;
+		}
+		if(!has[c1[i][1]]) {
+			m2[pos++] = c1[i][1];
+			has[c1[i][1]] = true;
+		}
+	}
+	for(int i = 0;i < q;i++) {
+		scanf("%d%d",&c2[i][0],&c2[i][1]);
+		if(!has[c2[i][0]]) {
+			m2[pos++] = c2[i][0];
+			has[c2[i][0]] = true;
+		}
+		if(!has[c2[i][1]]) {
+			m2[pos++] = c2[i][1];
+			has[c2[i][1]] = true;
+		}
+	}
+
+	sort(m2,m2 + pos);
+	for(int i = 0;i < pos;i++)
+		m[m2[i]] = i;
+
+	Build(0,pos + 1);
+
+	for(int i = 0;i < n;i++) {
+		Cover(m[c1[i][0]],m[c1[i][1]]);
 	}
 
 	for(int i = 0;i < q;i++) {
-		int a,b;
-		scanf("%d%d",&a,&b);
 		int ans = 0;
-		Uncovered(a,b,ans);
+		Uncovered(m[c2[i][0]],m[c2[i][1]],ans);
 		printf("%d\n",ans);
 	}
+
+	//for(int i = 0;i < n;i++) {
+	//	int a,b;
+	//	scanf("%d%d",&a,&b);
+	//	Cover(a,b);
+	//}
+
+	//for(int i = 0;i < q;i++) {
+	//	int a,b;
+	//	scanf("%d%d",&a,&b);
+	//	int ans = 0;
+	//	Uncovered(a,b,ans);
+	//	printf("%d\n",ans);
+	//}
 
 	printf("\n");
 	return;
@@ -146,17 +186,5 @@ int vs_main() {
 	while(T--) {
 		Do2();
 	}
-	return 0;
-}
-//====================================================================
-int main() {
-	int start = clock();
-	freopen("in.txt","r",stdin);
-	//freopen("out.txt","w",stdout);
-	printf("#===================#\n");
-	vs_main();
-	printf("#===================#\n");
-	printf("Time:%.5lf\n",double(clock() - start) / CLOCKS_PER_SEC);
-	//system("pause");
 	return 0;
 }

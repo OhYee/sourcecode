@@ -26,7 +26,13 @@
 
  * [DP46(下)](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120124#overview)
 
+ * [狗狗40题(上)](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120108#overview)
+
+ * [狗狗40题(下)](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120110#overview)
+
  * [CF](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120117#overview)
+
+ * [CF2](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120125#overview)
 
 
 
@@ -36,9 +42,7 @@
  
  * ~~KMP~~
 
- * [狗狗40题(上)](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120108#overview)
 
- * [狗狗40题(下)](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120110#overview)
 
 * 博客
 

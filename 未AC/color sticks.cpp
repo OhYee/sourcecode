@@ -88,13 +88,7 @@ int vs_main() {
 	for(int i = 0;i < len;i++) {
 		string k = Q.front();
 		Q.pop();
-		if(s.
-        
-        
-        
-        
-        
-        find(k) == s.end())
+		if(s.find(k) == s.end())
 			Q.push(k);
 	}
 
