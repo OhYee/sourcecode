@@ -22,6 +22,14 @@
 
  * Google 40题 [40题](http://www.cnblogs.com/kuangbin/archive/2012/12/12/2814575.html)
 
+ * [DP46(上)](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120123#overview)
+
+ * [DP46(下)](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120124#overview)
+
+ * [CF](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120117#overview)
+
+
+
  * 红黑书
 
  * 线段树
