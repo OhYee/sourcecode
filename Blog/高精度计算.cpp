@@ -197,6 +197,8 @@ class bigNumber{
         return temp1 % temp2;
     }
     void p(){
+        if(num[0] == 0)
+			printf("0");
         REP(num[0]){
             printf("%d",num[num[0]-o]);
         }
