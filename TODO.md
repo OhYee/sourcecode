@@ -34,6 +34,8 @@
 
  * [CF2](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120125#overview)
 
+ * [CF3](http://acm.hust.edu.cn/vjudge/contest/view.action?cid=120761#problem)
+
 
 
  * 红黑书
