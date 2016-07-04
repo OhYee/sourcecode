@@ -1,3 +1,13 @@
+/*
+By:OhYee
+Github:OhYee
+Blog:http://www.oyohyee.com/
+Email:oyohyee@oyohyee.com
+
+かしこいかわいい？
+エリーチカ！
+要写出来Хорошо的代码哦~
+*/
 #include <cstdio>
 #include <algorithm>
 #include <cstring>
@@ -13,55 +23,41 @@
 #include <functional>
 using namespace std;
 
-char Map[] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+const int maxn = 200005;
 
-const int maxn = 50;
-char m[maxn];
-char ans[maxn];
+int b,c;
 
-
-int r_map(char c) {
-	for(int i = 0;i < 16;i++)
-		if(Map[i] == c)
-			return i;
-	return -1;
+int s[maxn];
+int time[maxn];
+int MinTime(int s,int v) {
+	int Min = (v - s)*c;
+	Min = min(Min,(v - s) / 5 * b + ((v - s) % 5)*c);
+	return Min;
 }
 
+
+
 bool Do() {
-	int P,R;
-	scanf("%d%d",&P,&R);
-	if(P == 0)
+	int n,k;
+	if(scanf("%d%d%d%d",&n,&k,&b,&c) == EOF)
 		return false;
-
-	scanf("\n%s",m);
-
-	int len = strlen(m);
-	int ten = 0;
-	for(int i = len - 1;i >= 0;i--) {
-		ten += r_map(m[i]) * (int)pow(P,len - i - 1);
+	
+	for(int i = 0;i < n;i++) {
+		scanf("%d",&s[i]);
 	}
 
-	int pos = 0;
-	while(ten) {
-		ans[pos++] = ten % R;
-		ten /= R;
-	}
-	if(pos == 0)
-		ans[pos++] = 0;
-
-	reverse(ans,ans + pos);
-
-	for(int i = 0;i < pos;i++)
-		putchar(Map[ans[i]]);
+	sort(s,s + n);
 
 	
-	putchar('\n');
+	while(1) {
+		
+	}
 
 	return true;
 }
 
 
-int main() {
+int vs_main() {
 	while(Do());
 	return 0;
 }
