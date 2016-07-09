@@ -7,8 +7,11 @@ int main(){
   freopen("in.txt","w",stdout);
   srand((int)time(0));
 
-  for(int i=0;i<1000;i++){
-    printf("%d ",1000000000-1000+i);
+  for(int i=0;i<100;i++){
+    for(int j=0;j<100;j++){
+      printf("%c",(rand()%5)==1?'@':'*');
+    }
+    printf("\n");
   }
 
 }
