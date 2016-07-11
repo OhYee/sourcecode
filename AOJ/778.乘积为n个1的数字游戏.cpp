@@ -23,29 +23,31 @@ Email:oyohyee@oyohyee.com
 #include <functional>
 using namespace std;
  
-bool vis[10];
+ 
+ 
 void Do() {
-    int n;
-    scanf("%d",&n);
- 
-    int cnt = 0;
-    for(int i = 10000;i <= 31622 && i <= n;i++) {
-        memset(vis,false,sizeof(vis));
-        bool flag = true;
- 
-        int k = i*i;
-        while(k) {
-            if(vis[k % 10]) {
-                flag = false;
-                break;
-            }
-            vis[k % 10] = true;
-            k /= 10;
+    int p;
+    scanf("%d",&p);
+    int k;
+    int a = 0;
+    bool flag = false;
+    for(k = 1;;k++) {
+        a = a * 10 + 1;
+        if(a < p) {
+            if(flag)
+            printf("0");
+                continue;
         }
-        if(flag)
-            cnt++;
+        int b = a / p;
+        int c = a % p;
+        printf("%d",b);
+        flag = true;
+        if(c == 0) {
+            printf(" %d\n",k);
+            break;
+        }
+        a = c;
     }
-    printf("%d\n",cnt);
 }
  
 int main() {
