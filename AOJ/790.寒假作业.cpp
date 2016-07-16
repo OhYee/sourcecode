@@ -21,33 +21,22 @@ Blog:http://www.cnblogs.com/ohyee/
 #include <stack>
 using namespace std;
 
-//DEBUG MODE
-#define debug 0
-
-//循环
-#define REP(n) for(int o=0;o<n;o++)
-
 //分数类
 class Fraction {
 public:
-
-	int a,b;//a分子，b分母
-
+	long long a,b;//a分子，b分母
 	//最大公约数
-	const int gcd(int a,int b) {
+	const long long gcd(long long a,long long b) {
 		return b == 0 ? a : gcd(b,a%b);
 	}
-
 	//化为最简分数
 	const void lowest(Fraction &f) {
 		bool fs = (f.a < 0);
 		f.a = abs(f.a);
 		f.b = abs(f.b);
-
-		int cc = gcd(f.a,f.b);
+		long long cc = gcd(f.a,f.b);
 		f.a = f.a / cc;
 		f.b = f.b / cc;
-
 		if(fs)
 			f.a *= -1;
 	}
@@ -82,9 +71,9 @@ public:
 
 	void print() {
 		//if(b == 1)
-			//printf("%d",a);
+		//printf("%d",a);
 		//else
-			printf("%d/%d",a,b);
+		printf("%lld/%lld",a,b);
 	}
 
 	//构造函数
@@ -92,7 +81,7 @@ public:
 		a = 0;
 		b = 1;
 	}
-	Fraction(int aa,int bb) {
+	Fraction(long long aa,long long bb) {
 		a = aa;
 		b = bb;
 		lowest(*this);
@@ -100,10 +89,6 @@ public:
 };
 
 bool Do() {
-	#if debug
-	printf("*\n");
-	#endif
-
 	Fraction ans = Fraction(0,1);
 	Fraction temp = Fraction(0,1);
 	Fraction temp2 = Fraction(0,1);
@@ -145,13 +130,7 @@ bool Do() {
 					fs = false;
 				}
 
-				#if debug
-				printf("temp:");
-				temp.print();
-				printf("\n");
-				#endif
-
-				if(c == '+'||c=='-') {
+				if(c == '+' || c == '-') {
 					if(temp2.a != 0) {
 						temp2 = temp2 * temp;
 						ans = ans + temp2;
@@ -176,12 +155,6 @@ bool Do() {
 	}
 	temp.b = num;
 
-	#if debug
-	printf("temp:");
-	temp.print();
-	printf("\n");
-	#endif
-
 	if(temp2.a != 0) {
 		temp2 = temp2 * temp;
 		ans = ans + temp2;
@@ -194,7 +167,7 @@ bool Do() {
 	return true;
 }
 
-int main() {
+int vs_main() {
 	while(Do());
 	return 0;
 }
