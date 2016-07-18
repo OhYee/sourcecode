@@ -1,5 +1,3 @@
-#include "stdafx.h"
-//====================================================================
 /*
 By:OhYee
 Github:OhYee
@@ -21,19 +19,22 @@ Blog:http://www.cnblogs.com/ohyee/
 #include <list>
 #include <queue>
 #include <stack>
+#include <sstream>
 using namespace std;
 
 struct BigInter {
 	bool postive;
 	vector<int> num;
 
-	#define MAX 9999999
-	#define BIT 100000000
+	//8位算一组
+	#define MAX 100000000
+	#define BIT 8
+
 
 	//迭代器
 	typedef vector<int>::iterator itor;
 	typedef unsigned long long Inter;
-	
+
 	//构造函数
 	BigInter() {
 		Init();
@@ -41,7 +42,7 @@ struct BigInter {
 	BigInter(BigInter &rhs) {
 		Init();
 		postive = rhs.postive;
-		num = (vector<char>)(rhs.num);
+		num = (vector<int>)(rhs.num);
 	}
 	BigInter(Inter rhs) {
 		ReadFromInter<Inter>(rhs);
@@ -70,16 +71,16 @@ struct BigInter {
 				break;
 			}
 		}
-        int t=0;
-		for(int i = len - 1;i >= Begin;i--){
-            t=t*10+s[i]-'0';
-            if(t>MAX){
-                num.push_back(t%BIT);
-                t/=BIT;
-            }
-        }
-        num.push_back(t);
-        standard();
+		int t = 0;
+		for(int i = len - 1;i >= Begin;i--) {
+			t = t * 10 + s[i] - '0';
+			if(t >= MAX) {
+				num.push_back(t%MAX);
+				t /= MAX;
+			}
+		}
+		num.push_back(t);
+		standard();
 		return this;
 	}
 	template<typename T>
@@ -87,12 +88,12 @@ struct BigInter {
 		postive = (rhs >= 0);
 		num.clear();
 		long long k = rhs;
-        int t=0;
+		int t = 0;
 		while(k) {
-			num.push_back(k % BIT);
-			k /= BIT;
+			num.push_back(k % MAX);
+			k /= MAX;
 		}
-		return this
+		return this;
 	}
 	void Init() {
 		num.clear();
@@ -126,13 +127,13 @@ struct BigInter {
 			return 0;
 
 		if(postive == rhs.postive) {
-			if(this->Bit() == rhs.Bit()) {
-				for(int i = this->Bit() - 1;i >= 0;i--) {
+			if(this->num.size() == rhs.num.size()) {
+				for(int i = this->num.size() - 1;i >= 0;i--) {
 					if(num[i] != rhs.num[i])
 						return (num[i] < rhs.num[i]) ? -1 : 1;
 				}
 			} else {
-				return (this->Bit() < rhs.Bit()) ? -1 : 1;
+				return (this->num.size() < rhs.num.size()) ? -1 : 1;
 			}
 		} else {
 			return rhs.postive ? -1 : 1;
@@ -177,8 +178,8 @@ struct BigInter {
 		return _Minute<int>(*this,rhs);
 	}
 	BigInter operator * (BigInter &rhs) {
-		//每次运算8位
-		const int length = 8;
+		//每次运算1组
+		const int length = 1;
 
 		BigInter a = *this;
 		BigInter b = rhs;
@@ -214,8 +215,8 @@ struct BigInter {
 		return _Mulit<int>(*this,rhs);
 	}
 	BigInter operator / (Inter rhs) {
-		//每次运算16位
-		const int length = 16;
+		//每次运算2组
+		const int length = 2;
 
 		BigInter a = *this;
 		Inter b = rhs;
@@ -243,7 +244,7 @@ struct BigInter {
 	}
 	BigInter operator / (BigInter &rhs) {
 		BigInter a;
-		int it = Bit();
+		int it = num.size();
 
 		BigInter d;
 		BigInter c;
@@ -272,7 +273,7 @@ struct BigInter {
 	}
 	BigInter operator % (BigInter &rhs) {
 		BigInter a;
-		int it = Bit();
+		int it = num.size();
 
 		BigInter d;
 		BigInter c;
@@ -296,19 +297,19 @@ struct BigInter {
 		return d;
 	}
 	static void add(BigInter &a,BigInter &b,BigInter &ans) {
-		int len = max(a.Bit(),b.Bit());
+		int len = max(a.num.size(),b.num.size());
 		for(int i = 0;i < len;i++) {
 			ans[i] += a[i] + b[i];
 			int k = i;
 			while(ans[k] >= MAX) {
-				ans[k + 1] += ans[k] / BIT;
-				ans[k] %= BIT;
+				ans[k + 1] += ans[k] / MAX;
+				ans[k] %= MAX;
 				k++;
 			}
 		}
 	}
 	static void minute(BigInter a,BigInter b,BigInter &ans) {
-		int len = max(a.Bit(),b.Bit());
+		int len = max(a.num.size(),b.num.size());
 		ans = a;
 		for(int i = 0;i < len;i++) {
 			ans[i] -= b[i];
@@ -328,20 +329,20 @@ struct BigInter {
 	}
 	template<typename T>
 	BigInter _ADD(BigInter a,T b) {
-		return a+(BigInter)b;
+		return a + (BigInter)b;
 	}
 	template<typename T>
 	BigInter _Minute(BigInter a,T b) {
-		return a-(BigInter)b;
+		return a - (BigInter)b;
 	}
 	template<typename T>
 	BigInter _Mulit(BigInter a,T b) {
 		return a * (BigInter)b;
 	}
 	//取地址操作符
-	int &operator [](int pos) {
-		if(pos >= Bit()) {
-			while(pos >= Bit()) {
+	int &operator [](size_t pos) {
+		if(pos >= num.size()) {
+			while(pos >= num.size()) {
 				num.push_back(0);
 			}
 		}
@@ -349,9 +350,22 @@ struct BigInter {
 	}
 
 	//其他函数
+	Inter GetLastNum(int len) {
+		Inter ans=0;
+		len = min(len,(int)num.size());
+		while(len--) {
+			ans = ans * MAX + num[0];
+		}
+		return ans;
+	}
+	void DelLastNum(int len) {
+		len = min(len,(int)num.size());
+		num.erase(num.begin(),num.begin() + len);
+		standard();
+	}
 	Inter toInter() {
-		//转化为long long 保留18位
-		return GetLastNum(18);
+	//到Inter型，保留16位
+		return GetLastNum(2);
 	}
 	BigInter abs() {
 		//取绝对值
@@ -360,7 +374,7 @@ struct BigInter {
 		return ABS;
 	}
 	bool isZero() {
-		return Bit() == 1 && num[0] == 0;
+		return num.size() == 1 && num[0] == 0;
 	}
 	void standard() {
 		if(num.size() == 0)
@@ -375,39 +389,45 @@ struct BigInter {
 		if(num.size() == 0)
 			Init();
 	}
-	int Bit() {
-		//返回位数
-		if(num.size() == 0)
-			standard();
-		return num.size();
+	int GetBit() {
+	//返回大数位数
+		int ans = (num.size()-1)*BIT;
+		int k = num[num.size() - 1];
+		while(k) {
+			ans++;
+			k /= 10;
+		}
+		return ans;
 	}
-	int print() {
+	void print() {
+		printf("%d",num[num.size() - 1]);
+		for(int i = num.size() - 2;i >= 0;i--) {
+			printf("%04d",num[i]);
+		}
+		printf("\n");
+	}
+	void out() {
+		sstream s;
 		string out;
-
+		out += (string)(num[num.size() - 1]);
+		for(int i = num.size() - 2;i >= 0;i--) {
+			printf("%04d",num[i]);
+		}
 	}
 };
 
 int vs_main() {
 	printf("a\n");
-	BigInter a = 1561;
-	BigInter b = 5613;
+	BigInter a = 156112341;
+	BigInter b = 59923144;
 	BigInter c = a + b;
 	BigInter d = b*c;
 	BigInter e = b / 3;
+	a.print();
+	b.print();
+	c.print();
+	d.print();
+	e.print();
 
 	return 0;
 }
-
-//====================================================================
-int main() {
-	int start = clock();
-	freopen("in.txt","r",stdin);
-	//freopen("out.txt","w",stdout);
-	printf("#===================#\n");
-	vs_main();
-	printf("#===================#\n");
-	printf("Time:%.3lf\n",double(clock() - start) / CLOCKS_PER_SEC);
-	//system("pause");
-	return 0;
-}
-
