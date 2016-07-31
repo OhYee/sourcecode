@@ -1,13 +1,10 @@
-
 #include "stdafx.h"
 //====================================================================
-
 /*
 By:OhYee
 Github:OhYee
 HomePage:http://www.oyohyee.com
 Email:oyohyee@oyohyee.com
-Blog:http://www.cnblogs.com/ohyee/
 
 かしこいかわいい？
 エリーチカ！
@@ -25,18 +22,16 @@ Blog:http://www.cnblogs.com/ohyee/
 #include <queue>
 #include <stack>
 #include <map>
-#include <array>
+#include <set>
 using namespace std;
 
-//DEBUG MODE
-#define debug 0
+typedef unsigned int LL;
 
-//循环
-#define REP(n) for(int o=0;o<n;o++)
+const int maxn = 105;
+LL lena,lenb;
+char a[maxn],b[maxn];
 
-const int maxn = 100;
-int len[2];
-char gene[2][maxn];
+LL dp[maxn][maxn];
 
 inline int w(char a,char b) {
 	if(a == b)
@@ -57,8 +52,8 @@ inline int w(char a,char b) {
 //输入字符串a 及其长度 字符串b 及其长度 保存最长公共子序列的数组
 //字符从0开始
 int LCS(char *a,char *b,char s[] = NULL) {
-	int len1 = strlen(a) ;
-	int len2 = strlen(b) ;
+	int len1 = strlen(a);
+	int len2 = strlen(b);
 	char *aa = a - 1;
 	char *bb = b - 1;
 
@@ -83,9 +78,9 @@ int LCS(char *a,char *b,char s[] = NULL) {
 				dp[i][j] = max(dp[i - 1][j],dp[i][j - 1]);
 
 	/*for(int i = 0;i <= len1;i++){
-		for(int j = 0;j <= len2;j++)
-			printf("%d\t",dp[i][j]);
-		printf("\n");
+	for(int j = 0;j <= len2;j++)
+	printf("%d\t",dp[i][j]);
+	printf("\n");
 	}*/
 
 	//如果c未传值
@@ -115,25 +110,23 @@ int LCS(char *a,char *b,char s[] = NULL) {
 }
 
 void Do() {
-	REP(2)
-		scanf("%d %s",&len[o],gene[o]);
+	scanf("%d%s%d%s",&lena,a,&lenb,b);
 
-	char lcs[maxn];
-	int length = LCS(gene[0],gene[1],lcs);
+	for(LL i = 1;i <= lena;i++)
+		for(LL j = 1;j <= lenb;j++) {
+			int ita = i - 1;
+			int itb = j - 1;
+			LL delta = (i > j) ? (i - j) : (j - i);
 
-	int ans = 0;
-
-	ans += length * 5;
-
-	for(int i = 0;i < 2;i++)
-		for(int j = 0,it = 0;j < len[i];j++) {
-			if(lcs[it] == gene[i][j])
-				it++;
-			else
-				ans += w(gene[i][j],'-');
+			if(a[ita] == b[itb]) {
+				dp[i][j] = max(dp[i - 1][j - 1] + 5,));
+			} else {
+				dp[i][j] = min(dp[i - 1][j - 1] + 1,Min);
+			}
+			dp[i][j] = max(dp[i][j],delta);
 		}
 
-	printf("%d\n",ans);
+	printf("%u\n",dp[lena][lenb]);
 }
 
 int vs_main() {
@@ -144,8 +137,6 @@ int vs_main() {
 
 	return 0;
 }
-
-
 //====================================================================
 int main() {
 	int start = clock();
@@ -154,7 +145,7 @@ int main() {
 	printf("#===================#\n");
 	vs_main();
 	printf("#===================#\n");
-	printf("Time:%.5lf\n",double(clock() - start) / CLOCKS_PER_SEC);
+	printf("Time:%.3lf\n",double(clock() - start) / CLOCKS_PER_SEC);
 	//system("pause");
 	return 0;
 }
