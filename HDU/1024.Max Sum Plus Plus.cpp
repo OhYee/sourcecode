@@ -47,7 +47,6 @@ bool Do() {
 	}
 
 	LL Max;
-
 	for(int j = 1;j <= m;j++) {
 		Max = -INF;
 		for(int i = j;i <= n;i++) {
