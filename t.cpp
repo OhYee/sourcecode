@@ -2,7 +2,6 @@
 #include <ctime>
 #include <cstdlib>
 using namespace std;
-
 int main(){
   freopen("in.txt","w",stdout);
   srand((int)time(0));
