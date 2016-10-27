@@ -39,6 +39,17 @@ public:
 	bool isMale();//返回是否是男队
 	void Delete();//删除队伍信息
 	bool operator == (const int n)const;
+
+	static bool NewTeam(int num,string name) {
+		if(hasSchool(num))
+			return false;
+		SchoolList.push_back(School(num,name));
+
+		SchoolNumberToName.insert(make_pair(num,name));
+		SchoolNameToNumber.insert(make_pair(name,num));
+
+		return true;
+	}
 };
 class School {
 private:
