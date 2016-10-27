@@ -3,14 +3,8 @@
 
 #include "stdafx.h"
 
-#include <iostream>
-#include <list>
-#include <string>
-#include <cstring>
-#include <algorithm>
-#include <map>
-
 #include "Team_School_Project.h"
+
 using namespace std;
 
 int main(int argc,char *argv[]) {

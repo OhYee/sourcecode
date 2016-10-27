@@ -1,8 +1,9 @@
 #pragma once
 
-#include <list>
 #include <map>
+#include <list>
 #include <cstring>
+#include <algorithm>
 using namespace std;
 
 const int SCORE[2][6] = {{0,7,5,3,2,1},{0,5,3,2,0,0}};
