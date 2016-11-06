@@ -8,3 +8,4 @@ set path=%path%;%cd%\..\..\Support\git\bin\;%cd%\..\..\Support\npm\bin\;%cd%\..\
 
 start git-bash "%cd%\..\..\Support\script\generateAndServer.sh"
 
+cd ..\
