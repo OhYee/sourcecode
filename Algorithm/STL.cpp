@@ -10,108 +10,108 @@ using namespace std;
 
 int main(){
 
-    cout<<"vector功能"<<endl;
-	vector<int> vec;//声明名称为vec的整数型向量
-	vector<int>::iterator it_vec;//迭代器
-	vec.clear();//清空
-	cout<<"插入数据"<<endl;
-	vec.push_back(1);//在末尾插入
-	vec.push_back(3);
-	it_vec=vec.end();//指向vec的末尾
-	it_vec--;//向前移动一位（既1和3的中间）
-	vec.insert(it_vec,2);//在此处插入2
-	REP(vec.size())cout<<vec[o]<<endl;//访问数据
-	cout<<"清除第一个数据后输出"<<endl;
-	vec.erase(vec.begin());
-	it_vec=vec.begin();
-	REP(vec.size()){
-	    cout<<*it_vec<<endl;//访问数据
-	    it_vec++;//向后一位
-	}
-	cout<<"#####################################"<<endl<<endl;
+    cout<<"vector锟斤拷锟斤拷"<<endl;
+    vector<int> vec;//锟斤拷锟斤拷锟斤拷锟斤拷为vec锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
+    vector<int>::iterator it_vec;//锟斤拷锟斤拷锟斤拷
+    vec.clear();//锟斤拷锟斤拷
+    cout<<"锟斤拷锟斤拷锟斤拷锟斤拷"<<endl;
+    vec.push_back(1);//锟斤拷末尾锟斤拷锟斤拷
+    vec.push_back(3);
+    it_vec=vec.end();//指锟斤拷vec锟斤拷末尾
+    it_vec--;//锟斤拷前锟狡讹拷一位锟斤拷锟斤拷1锟斤拷3锟斤拷锟叫间）
+    vec.insert(it_vec,2);//锟节此达拷锟斤拷锟斤拷2
+    REP(vec.size())cout<<vec[o]<<endl;//锟斤拷锟斤拷锟斤拷锟斤拷
+    cout<<"锟斤拷锟斤拷锟斤拷一锟斤拷锟斤拷锟捷猴拷锟斤拷锟斤拷"<<endl;
+    vec.erase(vec.begin());
+    it_vec=vec.begin();
+    REP(vec.size()){
+        cout<<*it_vec<<endl;//锟斤拷锟斤拷锟斤拷锟斤拷
+        it_vec++;//锟斤拷锟斤拷一位
+    }
+    cout<<"#####################################"<<endl<<endl;
 
 
-	cout<<"map功能"<<endl;
-	map<string,vector<int> > m;//声明 key的类型为string value类型为int型vector 的 映射m
-	map<string,vector<int> >::iterator it_map;//迭代器
-	cout<<"插入数据"<<endl;
+    cout<<"map锟斤拷锟斤拷"<<endl;
+    map<string,vector<int> > m;//锟斤拷锟斤拷 key锟斤拷锟斤拷锟斤拷为string value锟斤拷锟斤拷为int锟斤拷vector 锟斤拷 映锟斤拷m
+    map<string,vector<int> >::iterator it_map;//锟斤拷锟斤拷锟斤拷
+    cout<<"锟斤拷锟斤拷锟斤拷锟斤拷"<<endl;
     m.insert(pair<string,vector<int> >("aaa",vec));
-	it_map=m.find("aaa");//或者指定key的位置（迭代器）
-	cout<<"key:"<<it_map->first<<endl;
-	cout<<"value:"<<endl;
-	REP(vec.size())cout<<"   "<<vec[o]<<endl;
-	cout<<"查找一个不存在的数据 find()会返回map的末尾"<<endl;
-	it_map=m.find("Niconiconi~");
-	if(it_map==m.end())cout<<"No Niconiconi~"<<endl;
-	cout<<"#####################################"<<endl<<endl;
+    it_map=m.find("aaa");//锟斤拷锟斤拷指锟斤拷key锟斤拷位锟矫ｏ拷锟斤拷锟斤拷锟斤拷锟斤拷
+    cout<<"key:"<<it_map->first<<endl;
+    cout<<"value:"<<endl;
+    REP(vec.size())cout<<"   "<<vec[o]<<endl;
+    cout<<"锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟节碉拷锟斤拷锟斤拷 find()锟结返锟斤拷map锟斤拷末尾"<<endl;
+    it_map=m.find("Niconiconi~");
+    if(it_map==m.end())cout<<"No Niconiconi~"<<endl;
+    cout<<"#####################################"<<endl<<endl;
 
-	cout<<"set功能"<<endl;
-	set<int> s;//声明一个整数型集合
-	set<int>::iterator it_set;//迭代器
-	cout<<"倒叙插入数据并且有重复的4"<<endl;
-	s.insert(5);
-	s.insert(4);
-	s.insert(4);
-	s.insert(2);
-	s.insert(1);
-	it_set=s.begin();
-	while(it_set!=s.end()){
+    cout<<"set锟斤拷锟斤拷"<<endl;
+    set<int> s;//锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟酵硷拷锟斤拷
+    set<int>::iterator it_set;//锟斤拷锟斤拷锟斤拷
+    cout<<"锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟捷诧拷锟斤拷锟斤拷锟截革拷锟斤拷4"<<endl;
+    s.insert(5);
+    s.insert(4);
+    s.insert(4);
+    s.insert(2);
+    s.insert(1);
+    it_set=s.begin();
+    while(it_set!=s.end()){
         cout<<*it_set<<endl;
         it_set++;
-	}
-	cout<<"输出时4自动保留一个，并且数据由小到大输出"<<endl;
-	cout<<"#####################################"<<endl<<endl;
+    }
+    cout<<"锟斤拷锟斤拷时4锟皆讹拷锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷小锟斤拷锟斤拷锟斤拷锟斤拷"<<endl;
+    cout<<"#####################################"<<endl<<endl;
 
 
 
-	cout<<"queue功能"<<endl;
-	queue<string> q;//声明一个字符串型队列 q
-	cout<<"按顺序插入"<<endl;
-	q.push("L");
-	q.push("O");
-	q.push("V");
-	q.push("E");
-	q.push("L");
-	q.push("I");
-	q.push("V");
-	q.push("E");
-	q.push("!");
-	while(!q.empty()){
+    cout<<"queue锟斤拷锟斤拷"<<endl;
+    queue<string> q;//锟斤拷锟斤拷一锟斤拷锟街凤拷锟斤拷锟酵讹拷锟斤拷 q
+    cout<<"锟斤拷顺锟斤拷锟斤拷锟斤拷"<<endl;
+    q.push("L");
+    q.push("O");
+    q.push("V");
+    q.push("E");
+    q.push("L");
+    q.push("I");
+    q.push("V");
+    q.push("E");
+    q.push("!");
+    while(!q.empty()){
         cout<<q.front();
         q.pop();
-	}
-	cout<<endl;
-	cout<<"先入队的先出来"<<endl;
-	cout<<"#################################"<<endl<<endl;
+    }
+    cout<<endl;
+    cout<<"锟斤拷锟斤拷锟接碉拷锟饺筹拷锟斤拷"<<endl;
+    cout<<"#################################"<<endl<<endl;
 
 
 
-	cout<<"priority_queue功能"<<endl;
-	priority_queue<string> pq;//声明priority_queue一个字符串型优先队列
-	cout<<"乱序插入具有可比较大小的数据"<<endl;
-	pq.push("B");
-	pq.push("A");
-	pq.push("C");
+    cout<<"priority_queue锟斤拷锟斤拷"<<endl;
+    priority_queue<string> pq;//锟斤拷锟斤拷priority_queue一锟斤拷锟街凤拷锟斤拷锟斤拷锟斤拷锟饺讹拷锟斤拷
+    cout<<"锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟叫可比较达拷小锟斤拷锟斤拷锟斤拷"<<endl;
+    pq.push("B");
+    pq.push("A");
+    pq.push("C");
     while(!pq.empty()){
         cout<<pq.top();
         pq.pop();
-	}
-	cout<<endl;
-	cout<<"权值大的先出来"<<endl;
-	cout<<"###############################"<<endl<<endl;
+    }
+    cout<<endl;
+    cout<<"权值锟斤拷锟斤拷锟饺筹拷锟斤拷"<<endl;
+    cout<<"###############################"<<endl<<endl;
 
-	cout<<"stack功能"<<endl;
-	stack<string> sta;//声明一个字符串类型的栈
-	cout<<"倒序插入数据"<<endl;
-	sta.push("+");
-	sta.push("+");
-	sta.push("C");
-	    while(!sta.empty()){
+    cout<<"stack锟斤拷锟斤拷"<<endl;
+    stack<string> sta;//锟斤拷锟斤拷一锟斤拷锟街凤拷锟斤拷锟斤拷锟酵碉拷栈
+    cout<<"锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷"<<endl;
+    sta.push("+");
+    sta.push("+");
+    sta.push("C");
+        while(!sta.empty()){
         cout<<sta.top();
         sta.pop();
-	}
-	cout<<endl;
-	cout<<"先进入的后出来"<<endl;
+    }
+    cout<<endl;
+    cout<<"锟饺斤拷锟斤拷锟侥猴拷锟斤拷锟斤拷"<<endl;
     return 0;
 }
 

@@ -31,36 +31,36 @@ int Map[maxn][maxn];
 int n,m;
 
 void dfs(int x,int y,int sum) {
-	if(x > n || y > m)
-		return;
-	int tsum = sum + Map[x][y];
-	if(x == n && y == m)
-		if(tsum > 0)
-			ans = ((ans == -1) ? tsum : min(ans,tsum));
+    if(x > n || y > m)
+        return;
+    int tsum = sum + Map[x][y];
+    if(x == n && y == m)
+        if(tsum > 0)
+            ans = ((ans == -1) ? tsum : min(ans,tsum));
 
-	dfs(x + 1,y,tsum);
-	dfs(x,y + 1,tsum);
+    dfs(x + 1,y,tsum);
+    dfs(x,y + 1,tsum);
 }
 
 bool Do() {
 
-	if(!(cin >> n >> m))
-		return false;
-	for(int i = 1;i <= n;i++)
-		for(int j = 1;j <= m;j++) {
-			cin >> Map[i][j];
-		}
+    if(!(cin >> n >> m))
+        return false;
+    for(int i = 1;i <= n;i++)
+        for(int j = 1;j <= m;j++) {
+            cin >> Map[i][j];
+        }
 
-	ans = -1;
-	dfs(1,1,0);
-	cout << ans << endl;
+    ans = -1;
+    dfs(1,1,0);
+    cout << ans << endl;
 
-	return true;
+    return true;
 }
 int main() {
-	cin.tie(0);
-	cin.sync_with_stdio(false);
+    cin.tie(0);
+    cin.sync_with_stdio(false);
 
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

@@ -62,9 +62,9 @@ Kosaraju 采用两次 DFS 及一次对逆图的操作从而求解的
 const int maxm = 100005;
 
 struct Edge {
-	int u,v;
-	Edge():u(0),v(0) {}
-	Edge(int a,int b):u(a),v(b) {}
+    int u,v;
+    Edge():u(0),v(0) {}
+    Edge(int a,int b):u(a),v(b) {}
 };
 int pos;
 Edge edge[maxm];
@@ -76,47 +76,47 @@ bool vis[maxn];
 vector<int> SCC[maxn];//得到的强连通分量链表
 
 inline void add(int u,int v) {
-	edge[pos] = Edge(u,v);
-	L[u].push_back(pos);
-	L2[v].push_back(pos);//逆图
+    edge[pos] = Edge(u,v);
+    L[u].push_back(pos);
+    L2[v].push_back(pos);//逆图
 
-	pos++;
+    pos++;
 }
 
 void DFS1(int t) {
-	if(!vis[t]) {
-		vis[t] = true;
-		for(list<int>::iterator i = L[t].begin();i != L[t].end();i++)
-			DFS1(edge[*i].v);
-		s.push(t);
-	}
-	return;
+    if(!vis[t]) {
+        vis[t] = true;
+        for(list<int>::iterator i = L[t].begin();i != L[t].end();i++)
+            DFS1(edge[*i].v);
+        s.push(t);
+    }
+    return;
 }
 
 void DFS2(int p,int t) {
-	if(vis[t]) {
-		vis[t] = false;
-		SCC[p].push_back(t);
-		for(list<int>::iterator i = L2[t].begin();i != L2[t].end();i++)
-			DFS2(p,edge[*i].u);
-	}
-	return;
+    if(vis[t]) {
+        vis[t] = false;
+        SCC[p].push_back(t);
+        for(list<int>::iterator i = L2[t].begin();i != L2[t].end();i++)
+            DFS2(p,edge[*i].u);
+    }
+    return;
 }
 
 int Kosaraju(int n) {
-	//第一次DFS
-	for(int i = 0;i < n;i++)
-		DFS1(i);
+    //第一次DFS
+    for(int i = 0;i < n;i++)
+        DFS1(i);
 
-	//第二次DFS
-	int p = 0;
-	while(!s.empty()) {
-		int t = s.top();
-		s.pop();
-		list< list<int> >::iterator it;
-		if(vis[t])
-			DFS2(p++,t);
-	}
-	return p;
+    //第二次DFS
+    int p = 0;
+    while(!s.empty()) {
+        int t = s.top();
+        s.pop();
+        list< list<int> >::iterator it;
+        if(vis[t])
+            DFS2(p++,t);
+    }
+    return p;
 }
 ```

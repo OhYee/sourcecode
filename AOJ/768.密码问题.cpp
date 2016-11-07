@@ -33,48 +33,48 @@ char KtoA[26];
 char AtoK[26];
 
 void GetMap() {
-	memset(KtoA,0,sizeof(KtoA));
-	memset(AtoK,0,sizeof(AtoK));
-	int pos = 0;
-	int len = strlen(key);
-	for(int i = 0;i < len;i++) {
-		if(KtoA[key[i] - 'A'] == 0) {
-			KtoA[key[i] - 'A'] = pos + 'A';
-			AtoK[pos] = key[i];
-			pos++;
-		}
-	}
-	for(int i=0;i < 26;i++) {
-		if(KtoA[i] == 0) {
-			KtoA[i] = pos + 'A';
-			AtoK[pos++] = i + 'A';
-		}
-	}
+    memset(KtoA,0,sizeof(KtoA));
+    memset(AtoK,0,sizeof(AtoK));
+    int pos = 0;
+    int len = strlen(key);
+    for(int i = 0;i < len;i++) {
+        if(KtoA[key[i] - 'A'] == 0) {
+            KtoA[key[i] - 'A'] = pos + 'A';
+            AtoK[pos] = key[i];
+            pos++;
+        }
+    }
+    for(int i=0;i < 26;i++) {
+        if(KtoA[i] == 0) {
+            KtoA[i] = pos + 'A';
+            AtoK[pos++] = i + 'A';
+        }
+    }
 }
 
 bool Do() {
-	int com;
-	scanf("%d",&com);
-	if(com == 0)
-		return false;
+    int com;
+    scanf("%d",&com);
+    if(com == 0)
+        return false;
 
-	scanf("\n%s",key);
-	GetMap();
+    scanf("\n%s",key);
+    GetMap();
 
-	char c;
-	int i = 0;
-	while(!(((c = getchar()) >= 'A'&&c <= 'Z') || (c >= 'a'&&c <= 'z')));
-	while((c >= 'A'&&c <= 'Z') || (c >= 'a'&&c <= 'z')||c==' ') {
-		if(c == ' ') {
-			putchar(' ');
-		}else {
-			if(com == 1) {
-				putchar(AtoK[c-'A']);
-			} else {
-				putchar(KtoA[c - 'A']);
-			}
-		}
-		c = getchar();
+    char c;
+    int i = 0;
+    while(!(((c = getchar()) >= 'A'&&c <= 'Z') || (c >= 'a'&&c <= 'z')));
+    while((c >= 'A'&&c <= 'Z') || (c >= 'a'&&c <= 'z')||c==' ') {
+        if(c == ' ') {
+            putchar(' ');
+        }else {
+            if(com == 1) {
+                putchar(AtoK[c-'A']);
+            } else {
+                putchar(KtoA[c - 'A']);
+            }
+        }
+    	c = getchar();
 	}
 
 	putchar('\n');

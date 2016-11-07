@@ -17,16 +17,16 @@ using namespace std;
 #define REP(n) for(int o=0;o<n;o++)
 
 int main() {
-	int cnt = 0;
-	for(int i = 0;i < 8;i++)
-		for(int j = 0;j < 8;j++) {
-			char temp;
-			scanf("\n%c\n",&temp);
-			//printf("i=%d j=%d -> %c\n",i,j,temp);
-			if(temp == 'F')
-				if(!((i % 2) ^ (j % 2)))//奇偶性相同的为白色，对2取模后异或取反
-					cnt++;
-		}
-	printf("%d\n",cnt);
-	return 0;
+    int cnt = 0;
+    for(int i = 0;i < 8;i++)
+        for(int j = 0;j < 8;j++) {
+            char temp;
+            scanf("\n%c\n",&temp);
+            //printf("i=%d j=%d -> %c\n",i,j,temp);
+            if(temp == 'F')
+                if(!((i % 2) ^ (j % 2)))//奇偶性相同的为白色，对2取模后异或取反
+                    cnt++;
+        }
+    printf("%d\n",cnt);
+    return 0;
 }

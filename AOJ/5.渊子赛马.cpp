@@ -6,48 +6,48 @@ using namespace std;
 #define REP(n) for(int o=0;o<n;o++)
 
 bool Do() {
-	const int maxn = 1005;
-	int N;//马的数量
-	int a[maxn];//渊子的马
-	int	b[maxn];//对手的马
+    const int maxn = 1005;
+    int N;//马的数量
+    int a[maxn];//渊子的马
+    int    b[maxn];//对手的马
 
-	//数据读入
-	scanf("%d",&N);
-	if(N == 0)
-		return false;
+    //数据读入
+    scanf("%d",&N);
+    if(N == 0)
+        return false;
 
-	REP(N)
-		scanf("%d",&a[o]);
-	REP(N)
-		scanf("%d",&b[o]);
+    REP(N)
+        scanf("%d",&a[o]);
+    REP(N)
+        scanf("%d",&b[o]);
 
-	//从小到大排序
-	sort(a,a + N);
-	sort(b,b + N);
+    //从小到大排序
+    sort(a,a + N);
+    sort(b,b + N);
 
-	int ans = 0;
-	int i = 0,j = 0;
-	while(1) {
-		while(a[i] <= b[j]) {
-			i++;
-			if(i >= N)
-				break;
-		}
-		if(i >= N)
-			break;
-		ans++;
-		i++;
-		if(i >= N)
-			break;
-		j++;
-		if(j >= N)
-			break;
-	}
-	printf("%s\n",2 * ans > N ? "YES" : "NO");
-	return true;
+    int ans = 0;
+    int i = 0,j = 0;
+    while(1) {
+        while(a[i] <= b[j]) {
+            i++;
+            if(i >= N)
+                break;
+        }
+        if(i >= N)
+            break;
+        ans++;
+        i++;
+        if(i >= N)
+            break;
+        j++;
+        if(j >= N)
+            break;
+    }
+    printf("%s\n",2 * ans > N ? "YES" : "NO");
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

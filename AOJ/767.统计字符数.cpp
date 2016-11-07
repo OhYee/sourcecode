@@ -29,28 +29,28 @@ const int maxn = 500;
 int cnt[maxn];
 
 void Do() {
-	memset(cnt,0,sizeof(cnt));
-	char c = getchar();
-	while(!((c >= 'a'&&c <= 'z') || (c >= 'A'&&c <= 'Z')))
-			c = getchar();
-	while((c >= 'a'&&c <= 'z') || (c >= 'A'&&c <= 'Z')) {
-		cnt[c]++;
-		c = getchar();
-	}
-	int ans,Max = 0;
-	for(int i = 0;i < maxn;i++) {
-		if(cnt[i] > Max) {
-			ans = i;
-			Max = cnt[i];
-		}
-	}
-	printf("%c %d\n",ans,Max);
+    memset(cnt,0,sizeof(cnt));
+    char c = getchar();
+    while(!((c >= 'a'&&c <= 'z') || (c >= 'A'&&c <= 'Z')))
+            c = getchar();
+    while((c >= 'a'&&c <= 'z') || (c >= 'A'&&c <= 'Z')) {
+        cnt[c]++;
+        c = getchar();
+    }
+    int ans,Max = 0;
+    for(int i = 0;i < maxn;i++) {
+        if(cnt[i] > Max) {
+            ans = i;
+            Max = cnt[i];
+        }
+    }
+    printf("%c %d\n",ans,Max);
 }
 
 int main() {
-	int T;
-	scanf("%d",&T);
-	while(T--)
-		Do();
-	return 0;
+    int T;
+    scanf("%d",&T);
+    while(T--)
+        Do();
+    return 0;
 }

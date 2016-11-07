@@ -33,30 +33,30 @@ const int maxn = 10005;
 bool tree[maxn];
 
 bool Do() {
-	int L,M;
-	if(scanf("%d%d",&L,&M)==EOF)
-		return false;
+    int L,M;
+    if(scanf("%d%d",&L,&M)==EOF)
+        return false;
 
-	memset(tree,true,sizeof(tree));
+    memset(tree,true,sizeof(tree));
 
-	REP(M) {
-		int a,b;
-		scanf("%d%d",&a,&b);
-		for(int i = a;i <= b;i++)
-			tree[i] = false;
-	}
+    REP(M) {
+        int a,b;
+        scanf("%d%d",&a,&b);
+        for(int i = a;i <= b;i++)
+            tree[i] = false;
+    }
 
-	int cnt = 0;
-	for(int i = 0;i <= L;i++)
-		if(tree[i])
-			cnt++;
-	
+    int cnt = 0;
+    for(int i = 0;i <= L;i++)
+        if(tree[i])
+            cnt++;
+    
 
-	printf("%d\n",cnt);
-	return true;
+    printf("%d\n",cnt);
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

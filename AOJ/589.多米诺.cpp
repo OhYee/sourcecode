@@ -19,12 +19,12 @@ using namespace std;
 
 
 int main() {
-	int T,n,m;
-	scanf("%d",&T);
-	while(T--) {
-		scanf("%d%d",&n,&m);
-		printf("%lld\n",(long long)(n / 2)*(long long)m + (long long)
-			(n % 2)*(long long)(m / 2));
-	}
-	return 0;
+    int T,n,m;
+    scanf("%d",&T);
+    while(T--) {
+        scanf("%d%d",&n,&m);
+        printf("%lld\n",(long long)(n / 2)*(long long)m + (long long)
+            (n % 2)*(long long)(m / 2));
+    }
+    return 0;
 }
