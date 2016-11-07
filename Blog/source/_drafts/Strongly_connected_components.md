@@ -1,5 +1,5 @@
 ---
-title: 强连通分量缩点 — kosaraju|tarjan|gabow
+title: 强连通分量缩点 — kosaraju | tarjan | gabow
 date: 2016-11-06 01:01:07
 categories: 算法
 tags:
