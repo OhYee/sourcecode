@@ -859,6 +859,83 @@ int Kosaraju(int n) {
 }
 ```
 
+#### Tarjan
+```cpp Tarjan
+//Tarjan 返回强连通分量个数
+//节点从0开始,记得初始化变量
+
+struct Edge {
+    int u,v;
+    Edge():u(0),v(0) {}
+    Edge(int a,int b):u(a),v(b) {}
+};
+int pos;
+Edge edge[maxm];
+list<int> L[maxn];
+
+stack<int> s;
+bool inStack[maxn];
+vector<int> SCC[maxn];//得到的强连通分量链表
+int cnt,Index;
+int DFN[maxn],Low[maxn];
+
+inline void add(int u,int v) {
+    edge[pos] = Edge(u,v);
+    L[u].push_back(pos);
+    pos++;
+}
+
+void tarjan(int u) {
+    if(DFN[u] != -1)
+        return;
+
+    DFN[u] = Low[u] = ++Index;
+    s.push(u);
+    inStack[u] = true;
+
+    for(list<int>::iterator it = L[u].begin();it != L[u].end();it++) {
+        int v = edge[*it].v;
+
+        if(DFN[v] == -1) {
+            tarjan(v);
+            Low[u] = min(Low[u],Low[v]);
+        } else if(inStack[v]) {
+            Low[u] = min(Low[u],DFN[v]);
+        }
+
+    }
+    if(DFN[u] == Low[u]) {
+        int v = s.top();
+        s.pop();
+        inStack[v] = false;
+
+        SCC[cnt++].push_back(v);
+
+        while(u != v) {
+            v = s.top();
+            s.pop();
+            inStack[v] = false;
+
+            SCC[cnt - 1].push_back(v);
+        }
+    }
+}
+
+int Tarjan(int n) {
+    cnt = 0;
+    Index = 0;
+    while(!s.empty())s.pop();
+    memset(inStack,false,sizeof(inStack));
+    memset(DFN,-1,sizeof(DFN));
+    memset(Low,-1,sizeof(Low));
+
+    for(int i = 0;i < n;i++)
+        tarjan(i);
+    return cnt;
+}
+
+```
+
 ### 网络流
 #### Dinic算法
 ```cpp Dinic 
