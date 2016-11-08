@@ -25,21 +25,21 @@ Email:oyohyee@oyohyee.com
 using namespace std;
 
 bool Do() {
-	int n,k,m;
-	cin >> n >> k >> m;
-	if(n == 0 && m == 0 && k == 0)
-		return false;
-	int ans = 0;
-	for(int i = 2; i <= n; i++)
-		ans = (ans + k) % i;
-	ans = (m - k + 1 + ans) % n;
-	if(ans <= 0)
-		ans += n;
-	cout << ans << endl;
-	return true;
+    int n,k,m;
+    cin >> n >> k >> m;
+    if(n == 0 && m == 0 && k == 0)
+        return false;
+    int ans = 0;
+    for(int i = 2; i <= n; i++)
+        ans = (ans + k) % i;
+    ans = (m - k + 1 + ans) % n;
+    if(ans <= 0)
+        ans += n;
+    cout << ans << endl;
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

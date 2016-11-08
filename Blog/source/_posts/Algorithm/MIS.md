@@ -25,12 +25,12 @@ tags:
 
 {% raw %}
 <p>
-1.	子序列上一个是 <code>1</code> <br>
-2.	子序列上一个是 <code>2</code> <br>
-3.	子序列上一个是 <code>3</code> <br>
-4.	子序列上一个是 <code>4</code> <br>
+1.    子序列上一个是 <code>1</code> <br>
+2.    子序列上一个是 <code>2</code> <br>
+3.    子序列上一个是 <code>3</code> <br>
+4.    子序列上一个是 <code>4</code> <br>
 ……<br>
-i.	从 <code>i</code> 开始<br>
+i.    从 <code>i</code> 开始<br>
 </p>
 {% endraw %}
 

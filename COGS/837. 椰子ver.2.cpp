@@ -28,19 +28,19 @@ const int maxn=1005;
 const int maxH=500;
 const int maxL=1000;
 struct coconuts{
-	int pos,h,weight;
+    int pos,h,weight;
 };
 coconuts c[maxn];
  Map[maxL][maxH]={0};//0代表可以到达
 
 void fall(int pos,int h,int n){
-	if(Map[pos-1][h-1]&&Map[pos-1][h-1]){//都不能到达
-		Map[pos][h]=n;
-		c[o].pos=pos;
-		c[o].h=h;
-		return;
-	}
-	if(!Map[pos-1][h-1]&&!Map[pos-1][h-1]){//都能到达
+    if(Map[pos-1][h-1]&&Map[pos-1][h-1]){//都不能到达
+        Map[pos][h]=n;
+        c[o].pos=pos;
+        c[o].h=h;
+        return;
+    }
+    if(!Map[pos-1][h-1]&&!Map[pos-1][h-1]){//都能到达
         m=Map[pos][h-1];
         if(c[n].weight<c[m].weight){
             fall(pos-1,h-1,n);
@@ -48,7 +48,7 @@ void fall(int pos,int h,int n){
         }else{
 
         }
-	}
+    }
 }
 
 int main(){
@@ -60,7 +60,7 @@ int main(){
     #endif
 
     REP(maxL){
-    	Map[o][0]=1;
+        Map[o][0]=1;
     }
 
     cin>>T;
@@ -73,10 +73,10 @@ int main(){
             c[o].pos=Pi;
             c[o].weight=Wi;
             for(int i=1;i<maxH;i++){
-            	if(Map[Pi][i]==0){
-            		fall(Pi,h,n)
-            	}
-        	}
+                if(Map[Pi][i]==0){
+                    fall(Pi,h,n)
+                }
+            }
         }
         cout<<endl;
     }

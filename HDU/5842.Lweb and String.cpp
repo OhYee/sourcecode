@@ -29,32 +29,32 @@ const int maxn = 27;
 bool vis[maxn];
 
 void Do() {
-	char c = getchar();;
+    char c = getchar();;
 
-	memset(vis,false,sizeof(vis));
-	int ans = 0;
-	while(!(c >= 'a'&&c <= 'z'))
-		c=getchar();
-	while(c >= 'a'&&c <= 'z') {
-		int t = c - 'a';
-		if(!vis[t]) {
-			ans++;
-			vis[t] = true;
-		}
+    memset(vis,false,sizeof(vis));
+    int ans = 0;
+    while(!(c >= 'a'&&c <= 'z'))
+        c=getchar();
+    while(c >= 'a'&&c <= 'z') {
+        int t = c - 'a';
+        if(!vis[t]) {
+            ans++;
+            vis[t] = true;
+        }
 
-		c = getchar();
-	}
-	printf("%d\n",ans);
+        c = getchar();
+    }
+    printf("%d\n",ans);
 }
 
 int main() {
-	//cin.tie(0);
-	//cin.sync_with_stdio(false);
-	int T;
-	scanf("%d",&T);
-	for(int i = 1;i <= T;i++) {
-		printf("Case #%d: ",i);
-		Do();
-	}
-	return 0;
+    //cin.tie(0);
+    //cin.sync_with_stdio(false);
+    int T;
+    scanf("%d",&T);
+    for(int i = 1;i <= T;i++) {
+        printf("Case #%d: ",i);
+        Do();
+    }
+    return 0;
 }

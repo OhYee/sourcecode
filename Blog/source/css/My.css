@@ -1,9 +1,9 @@
 /*阴影*/
 html{
-		text-shadow: 1px 1px 1px rgba(85,85,85,0.3);
+        text-shadow: 1px 1px 1px rgba(85,85,85,0.3);
 }
 #sidebar{
-	text-shadow: 0px 0px 0px rgba(255,255,255,0);
+    text-shadow: 0px 0px 0px rgba(255,255,255,0);
 }
 
 /*分割线*/
@@ -23,7 +23,7 @@ a{
 }
 
 ul li {
-		list-style: circle;
+        list-style: circle;
 }
 
 .footer-inner::before{

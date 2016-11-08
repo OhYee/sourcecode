@@ -32,27 +32,27 @@ using namespace std;
 const int maxn = 100005;
 
 bool Do() {
-	char s[maxn],t[maxn];
-	if(scanf("%s%s",s,t) == EOF)
-		return false;
-	
-	int t_len = strlen(t);
-	int s_len = strlen(s);
+    char s[maxn],t[maxn];
+    if(scanf("%s%s",s,t) == EOF)
+        return false;
+    
+    int t_len = strlen(t);
+    int s_len = strlen(s);
 
-	int it = 0;
-	for(int i = 0;i < t_len;i++) {
-		if(s[it] == t[i])
-			it++;
-		if(it == s_len)
-			break;
-	}
+    int it = 0;
+    for(int i = 0;i < t_len;i++) {
+        if(s[it] == t[i])
+            it++;
+        if(it == s_len)
+            break;
+    }
 
-	printf("%s\n",(it == s_len) ? "Yes" : "No");
+    printf("%s\n",(it == s_len) ? "Yes" : "No");
 
-	return true;
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

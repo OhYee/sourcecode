@@ -19,21 +19,21 @@ tags:
 <!--more-->
 ``` json
 {
-	"encoding": "utf-8",
-	"working_dir": "${file_path}",
-	"shell_cmd": "g++ -Wall -std=c++0x $file_name -o $file_base_name",
-	"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
-	"selector": "source.c++,source.c",
-	"encoding":"cp936",
+    "encoding": "utf-8",
+    "working_dir": "${file_path}",
+    "shell_cmd": "g++ -Wall -std=c++0x $file_name -o $file_base_name",
+    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+    "selector": "source.c++,source.c",
+    "encoding":"cp936",
 
  
-	"variants": 
-	[
-		{	
-		"name": "Run",
-        	"shell_cmd": "g++ -Wall -std=c++0x $file -o $file_base_name.exe && start cmd /c \"${file_path}/${file_base_name}.exe & pause\" "
-		}
-	]
+    "variants": 
+    [
+        {    
+        "name": "Run",
+            "shell_cmd": "g++ -Wall -std=c++0x $file -o $file_base_name.exe && start cmd /c \"${file_path}/${file_base_name}.exe & pause\" "
+        }
+    ]
 }
 ```
 
@@ -50,20 +50,20 @@ tags:
 
 ```json 完整的Sublime-build文件
 {
-	"encoding": "utf-8",
-	"working_dir": "${file_path}",
-	"shell_cmd": "g++ -Wall -std=c++0x $file_name -o $file_base_name",
-	"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
-	"selector": "source.c++,source.c",
-	"encoding":"cp936",
+    "encoding": "utf-8",
+    "working_dir": "${file_path}",
+    "shell_cmd": "g++ -Wall -std=c++0x $file_name -o $file_base_name",
+    "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+    "selector": "source.c++,source.c",
+    "encoding":"cp936",
 
  
-	"variants": 
-	[
-		{	
-		"name": "Run",
-        	"shell_cmd": "g++ -Wall -std=c++0x $file -o $file_base_name.exe && start cmd /c \"${file_path}/${file_base_name}.exe & pause & del /Q ${file_base_name}.exe\" "
-		}
-	]
+    "variants": 
+    [
+        {    
+        "name": "Run",
+            "shell_cmd": "g++ -Wall -std=c++0x $file -o $file_base_name.exe && start cmd /c \"${file_path}/${file_base_name}.exe & pause & del /Q ${file_base_name}.exe\" "
+        }
+    ]
 }
 ```

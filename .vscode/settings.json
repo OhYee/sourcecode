@@ -11,6 +11,12 @@
     // 控制换行的行的缩进。可以是"none"、 "same" 或 "indent"。
     "editor.wrappingIndent": "indent",
 
+    // 按 "Tab" 时插入空格。该设置在 `editor.detectIndentation` 启用时根据文件内容进行重写。
+    "editor.insertSpaces": false,
+
+    // 当打开文件时，将基于文件内容检测 "editor.tabSize" 和 "editor.insertSpaces"。
+    "editor.detectIndentation": false,
+
     "markdown.styles": ["${workspaceRoot}/.vscode/markdown.css"],
 
     // 可执行 GIT 的路径

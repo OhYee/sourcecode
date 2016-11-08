@@ -14,25 +14,25 @@ using namespace std;
 ;
 
 class LOVE{
-	private:
-		static const int Likeability=Max;
-	public:
-		void Show_My_Love(){
-			I_want_to_konw{
-				Do_you_love_me{
-					if(You_Love_Me){
-						I_Love_You;
-					}else{
-						I_Still_Love_You;
-					}
-				}
-				Then;
-			}
-		}
+    private:
+        static const int Likeability=Max;
+    public:
+        void Show_My_Love(){
+            I_want_to_konw{
+                Do_you_love_me{
+                    if(You_Love_Me){
+                        I_Love_You;
+                    }else{
+                        I_Still_Love_You;
+                    }
+                }
+                Then;
+            }
+        }
 };
 
 int main(){
-	LOVE CX;
-	CX.Show_My_Love();
-	return My_heart;
+    LOVE CX;
+    CX.Show_My_Love();
+    return My_heart;
 }

@@ -30,15 +30,15 @@ using namespace std;
 #define REP(n) for(int o=0;o<n;o++)
 
 void Do() {
-	int a1,a2,b1,b2;
-	scanf("%d%d%d%d",&a1,&a2,&b1,&b2);
-	printf("%d\n",abs(a1*a2 - b1*b2));
+    int a1,a2,b1,b2;
+    scanf("%d%d%d%d",&a1,&a2,&b1,&b2);
+    printf("%d\n",abs(a1*a2 - b1*b2));
 }
 
 int main() {
-	int T;
-	scanf("%d",&T);
-	while(T--) 
-		Do();
-	return 0;
+    int T;
+    scanf("%d",&T);
+    while(T--) 
+        Do();
+    return 0;
 }

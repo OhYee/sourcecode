@@ -24,29 +24,29 @@ Email:oyohyee@oyohyee.com
 using namespace std;
 
 bool Do() {
-	int T;
-	
-	if(scanf("%d",&T) == EOF)
-		return false;
-	
-	bool OK = false;
-	for(int i = 0;i < T;i++) {
-		int a,b;
-		scanf("%*s%d%d",&a,&b);
-		if(!OK)
-			if(a >= 2400 && b > a)
-				OK = true;
-	}
+    int T;
+    
+    if(scanf("%d",&T) == EOF)
+        return false;
+    
+    bool OK = false;
+    for(int i = 0;i < T;i++) {
+        int a,b;
+        scanf("%*s%d%d",&a,&b);
+        if(!OK)
+            if(a >= 2400 && b > a)
+                OK = true;
+    }
 
-	if(OK)
-		printf("YES\n");
-	else
-		printf("NO\n");
+    if(OK)
+        printf("YES\n");
+    else
+        printf("NO\n");
 
-	return true;
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

@@ -27,40 +27,40 @@ using namespace std;
 #define REP(n) for(int o=0;o<n;o++)
 
 unsigned long long gcd(unsigned long long a, unsigned long long b) {
-	return b == 0 ? a : gcd(b, a%b);
+    return b == 0 ? a : gcd(b, a%b);
 }
 
 bool Do() {
-	int n, m;
-	if (scanf("%d%d", &n, &m), n == 0 && m == 0)
-		return false;
+    int n, m;
+    if (scanf("%d%d", &n, &m), n == 0 && m == 0)
+        return false;
 
-	unsigned long long ans = 1;
-	int a = max(m, n - m);
-	int b = min(m, n - m);
-	unsigned long long t = 1;
-	for (int i = n, j = 2; i > a; i--, j++) {
-		ans *= i;
-		if (j <= b || t > 1) {
-			if (j <= b)
-				t *= j;
-			if (t > 1) {
-				unsigned long long q = gcd(ans, t);
-				ans /= q;
-				t /= q;
-			}
-		}
+    unsigned long long ans = 1;
+    int a = max(m, n - m);
+    int b = min(m, n - m);
+    unsigned long long t = 1;
+    for (int i = n, j = 2; i > a; i--, j++) {
+        ans *= i;
+        if (j <= b || t > 1) {
+            if (j <= b)
+                t *= j;
+            if (t > 1) {
+                unsigned long long q = gcd(ans, t);
+                ans /= q;
+                t /= q;
+            }
+        }
 
-	}
+    }
 
 
-	printf("%d things taken %d at a time is %llu exactly.\n", n, m, ans);
+    printf("%d things taken %d at a time is %llu exactly.\n", n, m, ans);
 
-	return true;
+    return true;
 }
 
 
 int main() {
-	while (Do());
-	return 0;
+    while (Do());
+    return 0;
 }

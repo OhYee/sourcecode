@@ -33,72 +33,72 @@ const int len = 700000;
 short int num[len];
  
 short int t(LL n) {
-	short int cnt;
-	LL m = n;
+    short int cnt;
+    LL m = n;
 
-	for (cnt = 0; m; m >>= 1) {
-		if (m < len) {
-			return num[m] + cnt;
-		}
-		cnt += (m & 1);
-	}
+    for (cnt = 0; m; m >>= 1) {
+        if (m < len) {
+            return num[m] + cnt;
+        }
+        cnt += (m & 1);
+    }
 
-	return cnt;
+    return cnt;
 }
 
 void DFS(LL n,short int cnt) {
-	if (n > len)
-		return;
-	num[n] = cnt;
-	DFS(n << 1, cnt);
-	DFS((n << 1) + 1, cnt + 1);
+    if (n > len)
+        return;
+    num[n] = cnt;
+    DFS(n << 1, cnt);
+    DFS((n << 1) + 1, cnt + 1);
 }
 
 void init() {
-	LL i = 1;
-	short int cnt = 1;
-	num[i] = cnt;
-	DFS(i << 1, cnt);
-	DFS((i << 1)+1, cnt + 1);
+    LL i = 1;
+    short int cnt = 1;
+    num[i] = cnt;
+    DFS(i << 1, cnt);
+    DFS((i << 1)+1, cnt + 1);
 }
 
 void Do() {
-	printf("Case #%d: ", kase++);
-	LL d;
-	int s1, s2;
-	scanf("%llu%d%d", &d,&s1,&s2);
+    printf("Case #%d: ", kase++);
+    LL d;
+    int s1, s2;
+    scanf("%llu%d%d", &d,&s1,&s2);
 
-	LL dd = d;
+    LL dd = d;
 
-	//优化2^n的情况
-	if (s1 == 1 && s2 == 1) {
-		LL temp = 2;
-		while (temp <= d)
-			temp *= 2;
-		printf("%llu\n", temp);
-		return;
-	}
-	
-	d++;
-	int a;
-	while (1) {
-		a = t(d);
-		if (a >= s1 && a <= s2)
-			break;
-		d++;
-	}
-	printf("%llu\n", d);
-	return;
+    //优化2^n的情况
+    if (s1 == 1 && s2 == 1) {
+        LL temp = 2;
+        while (temp <= d)
+            temp *= 2;
+        printf("%llu\n", temp);
+        return;
+    }
+    
+    d++;
+    int a;
+    while (1) {
+        a = t(d);
+        if (a >= s1 && a <= s2)
+            break;
+        d++;
+    }
+    printf("%llu\n", d);
+    return;
 }
 
 
 int main() {
-	init();
+    init();
 
-	int T;
-	scanf("%d", &T);
-	while (T--) {
-		Do();
-	}
-	return 0;
+    int T;
+    scanf("%d", &T);
+    while (T--) {
+        Do();
+    }
+    return 0;
 }

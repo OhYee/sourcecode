@@ -4,14 +4,14 @@
 #include <time.h>
 
 /*==============
-ºê¶¨Òå²¿·Ö
+ï¿½ê¶¨ï¿½å²¿ï¿½ï¿½
 ==============*/
-//¼æÈÝ½ÏµÍ°æ±¾C±ê×¼
+//ï¿½ï¿½ï¿½Ý½ÏµÍ°æ±¾Cï¿½ï¿½×¼
 #define bool int
 #define true 1
 #define false 0
 
-//¸÷ÏîÏµÊý
+//ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½
 #define MAXSIZE 15
 
 #define ROOM_NUMBER_SIZE 5
@@ -23,328 +23,328 @@
 #define NAMESIZE 15
 #define IDSIZE 15
 
-//¼æÈÝµÍ°æ±¾C±ê×¼²¢¼ò»¯Ñ­»·Óï¾ä
+//ï¿½ï¿½ï¿½ÝµÍ°æ±¾Cï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #define REP(n) for(o=0;o<n;o++)
 
-//±È½Ï´óÐ¡
+//ï¿½È½Ï´ï¿½Ð¡
 #define max(a,b) ((a)>(b)?(a):(b))
 
 /*==============
-½á¹¹Ìå¶¨Òå
+ï¿½á¹¹ï¿½å¶¨ï¿½ï¿½
 ==============*/
 typedef struct {
-	int year;
-	int month;
-	int day;
-	int hour;
-	int minute;
+    int year;
+    int month;
+    int day;
+    int hour;
+    int minute;
 }Time;
 
 typedef struct {
-	char Number[ROOM_NUMBER_SIZE];//·¿¼äºÅ
-	int Type;//·¿¼äÀàÐÍ
-	int Price;//·¿¼ä¼Û¸ñ
-	bool Using;//ÊÇ·ñÊ¹ÓÃÖÐ
-	char Name[NAMESIZE];//¹Ë¿ÍÐÕÃû
-	char ID[IDSIZE];//¹Ë¿ÍÉí·ÝÖ¤
-	Time In;//Èë×¡Ê±¼ä
-	Time Out;//ÍË·¿Ê±¼ä
-	int PreMoney;//Ô¤¸¶·ÑÓÃ
+    char Number[ROOM_NUMBER_SIZE];//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    int Type;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    int Price;//ï¿½ï¿½ï¿½ï¿½ï¿½Û¸ï¿½
+    bool Using;//ï¿½Ç·ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½
+    char Name[NAMESIZE];//ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½
+    char ID[IDSIZE];//ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
+    Time In;//ï¿½ï¿½×¡Ê±ï¿½ï¿½
+    Time Out;//ï¿½Ë·ï¿½Ê±ï¿½ï¿½
+    int PreMoney;//Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }Room;
 
-//¶ÁÈëÊ±¼ä
+//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 void TimeRead(Time *T) {
-	printf("ÊäÈëÊ±¼äÐÅÏ¢£º(Äê/ÔÂ/ÈÕ Ð¡Ê±:·ÖÖÓ)\n");
-	rewind(stdin);
-	scanf("%d/%d/%d %d:%d",&T->year,&T->month,&T->day,&T->hour,&T->minute);
+    printf("ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½(ï¿½ï¿½/ï¿½ï¿½/ï¿½ï¿½ Ð¡Ê±:ï¿½ï¿½ï¿½ï¿½)\n");
+    rewind(stdin);
+    scanf("%d/%d/%d %d:%d",&T->year,&T->month,&T->day,&T->hour,&T->minute);
 }
-//Êä³öÊ±¼ä
+//ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 void TimePrint(Time *T) {
-	printf("%d/%d/%d %d:%d",T->year,T->month,T->day,T->hour,T->minute);
+    printf("%d/%d/%d %d:%d",T->year,T->month,T->day,T->hour,T->minute);
 }
-//ÉèÖÃ·¿¼äÐÅÏ¢
+//ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 void RoomSet(Room *R,char *Number,int Type,int Price,bool Using) {
-	strcpy(R->Number,Number);
-	R->Type = Type;
-	R->Price = Price;
-	R->Using = Using;
+    strcpy(R->Number,Number);
+    R->Type = Type;
+    R->Price = Price;
+    R->Using = Using;
 }
-//ÐÞ¸Ä·¿¼äÐÅÏ¢
+//ï¿½Þ¸Ä·ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 void RoomReset(Room *R,bool Using,char *Name = "",char *ID = "",Time *In = NULL,Time *Out = NULL,int PreMoney = 0) {
-	R->Using = Using;
-	strcpy(R->Name,Name);
-	strcpy(R->ID,ID);
-	if(In)
-		memcpy(&R->In,In,sizeof(In));
-	if(Out)
-		memcpy(&R->Out,Out,sizeof(Out));
-	R->PreMoney = PreMoney;
+    R->Using = Using;
+    strcpy(R->Name,Name);
+    strcpy(R->ID,ID);
+    if(In)
+        memcpy(&R->In,In,sizeof(In));
+    if(Out)
+        memcpy(&R->Out,Out,sizeof(Out));
+    R->PreMoney = PreMoney;
 }
-//Êä³ö·¿¼äÐÅÏ¢
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 void RoomPrint(Room *R) {
-	printf("%s\t",R->Number);
-	switch(R->Type) {
-		case ROOM_TAOFANG:
-		printf("Ì×·¿\t");
-		break;
-		case ROOM_SHUANGREN:
-		printf("Ë«ÈË·¿\t");
-		break;
-		case ROOM_DANREN:
-		printf("µ¥ÈË·¿\t");
-		break;
-		default:
-		printf("ÀàÐÍ´íÎó\t");
-	}
-	printf("\t%d\t",R->Price);
-	if(R->Using) {
-		printf("\tÈë×¡\n");
-		printf("\t%s\t",R->Name);
-		printf("\t%s\t\t",R->ID);
-		TimePrint(&R->In);
-		printf("\t");
-		TimePrint(&R->Out);
-		printf("\t");
-		printf("%d",R->PreMoney);
-	} else {
-		printf("\tÎ´Èë×¡");
-	}
-	printf("\n");
+    printf("%s\t",R->Number);
+    switch(R->Type) {
+        case ROOM_TAOFANG:
+        printf("ï¿½×·ï¿½\t");
+        break;
+        case ROOM_SHUANGREN:
+        printf("Ë«ï¿½Ë·ï¿½\t");
+        break;
+        case ROOM_DANREN:
+        printf("ï¿½ï¿½ï¿½Ë·ï¿½\t");
+        break;
+        default:
+        printf("ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½\t");
+    }
+    printf("\t%d\t",R->Price);
+    if(R->Using) {
+        printf("\tï¿½ï¿½×¡\n");
+        printf("\t%s\t",R->Name);
+        printf("\t%s\t\t",R->ID);
+        TimePrint(&R->In);
+        printf("\t");
+        TimePrint(&R->Out);
+        printf("\t");
+        printf("%d",R->PreMoney);
+    } else {
+        printf("\tÎ´ï¿½ï¿½×¡");
+    }
+    printf("\n");
 }
 /*==============
-È«¾Ö±äÁ¿¶¨Òå
+È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ==============*/
 
 Room room[MAXSIZE];
 int o;
 
-//³õÊ¼»¯·¿¼ä
+//ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void Init() {
-	REP(MAXSIZE) {
-		int floor = o / 5 + 1;
-		int n = (o) % 5 + 1;
-		char Number[ROOM_NUMBER_SIZE];
-		int Type;
-		int Price;
-		bool Using = false;
+    REP(MAXSIZE) {
+        int floor = o / 5 + 1;
+        int n = (o) % 5 + 1;
+        char Number[ROOM_NUMBER_SIZE];
+        int Type;
+        int Price;
+        bool Using = false;
 
-		Number[0] = floor + '0';
-		Number[1] = '0';
-		Number[2] = n + '0';
-		Number[3] = '\0';
+        Number[0] = floor + '0';
+        Number[1] = '0';
+        Number[2] = n + '0';
+        Number[3] = '\0';
 
-		if(floor == 1) {
-			Type = ROOM_DANREN;
-			Price = 50;
-		}
-		if(floor == 2) {
-			Type = ROOM_SHUANGREN;
-			Price = 70;
-		}
-		if(floor == 3) {
-			Type = ROOM_TAOFANG;
-			Price = 100;
-		}
+        if(floor == 1) {
+            Type = ROOM_DANREN;
+            Price = 50;
+        }
+        if(floor == 2) {
+            Type = ROOM_SHUANGREN;
+            Price = 70;
+        }
+        if(floor == 3) {
+            Type = ROOM_TAOFANG;
+            Price = 100;
+        }
 
-		RoomSet(&room[o],Number,Type,Price,Using);
-	}
+        RoomSet(&room[o],Number,Type,Price,Using);
+    }
 }
-//Â¼Èë¿ÍÈËÐÅÏ¢
+//Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 void PeopleIn(int n,char *Name,char *ID,Time *In,Time *Out,int PreMoney) {
-	RoomReset(&room[n],true,Name,ID,In,Out,PreMoney);
+    RoomReset(&room[n],true,Name,ID,In,Out,PreMoney);
 }
-//¿ÍÈËÍË·¿
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½
 int PeopleOut(int n) {
-	int money = room[n].PreMoney - room[n].Price;
-	RoomReset(&room[n],false);
-	return money;
+    int money = room[n].PreMoney - room[n].Price;
+    RoomReset(&room[n],false);
+    return money;
 }
-//°´ÕÕ·¿¼äºÅËÑË÷ ·µ»ØÐòºÅ£¬²»´æÔÚ·µ»Ø-1
+//ï¿½ï¿½ï¿½Õ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½-1
 int Search_Room_Number(char *Number) {
-	REP(MAXSIZE) {
-		if(strcmp(room[o].Number,Number) == 0)
-			return o;
-	}
-	return -1;
+    REP(MAXSIZE) {
+        if(strcmp(room[o].Number,Number) == 0)
+            return o;
+    }
+    return -1;
 }
-//°´ÕÕÐÕÃûËÑË÷ ·µ»ØÐòºÅ£¬²»´æÔÚ·µ»Ø-1
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½-1
 int Search_Room_Name(char *Name) {
-	REP(MAXSIZE) {
-		if(strcmp(room[o].Name,Name) == 0)
-			return o;
-	}
-	return -1;
+    REP(MAXSIZE) {
+        if(strcmp(room[o].Name,Name) == 0)
+            return o;
+    }
+    return -1;
 }
-//ËÑË÷·¿¼ä£¬²»´æÔÚ·µ»Ø-1
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½-1
 int Search() {
-	char command;
-	printf("ÊäÈë²éÕÒµÄÐÅÏ¢(1.°´ÕÕ·¿¼äºÅ²éÕÒ 2.°´ÕÕ¹Ë¿ÍÐÕÃû²éÕÒ)£º");
-	scanf("%c",&command);
-	if(command == '1') {
-		char Number[ROOM_NUMBER_SIZE];
-		printf("\nÊäÈë·¿¼äºÅ:");
-		scanf("%s",Number);
-		return Search_Room_Number(Number);
-	}
-	if(command == '2') {
-		char Name[NAMESIZE];
-		printf("\nÊäÈë¹Ë¿ÍÐÕÃû:");
-		scanf("%s",Name);
-		return Search_Room_Name(Name);
+    char command;
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ï¢(1.ï¿½ï¿½ï¿½Õ·ï¿½ï¿½ï¿½ï¿½Å²ï¿½ï¿½ï¿½ 2.ï¿½ï¿½ï¿½Õ¹Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½");
+    scanf("%c",&command);
+    if(command == '1') {
+        char Number[ROOM_NUMBER_SIZE];
+        printf("\nï¿½ï¿½ï¿½ë·¿ï¿½ï¿½ï¿½ï¿½:");
+        scanf("%s",Number);
+        return Search_Room_Number(Number);
+    }
+    if(command == '2') {
+        char Name[NAMESIZE];
+        printf("\nï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½:");
+        scanf("%s",Name);
+        return Search_Room_Name(Name);
 
-	}
-	printf("Ö¸ÁîÓÐÎó\n");
-	return -1;
+    }
+    printf("Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
+    return -1;
 }
 
 void UI_PeopleIn() {
-	char Number[ROOM_NUMBER_SIZE];
-	char Name[NAMESIZE];
-	char ID[IDSIZE];
-	Time In;
-	Time Out;
-	int PreMoney;
-	int n;
-	printf("¿ÍÈËÐÅÏ¢Â¼Èë:\n");
-	printf("ÊäÈë·¿¼äºÅ£º");
-	scanf("%s",Number);
-	n = Search_Room_Number(Number);
-	if(n == -1) {
-		printf("·¿¼ä²»´æÔÚ\n");
-		printf("Â¼ÈëÊ§°Ü\n");
-		return;
-	}
-	if(room[n].Using) {
-		printf("·¿¼äÕýÔÚÊ¹ÓÃÖÐ\n");
-		printf("Â¼ÈëÊ§°Ü\n");
-		return;
-	}
-	printf("\nÊäÈë¿ÍÈËÐÕÃû:");
-	scanf("%s",Name);
-	printf("\nÊäÈë¿ÍÈËÉí·ÝÖ¤:");
-	scanf("%s",ID);
-	printf("\nÊäÈëÈë×¡Ê±¼ä:");
-	TimeRead(&In);
-	printf("\nÊäÈëÍË·¿Ê±¼ä:");
-	TimeRead(&Out);
-	printf("\nÊäÈëÔ¤Áô½ð¶î:");
-	scanf("%d",&PreMoney);
-	PeopleIn(n,Name,ID,&In,&Out,PreMoney);
+    char Number[ROOM_NUMBER_SIZE];
+    char Name[NAMESIZE];
+    char ID[IDSIZE];
+    Time In;
+    Time Out;
+    int PreMoney;
+    int n;
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Â¼ï¿½ï¿½:\n");
+    printf("ï¿½ï¿½ï¿½ë·¿ï¿½ï¿½ï¿½Å£ï¿½");
+    scanf("%s",Number);
+    n = Search_Room_Number(Number);
+    if(n == -1) {
+        printf("ï¿½ï¿½ï¿½ä²»ï¿½ï¿½ï¿½ï¿½\n");
+        printf("Â¼ï¿½ï¿½Ê§ï¿½ï¿½\n");
+        return;
+    }
+    if(room[n].Using) {
+        printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½\n");
+        printf("Â¼ï¿½ï¿½Ê§ï¿½ï¿½\n");
+        return;
+    }
+    printf("\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:");
+    scanf("%s",Name);
+    printf("\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤:");
+    scanf("%s",ID);
+    printf("\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡Ê±ï¿½ï¿½:");
+    TimeRead(&In);
+    printf("\nï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½Ê±ï¿½ï¿½:");
+    TimeRead(&Out);
+    printf("\nï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:");
+    scanf("%d",&PreMoney);
+    PeopleIn(n,Name,ID,&In,&Out,PreMoney);
 }
 void UI_PeopleOut() {
-	int n;
-	char Number[ROOM_NUMBER_SIZE];
-	int money;
-	printf("¿ÍÈËÍË·¿:\n");
-	printf("ÊäÈë·¿¼äºÅ£º");
-	scanf("%s",Number);
-	n = Search_Room_Number(Number);
-	if(n == -1) {
-		printf("·¿¼ä²»´æÔÚ\n");
-		printf("ÍË·¿Ê§°Ü\n");
-		return;
-	}
-	if(!room[n].Using) {
-		printf("·¿¼äÎ´Ê¹ÓÃ\n");
-		printf("ÍË·¿Ê§°Ü\n");
-		return;
-	}
-	money = PeopleOut(n);
-	printf("ÍË·¿³É¹¦£¬ÕÒ¿î%dÔª\n",money);
+    int n;
+    char Number[ROOM_NUMBER_SIZE];
+    int money;
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½:\n");
+    printf("ï¿½ï¿½ï¿½ë·¿ï¿½ï¿½ï¿½Å£ï¿½");
+    scanf("%s",Number);
+    n = Search_Room_Number(Number);
+    if(n == -1) {
+        printf("ï¿½ï¿½ï¿½ä²»ï¿½ï¿½ï¿½ï¿½\n");
+        printf("ï¿½Ë·ï¿½Ê§ï¿½ï¿½\n");
+        return;
+    }
+    if(!room[n].Using) {
+        printf("ï¿½ï¿½ï¿½ï¿½Î´Ê¹ï¿½ï¿½\n");
+        printf("ï¿½Ë·ï¿½Ê§ï¿½ï¿½\n");
+        return;
+    }
+    money = PeopleOut(n);
+    printf("ï¿½Ë·ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½Ò¿ï¿½%dÔª\n",money);
 }
 void UI_Empty() {
-	printf("¿Õ·¿Çé¿ö\n");
-	printf("·¿¼äºÅ\t·¿¼äÀàÐÍ\t·¿¼ä¼Û¸ñ\tÊÇ·ñÈë×¡");
-	REP(MAXSIZE) {
-		if(!room[o].Using)
-			RoomPrint(&room[o]);
-	}
+    printf("ï¿½Õ·ï¿½ï¿½ï¿½ï¿½ï¿½\n");
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\tï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\tï¿½ï¿½ï¿½ï¿½ï¿½Û¸ï¿½\tï¿½Ç·ï¿½ï¿½ï¿½×¡");
+    REP(MAXSIZE) {
+        if(!room[o].Using)
+            RoomPrint(&room[o]);
+    }
 }
 
 void UI_ShowAll() {
-	printf("·¿¼äºÅ\t·¿¼äÀàÐÍ\t·¿¼ä¼Û¸ñ\tÊÇ·ñÈë×¡\n\t(¹Ë¿ÍÐÕÃû\t¹Ë¿ÍÉí·ÝÖ¤\tÈë×¡Ê±¼ä\tÍË·¿Ê±¼ä\tÔ¤¸¶½ð¶î)\n");
-	REP(MAXSIZE)
-		RoomPrint(&room[o]);
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\tï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\tï¿½ï¿½ï¿½ï¿½ï¿½Û¸ï¿½\tï¿½Ç·ï¿½ï¿½ï¿½×¡\n\t(ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½\tï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤\tï¿½ï¿½×¡Ê±ï¿½ï¿½\tï¿½Ë·ï¿½Ê±ï¿½ï¿½\tÔ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)\n");
+    REP(MAXSIZE)
+        RoomPrint(&room[o]);
 }
 
 void UI_Search() {
-	int n = Search();
-	if(n == -1) {
-		printf("´íÎó\n");
-	} else {
-		printf("·¿¼äºÅ\t·¿¼äÀàÐÍ\t·¿¼ä¼Û¸ñ\tÊÇ·ñÈë×¡\n\t(¹Ë¿ÍÐÕÃû\t¹Ë¿ÍÉí·ÝÖ¤\tÈë×¡Ê±¼ä\tÍË·¿Ê±¼ä\tÔ¤¸¶½ð¶î)\n");
-		RoomPrint(&room[n]);
-	}
+    int n = Search();
+    if(n == -1) {
+        printf("ï¿½ï¿½ï¿½ï¿½\n");
+    } else {
+        printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\tï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\tï¿½ï¿½ï¿½ï¿½ï¿½Û¸ï¿½\tï¿½Ç·ï¿½ï¿½ï¿½×¡\n\t(ï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½\tï¿½Ë¿ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤\tï¿½ï¿½×¡Ê±ï¿½ï¿½\tï¿½Ë·ï¿½Ê±ï¿½ï¿½\tÔ¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)\n");
+        RoomPrint(&room[n]);
+    }
 }
 
 void UI_Change() {
-	int n;
-	char Number[ROOM_NUMBER_SIZE];
-	int Type;
-	int Price;
-	printf("ÐÞ¸Ä¿Í·¿ÐÅÏ¢£º");
-	printf("ÏÈËÑË÷µ½ÒªÐÞ¸ÄµÄ·¿¼ä:\n");
-	n = Search();
-	if(n == -1) {
-		printf("´íÎó\n");
-		return;
-	}
-	printf("\nÊäÈëÐÂµÄ·¿¼äºÅ:");
-	scanf("%s",Number);
-	printf("\nÊäÈëÐÂµÄ·¿¼äÀàÐÍ(%d.Ì×·¿ %d.µ¥ÈË¼ä %d.Ë«ÈË¼ä):",ROOM_TAOFANG,ROOM_DANREN,ROOM_SHUANGREN);
-	scanf("%d",&Type);
-	printf("\nÊäÈëÐÂµÄ·¿¼ä¼Û¸ñ:");
-	scanf("%d",&Price);
-	RoomSet(&room[o],Number,Type,Price,room[o].Using);
+    int n;
+    char Number[ROOM_NUMBER_SIZE];
+    int Type;
+    int Price;
+    printf("ï¿½Þ¸Ä¿Í·ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½");
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Þ¸ÄµÄ·ï¿½ï¿½ï¿½:\n");
+    n = Search();
+    if(n == -1) {
+        printf("ï¿½ï¿½ï¿½ï¿½\n");
+        return;
+    }
+    printf("\nï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½:");
+    scanf("%s",Number);
+    printf("\nï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(%d.ï¿½×·ï¿½ %d.ï¿½ï¿½ï¿½Ë¼ï¿½ %d.Ë«ï¿½Ë¼ï¿½):",ROOM_TAOFANG,ROOM_DANREN,ROOM_SHUANGREN);
+    scanf("%d",&Type);
+    printf("\nï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ·ï¿½ï¿½ï¿½ï¿½Û¸ï¿½:");
+    scanf("%d",&Price);
+    RoomSet(&room[o],Number,Type,Price,room[o].Using);
 }
 
 bool UI_Menu() {
-	char command;
-	system("cls");
-	printf("1.ÏÔÊ¾ËùÓÐ·¿¼äµÄÐÅÏ¢\n");
-	printf("2.¿ÍÈËÈë×¡\n");
-	printf("3.¿ÍÈËÍË·¿\n");
-	printf("4.ËÑË÷·¿¼ä\n");
-	printf("5.ÏÔÊ¾¿Õ·¿\n");
-	printf("6.ÐÞ¸Ä·¿¼äÐÅÏ¢\n");
-	printf("7.ÍË³ö\n");
-	printf("ÊäÈë²Ù×÷:");
-	rewind(stdin);
-	scanf("%c",&command);
-	rewind(stdin);
-	system("cls");
-	switch(command) {
-		case '1':
-		UI_ShowAll();
-		break;
-		case '2':
-		UI_PeopleIn();
-		break;
-		case '3':
-		UI_PeopleOut();
-		break;
-		case '4':
-		UI_Search();
-		break;
-		case '5':
-		UI_Empty();
-		break;
-		case '6':
-		UI_Change();
-		break;
-		case '7':
-		return false;
-		default:
-		printf("´íÎó\n");
-	}
-	system("pause");
-	return true;
+    char command;
+    system("cls");
+    printf("1.ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢\n");
+    printf("2.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡\n");
+    printf("3.ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½\n");
+    printf("4.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n");
+    printf("5.ï¿½ï¿½Ê¾ï¿½Õ·ï¿½\n");
+    printf("6.ï¿½Þ¸Ä·ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢\n");
+    printf("7.ï¿½Ë³ï¿½\n");
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:");
+    rewind(stdin);
+    scanf("%c",&command);
+    rewind(stdin);
+    system("cls");
+    switch(command) {
+        case '1':
+        UI_ShowAll();
+        break;
+        case '2':
+        UI_PeopleIn();
+        break;
+        case '3':
+        UI_PeopleOut();
+        break;
+        case '4':
+        UI_Search();
+        break;
+        case '5':
+        UI_Empty();
+        break;
+        case '6':
+        UI_Change();
+        break;
+        case '7':
+        return false;
+        default:
+        printf("ï¿½ï¿½ï¿½ï¿½\n");
+    }
+    system("pause");
+    return true;
 }
 
 int main() {
-	Init();
-	while(UI_Menu());
-	return 0;
+    Init();
+    while(UI_Menu());
+    return 0;
 }
 
 

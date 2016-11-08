@@ -27,61 +27,61 @@ const int maxn = 1005;
 const int maxt = 900000;
 int Deadline[maxn],Score[maxn];
 struct Node {
-	int Deadline;
-	int Score;
-	bool operator < (const Node &rhs)const {
-		if(Score == rhs.Score)
-			return Deadline > rhs.Deadline;
-		else
-			return Score > rhs.Score;
-	}
+    int Deadline;
+    int Score;
+    bool operator < (const Node &rhs)const {
+        if(Score == rhs.Score)
+            return Deadline > rhs.Deadline;
+        else
+            return Score > rhs.Score;
+    }
 };
 Node node[maxn];
 int Time[maxt];
 
 bool Do() {
-	int n;
-	scanf("%d",&n);
-	int sum = 0;
-	int mt = 0;
-	for(int i = 1;i <= n;i++) {
-		scanf("%d",&node[i].Deadline);
-		mt = max(mt,node[i].Deadline);
-	}
-	for(int i = 1;i <= n;i++) {
-		scanf("%d",&node[i].Score);
-		sum += node[i].Score;
-	}
+    int n;
+    scanf("%d",&n);
+    int sum = 0;
+    int mt = 0;
+    for(int i = 1;i <= n;i++) {
+        scanf("%d",&node[i].Deadline);
+        mt = max(mt,node[i].Deadline);
+    }
+    for(int i = 1;i <= n;i++) {
+        scanf("%d",&node[i].Score);
+        sum += node[i].Score;
+    }
 
-	sort(node + 1,node + 1 + n);
+    sort(node + 1,node + 1 + n);
 
-	for(int i = 0;i <= mt + 1;i++)
-		Time[i] = i;
+    for(int i = 0;i <= mt + 1;i++)
+        Time[i] = i;
 
-	int ans = 0;
-	for(int i = 1;i <= n;i++) {
-		int k = node[i].Deadline;
-		int t = Time[k];
-		while(!(t == k || t == 0 || k == 0)) {
-			k = Time[k];
-			t = Time[t];
-		}
-		if(t == k && t != 0) {
-			Time[k]--;
-			ans += node[i].Score;
-		}
-	}
+    int ans = 0;
+    for(int i = 1;i <= n;i++) {
+        int k = node[i].Deadline;
+        int t = Time[k];
+        while(!(t == k || t == 0 || k == 0)) {
+            k = Time[k];
+            t = Time[t];
+        }
+        if(t == k && t != 0) {
+            Time[k]--;
+            ans += node[i].Score;
+        }
+    }
 
-	printf("%d\n",sum - ans);
+    printf("%d\n",sum - ans);
 
-	return true;
+    return true;
 }
 
 
 int main() {
-	int T;
-	scanf("%d",&T);
-	while(T--)
-		Do();
-	return 0;
+    int T;
+    scanf("%d",&T);
+    while(T--)
+        Do();
+    return 0;
 }

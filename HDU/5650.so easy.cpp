@@ -31,33 +31,33 @@ int n, m;
 int Map[maxn][maxn];
 
 void Do() {
-	int n;
-	scanf("%d", &n);
-	int temp, ans;
-	if (n==1) {
-		REP(n) {
-			if (o == 0) 
-				scanf("%d", &ans);
-			
-			else 
-				scanf("%*d", &temp);
-		}
-	}
-	else {
-		REP(n)
-			scanf("%*d");
-		ans = 0;
-	}
-	
-	printf("%d\n", ans);
+    int n;
+    scanf("%d", &n);
+    int temp, ans;
+    if (n==1) {
+        REP(n) {
+            if (o == 0) 
+                scanf("%d", &ans);
+            
+            else 
+                scanf("%*d", &temp);
+        }
+    }
+    else {
+        REP(n)
+            scanf("%*d");
+        ans = 0;
+    }
+    
+    printf("%d\n", ans);
 }
 
 
 int main() {
-	int T;
-	scanf("%d", &T);
-	while (T--) {
-		Do();
-	}
-	return 0;
+    int T;
+    scanf("%d", &T);
+    while (T--) {
+        Do();
+    }
+    return 0;
 }

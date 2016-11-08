@@ -21,13 +21,13 @@ tags: 丑数
 const int maxn = 5842 + 1;
 int dp[maxn];
 int i1 = 1,i2 = 1,i3 = 1,i4 = 1;
-	int n = 1;
-	dp[1] = 1;
-	while(n < maxn) {
-		dp[++n] = min(min(2 * dp[i1],3 * dp[i2]),min(5 * dp[i3],7 * dp[i4]));
-		if(dp[n] == 2 * dp[i1]) i1++;
-		if(dp[n] == 3 * dp[i2]) i2++;
-		if(dp[n] == 5 * dp[i3]) i3++;
-		if(dp[n] == 7 * dp[i4]) i4++;
-	}
+    int n = 1;
+    dp[1] = 1;
+    while(n < maxn) {
+        dp[++n] = min(min(2 * dp[i1],3 * dp[i2]),min(5 * dp[i3],7 * dp[i4]));
+        if(dp[n] == 2 * dp[i1]) i1++;
+        if(dp[n] == 3 * dp[i2]) i2++;
+        if(dp[n] == 5 * dp[i3]) i3++;
+        if(dp[n] == 7 * dp[i4]) i4++;
+    }
 ```

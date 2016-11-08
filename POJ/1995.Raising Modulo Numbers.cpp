@@ -33,39 +33,39 @@ const double eps = 1e-10;
 
 
 LL exp_mod(LL a,LL n,LL b) {
-	LL t;
-	if(n == 0) return 1 % b;
-	if(n == 1) return a % b;
-	t = exp_mod(a,n / 2,b);
-	t = t * t % b;
-	if((n & 1) == 1) t = t * a % b;
-	return t;
+    LL t;
+    if(n == 0) return 1 % b;
+    if(n == 1) return a % b;
+    t = exp_mod(a,n / 2,b);
+    t = t * t % b;
+    if((n & 1) == 1) t = t * a % b;
+    return t;
 }
 
 void Do() {
-	int M;
-	cin >> M;
-	int n;
-	cin >> n;
+    int M;
+    cin >> M;
+    int n;
+    cin >> n;
 
-	LL ans = 0;
-	for(int i = 0;i < n;i++) {
-		int a,b;
-		cin >> a >> b;
-		ans = (ans + exp_mod(a,b,M)) % M;
-	}
+    LL ans = 0;
+    for(int i = 0;i < n;i++) {
+        int a,b;
+        cin >> a >> b;
+        ans = (ans + exp_mod(a,b,M)) % M;
+    }
 
-	cout << ans<<endl;
+    cout << ans<<endl;
 }
 
 int main() {
-	cin.tie(0);
-	cin.sync_with_stdio(false);
+    cin.tie(0);
+    cin.sync_with_stdio(false);
 
-	int Z;
-	cin >> Z;
-	while(Z--)
-		Do();
+    int Z;
+    cin >> Z;
+    while(Z--)
+        Do();
 
-	return 0;
+    return 0;
 }

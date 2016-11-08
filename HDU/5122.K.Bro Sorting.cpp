@@ -30,44 +30,44 @@ int a[maxn];
 
 
 inline int read_int() {
-	char c;
-	bool fs = false;
-	int ans = 0;
-	while(c = getchar(),!(c >= '0'&&c <= '9'))
-		if(c == '-')
-			fs = true;
-	while(c >= '0'&&c <= '9') {
-		ans *= 10;
-		ans += (int)c - '0';
-		c = getchar();
-	}
-	return fs ? -ans : ans;
+    char c;
+    bool fs = false;
+    int ans = 0;
+    while(c = getchar(),!(c >= '0'&&c <= '9'))
+        if(c == '-')
+            fs = true;
+    while(c >= '0'&&c <= '9') {
+        ans *= 10;
+        ans += (int)c - '0';
+        c = getchar();
+    }
+    return fs ? -ans : ans;
 }
 
 void Do() {
-	int n = read_int();
-	int Max = 0;
-	bool flag = false;
+    int n = read_int();
+    int Max = 0;
+    bool flag = false;
 
-	for(int i = 1;i <= n;i++) {
-		a[i] = read_int();
-	}
-	int ans = 0;
-	int Min = n + 1;
-	for(int i = n;i >= 1;i--)
-		if(Min > a[i])
-			Min = a[i];
-		else
-			ans++;
-	printf("%d\n",ans);
+    for(int i = 1;i <= n;i++) {
+        a[i] = read_int();
+    }
+    int ans = 0;
+    int Min = n + 1;
+    for(int i = n;i >= 1;i--)
+        if(Min > a[i])
+            Min = a[i];
+        else
+            ans++;
+    printf("%d\n",ans);
 }
 
 int main() {
-	int T;
-	scanf("%d",&T);
-	for(int i = 1;i <= T;i++) {
-		printf("Case #%d: ",i);
-		Do();
-	}
-	return 0;
+    int T;
+    scanf("%d",&T);
+    for(int i = 1;i <= T;i++) {
+        printf("Case #%d: ",i);
+        Do();
+    }
+    return 0;
 }

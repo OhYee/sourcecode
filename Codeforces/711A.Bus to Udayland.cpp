@@ -29,34 +29,34 @@ const int INF = 0x7FFFFFFF;
 char seat[maxn][8];
 
 bool  Do() {
-	int n;
-	if(!(cin >> n))
-		return false;
+    int n;
+    if(!(cin >> n))
+        return false;
 
-	bool yes = false;
-	for(int i = 0;i < n;i++) {
-		cin >> seat[i];
-		if(!yes&&seat[i][0] == 'O'&&seat[i][1] == 'O') {
-			seat[i][0] = seat[i][1] = '+';
-			yes = true;
-		}
-		if(!yes&&seat[i][3] == 'O'&&seat[i][4] == 'O') {
-			seat[i][3] = seat[i][4] = '+';
-			yes = true;
-		}
-	}
-	if(yes) {
-		cout << "YES" << endl;
-		for(int i = 0;i < n;i++) {
-			cout << seat[i]<<endl;
-		}
-	} else {
-		cout << "NO" << endl;
-	}
-	return true;
+    bool yes = false;
+    for(int i = 0;i < n;i++) {
+        cin >> seat[i];
+        if(!yes&&seat[i][0] == 'O'&&seat[i][1] == 'O') {
+            seat[i][0] = seat[i][1] = '+';
+            yes = true;
+        }
+        if(!yes&&seat[i][3] == 'O'&&seat[i][4] == 'O') {
+            seat[i][3] = seat[i][4] = '+';
+            yes = true;
+        }
+    }
+    if(yes) {
+        cout << "YES" << endl;
+        for(int i = 0;i < n;i++) {
+            cout << seat[i]<<endl;
+        }
+    } else {
+        cout << "NO" << endl;
+    }
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

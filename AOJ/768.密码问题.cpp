@@ -74,14 +74,14 @@ bool Do() {
                 putchar(KtoA[c - 'A']);
             }
         }
-    	c = getchar();
-	}
+        c = getchar();
+    }
 
-	putchar('\n');
-	return true;
+    putchar('\n');
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

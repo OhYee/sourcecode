@@ -29,36 +29,36 @@ const int maxn = 105;
 int num[maxn];
 
 bool Do() {
-	int n,k;
-	if(!(cin >> n >> k))
-		return false;
+    int n,k;
+    if(!(cin >> n >> k))
+        return false;
 
-	int p = n / k;
+    int p = n / k;
 
-	memset(num,0,sizeof(num));
+    memset(num,0,sizeof(num));
 
-	for(int i = 1;i <= n;i++) {
-		int t;
-		cin >> t;
-		if(t == 1)
-			num[i%k]++;
-	}
+    for(int i = 1;i <= n;i++) {
+        int t;
+        cin >> t;
+        if(t == 1)
+            num[i%k]++;
+    }
 
 
-	int ans = 0;
-	for(int i = 0;i < k;i++) {
-		ans += min(p- num[i],num[i]);
-	}
+    int ans = 0;
+    for(int i = 0;i < k;i++) {
+        ans += min(p- num[i],num[i]);
+    }
 
-	cout << ans << endl;
+    cout << ans << endl;
 
-	return true;
+    return true;
 }
 
 int main() {
-	cin.tie(0);
-	cin.sync_with_stdio(false);
+    cin.tie(0);
+    cin.sync_with_stdio(false);
 
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

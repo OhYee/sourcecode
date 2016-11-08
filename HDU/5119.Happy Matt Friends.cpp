@@ -31,35 +31,35 @@ int a[maxn];
 int dp[maxn][maxm];
 
 void Do() {
-	int n,m;
-	scanf("%d%d",&n,&m);
-	memset(dp,0,sizeof(dp));
+    int n,m;
+    scanf("%d%d",&n,&m);
+    memset(dp,0,sizeof(dp));
 
-	for(int i = 1;i <= n;i++){
-		scanf("%d",&a[i]);
-	}
-	dp[0][0] = 1;
+    for(int i = 1;i <= n;i++){
+        scanf("%d",&a[i]);
+    }
+    dp[0][0] = 1;
 
-	for(int i = 1;i <= n;i++) {
-		for(int j = 0;j < maxm;j++) {
-			dp[i][j] += dp[i - 1][j];
-			dp[i][j ^ a[i]] += dp[i - 1][j];
-		}
-	}
+    for(int i = 1;i <= n;i++) {
+        for(int j = 0;j < maxm;j++) {
+            dp[i][j] += dp[i - 1][j];
+            dp[i][j ^ a[i]] += dp[i - 1][j];
+        }
+    }
 
-	long long ans = 0;
-	for(int i = m;i <= maxm;i++)
-		ans += dp[n][i];
+    long long ans = 0;
+    for(int i = m;i <= maxm;i++)
+        ans += dp[n][i];
 
-	printf("%lld\n",ans);
+    printf("%lld\n",ans);
 }
 
 int main(){
-	int T;
-	scanf("%d",&T);
-	for(int i = 1;i <= T;i++) {
-		printf("Case #%d: ",i);
-		Do();
-	}
-	return 0;
+    int T;
+    scanf("%d",&T);
+    for(int i = 1;i <= T;i++) {
+        printf("Case #%d: ",i);
+        Do();
+    }
+    return 0;
 }

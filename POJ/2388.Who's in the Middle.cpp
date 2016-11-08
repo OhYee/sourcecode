@@ -33,21 +33,21 @@ const int maxn = 10005;
 int a[maxn];
 
 bool Do() {
-	int n;
-	if(scanf("%d",&n) == EOF)
-		return false;
-	
-	REP(n)
-		scanf("%d",&a[o]);
+    int n;
+    if(scanf("%d",&n) == EOF)
+        return false;
+    
+    REP(n)
+        scanf("%d",&a[o]);
 
-	sort(a,a + n);
+    sort(a,a + n);
 
-	printf("%d\n",a[n/2]);
+    printf("%d\n",a[n/2]);
 
-	return true;
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

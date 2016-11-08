@@ -14,21 +14,21 @@ int ans[maxn]={1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,
 
 int main() {
 
-	//ans[0] = 1;
-	//ans[1] = 1;
-	//for(int i = 2;i < maxn;i++) {
-	//	ans[i] = ans[i - 1] + ans[i - 2];
-	//}
+    //ans[0] = 1;
+    //ans[1] = 1;
+    //for(int i = 2;i < maxn;i++) {
+    //    ans[i] = ans[i - 1] + ans[i - 2];
+    //}
 
-	//printf("ans[]={");
-	//REP(maxn)
-	//	printf("%d,",ans[o]);
-	//printf("};\n");
+    //printf("ans[]={");
+    //REP(maxn)
+    //    printf("%d,",ans[o]);
+    //printf("};\n");
 
-	int n;
-	while(scanf("%d",&n),n != 0) {
-		printf("%d\n",ans[n]);
-	}
+    int n;
+    while(scanf("%d",&n),n != 0) {
+        printf("%d\n",ans[n]);
+    }
 
-	return 0;
+    return 0;
 }

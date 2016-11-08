@@ -38,50 +38,50 @@ int *dp;
 int *dp2;
 
 bool Do() {
-	int n;
-	scanf("%d",&n);
-	if(n == 0)
-		return false;
+    int n;
+    scanf("%d",&n);
+    if(n == 0)
+        return false;
 
-	memset(pie,0,sizeof(pie));
-	memset(dp,0,maxpos * sizeof(int));
-	memset(dp2,0,maxpos * sizeof(int));
+    memset(pie,0,sizeof(pie));
+    memset(dp,0,maxpos * sizeof(int));
+    memset(dp2,0,maxpos * sizeof(int));
 
-	int maxt = 0;
-	for(int i = 1;i <= n;i++) {
-		int t,x;
-		scanf("%d%d",&x,&t);
-		pie[t][x] += 1;
-		maxt = max(maxt,t);
-	}
+    int maxt = 0;
+    for(int i = 1;i <= n;i++) {
+        int t,x;
+        scanf("%d%d",&x,&t);
+        pie[t][x] += 1;
+        maxt = max(maxt,t);
+    }
 
-	for(int i = 1;i <= maxt;i++) {
-		for(int j = 0;j < maxpos;j++) {
-			if(i == 1 && !(j == 4 || j == 5 || j == 6))
-				continue;
-			dp2[j] = dp[j] + pie[i][j];
-			if(j - 1 >= 0)
-				dp2[j] = max(dp2[j],dp[j - 1] + pie[i][j]);
-			if(j + 1 <= maxpos - 1)
-				dp2[j] = max(dp2[j],dp[j + 1] + pie[i][j]);
+    for(int i = 1;i <= maxt;i++) {
+        for(int j = 0;j < maxpos;j++) {
+            if(i == 1 && !(j == 4 || j == 5 || j == 6))
+                continue;
+            dp2[j] = dp[j] + pie[i][j];
+            if(j - 1 >= 0)
+                dp2[j] = max(dp2[j],dp[j - 1] + pie[i][j]);
+            if(j + 1 <= maxpos - 1)
+                dp2[j] = max(dp2[j],dp[j + 1] + pie[i][j]);
 
-		}
-		int *temp = dp;
-		dp = dp2;
-		dp2 = temp;
-	}
-	int Max = 0;
-	for(int i = 0;i < maxpos;i++)
-		Max = max(Max,dp[i]);
-	printf("%d\n",Max);
-	return true;
+        }
+        int *temp = dp;
+        dp = dp2;
+        dp2 = temp;
+    }
+    int Max = 0;
+    for(int i = 0;i < maxpos;i++)
+        Max = max(Max,dp[i]);
+    printf("%d\n",Max);
+    return true;
 }
 
 int main() {
-	dp = new int[maxpos];
-	dp2 = new int[maxpos];
-	while(Do());
-	delete[]dp;
-	delete[]dp2;
-	return 0;
+    dp = new int[maxpos];
+    dp2 = new int[maxpos];
+    while(Do());
+    delete[]dp;
+    delete[]dp2;
+    return 0;
 }

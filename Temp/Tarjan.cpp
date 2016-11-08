@@ -47,6 +47,7 @@ list<int> L2[maxn];
 stack<int> s;
 bool vis[maxn];
 vector<int> SCC[maxn];//得到的强连通分量链表
+int cnt;
 
 inline void add(int u,int v) {
     edge[pos] = Edge(u,v);
@@ -54,30 +55,36 @@ inline void add(int u,int v) {
     pos++;
 }
 
-
-
-void DFS(){
-
-
-}
-
-void Tarjan(u){
+void tarjan(u)
+{
     DFN[u] = Low[u] = ++Index;
-    s.push(u);
-    for(){
+    s.push(u);F
+    for(){//枚举每一条边
         if(!vis[v]){
             tarjan(v);
             Low[u] = min(Low[u],Low[v]);
-        }else{
+        }else if(stack[v]){//在栈里
             Low[u] = min(Low[u],DFN[v]);
         }
 
     }
-    
-    v = s.top();
-    while(u == v){
-        list[i].push_back(v);
+    if(DFN[u] == Low[u]){
+        v = s.top();
+        s.pop();
+
+        SCC[cnt++].push_back(u);
+
+        while(u != v){
+            list[cnt-1].push_back(v);
+        }
     }
+}
+
+int Tarjan(){
+    cnt = 0;
+    tarjan(0);
+    return cnt;
+
 }
 
 int main() {

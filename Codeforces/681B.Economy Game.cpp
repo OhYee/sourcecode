@@ -33,39 +33,39 @@ bool dp[maxn];
 
 bool Do() {
 
-	int n;
-	bool OK = false;
+    int n;
+    bool OK = false;
 
-	if(scanf("%d",&n) == EOF)
-		return false;
+    if(scanf("%d",&n) == EOF)
+        return false;
 
-	
+    
 
-	/*for(long long i = 0;(i*C <= n) && !OK;i++) {
-		for(long long j = 0;(i*C + j*B <= n) && !OK;j++) {
-			for(long long k = 0;(i*C + j*B + k*A <= n) && !OK;k++) {
-				if(i*C + j*B + k*A == n) {
-					OK = true;
-					printf("%lld %lld %lld \n",i,j,k);
-				}
-			}
-		}
-	}*/
-	if(n>=maxn||dp[n])
-		printf("YES\n");
-	else
-		printf("NO\n");
+    /*for(long long i = 0;(i*C <= n) && !OK;i++) {
+        for(long long j = 0;(i*C + j*B <= n) && !OK;j++) {
+            for(long long k = 0;(i*C + j*B + k*A <= n) && !OK;k++) {
+                if(i*C + j*B + k*A == n) {
+                    OK = true;
+                    printf("%lld %lld %lld \n",i,j,k);
+                }
+            }
+        }
+    }*/
+    if(n>=maxn||dp[n])
+        printf("YES\n");
+    else
+        printf("NO\n");
 
-	return true;
+    return true;
 }
 
 int main() {
-	memset(dp,false,sizeof(dp));
-	dp[0] = true;
-	for(int i = 1;i < maxn;i++) {
-		if((i - A >= 0 && dp[i - A]) || (i - B >= 0 && dp[i - B]) || (i - C >= 0 && dp[i - C]))
-			dp[i] = true;
-	}
-	while(Do());
-	return 0;
+    memset(dp,false,sizeof(dp));
+    dp[0] = true;
+    for(int i = 1;i < maxn;i++) {
+        if((i - A >= 0 && dp[i - A]) || (i - B >= 0 && dp[i - B]) || (i - C >= 0 && dp[i - C]))
+            dp[i] = true;
+    }
+    while(Do());
+    return 0;
 }

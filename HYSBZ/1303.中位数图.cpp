@@ -41,49 +41,49 @@ map<int,int> m;
 
 bool Do() {
 
-	if(!(cin >> n >> k))
-		return false;
+    if(!(cin >> n >> k))
+        return false;
 
-	int pos;
-	for(int i = 0;i < n;i++) {
-		cin >> a[i];
-		if(a[i] == k)
-			pos = i;
-	}
+    int pos;
+    for(int i = 0;i < n;i++) {
+        cin >> a[i];
+        if(a[i] == k)
+            pos = i;
+    }
 
-	m.clear();
-	dp[pos] = 0;
-	int ans = 1;
-	m.insert(pair<int,int>(0,1));
+    m.clear();
+    dp[pos] = 0;
+    int ans = 1;
+    m.insert(pair<int,int>(0,1));
 
-	for(int i = pos - 1;i >= 0;i--) {
-		dp[i] = dp[i + 1] + ((a[i] > k) ? 1 : -1);
-		
-		if(dp[i] == 0)
-			ans++;
+    for(int i = pos - 1;i >= 0;i--) {
+        dp[i] = dp[i + 1] + ((a[i] > k) ? 1 : -1);
+        
+        if(dp[i] == 0)
+            ans++;
 
-		if(m.count(dp[i])==0)
-			m.insert(pair<int,int>(dp[i],0));
-		m[dp[i]]++;
-	}
+        if(m.count(dp[i])==0)
+            m.insert(pair<int,int>(dp[i],0));
+        m[dp[i]]++;
+    }
 
-	for(int i = pos + 1;i < n;i++) {
-		dp[i] = dp[i - 1] + ((a[i] > k) ? 1 : -1);
+    for(int i = pos + 1;i < n;i++) {
+        dp[i] = dp[i - 1] + ((a[i] > k) ? 1 : -1);
 
-		if(m.count(-dp[i]) == 1)
-			ans += m[-dp[i]];
-	}
+        if(m.count(-dp[i]) == 1)
+            ans += m[-dp[i]];
+    }
 
-	cout << ans << endl;
+    cout << ans << endl;
 
-	return true;
+    return true;
 }
 
 int main() {
-	cin.tie(0);
-	cin.sync_with_stdio(false);
+    cin.tie(0);
+    cin.sync_with_stdio(false);
 
-	while(Do());
+    while(Do());
 
-	return 0;
+    return 0;
 }

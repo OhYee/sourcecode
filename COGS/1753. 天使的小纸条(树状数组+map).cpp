@@ -26,8 +26,8 @@ int Q;
 
 class C1{
     private:
-    map<int,int> m;//Ó³ÉäÈ¨Öµ
-    map<int,int>::iterator it;//µü´úÆ÷
+    map<int,int> m;//Ó³ï¿½ï¿½È¨Öµ
+    map<int,int>::iterator it;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     struct C2{
         int c[maxn][maxn];
     };
@@ -50,18 +50,18 @@ class C1{
             //REP1(N,M)c[c.size()-1].c[o1][o2]=0;
 
             #if debug
-            printf("ÐÂ¼ÍÂ¼%dÔÚ(%d,%d)\n",n,x,y);
+            printf("ï¿½Â¼ï¿½Â¼%dï¿½ï¿½(%d,%d)\n",n,x,y);
             #endif
         }
         c[Search(n)].c[x][y]++;
         #if debug
-        printf("%dÔÚ(%d,%d)µÄÈ¨Öµ±äÎª%d\n",n,x,y,c[Search(n)].c[x][y]);
+        printf("%dï¿½ï¿½(%d,%d)ï¿½ï¿½È¨Öµï¿½ï¿½Îª%d\n",n,x,y,c[Search(n)].c[x][y]);
         #endif // debug
     }
     void change(int x,int y,int n){
         int temp=Map[x][y];
         #if debug
-        printf("¸ü¸Ä(%d,%d)(%d)µÄÈ¨ÖµÎª%d\n",x,y,temp,n);
+        printf("ï¿½ï¿½ï¿½ï¿½(%d,%d)(%d)ï¿½ï¿½È¨ÖµÎª%d\n",x,y,temp,n);
         #endif
         c[Search(temp)].c[x][y]--;
         Add(x,y,n);
@@ -75,10 +75,10 @@ C1 C;
 
 
 int lowbit(int x){
-	return x&(-x);
+    return x&(-x);
 }
 
-int work(int x,int y,int n){//Ê÷×´Êý×é ¼ÆËã¾ØÐÎ·½¿é(1,1)(x,y)ÖÐÖ¸¶¨ÀàÐÍµÄ¸öÊýºÍ
+int work(int x,int y,int n){//ï¿½ï¿½×´ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î·ï¿½ï¿½ï¿½(1,1)(x,y)ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ÍµÄ¸ï¿½ï¿½ï¿½ï¿½ï¿½
     if (!C.Had(n))return 0;
     int sum=0;
     #if debug
@@ -137,7 +137,7 @@ int main(){
 
 
     #if debug
-    cout<<"µØÍ¼¶ÁÈëÍê±Ï"<<endl;
+    cout<<"ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"<<endl;
     cout<<"#######################"<<endl;
     REP(M+1)printf("%5d",o);
     cout<<endl<<endl;
@@ -161,7 +161,7 @@ int main(){
             cin>>x>>y>>c;
             change(x,y,c);
             /*#if debug
-            cout<<"µØÍ¼¸üÐÂÍê±Ï"<<endl;
+            cout<<"ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"<<endl;
             cout<<"#######################"<<endl;
             for(int p=1;p<=N;p++){
                 for(int q=1;q<=M;q++){

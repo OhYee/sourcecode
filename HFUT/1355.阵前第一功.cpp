@@ -34,31 +34,31 @@ const int maxn = 1005;
 int p[maxn];
 
 void Do() {
-	int n;
-	scanf("%d",&n);
-	REP(n)
-		scanf("%d",&p[o]);
-	int q;
-	scanf("%d",&q);
+    int n;
+    scanf("%d",&n);
+    REP(n)
+        scanf("%d",&p[o]);
+    int q;
+    scanf("%d",&q);
 
-	sort(p,p + n);
-	int k = 1;
-	int ans = p[n - 1];
-	for(int i = n - 1;i >= 0;i--) {
-		if(ans != p[i]) {
-			ans = p[i];
-			k++;
-		}
-		if(q == k)
-			break;
-	}
-	printf("%d\n",ans);
+    sort(p,p + n);
+    int k = 1;
+    int ans = p[n - 1];
+    for(int i = n - 1;i >= 0;i--) {
+        if(ans != p[i]) {
+            ans = p[i];
+            k++;
+        }
+        if(q == k)
+            break;
+    }
+    printf("%d\n",ans);
 }
 
 int main() {
-	int T;
-	scanf("%d",&T);
-	while(T--) 
-		Do();
-	return 0;
+    int T;
+    scanf("%d",&T);
+    while(T--) 
+        Do();
+    return 0;
 }

@@ -31,26 +31,26 @@ int v;
 long long dp[maxn];
 
 void CompletePack(int cost) {
-	for(int i = cost; i <= v; i++)
-		dp[i] += dp[i - cost];
+    for(int i = cost; i <= v; i++)
+        dp[i] += dp[i - cost];
 }
 
 bool Do() {
-	if(!(cin >> v))
-		return false;
-	
-	memset(dp,0,sizeof(dp));
-	dp[0] = 1;
+    if(!(cin >> v))
+        return false;
+    
+    memset(dp,0,sizeof(dp));
+    dp[0] = 1;
 
-	for(int i = 1;i <= 21;i++)
-		CompletePack(i*i*i);
+    for(int i = 1;i <= 21;i++)
+        CompletePack(i*i*i);
 
-	cout << dp[v]<<endl;
+    cout << dp[v]<<endl;
 
-	return true;
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

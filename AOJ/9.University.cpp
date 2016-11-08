@@ -14,8 +14,8 @@ char dict2[] = {'e','r','w','q','t','y','g','h','b','n','u','i',
 #define dic(c) c>='A'&&c<='Z'?dict1[c-'A']:c>='a'&&c<='z'?dict2[c-'a']:c
 
 int main() {
-	char c;
-	while(c = getchar(),c != '#')
-		putchar(dic(c));
-	return 0;
+    char c;
+    while(c = getchar(),c != '#')
+        putchar(dic(c));
+    return 0;
 }

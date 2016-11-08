@@ -32,27 +32,27 @@ using namespace std;
 const double PI = 3.1415926;
 
 void Do() {
-	double a,b,r,x,y,w,t;
-	scanf("%lf%lf%lf%lf%lf%lf%lf",&a,&b,&r,&x,&y,&w,&t);
+    double a,b,r,x,y,w,t;
+    scanf("%lf%lf%lf%lf%lf%lf%lf",&a,&b,&r,&x,&y,&w,&t);
 
-	double xb = a + r * cos(w*t);
-	double yb = b + r * sin(w*t);
+    double xb = a + r * cos(w*t);
+    double yb = b + r * sin(w*t);
 
-	double A = y - yb;
-	double B = xb - x;
-	double C = x * yb - xb * y;
+    double A = y - yb;
+    double B = xb - x;
+    double C = x * yb - xb * y;
 
-	double l = abs(A * a + B * b + C) / sqrt(A * A + B * B);
+    double l = abs(A * a + B * b + C) / sqrt(A * A + B * B);
 
-	double ans = 2 * sqrt(r * r - l * l);
+    double ans = 2 * sqrt(r * r - l * l);
 
-	printf("%.2f\n",abs(ans));
+    printf("%.2f\n",abs(ans));
 }
 
 int main() {
-	int T;
-	scanf("%d",&T);
-	while(T--) 
-		Do();
-	return 0;
+    int T;
+    scanf("%d",&T);
+    while(T--) 
+        Do();
+    return 0;
 }

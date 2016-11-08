@@ -36,90 +36,90 @@ vector<string> dict;
 
 
 void replace(string dict) {
-	int count = 0;
-	for(size_t i = 0; i < dict.length(); i++) {
-		if(temp[i] != dict[i]) count++;
-		if(count > 1) return;
-	}
-	ok = 1;
-	cout << " " + dict;
+    int count = 0;
+    for(size_t i = 0; i < dict.length(); i++) {
+        if(temp[i] != dict[i]) count++;
+        if(count > 1) return;
+    }
+    ok = 1;
+    cout << " " + dict;
 }
 
 void insert(string dict) {
-	string tmp;
-	for(size_t i = 0; i < temp.length(); i++) {
-		if(temp[i] != dict[i]) {
-			tmp = dict;
-			tmp.insert(i,1,temp[i]);
-			if(tmp == temp) {
-				ok = 1;
-				cout << " " + dict;
-			}
-			return;
-		}
-	}
+    string tmp;
+    for(size_t i = 0; i < temp.length(); i++) {
+        if(temp[i] != dict[i]) {
+            tmp = dict;
+            tmp.insert(i,1,temp[i]);
+            if(tmp == temp) {
+                ok = 1;
+                cout << " " + dict;
+            }
+            return;
+        }
+    }
 }
 
 void del(string dict) {
-	string tmp;
-	for(size_t i = 0; i < dict.length(); i++) {
-		if(temp[i] != dict[i]) {
-			tmp = dict;
-			tmp.erase(i,1);
-			if(tmp == temp) {
-				ok = 1;
-				cout << " " + dict;
-			}
-			return;
-		}
-	}
+    string tmp;
+    for(size_t i = 0; i < dict.length(); i++) {
+        if(temp[i] != dict[i]) {
+            tmp = dict;
+            tmp.erase(i,1);
+            if(tmp == temp) {
+                ok = 1;
+                cout << " " + dict;
+            }
+            return;
+        }
+    }
 }
 
 bool Do() {
-	while(1) {
-		if(!(cin >> temp))
-			return false;
-		if(temp == "#") break;
-		dict.push_back(temp);
-	}
+    while(1) {
+        if(!(cin >> temp))
+            return false;
+        if(temp == "#") break;
+        dict.push_back(temp);
+    }
 
-	while(1) {
-		cin >> temp;
-		if(temp == "#") break;
+    while(1) {
+        cin >> temp;
+        if(temp == "#") break;
 
-		ok = -1;
-		lstr = temp.length();
+        ok = -1;
+        lstr = temp.length();
 
-		for(size_t i = 0; i < dict.size(); i++) {
-			if(dict[i] == temp) {
-				cout << temp + " is correct";
-				ok = 0;
-				break;
-			}
-		}
+        for(size_t i = 0; i < dict.size(); i++) {
+            if(dict[i] == temp) {
+                cout << temp + " is correct";
+                ok = 0;
+                break;
+            }
+        }
 
 
-		if(ok < 0) {
-			cout << temp + ':';
-			for(size_t i = 0; i < dict.size(); i++) {
-				ldict = dict[i].length();
-				if(lstr == ldict) {
-					replace(dict[i]);
-				} else if(lstr == ldict + 1) {
-					insert(dict[i]);
-				} else if(lstr == ldict - 1) {
-					del(dict[i]);
-				}
-			}
-		}
+        if(ok < 0) {
+            cout << temp + ':';
+            for(size_t i = 0; i < dict.size(); i++) {
+                ldict = dict[i].length();
+                if(lstr == ldict) {
+                    replace(dict[i]);
+                } else if(lstr == ldict + 1) {
+                    insert(dict[i]);
+                } else if(lstr == ldict - 1) {
+                    del(dict[i]);
+                }
+            }
+        }
 
-		cout << endl;
-	}
+        cout << endl;
+    }
 
-	return true;
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

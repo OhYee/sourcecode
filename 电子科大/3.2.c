@@ -58,12 +58,12 @@ EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
 
 int main(){
-	char c;
-	int up;
-	printf("touppper(1) or tolower(2)?");
-	scanf("%c",&c);
-	up=(c=='1'?1:0);
-	while(1){
+    char c;
+    int up;
+    printf("touppper(1) or tolower(2)?");
+    scanf("%c",&c);
+    up=(c=='1'?1:0);
+    while(1){
         scanf("%c",&c);
         if(c>='0'&&c<='9'){
             printf("Wrong!\ns");
@@ -79,10 +79,10 @@ int main(){
             }
         }
         printf("%c\n",c);
-	}
+    }
 
 
 
-	return 0;
+    return 0;
 }
 

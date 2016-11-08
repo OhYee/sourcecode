@@ -34,49 +34,49 @@ int n;
 int h,s,f;
 
 int GetMoney(int ss,int vv) {
-	if(ss > vv)
-		return (ss - vv) * f + vv * s;
-	return (vv - ss) * h + vv * s;
+    if(ss > vv)
+        return (ss - vv) * f + vv * s;
+    return (vv - ss) * h + vv * s;
 }
 
 bool Do() {
-	scanf("%d",&n);
-	if(n == 0)
-		return false;
-	scanf("%d%d%d",&h,&s,&f);
+    scanf("%d",&n);
+    if(n == 0)
+        return false;
+    scanf("%d%d%d",&h,&s,&f);
 
-	int mp = 0;
-	for(int i = 1;i <= n;i++) {
-		scanf("%d",&p[i]);
-		mp = max(mp,p[i]);
-	}
-	p[0] = 0;
+    int mp = 0;
+    for(int i = 1;i <= n;i++) {
+        scanf("%d",&p[i]);
+        mp = max(mp,p[i]);
+    }
+    p[0] = 0;
 
 
-	memset(dp,-1,sizeof(dp));
-	dp[0][0] = 0;
+    memset(dp,-1,sizeof(dp));
+    dp[0][0] = 0;
 
-	for(int i = 1;i <= n;i++)
-		for(int j = p[i];j <= mp;j++) {
-			int Min = INF;
-			for(int k = p[i - 1];k <= mp;k++) 
-				if(dp[i - 1][k] != -1) 
-					Min = min(Min,dp[i-1][k] + GetMoney(k,j));
+    for(int i = 1;i <= n;i++)
+        for(int j = p[i];j <= mp;j++) {
+            int Min = INF;
+            for(int k = p[i - 1];k <= mp;k++) 
+                if(dp[i - 1][k] != -1) 
+                    Min = min(Min,dp[i-1][k] + GetMoney(k,j));
 
-			dp[i][j] = Min;
-		}
+            dp[i][j] = Min;
+        }
 
-	int ans = INF;
-	for(int i = 1;i <= mp;i++)
-		if(dp[n][i] != -1)
-			ans = min(ans,dp[n][i]);
+    int ans = INF;
+    for(int i = 1;i <= mp;i++)
+        if(dp[n][i] != -1)
+            ans = min(ans,dp[n][i]);
 
-	printf("%d\n",ans);
+    printf("%d\n",ans);
 
-	return true;
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

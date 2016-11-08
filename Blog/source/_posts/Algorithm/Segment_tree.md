@@ -34,8 +34,8 @@ tags:
 首先线段树是一棵二叉树,他应该有二叉树基本的数据
 ```cpp
 struct Tree{
-	int l,r;
-	int n;
+    int l,r;
+    int n;
 };
 ```
 

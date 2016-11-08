@@ -30,34 +30,34 @@ int b,c;
 int s[maxn];
 int time[maxn];
 int MinTime(int s,int v) {
-	int Min = (v - s)*c;
-	Min = min(Min,(v - s) / 5 * b + ((v - s) % 5)*c);
-	return Min;
+    int Min = (v - s)*c;
+    Min = min(Min,(v - s) / 5 * b + ((v - s) % 5)*c);
+    return Min;
 }
 
 
 
 bool Do() {
-	int n,k;
-	if(scanf("%d%d%d%d",&n,&k,&b,&c) == EOF)
-		return false;
-	
-	for(int i = 0;i < n;i++) {
-		scanf("%d",&s[i]);
-	}
+    int n,k;
+    if(scanf("%d%d%d%d",&n,&k,&b,&c) == EOF)
+        return false;
+    
+    for(int i = 0;i < n;i++) {
+        scanf("%d",&s[i]);
+    }
 
-	sort(s,s + n);
+    sort(s,s + n);
 
-	
-	while(1) {
-		
-	}
+    
+    while(1) {
+        
+    }
 
-	return true;
+    return true;
 }
 
 
 int vs_main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

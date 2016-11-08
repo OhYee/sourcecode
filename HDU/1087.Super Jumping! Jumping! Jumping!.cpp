@@ -28,26 +28,26 @@ int a[maxn];
 int dp[maxn];
 
 bool  Do() {
-	int n;
-	scanf("%d",&n);
-	if(n == 0)
-		return false;
-	for(int i = 1;i <= n;i++)
-		scanf("%d",&a[i]);
-	int Max = 0;
-	a[0] = 0;
-	for(int i = 0;i <= n;i++) {
-		dp[i] = 0;
-		for(int j = 0;j < i;j++) 
-			if(a[i] > a[j])
-				dp[i] = max(dp[i],dp[j] + a[i]);
-		Max = max(Max,dp[i]);
-	}
-	printf("%d\n",Max);
-	return true;
+    int n;
+    scanf("%d",&n);
+    if(n == 0)
+        return false;
+    for(int i = 1;i <= n;i++)
+        scanf("%d",&a[i]);
+    int Max = 0;
+    a[0] = 0;
+    for(int i = 0;i <= n;i++) {
+        dp[i] = 0;
+        for(int j = 0;j < i;j++) 
+            if(a[i] > a[j])
+                dp[i] = max(dp[i],dp[j] + a[i]);
+        Max = max(Max,dp[i]);
+    }
+    printf("%d\n",Max);
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

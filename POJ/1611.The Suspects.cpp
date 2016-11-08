@@ -34,51 +34,51 @@ const int maxn = 30005;
 //并查集
 int uf[maxn];
 int UF(int n) {
-	int t = uf[n];
-	while(t != uf[t])
-		t = uf[t];
-	return uf[n] = t;
+    int t = uf[n];
+    while(t != uf[t])
+        t = uf[t];
+    return uf[n] = t;
 }
 
 
 
 bool Do() {
-	int n,m;
-	if(scanf("%d%d",&n,&m),m==0&&n==0)
-		return false;
+    int n,m;
+    if(scanf("%d%d",&n,&m),m==0&&n==0)
+        return false;
 
 
-	//初始化并查集
-	REP(n)
-		uf[o] = o;
+    //初始化并查集
+    REP(n)
+        uf[o] = o;
 
-	for(int i = 0;i < m;i++) {
-		int num;
-		scanf("%d",&num);
-		int captain;//社团第一个设为组长
-		scanf("%d",&captain);
-		REP(num-1) {
-			int temp;
-			scanf("%d",&temp);
-			uf[UF(temp)] = UF(captain);//将temp的根链接到captain的根上
-		}
-	}
+    for(int i = 0;i < m;i++) {
+        int num;
+        scanf("%d",&num);
+        int captain;//社团第一个设为组长
+        scanf("%d",&captain);
+        REP(num-1) {
+            int temp;
+            scanf("%d",&temp);
+            uf[UF(temp)] = UF(captain);//将temp的根链接到captain的根上
+        }
+    }
 
-	int cnt = 0;
-	REP(n)
-		if(UF(o)==UF(0))
-			cnt++;
+    int cnt = 0;
+    REP(n)
+        if(UF(o)==UF(0))
+            cnt++;
 
-	/*REP(n)
-		printf("%d %d\n",o,UF(o));*/
+    /*REP(n)
+        printf("%d %d\n",o,UF(o));*/
 
-	printf("%d\n",cnt);
+    printf("%d\n",cnt);
 
 
-	return true;
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

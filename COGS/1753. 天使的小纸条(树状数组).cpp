@@ -23,10 +23,10 @@ int M,N;
 int Q;
 
 int lowbit(int x){
-	return x&(-x);
+    return x&(-x);
 }
 
-int work(int x,int y,int n){//¼ÆËã¾ØÐÎ·½¿é(1,1)(x,y)ÖÐÖ¸¶¨ÀàÐÍµÄ¸öÊýºÍ
+int work(int x,int y,int n){//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î·ï¿½ï¿½ï¿½(1,1)(x,y)ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ÍµÄ¸ï¿½ï¿½ï¿½ï¿½ï¿½
     int sum=0;
     #if debug
     cout<<"     work"<<endl;
@@ -85,7 +85,7 @@ int main(){
 
 
     #if debug
-    cout<<"µØÍ¼¶ÁÈëÍê±Ï"<<endl;
+    cout<<"ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"<<endl;
     cout<<"#######################"<<endl;
     REP(M+1)printf("%5d",o);
     cout<<endl<<endl;
@@ -109,7 +109,7 @@ int main(){
             cin>>x>>y>>c;
             change(x,y,c);
             /*#if debug
-            cout<<"µØÍ¼¸üÐÂÍê±Ï"<<endl;
+            cout<<"ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"<<endl;
             cout<<"#######################"<<endl;
             for(int p=1;p<=N;p++){
                 for(int q=1;q<=M;q++){

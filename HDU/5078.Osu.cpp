@@ -32,39 +32,39 @@ const double eps = 1e-10;
 const int maxn = 1005;
 
 struct Node {
-	double t,x,y;
-	bool operator < (const Node &rhs)const {
-		return t < rhs.t;
-	}
-	double operator - (const Node &rhs)const {
-		return sqrt((x - rhs.x)*(x - rhs.x) + (y - rhs.y)*(y-rhs.y));
-	}
+    double t,x,y;
+    bool operator < (const Node &rhs)const {
+        return t < rhs.t;
+    }
+    double operator - (const Node &rhs)const {
+        return sqrt((x - rhs.x)*(x - rhs.x) + (y - rhs.y)*(y-rhs.y));
+    }
 };
 
 Node note[maxn];
 
 void Do() {
-	int n;
-	cin >> n;
-	for(int i = 0;i < n;i++)
-		cin >> note[i].t >> note[i].x >> note[i].y;
-	sort(note,note + n);
+    int n;
+    cin >> n;
+    for(int i = 0;i < n;i++)
+        cin >> note[i].t >> note[i].x >> note[i].y;
+    sort(note,note + n);
 
-	double Max = 0;
-	for(int i = 1;i < n;i++)
-		Max = max(Max,(note[i] - note[i - 1]) / (note[i].t - note[i - 1].t));
+    double Max = 0;
+    for(int i = 1;i < n;i++)
+        Max = max(Max,(note[i] - note[i - 1]) / (note[i].t - note[i - 1].t));
 
-	cout << fixed << setprecision(20) << Max << endl;
+    cout << fixed << setprecision(20) << Max << endl;
 }
 
 int main() {
-	cin.tie(0);
-	cin.sync_with_stdio(false);
+    cin.tie(0);
+    cin.sync_with_stdio(false);
 
-	int T;
-	cin >> T;
-	while(T--)
-		Do();
+    int T;
+    cin >> T;
+    while(T--)
+        Do();
 
-	return 0;
+    return 0;
 }

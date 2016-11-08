@@ -33,36 +33,36 @@ int sum[maxn][maxn];
 int n;
 
 int DP(int s,int v) {
-	int Max = -INF;
-	for(int i = 1;i <= n;i++) {
-		int t = sum[v][i] - sum[s][i];
-		dp[i] = max(dp[i - 1] + t,t);
-		Max = max(Max,dp[i]);
-	}
-	return Max;
+    int Max = -INF;
+    for(int i = 1;i <= n;i++) {
+        int t = sum[v][i] - sum[s][i];
+        dp[i] = max(dp[i - 1] + t,t);
+        Max = max(Max,dp[i]);
+    }
+    return Max;
 }
 
 bool Do() {
-	if(scanf("%d",&n) == EOF)
-		return false;
+    if(scanf("%d",&n) == EOF)
+        return false;
 
-	for(int i = 1;i <= n;i++)
-		for(int j = 1;j <= n;j++) {
-			scanf("%d",&Map[i][j]);
-			sum[i][j] = sum[i - 1][j] + Map[i][j];
-		}
-	int Max = -INF;
-	for(int i = 1;i <= n;i++)
-		for(int j = 0;j < i;j++) {
-			Max = max(Max,DP(j,i));
-		}
+    for(int i = 1;i <= n;i++)
+        for(int j = 1;j <= n;j++) {
+            scanf("%d",&Map[i][j]);
+            sum[i][j] = sum[i - 1][j] + Map[i][j];
+        }
+    int Max = -INF;
+    for(int i = 1;i <= n;i++)
+        for(int j = 0;j < i;j++) {
+            Max = max(Max,DP(j,i));
+        }
 
-	printf("%d\n",Max);
+    printf("%d\n",Max);
 
-	return true;
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

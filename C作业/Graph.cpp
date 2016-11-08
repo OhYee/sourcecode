@@ -1,90 +1,90 @@
 #include <stdio.h>
 
-/*µÚÒ»²¿·Ö£ºÁÚ½Ó¾ØÕó*/
+/*ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö£ï¿½ï¿½Ú½Ó¾ï¿½ï¿½ï¿½*/
 
-//ÁÚ½Ó¾ØÕó
+//ï¿½Ú½Ó¾ï¿½ï¿½ï¿½
 typedef struct {
-	char *Vertex;//¶¥µãÐÅÏ¢Êý×é,n
-	int *Adjacency;//ÁÚ½Ó¾ØÕó,n*n
-	int n;//¶¥µãÊýÄ¿
-	int m;//±ßÊýÄ¿
+    char *Vertex;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½,n
+    int *Adjacency;//ï¿½Ú½Ó¾ï¿½ï¿½ï¿½,n*n
+    int n;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿
+    int m;//ï¿½ï¿½ï¿½ï¿½Ä¿
 }AdjGraph;
 
-//´ÓÍ¼ÖÐ²éÕÒ¶¥µãÖµÎªvµÄ¶¥µãÔÚVertexÊý×éÖÐµÄÏÂ±ê,Ã»ÓÐÕÒµ½·µ»Ø-1;
+//ï¿½ï¿½Í¼ï¿½Ð²ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ÖµÎªvï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½Vertexï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Â±ï¿½,Ã»ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½-1;
 int FindVertex(AdjGraph *G,char v) {
-	for(int i = 0;i < G->n;i++)
-		if(G->Vertex[i] == v)
-			return i;
-	return -1;
+    for(int i = 0;i < G->n;i++)
+        if(G->Vertex[i] == v)
+            return i;
+    return -1;
 }
 
 
-//ÏòÍ¼GÖÐÌí¼ÓÒ»Ìõ±ß
+//ï¿½ï¿½Í¼Gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
 void AddEdge(AdjGraph *G,char v1,char v2) {
-	int idx1 = FindVertex(G,v1);
-	int idx2 = FindVertex(G,v2);
-	if(idx1 >= 0 && idx2 >= 0) {
-		int k1 = idx1 * G->n + idx2;//M[idx1][idx2]
-		int k2 = idx2 * G->n + idx1;//M[idx2][idx1]
-		G->Adjacency[k1] = G->Adjacency[k2] = 1;
-		G->m++;
-	}
+    int idx1 = FindVertex(G,v1);
+    int idx2 = FindVertex(G,v2);
+    if(idx1 >= 0 && idx2 >= 0) {
+        int k1 = idx1 * G->n + idx2;//M[idx1][idx2]
+        int k2 = idx2 * G->n + idx1;//M[idx2][idx1]
+        G->Adjacency[k1] = G->Adjacency[k2] = 1;
+        G->m++;
+    }
 }
 
 void RemoveEdge(AdjGraph *G,char v1,char v2) {
-	int idx1 = FindVertex(G,v1);
-	int idx2 = FindVertex(G,v2);
-	if(idx1 >= 0 && idx2 >= 0) {
-		int k1 = idx1 * G->n + idx2;//M[idx1][idx2]
-		int k2 = idx2 * G->n + idx1;//M[idx2][idx1]
-		G->Adjacency[k1] = G->Adjacency[k2] = 0;
-		G->m--;
-	}
+    int idx1 = FindVertex(G,v1);
+    int idx2 = FindVertex(G,v2);
+    if(idx1 >= 0 && idx2 >= 0) {
+        int k1 = idx1 * G->n + idx2;//M[idx1][idx2]
+        int k2 = idx2 * G->n + idx1;//M[idx2][idx1]
+        G->Adjacency[k1] = G->Adjacency[k2] = 0;
+        G->m--;
+    }
 }
 
 void CreateAdjGraph(AdjGraph *G) {
-	//´Ó¿ØÖÆÌ¨¶ÁÈëÍ¼µÄÐÅÏ¢
-	//1¡£¶ÁÈë¶¥µãÐÅÏ¢
-	//¾ÙÀý£º6 A B C D E F£¨¶¥µãÊýn,n¸ö¶¥µã£©
+    //ï¿½Ó¿ï¿½ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ï¢
+    //1ï¿½ï¿½ï¿½ï¿½ï¿½ë¶¥ï¿½ï¿½ï¿½ï¿½Ï¢
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½6 A B C D E Fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½n,nï¿½ï¿½ï¿½ï¿½ï¿½ã£©
 
-	//2.¶ÁÈë±ßÐÅÏ¢
-	//¾ÙÀý£º
-	//3
-	//A B
-	//B C
-	//E F
-	scanf("%d",&G->n);
-	G->Vertex = (char *)malloc(G->n*sizeof(char));
+    //2.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //3
+    //A B
+    //B C
+    //E F
+    scanf("%d",&G->n);
+    G->Vertex = (char *)malloc(G->n*sizeof(char));
 
-	for(int i = 0;i < G->n;i++) 
-		scanf("\n%c",&G->Vertex[i]);
+    for(int i = 0;i < G->n;i++) 
+        scanf("\n%c",&G->Vertex[i]);
 
-	int m;
-	scanf("%d",&m);
+    int m;
+    scanf("%d",&m);
 
-	G->Adjacency = (int *)malloc(G->n * G->n * sizeof(int));
+    G->Adjacency = (int *)malloc(G->n * G->n * sizeof(int));
 
-	for(int i = 0;i < G->n * G->n;i++)
-		G->Adjacency[i] = 0;
-	G->m = 0;
+    for(int i = 0;i < G->n * G->n;i++)
+        G->Adjacency[i] = 0;
+    G->m = 0;
 
-	for(int i = 0;i < m;i++) {
-		char v1,v2;
-		scanf("\n%c\n%c",&v1,&v2);
-		AddEdge(G,v1,v2);
-	}
+    for(int i = 0;i < m;i++) {
+        char v1,v2;
+        scanf("\n%c\n%c",&v1,&v2);
+        AddEdge(G,v1,v2);
+    }
 }
 
-//Ïú»ÙG
+//ï¿½ï¿½ï¿½ï¿½G
 void DestroyAdjGraph(AdjGraph *G) {
-	free(G->Vertex);//¶¥µãÐÅÏ¢Êý×é,n
-	free(G->Adjacency);//ÁÚ½Ó¾ØÕó,n*n
-	G->n=0;//¶¥µãÊýÄ¿
-	G->m=0;//±ßÊýÄ¿
+    free(G->Vertex);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½,n
+    free(G->Adjacency);//ï¿½Ú½Ó¾ï¿½ï¿½ï¿½,n*n
+    G->n=0;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿
+    G->m=0;//ï¿½ï¿½ï¿½ï¿½Ä¿
 }
 
-//Êä³ö¶¥µãÐÅÏ¢ºÍÁÚ½Ó¾ØÕó
-//¾ÙÀý£º
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ú½Ó¾ï¿½ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //  A B C D E F
 //A 0 1 0 0 0 0
 //B 1 0 1 0 0 0
@@ -93,126 +93,126 @@ void DestroyAdjGraph(AdjGraph *G) {
 //E 0 0 0 0 0 1
 //F 0 0 0 0 1 0
 void PrintAdjGraph(AdjGraph *G) {
-	printf(" ");
-	for(int i = 0;i < G->n;i++)
-		printf(" %c",G->Vertex[i]);
-	printf("\n");
-	for(int i = 0;i < G->n;i++) {
-		printf("%c",G->Vertex[i]);
-		for(int j = 0;j < G->n;j++) {
-			printf(" %d",G->Adjacency[i * G->n + j]);
-		}
-		printf("\n");
-	}
+    printf(" ");
+    for(int i = 0;i < G->n;i++)
+        printf(" %c",G->Vertex[i]);
+    printf("\n");
+    for(int i = 0;i < G->n;i++) {
+        printf("%c",G->Vertex[i]);
+        for(int j = 0;j < G->n;j++) {
+            printf(" %d",G->Adjacency[i * G->n + j]);
+        }
+        printf("\n");
+    }
 
 }
 
-/*µÚ¶þ²¿·Ö£ºÁÚ½Ó±í*/
+/*ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½Ú½Ó±ï¿½*/
 typedef struct _Neighbor {
-	int vidx;
-	struct _Neighbor *next;
+    int vidx;
+    struct _Neighbor *next;
 }Neighbor;
 
 typedef struct _VertexNode {
-	char vertex;
-	Neighbor *first;
+    char vertex;
+    Neighbor *first;
 }VertexNode;
 typedef struct _AdjList {
-	VertexNode *list;
-	int n,m;
+    VertexNode *list;
+    int n,m;
 }AdjList;
 
 int FindAdjListVertex(AdjList *G,char v) {
-	for(int i = 0;i < G->n;i++)
-		if(G->list[i].vertex == v)
-			return i;
-	return -1;
+    for(int i = 0;i < G->n;i++)
+        if(G->list[i].vertex == v)
+            return i;
+    return -1;
 }
 
 void AddAdjListEdge(AdjList *G,char v1,char v2) {
-	int idx1 = FindAdjListVertex(G,v1);
-	int idx2 = FindAdjListVertex(G,v2);
-	//ÔÚ¶¥µãv1µÄÁÚ½Ó±íÀï¼ÓÈëÒ»¸ö½Úµã
-	Neighbor *node1 = (Neighbor *)malloc(sizeof(Neighbor));
-	node1->vidx = idx2;
-	node1->next = G->list[idx1].first;
-	G->list[idx1].first = node1;
+    int idx1 = FindAdjListVertex(G,v1);
+    int idx2 = FindAdjListVertex(G,v2);
+    //ï¿½Ú¶ï¿½ï¿½ï¿½v1ï¿½ï¿½ï¿½Ú½Ó±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½
+    Neighbor *node1 = (Neighbor *)malloc(sizeof(Neighbor));
+    node1->vidx = idx2;
+    node1->next = G->list[idx1].first;
+    G->list[idx1].first = node1;
 
-	//ÔÚ¶¥µãv2µÄÁÚ½Ó±íÀï¼ÓÈëÒ»¸ö½Úµã
-	Neighbor *node2 = (Neighbor *)malloc(sizeof(Neighbor));
-	node2->vidx = idx1;
-	node2->next = G->list[idx2].first;
-	G->list[idx2].first = node2;
+    //ï¿½Ú¶ï¿½ï¿½ï¿½v2ï¿½ï¿½ï¿½Ú½Ó±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½
+    Neighbor *node2 = (Neighbor *)malloc(sizeof(Neighbor));
+    node2->vidx = idx1;
+    node2->next = G->list[idx2].first;
+    G->list[idx2].first = node2;
 
-	G->m++;
+    G->m++;
 
 }
 
 void RemoveAdjListEdge(AdjList *G,char v1,char v2) {
-	int idx1 = FindAdjListVertex(G,v1);
-	int idx2 = FindAdjListVertex(G,v2);
-	//ÔÚ¶¥µãv1µÄÁÚ½Ó±íÀïÉ¾³ýÒ»¸ö½Úµã
-	Neighbor * idx = G->list[idx1].first;
-	Neighbor * temp = (Neighbor *)malloc(sizeof(Neighbor));
-	Neighbor * last = temp;
-	while(idx != NULL) {
-		if(idx->vidx == v2) {
-			last->next = idx->next;
-			free(idx);
-			break;
-		}
-		last = idx;
-		idx = idx->next;
-	}
+    int idx1 = FindAdjListVertex(G,v1);
+    int idx2 = FindAdjListVertex(G,v2);
+    //ï¿½Ú¶ï¿½ï¿½ï¿½v1ï¿½ï¿½ï¿½Ú½Ó±ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½
+    Neighbor * idx = G->list[idx1].first;
+    Neighbor * temp = (Neighbor *)malloc(sizeof(Neighbor));
+    Neighbor * last = temp;
+    while(idx != NULL) {
+        if(idx->vidx == v2) {
+            last->next = idx->next;
+            free(idx);
+            break;
+        }
+        last = idx;
+        idx = idx->next;
+    }
 
-	//ÔÚ¶¥µãv2µÄÁÚ½Ó±íÀïÉ¾³ýÒ»¸ö½Úµã
-	idx = G->list[idx2].first;
-	last = temp;
-	while(idx != NULL) {
-		if(idx->vidx == v1) {
-			last->next = idx->next;
-			free(idx);
-			break;
-		}
-		last = idx;
-		idx = idx->next;
-	}
+    //ï¿½Ú¶ï¿½ï¿½ï¿½v2ï¿½ï¿½ï¿½Ú½Ó±ï¿½ï¿½ï¿½É¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½
+    idx = G->list[idx2].first;
+    last = temp;
+    while(idx != NULL) {
+        if(idx->vidx == v1) {
+            last->next = idx->next;
+            free(idx);
+            break;
+        }
+        last = idx;
+        idx = idx->next;
+    }
 
-	free(temp);
-	G->m--;
+    free(temp);
+    G->m--;
 }
 
 void GreateAdjList(AdjList *G) {
-	int n;
-	scanf("%d",&n);
-	G->list = (VertexNode *)malloc(sizeof(VertexNode)*n);
-	for(int i = 0;i < n;i++) {
-		char v;
-		scanf("\n%c",&v);
-		G->list[i].vertex = v;
-		G->list[i].first = 0;
-	}
-	G->n = n;
-	//¶ÁÈë±ßµÄÐÅÏ¢
-	int m;
-	scanf("%d",&m);
-	for(int i = 0;i < m;i++) {
-		char v1,v2;
-		scanf("\n%c\n%c",&v1,&v2);
-		AddAdjListEdge(G,v1,v2);
-	}
+    int n;
+    scanf("%d",&n);
+    G->list = (VertexNode *)malloc(sizeof(VertexNode)*n);
+    for(int i = 0;i < n;i++) {
+        char v;
+        scanf("\n%c",&v);
+        G->list[i].vertex = v;
+        G->list[i].first = 0;
+    }
+    G->n = n;
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½Ï¢
+    int m;
+    scanf("%d",&m);
+    for(int i = 0;i < m;i++) {
+        char v1,v2;
+        scanf("\n%c\n%c",&v1,&v2);
+        AddAdjListEdge(G,v1,v2);
+    }
 }
 void DestroyAdjList(AdjList *G) {
-	for(int i = 0;i < G->n;i++) {
-		while(G->list[i].first != NULL)
-			RemoveAdjListEdge(G,G->list[i].vertex,G->list[i].first->vidx);
-	}
-	free(G->list);
-	G->n = 0;
+    for(int i = 0;i < G->n;i++) {
+        while(G->list[i].first != NULL)
+            RemoveAdjListEdge(G,G->list[i].vertex,G->list[i].first->vidx);
+    }
+    free(G->list);
+    G->n = 0;
 }
 
-//Êä³ö¶¥µãÐÅÏ¢ºÍÁÚ½Ó¾ØÕó
-//¾ÙÀý£º
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ú½Ó¾ï¿½ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //  A B C D E F
 //A 0 1 0 0 0 0
 //B 1 0 1 0 0 0
@@ -221,39 +221,39 @@ void DestroyAdjList(AdjList *G) {
 //E 0 0 0 0 0 1
 //F 0 0 0 0 1 0
 bool Linked(AdjList *G, int v1,int v2) {
-	Neighbor * idx = G->list[v1].first;
-	while(idx != NULL) {
-		if(idx->vidx == v2)
-			return true;
-		idx = idx->next;
-	}
-	return false;
+    Neighbor * idx = G->list[v1].first;
+    while(idx != NULL) {
+        if(idx->vidx == v2)
+            return true;
+        idx = idx->next;
+    }
+    return false;
 }
 
 
 void PrintAdjList(AdjList *G) {
-	printf(" ");
-	for(int i = 0;i < G->n;i++)
-		printf(" %c",G->list[i].vertex);
-	printf("\n");
-	for(int i = 0;i < G->n;i++) {
-		printf("%c",G->list[i].vertex);
-		for(int j = 0;j < G->n;j++) {
-			printf(" %d",Linked(G,i,j));
-		}
-		printf("\n");
-	}
+    printf(" ");
+    for(int i = 0;i < G->n;i++)
+        printf(" %c",G->list[i].vertex);
+    printf("\n");
+    for(int i = 0;i < G->n;i++) {
+        printf("%c",G->list[i].vertex);
+        for(int j = 0;j < G->n;j++) {
+            printf(" %d",Linked(G,i,j));
+        }
+        printf("\n");
+    }
 }
 
 int main() {
-	//freopen("in.txt","r",stdin);
-	AdjGraph G;
-	CreateAdjGraph(&G);
-	PrintAdjGraph(&G);
+    //freopen("in.txt","r",stdin);
+    AdjGraph G;
+    CreateAdjGraph(&G);
+    PrintAdjGraph(&G);
 
-	AdjList G2;
-	GreateAdjList(&G2);
-	PrintAdjList(&G2);
+    AdjList G2;
+    GreateAdjList(&G2);
+    PrintAdjList(&G2);
 
-	return 0;
+    return 0;
 }

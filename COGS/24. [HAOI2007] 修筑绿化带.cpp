@@ -4,10 +4,10 @@ int M,N,A,B,C,D;
 int X[1001][1001];
 int Map[1001][1001];
 int main(){
-	scanf("%d%d%d%d%d%d",&M,&N,&A,&B,&C,&D);
-	for(int i=1;i<=M;i++)
-		for(int j=1;j<=N;j++)
-			scanf("%d",&X[i][j]);
+    scanf("%d%d%d%d%d%d",&M,&N,&A,&B,&C,&D);
+    for(int i=1;i<=M;i++)
+        for(int j=1;j<=N;j++)
+            scanf("%d",&X[i][j]);
        for(int i=1;i<=M;i++){
               for(int j=1;j<=N;j++){
                      if(i==1){
@@ -41,5 +41,5 @@ int main(){
 
 
 
-	return 0;
+    return 0;
 }

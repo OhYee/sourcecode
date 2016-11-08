@@ -36,42 +36,42 @@ int ans[maxh];
 int Max = -1;
 
 int Ans(int h) {
-	if(h > Max)
-		return 0;
-	if(ans[h] == -1)
-		ans[h] = cnt[h] + Ans(h + 1);
+    if(h > Max)
+        return 0;
+    if(ans[h] == -1)
+        ans[h] = cnt[h] + Ans(h + 1);
 
-	return ans[h];
+    return ans[h];
 }
 
 void Do() {
-	memset(cnt,0,sizeof(cnt));
-	memset(ans,-1,sizeof(cnt));
-	Max = -1;
+    memset(cnt,0,sizeof(cnt));
+    memset(ans,-1,sizeof(cnt));
+    Max = -1;
 
 
-	int n,m,q;
-	scanf("%d%d%d",&n,&m,&q);
-	
-	for(int i = 0;i < n;i++)
-		for(int j = 0;j < m;j++) {
-			int temp;
-			scanf("%d",&temp);
-			Max = max(Max,temp);
-			cnt[temp]++;
-		}
+    int n,m,q;
+    scanf("%d%d%d",&n,&m,&q);
+    
+    for(int i = 0;i < n;i++)
+        for(int j = 0;j < m;j++) {
+            int temp;
+            scanf("%d",&temp);
+            Max = max(Max,temp);
+            cnt[temp]++;
+        }
 
-	REP(q) {
-		int h;
-		scanf("%d",&h);
-		printf("%d\n",Ans(h)-cnt[h]);
-	}
+    REP(q) {
+        int h;
+        scanf("%d",&h);
+        printf("%d\n",Ans(h)-cnt[h]);
+    }
 }
 
 int main() {
-	int T;
-	scanf("%d",&T);
-	while(T--)
-		Do();
-	return 0;
+    int T;
+    scanf("%d",&T);
+    while(T--)
+        Do();
+    return 0;
 }

@@ -37,32 +37,32 @@ int a[t(maxn)];
 int dp[t(maxn)];
 
 int left(int n) {
-	int i;
-	for(i = 0;t(i) < n;i++);
-	return n + i;
+    int i;
+    for(i = 0;t(i) < n;i++);
+    return n + i;
 }
 
 bool Do() {
-	if(scanf("%d",&n) == EOF)
-		return false;
-	for(int i = 1;i <= t(n);i++)
-		scanf("%d",&a[i]);
+    if(scanf("%d",&n) == EOF)
+        return false;
+    for(int i = 1;i <= t(n);i++)
+        scanf("%d",&a[i]);
 
-	memset(dp,0,sizeof(dp));
-	for(int i = 0;i <= t(n - 1);i++) {
-		dp[left(i)] = max(dp[left(i)],dp[i] + a[left(i)]);
-		dp[left(i) + 1] = max(dp[left(i) + 1],dp[i] + a[left(i) + 1]);
-	}
+    memset(dp,0,sizeof(dp));
+    for(int i = 0;i <= t(n - 1);i++) {
+        dp[left(i)] = max(dp[left(i)],dp[i] + a[left(i)]);
+        dp[left(i) + 1] = max(dp[left(i) + 1],dp[i] + a[left(i) + 1]);
+    }
 
-	int Max = -1;
-	for(int i = t(n - 1) + 1;i <= t(n);i++)
-		Max = max(Max,dp[i]);
+    int Max = -1;
+    for(int i = t(n - 1) + 1;i <= t(n);i++)
+        Max = max(Max,dp[i]);
 
-	printf("%d\n",Max);
-	return true;
+    printf("%d\n",Max);
+    return true;
 }
 
 int main() {
-	while(Do());
-	return 0;
+    while(Do());
+    return 0;
 }

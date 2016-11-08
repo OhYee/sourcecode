@@ -28,23 +28,23 @@ using namespace std;
 
 //a长 b宽
 int DFS(int a, int b) {
-	if (a == b)
-		return 1;
-	return 1 + DFS(max(a - b, b), min(a - b, b));
+    if (a == b)
+        return 1;
+    return 1 + DFS(max(a - b, b), min(a - b, b));
 
 }
 
 void Do() {
-	int n, m;
-	scanf("%d%d", &n, &m);
-	printf("%d\n", DFS(max(m, n), min(m, n)));
+    int n, m;
+    scanf("%d%d", &n, &m);
+    printf("%d\n", DFS(max(m, n), min(m, n)));
 }
 
 
 int main() {
-	int T;
-	scanf("%d", &T);
-	while (T--)
-		Do();
-	return 0;
+    int T;
+    scanf("%d", &T);
+    while (T--)
+        Do();
+    return 0;
 }

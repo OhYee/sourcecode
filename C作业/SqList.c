@@ -1,126 +1,126 @@
 #include <stdio.h>
 #include <malloc.h>
 
-//Ë³Ðò±í´æ´¢µÄÊý¾ÝµÄÀàÐÍ
+//Ë³ï¿½ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½
 typedef int Element;
-//Ë³Ðò±í³õÊ¼Ê±µÄ³¤¶È
+//Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Ê±ï¿½Ä³ï¿½ï¿½ï¿½
 #define InitSize 100
-//Ë³Ðò±íÃ¿´ÎÍØÕ¹µÄ³¤¶È
+//Ë³ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½Ä³ï¿½ï¿½ï¿½
 #define InsertSize 10
-//Ö¸¶¨ÏÂ±êÎ»ÖÃµÄÄÚ´æ
+//Ö¸ï¿½ï¿½ï¿½Â±ï¿½Î»ï¿½Ãµï¿½ï¿½Ú´ï¿½
 #define point(n) (L->element + (n)*sizeof(Element))
 
 struct SqList {
-	//ÔªËØÖ¸Õë
-	Element *element;
-	//ÔªËØ¸öÊý
-	int Length;
-	//Ë³Ðò±í³¤¶È
-	int size;
+    //Ôªï¿½ï¿½Ö¸ï¿½ï¿½
+    Element *element;
+    //Ôªï¿½Ø¸ï¿½ï¿½ï¿½
+    int Length;
+    //Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    int size;
 };
 
-//³õÊ¼»¯Ë³Ðò±í
+//ï¿½ï¿½Ê¼ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½
 int InitList(SqList *L) {
-	L->element = (Element*)malloc(InitSize*sizeof(Element));
-	L->Length = 0;
-	L->size = InitSize;
-	//ÄÚ´æÉêÇëÊ§°Ü
-	if(!L->element) {
-		return -1;
-	}
-	return 1;
+    L->element = (Element*)malloc(InitSize*sizeof(Element));
+    L->Length = 0;
+    L->size = InitSize;
+    //ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+    if(!L->element) {
+        return -1;
+    }
+    return 1;
 }
 
-//Ïú»ÙË³Ðò±í£¬ÊÍ·ÅËùÓÐÄÚ´æ
+//ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½
 void DestoryList(SqList *L) {
-	free(L->element);
-	L = NULL;
+    free(L->element);
+    L = NULL;
 }
 
-//½«Êý¾Ý²åÈëµ½posÎ»ÖÃÖ®Ç°
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ëµ½posÎ»ï¿½ï¿½Ö®Ç°
 void ListInsert(SqList *L,int pos,Element e) {
-	//ÄÚ´æÒÑÂú
-	if(L->Length == L->size) {
-		//ÖØÐÂÉêÇëÄÚ´æ
-		L->element = (Element*)realloc(L->element,(L->size + InsertSize)*sizeof(Element));
-		//±í³¤Ôö¼Ó
-		L->size += InsertSize;
-	}
+    //ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½
+    if(L->Length == L->size) {
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½
+        L->element = (Element*)realloc(L->element,(L->size + InsertSize)*sizeof(Element));
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        L->size += InsertSize;
+    }
 
-	//Êý¾ÝºóÒÆ
-	Element* it;
-	it = point(L->Length + 1);
-	while(it != point(pos)) {
-		*it = *(it - sizeof(Element));
-		it -= sizeof(Element);
-	}
-	//¸³Öµ
-	*point(pos) = e;
-	//³¤¶ÈÔö¼Ó
-	L->Length++;
+    //ï¿½ï¿½ï¿½Ýºï¿½ï¿½ï¿½
+    Element* it;
+    it = point(L->Length + 1);
+    while(it != point(pos)) {
+        *it = *(it - sizeof(Element));
+        it -= sizeof(Element);
+    }
+    //ï¿½ï¿½Öµ
+    *point(pos) = e;
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    L->Length++;
 }
 
-//É¾³ýË³Ðò±íµÄ½Úµã
+//É¾ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½Ä½Úµï¿½
 void ListDelete(SqList *L,int pos) {
-	Element *it;
-	it = point(pos);
-	//Êý¾ÝÇ°ÒÆ
-	while(it != point(L->Length - 1)) {
-		*it = *(it + sizeof(Element));
-		it += sizeof(Element);
-	}
-	//³¤¶È¼õÉÙ
-	L->Length--;
+    Element *it;
+    it = point(pos);
+    //ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½
+    while(it != point(L->Length - 1)) {
+        *it = *(it + sizeof(Element));
+        it += sizeof(Element);
+    }
+    //ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½
+    L->Length--;
 }
 
-//·µ»ØÖ¸¶¨ÔªËØµÄÏÂ±ê  Î´ÕÒµ½·µ»Ø-1
+//ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ôªï¿½Øµï¿½ï¿½Â±ï¿½  Î´ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½-1
 int LocateElem(SqList *L,Element e) {
-	int i;
-	for(i = 0;i < L->Length;i++) {
-		if(e == *point(i))
-			return i;
-	}
-	return -1;
+    int i;
+    for(i = 0;i < L->Length;i++) {
+        if(e == *point(i))
+            return i;
+    }
+    return -1;
 }
 
-//·µ»ØÖ¸¶¨ÏÂ±ê¶ÔÓ¦µÄÔªËØ Êý¾ÝÒç³ö·µ»Ø³õÊ¼Î»ÖÃÔªËØ
+//ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Â±ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Ôªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø³ï¿½Ê¼Î»ï¿½ï¿½Ôªï¿½ï¿½
 Element GetElem(SqList* L,int pos) {
-	if(pos >= L->Length || pos < 0)
-		return *point(0);
-	return *point(pos);
+    if(pos >= L->Length || pos < 0)
+        return *point(0);
+    return *point(pos);
 }
 
 int ListLength(SqList *L) {
-	return L->Length;
+    return L->Length;
 }
 
-//Çå¿ÕÊý¾Ý±íÊý¾Ý
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½ï¿½ï¿½
 void ClearList(SqList *L) {
-	L->Length = 0;
+    L->Length = 0;
 }
 
 int main() {
-	SqList L;
-	printf("³õÊ¼»¯Ë³Ðò±í\n");
-	InitList(&L);
-	printf("²åÈë 1 2 3\n");
-	ListInsert(&L,0,1);
-	ListInsert(&L,1,2);
-	ListInsert(&L,2,3);
-	printf("Êä³öÏÂ±ê1¶ÔÓ¦µÄÔªËØ\n");
-	printf("%d\n",GetElem(&L,1));
-	printf("Êä³ö2¶ÔÓ¦µÄÏÂ±ê:%d\n",LocateElem(&L,2));
-	printf("Êä³öË³Ðò±í³¤¶È:%d\n",ListLength(&L));
-	LocateElem(&L,2);
-	printf("É¾³ýÏÂ±ê1¶ÔÓ¦µÄÔªËØ\n");
-	ListDelete(&L,1);
-	printf("Êä³öÏÂ±ê1¶ÔÓ¦µÄÔªËØ\n");
-	printf("%d\n",GetElem(&L,1));
-	printf("Êä³ö2¶ÔÓ¦µÄÏÂ±ê:%d\n",LocateElem(&L,2));
-	printf("Êä³öË³Ðò±í³¤¶È:%d\n",ListLength(&L));
-	printf("Çå¿Õ\n");
-	ClearList(&L);
-	printf("Ïú»Ù\n");
-	DestoryList(&L);
-	return 0;
+    SqList L;
+    printf("ï¿½ï¿½Ê¼ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½\n");
+    InitList(&L);
+    printf("ï¿½ï¿½ï¿½ï¿½ 1 2 3\n");
+    ListInsert(&L,0,1);
+    ListInsert(&L,1,2);
+    ListInsert(&L,2,3);
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½1ï¿½ï¿½Ó¦ï¿½ï¿½Ôªï¿½ï¿½\n");
+    printf("%d\n",GetElem(&L,1));
+    printf("ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Â±ï¿½:%d\n",LocateElem(&L,2));
+    printf("ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:%d\n",ListLength(&L));
+    LocateElem(&L,2);
+    printf("É¾ï¿½ï¿½ï¿½Â±ï¿½1ï¿½ï¿½Ó¦ï¿½ï¿½Ôªï¿½ï¿½\n");
+    ListDelete(&L,1);
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½1ï¿½ï¿½Ó¦ï¿½ï¿½Ôªï¿½ï¿½\n");
+    printf("%d\n",GetElem(&L,1));
+    printf("ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Â±ï¿½:%d\n",LocateElem(&L,2));
+    printf("ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:%d\n",ListLength(&L));
+    printf("ï¿½ï¿½ï¿½ï¿½\n");
+    ClearList(&L);
+    printf("ï¿½ï¿½ï¿½ï¿½\n");
+    DestoryList(&L);
+    return 0;
 }

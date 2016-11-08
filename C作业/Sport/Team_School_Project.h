@@ -12,13 +12,13 @@ class Team;
 class School;
 class Project;
 
-typedef list<Team>::iterator	ptrTeam;
-typedef list<School>::iterator	ptrSchool;
-typedef list<Project>::iterator	ptrProject;
+typedef list<Team>::iterator    ptrTeam;
+typedef list<School>::iterator    ptrSchool;
+typedef list<Project>::iterator    ptrProject;
 
-list<Team>		TeamList;
-list<School>	SchoolList;
-list<Project>	ProjectList;
+list<Team>        TeamList;
+list<School>    SchoolList;
+list<Project>    ProjectList;
 
 map<string,int> SchoolNameToNumber;
 map<int,string> SchoolNumberToName;
@@ -27,131 +27,131 @@ map<int,string> ProjectNumberToName;
 
 class Team {
 private:
-	//ÔÚprojectÏîÄ¿»ñµÃµÚGradeÃûµÄSchoolÑ§Ð£µÄmaleµÄ±àºÅÎªNumber¶Ó
-	int Number;
-	ptrSchool School;
-	ptrProject Project;
-	int Grade;
+    //ï¿½ï¿½projectï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ãµï¿½Gradeï¿½ï¿½ï¿½ï¿½SchoolÑ§Ð£ï¿½ï¿½maleï¿½Ä±ï¿½ï¿½ï¿½ÎªNumberï¿½ï¿½
+    int Number;
+    ptrSchool School;
+    ptrProject Project;
+    int Grade;
 
 public:
-	Team(int,int,int);
-	int GetScore();//»ñµÃÕâÖ§Ð¡¶ÓµÄ·ÖÊý
-	bool isMale();//·µ»ØÊÇ·ñÊÇÄÐ¶Ó
-	void Delete();//É¾³ý¶ÓÎéÐÅÏ¢
-	bool operator == (const int n)const;
+    Team(int,int,int);
+    int GetScore();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö§Ð¡ï¿½ÓµÄ·ï¿½ï¿½ï¿½
+    bool isMale();//ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
+    void Delete();//É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+    bool operator == (const int n)const;
 
-	static bool NewTeam(int num,string name) {
-		if(hasSchool(num))
-			return false;
-		SchoolList.push_back(School(num,name));
+    static bool NewTeam(int num,string name) {
+        if(hasSchool(num))
+            return false;
+        SchoolList.push_back(School(num,name));
 
-		SchoolNumberToName.insert(make_pair(num,name));
-		SchoolNameToNumber.insert(make_pair(name,num));
+        SchoolNumberToName.insert(make_pair(num,name));
+        SchoolNameToNumber.insert(make_pair(name,num));
 
-		return true;
-	}
+        return true;
+    }
 };
 class School {
 private:
-	//±àºÅÎª Number Ãû³ÆÎª Name ÓÐ Team ¶ÓÎéµÄÑ§Ð£
-	int Number;
-	string Name;
+    //ï¿½ï¿½ï¿½ï¿½Îª Number ï¿½ï¿½ï¿½ï¿½Îª Name ï¿½ï¿½ Team ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§Ð£
+    int Number;
+    string Name;
 
 public:
-	list<ptrTeam> Team;
+    list<ptrTeam> Team;
 
-	School(int,string);
-	int GetScore();//»ñÈ¡¸ÃÑ§Ð£×Ü·Ö
-	void Delete();//É¾³ýÑ§Ð£
-	bool operator == (const int)const;//ÅÐ¶Ï±àºÅÊÇ·ñÏàÍ¬
+    School(int,string);
+    int GetScore();//ï¿½ï¿½È¡ï¿½ï¿½Ñ§Ð£ï¿½Ü·ï¿½
+    void Delete();//É¾ï¿½ï¿½Ñ§Ð£
+    bool operator == (const int)const;//ï¿½Ð¶Ï±ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Í¬
 
-									 //·µ»ØÒ»¸öÑ§Ð£µÄÖ¸Õë
-	inline static ptrSchool SearchSchool(int num) {
-		ptrSchool it;
-		it = find(SchoolList.begin(),SchoolList.end(),num);
-		return it;
-	}
+                                     //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ñ§Ð£ï¿½ï¿½Ö¸ï¿½ï¿½
+    inline static ptrSchool SearchSchool(int num) {
+        ptrSchool it;
+        it = find(SchoolList.begin(),SchoolList.end(),num);
+        return it;
+    }
 
-	//ÅÐ¶ÏÒ»¸öÑ§Ð£ÊÇ·ñÒÑ´æÔÚ
-	inline static bool hasSchool(int num) {
-		return !!SchoolNumberToName.count(num);
-	}
+    //ï¿½Ð¶ï¿½Ò»ï¿½ï¿½Ñ§Ð£ï¿½Ç·ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½
+    inline static bool hasSchool(int num) {
+        return !!SchoolNumberToName.count(num);
+    }
 
-	//ÐÂ½¨Ò»¸öÑ§Ð£
-	static bool NewSchool(int num,string name) {
-		if(hasSchool(num))
-			return false;
-		SchoolList.push_back(School(num,name));
+    //ï¿½Â½ï¿½Ò»ï¿½ï¿½Ñ§Ð£
+    static bool NewSchool(int num,string name) {
+        if(hasSchool(num))
+            return false;
+        SchoolList.push_back(School(num,name));
 
-		SchoolNumberToName.insert(make_pair(num,name));
-		SchoolNameToNumber.insert(make_pair(name,num));
+        SchoolNumberToName.insert(make_pair(num,name));
+        SchoolNameToNumber.insert(make_pair(name,num));
 
-		return true;
-	}
+        return true;
+    }
 
-	//É¾³ýÒ»¸öÑ§Ð£
-	static bool DeleteSchool(int num) {
-		ptrSchool itSchool = SearchSchool(num);
-		if(itSchool == SchoolList.end())
-			return false;
+    //É¾ï¿½ï¿½Ò»ï¿½ï¿½Ñ§Ð£
+    static bool DeleteSchool(int num) {
+        ptrSchool itSchool = SearchSchool(num);
+        if(itSchool == SchoolList.end())
+            return false;
 
-		itSchool->Delete();
+        itSchool->Delete();
 
-		return true;
-	}
+        return true;
+    }
 };
 class Project {
 private:
-	//±àºÅÎª Number Ãû³ÆÎª Name µÄ Three ÈË Male ±ÈÈü£¬²ÎÈü¶ÓÎéÓÐ Team
-	int Number;
-	string Name;
-	bool Three;
-	bool Male;
+    //ï¿½ï¿½ï¿½ï¿½Îª Number ï¿½ï¿½ï¿½ï¿½Îª Name ï¿½ï¿½ Three ï¿½ï¿½ Male ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Team
+    int Number;
+    string Name;
+    bool Three;
+    bool Male;
 
 
 public:
-	list<ptrTeam> Team;
+    list<ptrTeam> Team;
 
-	Project(int,string,bool,bool);
-	bool isMale();
-	int GetScore(int);//»ñÈ¡ÅÅÃû grade µÄ¶ÓÎéÔÚÕâÏî±ÈÈüÖÐµÄµÃ·Ö
-	void Delete();//É¾³ýÏîÄ¿
-	bool operator == (const int)const;//ÅÐ¶Ï±àºÅÊÇ·ñÏàÍ¬
+    Project(int,string,bool,bool);
+    bool isMale();
+    int GetScore(int);//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ grade ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄµÃ·ï¿½
+    void Delete();//É¾ï¿½ï¿½ï¿½ï¿½Ä¿
+    bool operator == (const int)const;//ï¿½Ð¶Ï±ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Í¬
 
-	//·µ»ØÒ»¸öÏîÄ¿µÄÖ¸Õë
-	inline static ptrProject SearchProject(int num) {
-		ptrProject it;
-		it = find(ProjectList.begin(),ProjectList.end(),num);
-		return it;
-	}
+    //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Ö¸ï¿½ï¿½
+    inline static ptrProject SearchProject(int num) {
+        ptrProject it;
+        it = find(ProjectList.begin(),ProjectList.end(),num);
+        return it;
+    }
 
-	//ÅÐ¶ÏÒ»¸öÏîÄ¿ÊÇ·ñÒÑ´æÔÚ
-	inline static bool hasProject(int num) {
-		return !!ProjectNumberToName.count(num);
-	}
+    //ï¿½Ð¶ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½Ç·ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½
+    inline static bool hasProject(int num) {
+        return !!ProjectNumberToName.count(num);
+    }
 
-	//ÐÂ½¨Ò»¸öÏîÄ¿
-	static bool NewProject(int num,string name,bool Three,bool Male) {
-		if(hasProject(num))
-			return false;
-		ProjectList.push_back(Project(num,name,Three,Male));
+    //ï¿½Â½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ä¿
+    static bool NewProject(int num,string name,bool Three,bool Male) {
+        if(hasProject(num))
+            return false;
+        ProjectList.push_back(Project(num,name,Three,Male));
 
-		ProjectNumberToName.insert(make_pair(num,name));
-		ProjectNameToNumber.insert(make_pair(name,num));
+        ProjectNumberToName.insert(make_pair(num,name));
+        ProjectNameToNumber.insert(make_pair(name,num));
 
-		return true;
-	}
+        return true;
+    }
 
-	//É¾³ýÒ»¸öÏîÄ¿
-	static bool DeleteProject(int num) {
-		ptrProject itProject = SearchProject(num);
-		if(itProject == ProjectList.end())
-			return false;
+    //É¾ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ä¿
+    static bool DeleteProject(int num) {
+        ptrProject itProject = SearchProject(num);
+        if(itProject == ProjectList.end())
+            return false;
 
-		itProject->Delete();
+        itProject->Delete();
 
-		return true;
-	}
+        return true;
+    }
 };
 
 //============================================
@@ -159,38 +159,38 @@ public:
 //============================================
 
 Team::Team(int SchoolNumber,int ProjectNumber,int Grade) {
-	School = School::SearchSchool(SchoolNumber);
-	Project = Project::SearchProject(ProjectNumber);
-	this->Grade = Grade;
+    School = School::SearchSchool(SchoolNumber);
+    Project = Project::SearchProject(ProjectNumber);
+    this->Grade = Grade;
 }
 
-//»ñµÃÕâÖ§Ð¡¶ÓµÄ·ÖÊý
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö§Ð¡ï¿½ÓµÄ·ï¿½ï¿½ï¿½
 int Team::GetScore() {
-	return Project->GetScore(Grade);
+    return Project->GetScore(Grade);
 }
 
-//·µ»ØÊÇ·ñÊÇÄÐ¶Ó
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
 bool Team::isMale() {
-	return Project->isMale();
+    return Project->isMale();
 }
 
-//É¾³ý¶ÓÎéÐÅÏ¢
+//É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 void Team::Delete() {
-	list<ptrTeam>::iterator itTeam;
-	ptrTeam itTeam2 = find(TeamList.begin(),TeamList.end(),Number);
+    list<ptrTeam>::iterator itTeam;
+    ptrTeam itTeam2 = find(TeamList.begin(),TeamList.end(),Number);
 
-	//É¾³ý¶ÔÓ¦ÏîÄ¿Àï¸Ã¶ÓÎé¼ÇÂ¼
-	itTeam = find(Project->Team.begin(),Project->Team.end(),itTeam2);
-	Project->Team.erase(itTeam);
-	//É¾³ý¶ÔÓ¦Ñ§Ð£Àï¸Ã¶ÓÎé¼ÇÂ¼
-	itTeam = find(School->Team.begin(),School->Team.end(),itTeam2);
-	School->Team.erase(itTeam);
+    //É¾ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
+    itTeam = find(Project->Team.begin(),Project->Team.end(),itTeam2);
+    Project->Team.erase(itTeam);
+    //É¾ï¿½ï¿½ï¿½ï¿½Ó¦Ñ§Ð£ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
+    itTeam = find(School->Team.begin(),School->Team.end(),itTeam2);
+    School->Team.erase(itTeam);
 
-	TeamList.erase(itTeam2);
+    TeamList.erase(itTeam2);
 }
 
 bool Team::operator == (const int n)const {
-	return Number == n;
+    return Number == n;
 }
 
 //============================================
@@ -198,42 +198,42 @@ bool Team::operator == (const int n)const {
 //============================================
 
 School::School(int number,string name) {
-	this->Number = number;
-	this->Name = name;
-	this->Team.clear();
+    this->Number = number;
+    this->Name = name;
+    this->Team.clear();
 }
 
-//»ñÈ¡¸ÃÑ§Ð£×Ü·Ö
+//ï¿½ï¿½È¡ï¿½ï¿½Ñ§Ð£ï¿½Ü·ï¿½
 int School::GetScore() {
-	int sum = 0;
+    int sum = 0;
 
-	list<ptrTeam>::iterator it = Team.begin();
-	while(it != Team.end()) {
-		sum += (*it)->GetScore();
-		it++;
-	}
+    list<ptrTeam>::iterator it = Team.begin();
+    while(it != Team.end()) {
+        sum += (*it)->GetScore();
+        it++;
+    }
 
-	return sum;
+    return sum;
 }
 
-//É¾³ýÑ§Ð£
+//É¾ï¿½ï¿½Ñ§Ð£
 void School::Delete() {
-	list<ptrTeam>::iterator itTeam = Team.begin(),itTeam2;
-	while(itTeam != Team.end()) {
-		itTeam2 = itTeam++;//·ÀÖ¹ÔÚTeamµÄÉ¾³ýº¯ÊýÀïÇå³ýSchoolµÄÁÐ±íµ¼ÖÂµü´úÆ÷ÎÞ·¨ºóÒÆ
-		(*itTeam2)->Delete();
-	}
+    list<ptrTeam>::iterator itTeam = Team.begin(),itTeam2;
+    while(itTeam != Team.end()) {
+        itTeam2 = itTeam++;//ï¿½ï¿½Ö¹ï¿½ï¿½Teamï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Schoolï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½
+        (*itTeam2)->Delete();
+    }
 
-	SchoolNumberToName.erase(Number);
-	SchoolNameToNumber.erase(Name);
+    SchoolNumberToName.erase(Number);
+    SchoolNameToNumber.erase(Name);
 
-	ptrSchool itSchool = SearchSchool(Number);
-	SchoolList.erase(itSchool);
+    ptrSchool itSchool = SearchSchool(Number);
+    SchoolList.erase(itSchool);
 }
 
-//ÅÐ¶Ï±àºÅÊÇ·ñÏàÍ¬
+//ï¿½Ð¶Ï±ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Í¬
 bool School::operator == (const int n)const {
-	return n == Number;
+    return n == Number;
 }
 
 
@@ -242,38 +242,38 @@ bool School::operator == (const int n)const {
 //============================================
 
 Project::Project(int number,string name,bool Three,bool Male) {
-	this->Number = number;
-	this->Name = name;
-	this->Three = Three;
-	this->Male = Male;
-	this->Team.clear();
+    this->Number = number;
+    this->Name = name;
+    this->Three = Three;
+    this->Male = Male;
+    this->Team.clear();
 }
 
 bool Project::isMale() {
-	return Male;
+    return Male;
 }
 
-//»ñÈ¡ÅÅÃû grade µÄ¶ÓÎéÔÚÕâÏî±ÈÈüÖÐµÄµÃ·Ö
+//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ grade ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄµÃ·ï¿½
 int Project::GetScore(int grade) {
-	return SCORE[Three][grade];
+    return SCORE[Three][grade];
 }
 
-//É¾³ýÏîÄ¿
+//É¾ï¿½ï¿½ï¿½ï¿½Ä¿
 void Project::Delete() {
-	list<ptrTeam>::iterator itTeam = Team.begin(),itTeam2;
-	while(itTeam != Team.end()) {
-		itTeam2 = itTeam++;//·ÀÖ¹ÔÚTeamµÄÉ¾³ýº¯ÊýÀïÇå³ýProjectµÄÁÐ±íµ¼ÖÂµü´úÆ÷ÎÞ·¨ºóÒÆ
-		(*itTeam2)->Delete();
-	}
+    list<ptrTeam>::iterator itTeam = Team.begin(),itTeam2;
+    while(itTeam != Team.end()) {
+        itTeam2 = itTeam++;//ï¿½ï¿½Ö¹ï¿½ï¿½Teamï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Projectï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½
+        (*itTeam2)->Delete();
+    }
 
-	ProjectNumberToName.erase(Number);
-	ProjectNameToNumber.erase(Name);
+    ProjectNumberToName.erase(Number);
+    ProjectNameToNumber.erase(Name);
 
-	ptrProject itProject = SearchProject(Number);
-	ProjectList.erase(itProject);
+    ptrProject itProject = SearchProject(Number);
+    ProjectList.erase(itProject);
 }
 
-//ÅÐ¶Ï±àºÅÊÇ·ñÏàÍ¬
+//ï¿½Ð¶Ï±ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Í¬
 bool Project::operator == (const int n)const {
-	return n == Number;
+    return n == Number;
 }

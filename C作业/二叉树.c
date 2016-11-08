@@ -1,194 +1,194 @@
 #include <stdio.h>
 
 typedef enum {
-	TRUE = 1,FALSE = 0
+    TRUE = 1,FALSE = 0
 } Bool;
 /*
-±¾´ÎÊµÑéÁ·Ï°¶þ²æÊ÷µÄ»ù±¾Êý¾Ý½á¹¹ºÍËã·¨¡£
-ÊµÑéÄÚÈÝÎª£º
-1£©½¨Á¢¶þ²æÁ´±í½á¹¹
-2£©ÊµÏÖ°´ÕÕÏÈÐòË³ÐòÉú³ÉÒ»¿Ã¶þ²æÊ÷
-3£©ÀûÓÃ¶ÑÕ»ÊµÏÖ¶þ²æÊ÷µÄÖÐÐò±éÀúËã·¨
-4£©ÊµÏÖ¶þ²æÊ÷µÄºóÐò±éÀúËã·¨
+ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹ï¿½ï¿½ï¿½ã·¨ï¿½ï¿½
+Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½
+1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹¹
+2ï¿½ï¿½Êµï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½
+3ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½Õ»Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã·¨
+4ï¿½ï¿½Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã·¨
 
 */
-//ÌáÊ¾£ºÇë½«ÏÂÃæÁ½¸ö±äÁ¿ÐÞ¸ÄÎªÄãµÄÐÕÃûºÍÑ§ºÅ
-char* name = "ÀîÖ¥è¯";
+//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ë½«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½
+char* name = "ï¿½ï¿½Ö¥ï¿½ï¿½";
 char* id = "E41514043";
 
-//ÌáÊ¾£ºÇëÍê³É¶þ²æÊ÷µÄÊý¾Ý½á¹¹
+//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹
 typedef struct _BiTreeNode {
-	//ÔÚÏÂÃæÌîÐ´ÄãµÄ´úÂë
-	char data;
-	_BiTreeNode *lchild;
-	_BiTreeNode *rchild;
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
+    char data;
+    _BiTreeNode *lchild;
+    _BiTreeNode *rchild;
 }BiTreeNode,*BiTree;
 
-//ÌáÊ¾:Çë²¹³äÍêÕûÕ»µÄÊý¾Ý½á¹¹
-//¸ÃÕ»ÓÃÓÚÊµÏÖ·ÇµÝ¹éµÄÖÐÐò±éÀúËã·¨
-//Õ»ÖÐµÄÔªËØÎª¶þ²æÊ÷½Úµã
+//ï¿½ï¿½Ê¾:ï¿½ë²¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹
+//ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö·ÇµÝ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã·¨
+//Õ»ï¿½Ðµï¿½Ôªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
 typedef struct _StackNode {
-	BiTree data;
-	_StackNode *next;
+    BiTree data;
+    _StackNode *next;
 }StackNode;
 
 typedef struct _Stack {
-	//ÔÚÏÂÃæÌîÐ´ÄãµÄ´úÂë
-	_StackNode *top;
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
+    _StackNode *top;
 }*Stack;
 
-//ÌáÊ¾£ºÇëÍê³ÉÕ»µÄÖ÷Òª²Ù×÷£º
-//1.´´½¨Ò»¸öÕ»
+//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//1.ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Õ»
 Bool CreateStack(Stack *T) {
-	T = NULL;
-	return TRUE;
+    T = NULL;
+    return TRUE;
 }
-//2.µ¯³öÕ»¶¥ÔªËØ
+//2.ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½Ôªï¿½ï¿½
 Bool Pop(Stack T,StackNode *a) {
-	if(T == NULL)
-		return FALSE;
-	a = T->top;
-	T->top = T->top->next;
-	return TRUE;
+    if(T == NULL)
+        return FALSE;
+    a = T->top;
+    T->top = T->top->next;
+    return TRUE;
 }
-//3.Ñ¹ÈëÔªËØaµ½Õ»¶¥
+//3.Ñ¹ï¿½ï¿½Ôªï¿½ï¿½aï¿½ï¿½Õ»ï¿½ï¿½
 Bool Push(Stack T,StackNode *a) {
-	a->next = T->top;
-	T->top = a;
-	return TRUE;
+    a->next = T->top;
+    T->top = a;
+    return TRUE;
 }
-//4.Ïú»ÙÕ»µÄÄÚ´æ
+//4.ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½Ú´ï¿½
 void Destroy(Stack T) {
-	StackNode * temp = T->top;
-	while(T) {
-		T->top = T->top->next;
-		free(temp);
-		temp = T->top;
-	}
+    StackNode * temp = T->top;
+    while(T) {
+        T->top = T->top->next;
+        free(temp);
+        temp = T->top;
+    }
 }
-//5.ÅÐ¶ÏÕ»ÊÇ·ñÎª¿Õ
-//Õ»¿Õ·µ»ØTRUE,·ñÔò·µ»ØFALSE
+//5.ï¿½Ð¶ï¿½Õ»ï¿½Ç·ï¿½Îªï¿½ï¿½
+//Õ»ï¿½Õ·ï¿½ï¿½ï¿½TRUE,ï¿½ï¿½ï¿½ò·µ»ï¿½FALSE
 Bool Empty(Stack T) {
-	if(T)
-		return FALSE;
-	else
-		return TRUE;
+    if(T)
+        return FALSE;
+    else
+        return TRUE;
 }
 
 
-//ÌáÊ¾£º¸ù¾ÝÏÈÐòÊäÈëµÄÔªËØÐòÁÐS,½¨Á¢¶þ²æÊ÷µÄ´æ´¢½á¹¹T
-//×¢Òâ£ºSÖÐµÄ×Ö·û'#'±íÊ¾¿ÕÊ÷¡£
+//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½S,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´æ´¢ï¿½á¹¹T
+//×¢ï¿½â£ºSï¿½Ðµï¿½ï¿½Ö·ï¿½'#'ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void InsertBiTree(BiTree T,char* S,int *pos) {
-	//×ó×ÓÊ÷
-	if(S[*pos] == '#') {
-		T->lchild = NULL;
-		(*pos)++;
-	} else {
-		BiTree temp = (BiTree)malloc(sizeof(BiTreeNode));
-		temp->data = S[*pos];
-		temp->lchild=temp->rchild = NULL;
-		T->lchild = temp;
-		(*pos)++;
-		InsertBiTree(temp,S,pos);
-	}
-	//ÓÒ×ÓÊ÷
-	if(S[*pos] == '#') {
-		T->rchild = NULL;
-		(*pos)++;
-	} else {
-		BiTree temp = (BiTree)malloc(sizeof(BiTreeNode));
-		temp->data = S[*pos];
-		temp->lchild = temp->rchild = NULL;
-		T->rchild = temp;
-		(*pos)++;
-		InsertBiTree(temp,S,pos);
-	}
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if(S[*pos] == '#') {
+        T->lchild = NULL;
+        (*pos)++;
+    } else {
+        BiTree temp = (BiTree)malloc(sizeof(BiTreeNode));
+        temp->data = S[*pos];
+        temp->lchild=temp->rchild = NULL;
+        T->lchild = temp;
+        (*pos)++;
+        InsertBiTree(temp,S,pos);
+    }
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if(S[*pos] == '#') {
+        T->rchild = NULL;
+        (*pos)++;
+    } else {
+        BiTree temp = (BiTree)malloc(sizeof(BiTreeNode));
+        temp->data = S[*pos];
+        temp->lchild = temp->rchild = NULL;
+        T->rchild = temp;
+        (*pos)++;
+        InsertBiTree(temp,S,pos);
+    }
 }
 
 void CreateBiTree(BiTree &T,char* S) {
-	int pos = 0;
-	if(S[pos] == '#') {
-		T->lchild = T->rchild = NULL;
-	} else {
-		T = (BiTree)malloc(sizeof(BiTreeNode));
-		T->lchild = T->rchild = NULL;
-		T->data = S[pos];
-		pos++;
-		InsertBiTree(T,S,&pos);
-	}
+    int pos = 0;
+    if(S[pos] == '#') {
+        T->lchild = T->rchild = NULL;
+    } else {
+        T = (BiTree)malloc(sizeof(BiTreeNode));
+        T->lchild = T->rchild = NULL;
+        T->data = S[pos];
+        pos++;
+        InsertBiTree(T,S,&pos);
+    }
 }
 
 
 
-//ÌáÊ¾£ºÏú»ÙÒ»¸ö¶þ²æÊ÷£¬ÊÍ·ÅËùÓÐÄÚ´æ
+//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½
 void DestroyBiTree(BiTree &T) {
-	if(!T)
-		return;
-	DestroyBiTree(T->lchild);
-	DestroyBiTree(T->rchild);
-	free(T);
-	T = NULL;
+    if(!T)
+        return;
+    DestroyBiTree(T->lchild);
+    DestroyBiTree(T->rchild);
+    free(T);
+    T = NULL;
 }
 
-//Ê÷½ÚµãµÄ·ÃÎÊº¯Êý
+//ï¿½ï¿½ï¿½Úµï¿½ï¿½Ä·ï¿½ï¿½Êºï¿½ï¿½ï¿½
 void Visit(char a) {
-	putchar(a);
+    putchar(a);
 }
 
-//ÌáÊ¾£ºÖÐÐò±éÀú¶þ²æÊ÷T,½Úµã·ÃÎÊº¯ÊýÎªvisit
+//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½T,ï¿½Úµï¿½ï¿½ï¿½ï¿½Êºï¿½ï¿½ï¿½Îªvisit
 Bool InOrderTraverse(BiTree T,void(*visit)(char a)) {
-	if(!T)
-		return FALSE;
-	InOrderTraverse(T->lchild,visit);
-	Visit(T->data);
-	InOrderTraverse(T->rchild,visit);
-	return TRUE;
+    if(!T)
+        return FALSE;
+    InOrderTraverse(T->lchild,visit);
+    Visit(T->data);
+    InOrderTraverse(T->rchild,visit);
+    return TRUE;
 }
 
-//ÌáÊ¾£ººóÐò±éÀú¶þ²æÊ÷T£¬½Úµã·ÃÎÊº¯ÊýÎªvisit
+//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Tï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½Êºï¿½ï¿½ï¿½Îªvisit
 Bool PostOrderTraverse(BiTree T,void(*visit)(char a)) {
-	if(!T)
-		return FALSE;
-	PostOrderTraverse(T->lchild,visit);
-	PostOrderTraverse(T->rchild,visit);
-	Visit(T->data);
-	return TRUE;
+    if(!T)
+        return FALSE;
+    PostOrderTraverse(T->lchild,visit);
+    PostOrderTraverse(T->rchild,visit);
+    Visit(T->data);
+    return TRUE;
 }
 
 int main(int argc,char* argv[]) {
-	printf("Ñ§ºÅ:%s, ÐÕÃû: %s\n",id,name);
-	BiTree T = 0;
+    printf("Ñ§ï¿½ï¿½:%s, ï¿½ï¿½ï¿½ï¿½: %s\n",id,name);
+    BiTree T = 0;
 
-	char* S1 = "ABC##DE#G##F###";
-	char* In1 = "CBEGDFA";
-	char* Post1 = "CGEFDBA";
-	CreateBiTree(T,S1);
+    char* S1 = "ABC##DE#G##F###";
+    char* In1 = "CBEGDFA";
+    char* Post1 = "CGEFDBA";
+    CreateBiTree(T,S1);
 
-	printf("ÖÐÐò±éÀúÐòÁÐ£º");
-	InOrderTraverse(T,Visit);
-	printf("\n²ÎÕÕÖÐÐòÐòÁÐ£º%s\n\n",In1);
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½");
+    InOrderTraverse(T,Visit);
+    printf("\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½%s\n\n",In1);
 
-	printf("ºóÐò±éÀúÐòÁÐ£º");
-	PostOrderTraverse(T,Visit);
-	printf("\n²ÎÕÕºóÐòÐòÁÐ£º%s\n\n",Post1);
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½");
+    PostOrderTraverse(T,Visit);
+    printf("\nï¿½ï¿½ï¿½Õºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½%s\n\n",Post1);
 
 
-	DestroyBiTree(T);
+    DestroyBiTree(T);
 
-	char* S2 = "ABD#G###CE##FH###";//ÀÏÊ¦Ô­À´¸øµÄÊÇABD#G##CE##FH### ´íÎóÊý¾Ý
-	char* In2 = "DGBAECHF";
-	char* Post2 = "GDBEHFCA";
-	CreateBiTree(T,S2);
+    char* S2 = "ABD#G###CE##FH###";//ï¿½ï¿½Ê¦Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ABD#G##CE##FH### ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    char* In2 = "DGBAECHF";
+    char* Post2 = "GDBEHFCA";
+    CreateBiTree(T,S2);
 
-	printf("ÖÐÐò±éÀúÐòÁÐ£º");
-	InOrderTraverse(T,Visit);
-	printf("\n²ÎÕÕÖÐÐòÐòÁÐ£º%s\n\n",In2);
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½");
+    InOrderTraverse(T,Visit);
+    printf("\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½%s\n\n",In2);
 
-	printf("ºóÐò±éÀúÐòÁÐ£º");
-	PostOrderTraverse(T,Visit);
-	printf("\n²ÎÕÕºóÐòÐòÁÐ£º%s\n\n",Post2);
+    printf("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½");
+    PostOrderTraverse(T,Visit);
+    printf("\nï¿½ï¿½ï¿½Õºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½%s\n\n",Post2);
 
-	DestroyBiTree(T);
+    DestroyBiTree(T);
 
-	return 1;
+    return 1;
 }

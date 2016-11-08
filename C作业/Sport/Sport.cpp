@@ -1,4 +1,4 @@
-// Sport.cpp : 定义控制台应用程序的入口点。
+// Sport.cpp : 锟斤拷锟斤拷锟斤拷锟斤拷台应锟矫筹拷锟斤拷锟斤拷锟斤拷锟节点。
 //
 
 #include "stdafx.h"
@@ -8,10 +8,10 @@
 using namespace std;
 
 int main(int argc,char *argv[]) {
-	//QApplication a(argc,argv);
-	//MainWindow w;
-	//w.show();
+    //QApplication a(argc,argv);
+    //MainWindow w;
+    //w.show();
 
-	//return a.exec();
-	return 0;
+    //return a.exec();
+    return 0;
 }
