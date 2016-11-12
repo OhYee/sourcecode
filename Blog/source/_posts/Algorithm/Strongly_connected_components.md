@@ -1,5 +1,5 @@
 ---
-title: 强连通分量缩点 — kosaraju | tarjan | gabow
+title: 强连通分量缩点 — Kosaraju | Tarjan | Gabow
 date: 2016-11-06 01:01:07
 categories: 算法
 tags:
@@ -240,3 +240,7 @@ int Tarjan(int n) {
     return cnt;
 }
 ```
+
+# Gabow  
+Gabow 算法可以理解成是 Tarjan 算法的改良,将 stack 改成数组,其他思路一样  
+只错了常量的时间,不再看了
