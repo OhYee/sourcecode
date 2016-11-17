@@ -1,5 +1,10 @@
-#include <cstdio>
+#include <stdio.h>
 int main(){
-    printf("Hellod World!\n");
+    int n;
+	scanf("%d",&n);
+	if(n%2)
+		printf("Y");
+	else
+		printf("N");
     return 0;
 }
