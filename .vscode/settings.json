@@ -12,10 +12,10 @@
     "editor.wrappingIndent": "indent",
 
     // 按 "Tab" 时插入空格。该设置在 `editor.detectIndentation` 启用时根据文件内容进行重写。
-    "editor.insertSpaces": false,
+    "editor.insertSpaces": true,
 
     // 当打开文件时，将基于文件内容检测 "editor.tabSize" 和 "editor.insertSpaces"。
-    "editor.detectIndentation": false,
+    "editor.detectIndentation": true,
 
     "markdown.styles": ["${workspaceRoot}/.vscode/markdown.css"],
 

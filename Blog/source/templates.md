@@ -136,6 +136,46 @@ long long Division(long long l,long long r) {
 }
 ```
 
+### lower_bound
+```cpp lower_bound
+int lower_bound(LL *arr,int size, LL key) {
+    int half;
+    int mid;
+    int first = 0;
+    while (size > 0) {
+        half = size >> 1;
+        mid = first + half;
+        if (arr[mid] < key) {
+            first = mid + 1;
+            size = size - half - 1;
+        } else {
+            size = half;
+        }
+    }
+    return first;
+}
+```
+
+### upper_bound
+```upper_bound
+int upper_bound(LL *arr,int size, LL key) {
+    int mid;
+    int first = 0;
+    int half;
+    while (size > 0) {
+        half = size >> 1;
+        mid = half + first;
+        if (arr[mid] > key) {
+            size = half;
+        } else {
+            first = mid + 1;
+            size = size - half - 1;
+        }
+    }
+    return first;
+}
+```
+
 ### 快速幂取模
 ```cpp 快速幂取模
 LL exp_mod(LL a,LL n,LL b) {
@@ -862,15 +902,15 @@ int Kosaraju(int n) {
 #### Tarjan
 ```cpp Tarjan
 /*
-	* Tarjan算法
-	* 复杂度O(N+M)
-	* By kuangbin
-	* 节点从 1 开始
+    * Tarjan算法
+    * 复杂度O(N+M)
+    * By kuangbin
+    * 节点从 1 开始
 */
 const int MAXN = 1005;//点数 
 const int MAXM = 2*MAXN*MAXN;//边数 
 struct Edge {
-	int to,next;
+    int to,next;
 }edge[MAXM];
 
 int head[MAXN],tot;
@@ -880,53 +920,53 @@ int scc;//强连通分量的个数
 
 bool Instack[MAXN];
 int num[MAXN];//各个强连通分量包含点的个数，数组编号1~scc 
-			  //num数组不一定需要，结合实际情况 
+              //num数组不一定需要，结合实际情况 
 
 void addedge(int u,int v) {
-	edge[tot].to = v;
-	edge[tot].next = head[u];
-	head[u] = tot++;
+    edge[tot].to = v;
+    edge[tot].next = head[u];
+    head[u] = tot++;
 }
 
 void Tarjan(int u) {
-	int v;
-	Low[u] = DFN[u] = ++Index;
-	Stack[top++] = u;
-	Instack[u] = true;
-	for(int i = head[u];i != -1;i = edge[i].next) {
-		v = edge[i].to;
-		if(!DFN[v]) {
-			Tarjan(v);
-			if(Low[u] > Low[v])
-				Low[u] = Low[v];
-		} else if(Instack[v] && Low[u] > DFN[v])
-			Low[u] = DFN[v];
-	}  
-	
-	if(Low[u] == DFN[u]) {
-		scc++;
-		do {
-			v = Stack[--top];
-			Instack[v] = false;
-			Belong[v] = scc;
-			num[scc]++;
-		} while(v != u);
-	}
+    int v;
+    Low[u] = DFN[u] = ++Index;
+    Stack[top++] = u;
+    Instack[u] = true;
+    for(int i = head[u];i != -1;i = edge[i].next) {
+        v = edge[i].to;
+        if(!DFN[v]) {
+            Tarjan(v);
+            if(Low[u] > Low[v])
+                Low[u] = Low[v];
+        } else if(Instack[v] && Low[u] > DFN[v])
+            Low[u] = DFN[v];
+    }  
+    
+    if(Low[u] == DFN[u]) {
+        scc++;
+        do {
+            v = Stack[--top];
+            Instack[v] = false;
+            Belong[v] = scc;
+            num[scc]++;
+        } while(v != u);
+    }
 }
 
 void solve(int N) {
-	memset(DFN,0,sizeof(DFN));
-	memset(Instack,false,sizeof(Instack));
-	memset(num,0,sizeof(num));
-	Index = scc = top = 0;
-	for(int i = 1;i <= N;i++)
-		if(!DFN[i])
-			Tarjan(i);
+    memset(DFN,0,sizeof(DFN));
+    memset(Instack,false,sizeof(Instack));
+    memset(num,0,sizeof(num));
+    Index = scc = top = 0;
+    for(int i = 1;i <= N;i++)
+        if(!DFN[i])
+            Tarjan(i);
 }
 
 void init() {
-	tot = 0;
-	memset(head,-1,sizeof(head));
+    tot = 0;
+    memset(head,-1,sizeof(head));
 }
 ```
 
