@@ -7,6 +7,19 @@
     "editor.fontSize": 25,
 
     "editor.glyphMargin": true,
+
+
+    // 配置 glob 模式以排除文件和文件夹。
+    "files.exclude": {
+        "**/.git": false,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true
+    },
+    // 配置文件路径的 glob 模式以从文件监视排除。更改此设置要求重启。如果在启动时遇到 Code 消耗大量 CPU 时间，则可以排除大型文件夹以减少初始加载。
+    "files.watcherExclude": {
+        "**/.git/objects/**": false
+    },
     
     // 控制换行的行的缩进。可以是"none"、 "same" 或 "indent"。
     "editor.wrappingIndent": "indent",
