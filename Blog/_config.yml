@@ -145,6 +145,8 @@ tag_map:
  剪枝: Pruning
  搜索: Search
  中途相遇法: Midway_encounter_method
+ 二分图匹配: Bipartite_Matching
+ 匈牙利算法: Hungary
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date

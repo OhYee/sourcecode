@@ -44,7 +44,7 @@ const double eps = 1e-10;
 
 ### 转换为整数
 ```cpp 转换为整数
-int toInte(double a){
+int toInt(double a){
     return (int)(a+0.001);
 }
 ```
@@ -469,6 +469,64 @@ for(long i=2;i<maxn;i++){
         if(!(i%prime[j]))break;
     }
 }
+```
+
+### (a*b)%mod
+```cpp (a*b)%mod
+inline LL mul(LL a,LL b,LL mod){
+    a=(a%mod+mod)%mod;
+    b=(b%mod+mod)%mod;
+    return ((a*b-(LL)((long double)a/mod*b+.5L)*mod)%mod+mod)%mod;
+}
+```
+
+### 判断素数
+```cpp 费马小定理
+typedef long long LL;
+  
+LL mulmod(LL a,LL b,LL mod){  
+    LL x = 0,y = a % mod;  
+    while (b > 0){  
+        if (b % 2 == 1)  
+        {      
+            x = (x + y) % mod;  
+        }  
+        y = (y * 2) % mod;  
+        b /= 2;  
+    }  
+    return x % mod;  
+}  
+LL modulo(LL base, LL exponent, LL mod){  
+    LL x = 1;  
+    LL y = base;  
+    while (exponent > 0){  
+        if (exponent % 2 == 1)  
+            x = (x * y) % mod;  
+        y = (y * y) % mod;  
+        exponent = exponent / 2;  
+    }  
+    return x % mod;  
+}  
+bool MiLLer(LL p,int iteration){  
+    if (p < 2) 
+        return false;   
+    if (p != 2 && p % 2==0)   
+        return false;  
+    LL s = p - 1;  
+    while (s % 2 == 0)  
+        s /= 2;  
+    for (int i = 0; i < iteration; i++)  {  
+        LL a = rand() % (p - 1) + 1, temp = s;  
+        LL mod = modulo(a, temp, p);  
+        while (temp != p - 1 && mod != 1 && mod != p - 1){  
+            mod = mulmod(mod, mod, p);  
+            temp *= 2;  
+        }  
+        if (mod != p - 1 && temp % 2 == 0)
+            return false;  
+    }  
+    return true;  
+}  
 ```
 
 ### 高精度计算
@@ -1019,6 +1077,61 @@ int Dinic(int u,int v) {
         ans += dfs(u,v,INF);
     return ans;
 }
+```
+
+#### 二分图匹配
+##### 匈牙利算法
+```cpp 匈牙利算法
+/*  
+* 匈牙利算法邻接表形式  
+* 使用前用init()进行初始化，给uN赋值
+* 加边使用函数addedge(u,v) 
+*/ 
+const int MAXN = 50100;//点数的最大值 
+const int MAXM = 500100;//边数的最大值 
+struct Edge {
+    int to,next; 
+}edge[MAXM]; 
+
+int head[MAXN],tot,uN; 
+void init(int un) {
+    uN = un;
+    tot = 0;     
+    memset(head,-1,sizeof(head)); 
+} 
+
+void addedge(int u,int v) {
+    //cout<<"add"<<u<<" "<<v<<endl;
+    edge[tot].to = v; 
+    edge[tot].next = head[u];     
+    head[u] = tot++; 
+} 
+
+int linker[MAXN]; 
+bool used[MAXN]; 
+bool dfs(int u) {     
+    for(int i = head[u]; i != -1;i = edge[i].next){
+        int v = edge[i].to;
+        if(!used[v]){
+            used[v] = true;
+            if(linker[v] == -1 || dfs(linker[v])){
+                linker[v] = u;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+int hungary(){
+    int res = 0;
+    memset(linker,-1,sizeof(linker));
+    for(int u = 0; u < uN;u++){//点的编号0~uN-1
+        memset(used,false,sizeof(used));
+        if(dfs(u))
+            res++;
+    }
+    return res;
+} 
 ```
 
 ### 最短路
