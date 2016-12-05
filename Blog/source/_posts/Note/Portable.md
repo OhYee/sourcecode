@@ -4,7 +4,7 @@ date: 2016-11-07 14:54:41
 categories: 笔记
 tags:
 - portable
-- hexo
+- Hexo
 - git
 - nodejs
 - vscode

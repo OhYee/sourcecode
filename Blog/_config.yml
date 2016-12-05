@@ -161,6 +161,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
+# theme: next
 theme: next
 
 #Search XML
@@ -187,6 +188,7 @@ baidusitemap:
 deploy:
   type: git
   repo: 
-    github: git@github.com:ohyee/ohyee.github.io.git,master
-    coding: git@git.coding.net:OhYee/OhYee.git,master
-    #coding: https://git.coding.net/OhYee/OhYee.git,master
+    #github: git@github.com:ohyee/ohyee.github.io.git,master
+    #coding: git@git.coding.net:OhYee/OhYee.git,master
+    github: https://github.com/OhYee/OhYee.github.io.git
+    coding: https://git.coding.net/OhYee/OhYee.git,master

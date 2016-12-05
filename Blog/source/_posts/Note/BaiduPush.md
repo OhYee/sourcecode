@@ -5,7 +5,7 @@ categories: 笔记
 tags:
  - SEO
  - 工具
- - hexo
+ - Hexo
  - 易语言
 ---
 
