@@ -38,10 +38,8 @@ comments: false
 </style>
 <script src="/js/jquery.js"></script>
 <div class="about">
-
     <div class="clear">
     </div>
-
     <div class="about_left">
         <h1 id="About-me">
             <a href="#About-me" class="headerlink" title="About me"></a>
@@ -73,7 +71,6 @@ comments: false
             </ul>
         </p>
     </div>
-
     <div class="about_right">
         <h1 id="About-the-blog">
             <a href="#About-the-blog" class="headerlink" title="About the blog"></a>
@@ -102,12 +99,9 @@ comments: false
             <br>
         </p>
     </div>
-
     <div class="clear">
     </div>
-
     <div class="about_bottom">
-
         <div class="about_block">
             <ul>
                 <li>
@@ -137,7 +131,6 @@ comments: false
                 </li>
             </ul>
         </div>
-
         <div class="about_block">
             <ul>
                 <li>
@@ -150,7 +143,6 @@ comments: false
                 </li>
             </ul>
         </div>
-
         <div class="about_block">
             <ul>
                 <li>
@@ -186,7 +178,6 @@ comments: false
                 </li>
             </ul>
         </div>
-
         <div class="about_block">
             <ul>
                 <li>
@@ -211,27 +202,20 @@ comments: false
                 </li>
             </ul>
         </div>
-
         <div class="clear">
         </div>
-
     </div>
-
     <div class="clear">
     </div>
-
-
     <script>
     $(document).ready(function(){
         $(".friends2").html($(".friends").html());
     });
     </script>
-
     <h3 id="friends">
             <a href="#friends" class="headerlink" title="friends"></a>
             # 友情链接
     </h3>
-
     <div class="friends2">
     </div>
 </div>

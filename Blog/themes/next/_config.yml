@@ -94,41 +94,33 @@ scheme: Pisces
 # ---------------------------------------------------------------
 font:
   enable: true
+# 外链字体库地址，例如 //fonts.googleapis.com (默认值)
+  host: //fonts.proxy.ustclug.org
 
-  # Uri of fonts host. E.g. //fonts.googleapis.com (Default)
-  host: //fonts.useso.com
-
-  # Global font settings used on <body> element.
+  # 全局字体，应用在 <body> 元素上
   global:
-    # external: true will load this font family from host.
     external: true
-    family: 
+    family: Monda
 
-  # Font settings for Headlines (h1, h2, h3, h4, h5, h6)
-  # Fallback to `global` font settings.
+  # 标题字体 (h1, h2, h3, h4, h5, h6)
   headings:
     external: true
-    family:
+    family: Microsoft Yahei
 
-  # Font settings for posts
-  # Fallback to `global` font settings.
+  # 文章字体
   posts:
     external: true
     family:
 
-  # Font settings for Logo
-  # Fallback to `global` font settings.
-  # The `size` option use `px` as unit
+  # Logo 字体
   logo:
     external: true
-    family:
-    size:
+    family: Microsoft Yahei
 
-  # Font settings for <code> and code blocks.
+  # 代码字体，应用于 <code> 以及代码块
   codes:
     external: true
-    family: 
-
+    family: Consolas
 
 
 
@@ -225,7 +217,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night eighties
 
 
 # Automatically scroll page to section which is under <!-- more --> mark.
