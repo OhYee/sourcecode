@@ -31,6 +31,9 @@
     // 当打开文件时，将基于文件内容检测 "editor.tabSize" 和 "editor.insertSpaces"。
     "editor.detectIndentation": true,
 
+    // 控制是否应换行。换行依据为 min(editor.wrappingColumn, viewportWidthInColumns)。
+    "editor.wordWrap": true,
+
     // markdown 风格
     "markdown.styles": ["${workspaceRoot}/.vscode/markdown.css"],
 
