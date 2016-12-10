@@ -1,0 +1,5 @@
+{
+    # 格式化代码
+    BasedOnStyle: Google,
+    IndentWidth: 4
+}
