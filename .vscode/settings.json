@@ -38,7 +38,6 @@
     "markdown.styles": ["${workspaceRoot}/.vscode/markdown.css"],
 
     // 可执行 GIT 的路径
-    "git.path": "${workspaceRoot}/../support/git/"
-
-    
+    "git.path": "${workspaceRoot}/../support/git/",
+    "python.linting.pylintEnabled": false
 }

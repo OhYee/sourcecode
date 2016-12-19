@@ -1,5 +1,38 @@
-{
-    # 格式化代码
-    BasedOnStyle: Google,
-    IndentWidth: 4
-}
+{# clang-format
+    # 基础
+    BasedOnStyle: LLVM,
+    # 缩进
+    IndentWidth: 4,
+    # 花括号的换行方式(Attach,Stroustrup, Allman-所有大括号都另起一行)
+    BreakBeforeBraces: Attach,
+    # 支持一行的if
+    AllowShortIfStatementsOnASingleLine: false,
+    # 是否允许循环单行
+    AllowShortLoopsOnASingleLine: false,
+    
+    # switch 缩进
+    IndentCaseLabels: true,
+    # 保留空行
+    KeepEmptyLinesAtTheStartOfBlocks: false,
+    # 最多可以有连续几行空行，默认为1
+    MaxEmptyLinesToKeep: 1,
+
+
+    # 括号后加空格
+    SpaceAfterCStyleCast: false,
+    # 不在小括号里加空格
+    SpacesInParentheses: false,
+    # 不在中括号里加空格
+    SpacesInSquareBrackets: false,
+    # @[]里面两边空格，默认true
+    SpacesInContainerLiterals: false,
+    # 赋值前(=)的空格 默认true
+    SpaceBeforeAssignmentOperators: true,
+
+    # ========对齐操作======
+    # 注释对齐
+    AlignTrailingComments: true,
+    # 赋值对齐
+    AlignConsecutiveAssignments: false,
+    # 变量名对齐
+    AlignConsecutiveDeclarations: false}
