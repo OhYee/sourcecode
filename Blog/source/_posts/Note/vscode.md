@@ -295,3 +295,9 @@ del %USERPROFILE%\.ssh\id_rsa.backup
 del %USERPROFILE%\.ssh\id_rsa.pub.backup
 ```
 
+# Git
+在有些电脑上,Git可能会由于ssh证书的问题无法连接    
+
+提示 `error setting certificate verify locations` 
+
+可以使用 `git config --system http.sslverify false` 解决  
