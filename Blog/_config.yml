@@ -147,6 +147,7 @@ tag_map:
  中途相遇法: Midway_encounter_method
  二分图匹配: Bipartite_Matching
  匈牙利算法: Hungary
+ 遗传算法: Genetic_Algorithm
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -190,7 +191,8 @@ baidusitemap:
 deploy:
   type: git
   repo: 
+    OhYee: git@vps.oyohyee.com:hexo.git,master
     #github: git@github.com:ohyee/ohyee.github.io.git,master
     #coding: git@git.coding.net:OhYee/OhYee.git,master
-    github: https://github.com/OhYee/OhYee.github.io.git
-    coding: https://git.coding.net/OhYee/OhYee.git,master
+    #github: https://github.com/OhYee/OhYee.github.io.git
+    #coding: https://git.coding.net/OhYee/OhYee.git,master

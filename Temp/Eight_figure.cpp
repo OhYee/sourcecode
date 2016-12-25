@@ -176,8 +176,7 @@ int Eight_figure() {
                 //如果可以交换
                 swap(MAP[tx][ty], MAP[xx][yy]); //交换
                 int tt = ToInt(MAP);
-                /
-                / printf("    STATE: %d HASH: %d\n",tt,Hash(tt));
+                // printf("    STATE: %d HASH: %d\n",tt,Hash(tt));
                 if (!CLOSED[Hash(tt)])
                     OPEN.push(Node(tt, g + 1, hash)); //插入到 OPEN 表里
                 swap(MAP[tx][ty], MAP[xx][yy]); //交换回去为下次交换做准备
@@ -188,7 +187,7 @@ int Eight_figure() {
 }
 
 int main() {
-    freopen("in.txt", "r", stdin);
+    //freopen("in.txt", "r", stdin);
     s = 0, v = 0;
     int t;
     printf("Use 9 to instead of the space.\nSuch as\n1 2 3\n4 5 6\n7 8 "
