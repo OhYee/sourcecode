@@ -128,7 +128,7 @@ struct Chromosome {
         //child1.p();
         //child2.p();
         //cout << endl;
-    };
+    }
     //该个体是否能存活
     bool Alive() {
         if(Gene[0] != M)
@@ -235,7 +235,7 @@ Chromosome GA() {
 
 int main() {
     freopen("in.txt","r",stdin);
-    freopen("out.txt","w",stdout);
+    //freopen("out.txt","w",stdout);
     /*
     Sample Input
     3

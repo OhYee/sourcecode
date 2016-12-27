@@ -13,8 +13,10 @@
     //关闭窗口
     { "key": "alt+e","command": "workbench.action.closeActiveEditor" },
     
-    //状态栏隐藏
-    {"key": "ctrl+f11","command": "workbench.action.toggleStatusbarVisibility","when": "editorTextFocus"},
+    //全屏
+    { "key": "f11",              "command": "workbench.action.toggleZenMode" },
+    { "key": "f11",         "command": "workbench.action.exitZenMode","when": "inZenMode" },
+ 
 
     //文件范围移动
     {"key": "alt+u","command": "cursorTop","when": "editorTextFocus" },

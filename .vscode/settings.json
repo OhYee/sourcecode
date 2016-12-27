@@ -31,6 +31,9 @@
     // 当打开文件时，将基于文件内容检测 "editor.tabSize" 和 "editor.insertSpaces"。
     "editor.detectIndentation": true,
 
+    // 控制在多少个字符后编辑器会自动换到下一行。将其设置为 0 则将打开视区宽度换行(自动换行)。将其设置为 -1 则将强制编辑器始终不换行。
+    //"editor.wrappingColumn": 120,
+
     // 控制是否应换行。换行依据为 min(editor.wrappingColumn, viewportWidthInColumns)。
     "editor.wordWrap": true,
 
