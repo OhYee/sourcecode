@@ -25,6 +25,9 @@ a{
     border-bottom: 1px dotted #000;
 }
 
+.post-toc ol a:hover,/*文章目录*/
+.post-toc-content a:hover,
+.post-nav a:hover,
 .links-of-author-item a:hover,
 .menu .menu-item a:hover,
 a:hover {
@@ -34,6 +37,9 @@ a:hover {
     border-radius: 3px;
     border-bottom-color: #fff;
 }
+
+
+.post a:hover,
 .site-state-item a:hover,
 .tag-cloud a:hover,
 header a:hover,

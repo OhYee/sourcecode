@@ -10,5 +10,7 @@ $(document).ready(function(){
                 $('>table', this.parentNode).slideToggle();
                 $('>:first', this).toggleClass('open');
         });
+
+    $("div.copyright").before("<div class='beian'><span>豫ICP备17000379号</span></div>");
 });
 
