@@ -5,7 +5,7 @@ categories: 随笔
 tags: 
 - 三星(SANSUNG)
 - Android
-- C5he
+- C5
 - root
 ---
 

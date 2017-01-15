@@ -1,10 +1,9 @@
-#coding:utf-8
-# -*- coding: utf-8 -*-
+#coding:gbk
 import re
 import time
 import urllib.request
 
-# æ ¼å¼
+# ¸ñÊ½
 str1="""{% raw %}
 <div>
     <div class="oj">   
@@ -42,15 +41,15 @@ str1="""{% raw %}
 {% endraw %}"""
 
 
-# åˆ é™¤ç©ºè¡Œ
+# É¾³ı¿ÕĞĞ
 def d1(str):
-    str=str.replace('\n\n','')
+    str=str.replace('\n\n','\n')
     return str
 def d2(str):
     str=str.replace('\n\n','\n')
     return str
 
-# æœ«å°¾åŠ ä¸¤ä¸ªç©ºæ ¼
+# Ä©Î²¼ÓÁ½¸ö¿Õ¸ñ
 def k(str):
     p = re.compile(r'\n')
     line = p.split(str)
@@ -59,7 +58,7 @@ def k(str):
         str+=line[i]+'  \n'
     return str
 
-# è·å–æ—¶é—´
+# »ñÈ¡Ê±¼ä
 def GetNowTime():
     return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()))
 
@@ -69,9 +68,9 @@ def GetNowTime():
 #               main                 #
 #====================================#
 
-# è¯»å…¥å†…å®¹
+# ¶ÁÈëÄÚÈİ
 str2 = ''
-f = open('in.txt')
+f = open('problem.txt','r',encoding='gbk')
 while True:
     line = f.readline()
     if len(line) == 0:
@@ -82,7 +81,7 @@ f.close()
 p = re.compile(r'\$')
 p2 = re.compile(r'Input|Output|Sample Input|Sample Output')
 
-ss=p.split(str1)
+ss = p.split(str1)
 ss2 = p2.split(str2)
 
 str0=''
@@ -97,23 +96,23 @@ for i in range(0, 5):
     str0 += ss[i] + ss2[i]
 str0 += ss[5]
 
-oj = input("è¾“å…¥OJåç§°:")
-num = input("è¾“å…¥é¢˜ç›®ç¼–å·:")
-name = input("è¾“å…¥é¢˜ç›®åç§°:")
+oj = input("ÊäÈëOJÃû³Æ:")
+num = input("ÊäÈëÌâÄ¿±àºÅ:")
+name = input("ÊäÈëÌâÄ¿Ãû³Æ:")
 
-title = '---\ntitle: '+oj+" "+num+"."+name+"\ndate: "+GetNowTime()+"\ncategories: "+'é¢˜è§£'+"\ntags:\n - "+oj+"\n---\n\n# "+'é¢˜ç›®'+"\n"
+title = '---\ntitle: '+oj+" "+num+"."+name+"\ndate: "+GetNowTime()+"\ncategories: "+'Ìâ½â'+"\ntags:\n - "+oj+"\n---\n\n# "+'ÌâÄ¿'+"\n"
 
-url = "https://github.com/OhYee/ACM.github.io/blob/master/"+oj+"/"+num+"."+name+".cpp"
-url = urllib.request.quote(url)
+url = oj+"/"+num+"."+name+".cpp"
+url = " https://github.com/OhYee/ACM.github.io/blob/master/" + urllib.request.quote(url)
 
-code = "\n\n# é¢˜è§£\n\n\n\n# ä»£ç \n```cpp "+ name + url+" ä»£ç å¤‡ä»½\n\n```"
+code = "\n\n<!--more-->\n# Ìâ½â\n\n\n\n# ´úÂë\n```cpp "+ name + url+" ´úÂë±¸·İ\n\n```"
 
 
-# å¼ºåˆ¶è½¬æ¢ä¸º utf8
-ans = title + str0 +code
-ans = ans.encode('UTF-8').decode('GBK')
+# Ç¿ÖÆ×ª»»Îª utf8
+ans = title + str0 + code
+# ans = ans.encode('utf-8').decode('gbk')
 
-f = open('in.txt', 'w')
+f = open('problem.txt', 'w')
 f.write(ans)            
 f.close()          
 

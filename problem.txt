@@ -1,0 +1,84 @@
+---
+title: HDU 5984.Pocky
+date: 2017-01-14 17:23:15
+categories: 题解
+tags:
+ - HDU
+---
+222
+# 题目
+{% raw %}
+<div>
+    <div class="oj">   
+        <div class="part" title="Description">
+{% endraw %}
+1
+Let’s talking about something of eating a pocky. Here is a Decorer Pocky, with colorful decorative stripes in the coating, of length L.  
+While the length of remaining pocky is longer than d, we perform the following procedure.   
+We break the pocky at any point on it in an equal possibility and this will divide the remaining pocky into two parts.   
+Take the left part and eat it. When it is not longer than d, we do not repeat this procedure.  
+Now we want to know the expected number of times we should repeat the procedure above.   
+Round it to 6 decimal places behind the decimal point.  
+   
+{% raw %}
+        </div>
+        <div class="part" title="Input">
+{% endraw %}
+              
+The first line of input contains an integer N which is the number of test cases. Each of the N lines contains two float-numbers L and d respectively with at most 5 decimal places behind the decimal point where 1 ≤ d, L ≤ 150.  
+   
+{% raw %}
+        </div>
+        <div class="part" title="Output">
+{% endraw %}
+              
+For each test case, output the expected number of times rounded to 6 decimal places behind the decimal point in a line.  
+   
+{% raw %}
+        </div>
+        <div class="samp">
+            <div class="clear"></div>
+            <div class="input part" title="Sample Input">
+{% endraw %}
+                  
+6  
+1.0 1.0  
+2.0 1.0  
+4.0 1.0  
+8.0 1.0  
+16.0 1.0  
+7.00 3.00  
+   
+  
+  
+
+{% raw %}
+            </div>
+            <div class="output part" title="Sample Output">
+{% endraw %}
+                  
+0.000000  
+1.693147  
+2.386294  
+3.079442  
+3.772589  
+1.847298  
+  
+
+{% raw %}
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+{% endraw %}
+
+<!--more-->
+# 题解
+
+
+
+# 代码
+```cpp Pocky https://github.com/OhYee/ACM.github.io/blob/master/HDU/5984.Pocky.cpp 代码备份
+
+```
