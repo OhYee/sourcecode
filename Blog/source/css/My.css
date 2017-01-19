@@ -26,6 +26,7 @@ a{
 }
 
 .post-toc ol a:hover,/*文章目录*/
+.post-body a:hover,
 .post-toc-content a:hover,
 .post-nav a:hover,
 .links-of-author-item a:hover,
@@ -38,8 +39,7 @@ a:hover {
     border-bottom-color: #fff;
 }
 
-
-.post a:hover,
+/*.post a:hover,*/
 .site-state-item a:hover,
 .tag-cloud a:hover,
 header a:hover,

@@ -1,4 +1,4 @@
-//**//
+/*/
 #define debug
 #include <ctime>
 //*/
@@ -12,10 +12,10 @@ int main(){
     freopen("in.txt", "r", stdin);
     int START = clock();
     #endif
-
-
+    int a = 5;
+    printf("123");
     #ifdef debug
-    printf("Time:%.3f s.\n", double(clock() - START) / CLOCKS_PER_SEC);
+    printf("Time:%.3fs.\n", double(clock() - START) / CLOCKS_PER_SEC);
     #endif
     return 0;
 }
