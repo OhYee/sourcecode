@@ -1,5 +1,5 @@
 ---
-title: 给 Hexo 加上 bootstrap 的一些特效 && jquery 实现隐藏功能
+title: 给 Hexo 加上 bootstrap 的一些特效 &amp;&amp; jquery 实现隐藏功能
 date: 2016-12-09 00:57:29
 categories: 笔记
 tags: 
