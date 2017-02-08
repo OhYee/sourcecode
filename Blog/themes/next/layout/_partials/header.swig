@@ -48,7 +48,7 @@
           {% if theme.swiftype_key %}
             <a href="#" class="st-search-show-outputs">
           {% elseif config.search %}
-            <a href="#" class="popup-trigger">
+            <a href="javascript:;" class="popup-trigger">
           {% else %}
             <a href="/search/">
           {% endif %}

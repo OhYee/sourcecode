@@ -167,12 +167,14 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 # theme: next
-theme: next
+theme: next2
 
-#Search XML
-#search:
-#  path: /search/search.xml
-#  field: all
+# Local Search
+search:
+  path: search.xml
+  field: post
+  format: excerpt
+  limit: 100000
 
 sitemap:
   path: sitemap.xml

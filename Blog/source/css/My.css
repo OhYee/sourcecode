@@ -19,13 +19,23 @@ html{
 }
 
 
+/* 搜索框颜色 */
+.popup-btn-close{
+    color: #000000;
+}
+
 /*链接*/
 a{
     color: #000;
     border-bottom: 1px dotted #000;
 }
 
-.post-toc ol a:hover,/*文章目录*/
+.links-of-blogroll-item a{
+    border-bottom: 0px;
+}
+
+.links-of-blogroll-item a:hover,               /*侧边栏 友情链接部分*/
+.post-toc ol a:hover,           /*文章目录*/
 .post-body a:hover,
 .post-toc-content a:hover,
 .post-nav a:hover,
@@ -47,8 +57,14 @@ header a:hover,
     background: transparent;
 }
 
+
 ul li {
     list-style: circle;
+}
+
+/* 去除友情链接前面的圈 */
+.links-of-blogroll-item{
+    list-style: none;
 }
 
 .footer-inner::before{

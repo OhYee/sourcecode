@@ -1,5 +1,5 @@
 ---
-title: about
+title: About
 date: 2016-06-07 01:14:40
 comments: false
 ---
@@ -34,7 +34,10 @@ comments: false
     .about_block li{
         margin-left: -20px;
     }
-    
+    .friends2 li{
+        display: inline;
+        padding: 0px 20px 0px 0px;
+    }
 </style>
 <script src="/js/jquery.js"></script>
 <div class="about">
@@ -209,14 +212,14 @@ comments: false
     </div>
     <script>
     $(document).ready(function(){
-        $(".friends2").html($(".friends").html());
+        $(".friends2").html($(".links-of-blogroll-list").html());
     });
     </script>
     <h3 id="friends">
             <a href="#friends" class="headerlink" title="friends"></a>
             # 友情链接
     </h3>
-    <div class="friends2">
-    </div>
+    <ul class="friends2">
+    </ul>
 </div>
 {% endraw %}
