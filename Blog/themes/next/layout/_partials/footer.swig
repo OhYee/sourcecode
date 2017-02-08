@@ -3,20 +3,14 @@
   &copy; {% if theme.since and theme.since != current %} {{ theme.since }} - {% endif %}
   <span itemprop="copyrightYear">{{ current }}</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class="fa fa-{{ theme.authoricon }}"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">{{ config.author }}</span>
-  
 </div>
 
-<div class="SiteMap">
-  <a href="/sitemap.xml">Google网站地图</a>
-  <div class="fenge"></div>
-  <a href="/baidusitemap.xml">百度网站地图</a>
-</div>
-
+{% if theme.copyright %}
 <div class="powered-by">
-  {{ __('footer.powered', '<a class="theme-link" href="http://hexo.io">Hexo</a>') }}
+  {{ __('footer.powered', '<a class="theme-link" href="https://hexo.io">Hexo</a>') }}
 </div>
 
 <div class="theme-info">
@@ -25,3 +19,4 @@
     NexT.{{ theme.scheme }}
   </a>
 </div>
+{% endif %}

@@ -1,6 +1,7 @@
 <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
 
 {# #238, Disable Baidu tranformation #}
 <meta http-equiv="Cache-Control" content="no-transform" />
@@ -9,6 +10,11 @@
 
 {% if theme.google_site_verification %}
   <meta name="google-site-verification" content="{{ theme.google_site_verification }}" />
+{% endif %}
+
+
+{% if theme.yandex_site_verification %}
+  <meta name="yandex-verification" content="{{ theme.yandex_site_verification }}" />
 {% endif %}
 
 
@@ -32,7 +38,7 @@
 
 {% include "./head/external-fonts.swig" %}
 
-{% set font_awesome_uri = url_for(theme.vendors._internal + '/font-awesome/css/font-awesome.min.css?v=4.4.0') %}
+{% set font_awesome_uri = url_for(theme.vendors._internal + '/font-awesome/css/font-awesome.min.css?v=4.6.2') %}
 {% if theme.vendors.fontawesome %}
   {% set font_awesome_uri = theme.vendors.fontawesome %}
 {% endif %}
@@ -40,14 +46,8 @@
 
 <link href="{{ url_for(theme.css) }}/main.css?v={{ theme.version }}" rel="stylesheet" type="text/css" />
 
-{% if page.keywords %}
-  <meta name="keywords" content="{{ page.keywords }},{{ config.title }},{{ config.keywords }}" />
-{% elif page.tags and page.tags.length %}
-  <meta name="keywords" content="{% for tag in page.tags %}{{ tag.name }},{% endfor %}{{ config.title }},{{ config.keywords }}" />
-{% elif theme.keywords %}
-  <meta name="keywords" content="{{ theme.keywords }},{{ config.title }},{{ config.keywords }}" />
-{% endif %}
-
+<!-- Keywords -->
+<meta name="keywords" content="{% if page.keywords %}{{ page.keywords }},{% endif %}{% if page.tags and page.tags.length %}{% for tag in page.tags %}{{ tag.name }},{% endfor %}{% endif %}{% if theme.keywords %}{{ theme.keywords }}{% endif %}{% if config.keywords %}{{ config.keywords }}{% endif %}" />
 
 {% if theme.rss === '' and config.feed and config.feed.path %}
   {% set theme.rss = config.feed.path %}
@@ -79,21 +79,31 @@
 
 
 {# Export some HEXO Configurations to Front-End #}
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    root: '{{ theme.root }}',
     scheme: '{{ theme.scheme }}',
     sidebar: {{ theme.sidebar | json_encode }},
     fancybox: {{ theme.fancybox }},
     motion: {{ theme.use_motion }},
     duoshuo: {
-      userId: {{ theme.duoshuo_info.user_id | default() }},
+      userId: '{{ theme.duoshuo_info.user_id | default() }}',
       author: '{{ theme.duoshuo_info.admin_nickname | default(__('author'))}}'
+    },
+    algolia: {
+      applicationID: '{{ theme.algolia.applicationID }}',
+      apiKey: '{{ theme.algolia.apiKey }}',
+      indexName: '{{ theme.algolia.indexName }}',
+      hits: {{ theme.algolia_search.hits | json_encode }},
+      labels: {{ theme.algolia_search.labels | json_encode }}
     }
   };
 </script>
 
+{# Canonical, good for google search engine (SEO) : https://support.google.com/webmasters/answer/139066 #}
+{% if theme.canonical %}
+  <link rel="canonical" href="{{ config.url }}/{{ page.canonical_path.replace('index.html', '') }}"/>
+{% endif %}
 
-
-<link href="/css/My.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="/js/My.js"></script>
+{% include 'head/custom-head.swig' %}
