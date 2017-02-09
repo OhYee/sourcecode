@@ -60,7 +60,7 @@ comments: false
                     Mail：<a href="mailto:oyohyee@oyohyee.com" target="_blank" rel="external">oyohyee@oyohyee.com</a>
                 </li>
                 <li>
-                    QQ: 896817156
+                    QQ: <a href="http://wpa.qq.com/msgrd?v=3&uin=896817156&site=qq&menu=yes">896817156</a>
                 </li>
                 <li>
                     twitter: <a href="https://twitter.com/OYOhYee" target="_blank" rel="external">@oyohyee</a>
