@@ -3,7 +3,7 @@ title: 删除手机 My Knox
 date: 2016-07-19 12:47:01
 categories: 随笔
 tags: 
-- 三星(SANSUNG)
+- 三星(SAMSUNG)
 - Android
 - C5
 ---

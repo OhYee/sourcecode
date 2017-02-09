@@ -3,7 +3,7 @@ title: 麦克风清灰
 date: 2016-08-29 18:50:43
 categories: 随笔
 tags: 
-- 三星(SANSUNG)
+- 三星(SAMSUNG)
 - Android
 - C5
 ---

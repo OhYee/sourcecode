@@ -3,7 +3,7 @@ title: 三星 C5 Google(港版) + root + Xposed + 其他设置
 date: 2017-02-04 21:32:47
 categories: 随笔
 tags: 
-- 三星(SANSUNG)
+- 三星(SAMSUNG)
 - Android
 - C5
 - root
