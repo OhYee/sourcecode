@@ -480,49 +480,78 @@ inline LL mul(LL a,LL b,LL mod){
 }
 ```
 
-### 判断素数
-```cpp 费马小定理
-typedef long long LL;
-  
-LL mulmod(LL a,LL b,LL mod){  
-    LL x = 0,y = a % mod;  
-    while (b > 0){  
-        if (b % 2 == 1)  
-        {      
-            x = (x + y) % mod;  
+### Miller_rabin判断素数
+记得包含 `#include<ctime>` 和初始化随机数种子  
+```cpp Miller_rabin判断素数
+// Miller_rabin 判断素数
+const int times = 20; //测试次数
+
+LL Random(LL n ){//生成[ 0 , n ]的随机数  
+    return ((double)rand() / RAND_MAX*n + 0.5);  
+}  
+
+//快速计算 (a*b) % mod
+/*
+LL mul_mod(LL a, LL b, LL mod){
+    LL ans = 0;  
+    while(b){  
+        if(b & 1){  
+            b--;  
+            ans =(ans+ a)%mod;  
         }  
-        y = (y * 2) % mod;  
         b /= 2;  
+        a = (a + a) % mod;  
+  
     }  
-    return x % mod;  
-}  
-LL modulo(LL base, LL exponent, LL mod){  
-    LL x = 1;  
-    LL y = base;  
-    while (exponent > 0){  
-        if (exponent % 2 == 1)  
-            x = (x * y) % mod;  
-        y = (y * y) % mod;  
-        exponent = exponent / 2;  
+    return ans;  
+}
+*/
+inline LL mul_mod(LL a,LL b,LL mod){
+    a=(a % mod + mod) % mod;
+    b=(b % mod + mod) % mod;
+    return ((a*b-(LL)((long double)a/mod*b+.5L)*mod)%mod+mod)%mod;
+}
+  
+LL exp_mod(LL a, LL b, LL mod ){ //快速计算 (a^b) % mod  
+    LL ans = 1;  
+    while(b){  
+        if(b & 1)
+            ans = mul_mod(ans,a,mod);  
+        b /= 2;  
+        a = mul_mod(a,a,mod);  
     }  
-    return x % mod;  
+    return ans;  
 }  
-bool MiLLer(LL p,int iteration){  
-    if (p < 2) 
-        return false;   
-    if (p != 2 && p % 2==0)   
-        return false;  
-    LL s = p - 1;  
-    while (s % 2 == 0)  
-        s /= 2;  
-    for (int i = 0; i < iteration; i++)  {  
-        LL a = rand() % (p - 1) + 1, temp = s;  
-        LL mod = modulo(a, temp, p);  
-        while (temp != p - 1 && mod != 1 && mod != p - 1){  
-            mod = mulmod(mod, mod, p);  
-            temp *= 2;  
-        }  
-        if (mod != p - 1 && temp % 2 == 0)
+  
+bool witness( LL a, LL n ){ //miller_rabin算法的精华  
+    //用检验算子a来检验n是不是素数 
+    //a^r ≡ 1 mod n或者对某个j (0 ≤ j≤ s−1, j∈Z) 等式a^(2jr) ≡ −1 mod n 
+    LL tem = n - 1;  
+    int j = 0;  
+    while(tem % 2 == 0){  
+        tem /= 2;  
+        j++;  
+    }  
+    //将n-1拆分为a^r * s  
+  
+    LL x = exp_mod( a, tem, n ); //得到a^r mod n  
+    if(x == 1 || x == n - 1) return true;   //余数为1则为素数  
+    while(j--){ //否则试验条件2看是否有满足的 j    
+        x = mul_mod( x, x, n );  
+        if(x == n - 1) return true;  
+    }  
+    return false;  
+}  
+  
+bool miller_rabin( LL n ){  //检验n是否是素数    
+    if(n == 2)  
+        return true;  
+    if(n < 2 || n % 2 == 0)  //如果是2则是素数，如果<2或者是>2的偶数则不是素数
+        return false;
+  
+    for(int i = 1; i <= times; i++){ //做times次随机检验   
+        LL a = Random(n - 2) + 1; //得到随机检验算子 a  
+        if(!witness(a, n)) //用a检验n是否是素数  
             return false;  
     }  
     return true;  

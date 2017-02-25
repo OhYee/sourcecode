@@ -121,7 +121,6 @@ code{
     border-radius: 5px;
     padding: 5px 20px 5px 20px;
     height: 100%;
-    display:none;
 }
 .part:before{
     content: attr(title);
@@ -157,7 +156,6 @@ code{
 /* OJ题目及代码段部分隐藏 CSS 效果 */
 .hider_title{
     font-family: "Microsoft Yahei";
-
 }
 .close:after{
     content: "▼";
@@ -166,5 +164,5 @@ code{
     content: "▲";
 }
 figure table{
-    display: none;
+    /*display: none;*/
 }

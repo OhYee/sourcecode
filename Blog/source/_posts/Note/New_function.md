@@ -40,7 +40,7 @@ tags:
 
 <!-- OJ题目 -->
 {% raw %}
-<div>
+<div><div class="fold_hider"><div class="close hider_title">点击显/隐</div></div><div class="fold">
 <div class="oj">   
     <div class="part" title="Description">
 {% endraw %}
@@ -92,13 +92,13 @@ Case #2: Yes
         <div class="clear"></div>
     </div>
 </div>
-</div>
+</div></div>
 {% endraw %}
 
 
 <!-- OJ题目 -->
 {% raw %}
-<div>
+<div><div class="fold_hider"><div class="close hider_title">点击显/隐</div></div><div class="fold">
 <div class="oj">   
     <div class="part" title="Description">
 {% endraw %}
@@ -150,25 +150,26 @@ Case #2: Yes
         <div class="clear"></div>
     </div>
 </div>
-</div>
+</div></div>
 {% endraw %}
 
-```cpp 123 http://www.baidu.com 123
+<div><div class="fold_hider"><div class="close hider_title">点击显/隐</div></div><div class="fold">```cpp 123 http://www.baidu.com 123
 #include <cstdio>
 #include <cstdio>
 #include <cstdio>
 #include <cstdio>
 #include <cstdio>
 ```
+</div></div>
 
-
-```cpp 123 http://www.baidu.com 123
+<div><div class="fold_hider"><div class="close hider_title">点击显/隐</div></div><div class="fold">```cpp 123 http://www.baidu.com 123
 #include <cstdio>
 #include <cstdio>
 #include <cstdio>
 #include <cstdio>
 #include <cstdio>
 ```
+</div></div>
 
 # 思路
 CSS 部分就是简单的 CSS 代码  

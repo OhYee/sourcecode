@@ -5,7 +5,7 @@ import urllib.request
 
 # 格式
 str1="""{% raw %}
-<div>
+<div><div class="fold_hider"><div class="close hider_title">点击显/隐题目</div></div><div class="fold">
     <div class="oj">   
         <div class="part" title="Description">
 {% endraw %}
@@ -37,7 +37,7 @@ str1="""{% raw %}
             <div class="clear"></div>
         </div>
     </div>
-</div>
+</div></div>
 {% endraw %}"""
 
 
