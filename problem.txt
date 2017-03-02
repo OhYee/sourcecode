@@ -1,9 +1,9 @@
 ---
-title: HDU 6015.Skip the Class
-date: 2017-02-25 21:52:04
+title: AOJ 795.西瓜理发记(三)
+date: 2017-03-02 19:43:28
 categories: 题解
 tags:
- - HDU
+ - AOJ
 ---
 
 # 题目
@@ -12,18 +12,12 @@ tags:
     <div class="oj">   
         <div class="part" title="Description">
 {% endraw %}
-            Finally term begins. luras loves school so much as she could skip the class happily again.(wtf?)  
-  
-Luras will take n lessons in sequence(in another word, to have a chance to skip xDDDD).  
-  
-For every lesson, it has its own type and value to skip.  
-  
-But the only thing to note here is that luras can't skip the same type lesson more than twice.  
-  
-Which means if she have escaped the class type twice, she has to take all other lessons of this type.  
-  
-Now please answer the highest value luras can earn if she choose in the best way.  
-   
+            顺利潜入勺林寺几天后，方丈给了西瓜一个光荣而艰巨的任务——打扫寺庙中的道路。同时给了西瓜一张勺林寺的地图。  
+西瓜这才知道，勺林寺中总共有n座房子，但道路只有n-1条，这n-1条道路连接了寺中的所有房子，即保证在任何两座房子都能沿着道路抵达。  
+好在西瓜人缘不错，他知道每座房子中都有个自己的朋友，只要给他们每个人打个电话，让他到自己这里来，顺便把路也扫了，即给某座房子中的朋友打过电话后，可认为从该房子到西瓜所在的位置之间所有的道路都会被打扫干净。  
+同时西瓜还知道，这n-1条道路中有一些路昨天已经被人打扫过了不需要再打扫一遍。  
+现在西瓜想知道，自己最少要给多少个朋友打电话才能完成方丈给的任务。  
+西瓜在编号为1的房子中。  
   
   
 
@@ -32,21 +26,9 @@ Now please answer the highest value luras can earn if she choose in the best way
         <div class="part" title="Input">
 {% endraw %}
               
-The first line is an integer T which indicates the case number.  
-  
-And as for each case, the first line is an integer n which indicates the number of lessons luras will take in sequence.  
-  
-Then there are n lines, for each line, there is a string consists of letters from 'a' to 'z' which is within the length of 10,  
-and there is also an integer which is the value of this lesson.  
-  
-The string indicates the lesson type and the same string stands for the same lesson type.  
-  
-It is guaranteed that——  
-  
-T is about 1000  
-  
-For 100% cases, 1 <= n <= 100，1 <= |s| <= 10, 1 <= v <= 1000  
-   
+输入包含多组数据  
+每组数据第一行包含一个n(2?≤?n?≤?10^5)，表示有n座房子  
+之后n-1行，每行三个数字a，b，c表示在房子a和房子b之间有一条路，c等于1表示路已被打扫，c等于2表示路未被打扫。  
   
   
 
@@ -55,9 +37,7 @@ For 100% cases, 1 <= n <= 100，1 <= |s| <= 10, 1 <= v <= 1000
         <div class="part" title="Output">
 {% endraw %}
               
-As for each case, you need to output a single line.  
-there should be 1 integer in the line which represents the highest value luras can earn if she choose in the best way.  
-   
+每组数据输出一个整数k，表示最少要给k个朋友打电话  
   
   
 
@@ -68,17 +48,11 @@ there should be 1 integer in the line which represents the highest value luras c
             <div class="input part" title="Sample Input">
 {% endraw %}
                   
-2  
 5  
-english 1  
-english 2  
-english 3  
-math 10  
-cook 100  
-2  
-a 1  
-a 2  
-   
+1 2 2  
+1 3 2  
+1 4 2  
+1 5 2  
   
   
 
@@ -87,8 +61,7 @@ a 2
             <div class="output part" title="Sample Output">
 {% endraw %}
                   
-115  
-3  
+4  
   
 
 {% raw %}
@@ -105,6 +78,7 @@ a 2
 
 
 # 代码
-```cpp Skip the Class https://github.com/OhYee/ACM.github.io/blob/master/HDU/6015.Skip%20the%20Class.cpp 代码备份
+<div><div class="fold_hider"><div class="close hider_title">点击显/隐题目</div></div><div class="fold">```cpp 西瓜理发记(三) https://github.com/OhYee/ACM.github.io/blob/master/AOJ/795.%E8%A5%BF%E7%93%9C%E7%90%86%E5%8F%91%E8%AE%B0%28%E4%B8%89%29.cpp 代码备份
 
 ```
+</div>

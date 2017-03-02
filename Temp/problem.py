@@ -9,29 +9,29 @@ str1="""{% raw %}
     <div class="oj">   
         <div class="part" title="Description">
 {% endraw %}
-            $
+$
 {% raw %}
         </div>
         <div class="part" title="Input">
 {% endraw %}
-            $
+$
 {% raw %}
         </div>
         <div class="part" title="Output">
 {% endraw %}
-            $
+$
 {% raw %}
         </div>
         <div class="samp">
             <div class="clear"></div>
             <div class="input part" title="Sample Input">
 {% endraw %}
-                $
+$
 {% raw %}
             </div>
             <div class="output part" title="Sample Output">
 {% endraw %}
-                $
+$
 {% raw %}
             </div>
             <div class="clear"></div>
@@ -105,7 +105,7 @@ title = '---\ntitle: '+oj+" "+num+"."+name+"\ndate: "+GetNowTime()+"\ncategories
 url = oj+"/"+num+"."+name+".cpp"
 url = " https://github.com/OhYee/ACM.github.io/blob/master/" + urllib.request.quote(url)
 
-code = "\n\n<!--more-->\n# 题解\n\n\n\n# 代码\n```cpp "+ name + url+" 代码备份\n\n```"
+code = "\n\n<!--more-->\n# 题解\n\n\n\n# 代码\n<div><div class=\"fold_hider\"><div class=\"close hider_title\">点击显/隐题目</div></div><div class=\"fold\">```cpp "+ name + url+" 代码备份\n\n```\n</div>"
 
 
 # 强制转换为 utf8
