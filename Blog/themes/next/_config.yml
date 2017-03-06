@@ -40,6 +40,7 @@ menu:
   archives: /archives
   categories: /categories
   tags: /tags
+  templates: /templates.html
   about: /about
   #sitemap: /sitemap.xml
   #baidusitemap: /baidusitemap.xml
@@ -63,6 +64,7 @@ menu_icons:
   sitemap: sitemap
   baidusitemap: sitemap
   commonweal: heartbeat
+  templates: laptop
 
 
 

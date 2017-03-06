@@ -3,7 +3,7 @@ title: Miller_rabin 判断素数
 date: 2017-02-10 20:08:37
 categories: 算法
 tags: 
-  - 素数
+  - 质数
   - Miller_rabin
   - 数学
 keywords:
