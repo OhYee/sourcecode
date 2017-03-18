@@ -150,6 +150,7 @@ tag_map:
  匈牙利算法: Hungary
  遗传算法: Genetic_Algorithm
  概率: probability
+ 数据库: Database
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date

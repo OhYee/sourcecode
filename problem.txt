@@ -1,9 +1,9 @@
 ---
-title: COGS 185.挖水井
-date: 2017-03-06 22:41:50
+title: AOJ 759.会绕圈的数
+date: 2017-03-19 00:15:10
 categories: 题解
 tags:
- - COGS
+ - AOJ
 ---
 
 # 题目
@@ -12,17 +12,24 @@ tags:
     <div class="oj">   
         <div class="part" title="Description">
 {% endraw %}
-Finally term begins. luras loves school so much as she could skip the class happily again.(wtf?)  
-  
-Luras will take n lessons in sequence(in another word, to have a chance to skip xDDDD).  
-  
-For every lesson, it has its own type and value to skip.  
-  
-But the only thing to note here is that luras can't skip the same type lesson more than twice.  
-  
-Which means if she have escaped the class type twice, she has to take all other lessons of this type.  
-  
-Now please answer the highest value luras can earn if she choose in the best way.  
+任意一个正整数，把它的每一位数字都平方后相加得到一个数；将这个数的每一位数字再平方相加；依次进行就会产生循环现象。  
+例如：1234。  
+1?2+2?2+3?2+4?2=1+4+9+16=30  
+3?2+0?2=9  
+9?2=81  
+8?2+1?2=64+1=65  
+6?2+5?2=36+25=61  
+6?2+1?2=36+1=37  
+3?2+7?2=9+49=58  
+5?2+8?2=25+64=89  
+8?2+9?2=64+81=145  
+1?2+4?2+5?2=1+16+25=42  
+4?2+2?2=16+4=20  
+2?2+0?2=4+0=4  
+4?2=16  
+1?2+6?2=1+36=37  
+由于前面已出现过37，这时就产生了循环。  
+设计一个程序，对给定的一个数，打印出到出现循环为止的所有数。  
   
   
 
@@ -31,19 +38,7 @@ Now please answer the highest value luras can earn if she choose in the best way
         <div class="part" title="Input">
 {% endraw %}
   
-The first line is an integer T which indicates the case number.  
-  
-And as for each case, the first line is an integer n which indicates the number of lessons luras will take in sequence.  
-  
-Then there are n lines, for each line, there is a string consists of letters from 'a' to 'z' which is within the length of 10, and there is also an integer which is the value of this lesson.  
-  
-The string indicates the lesson type and the same string stands for the same lesson type.  
-  
-It is guaranteed that——  
-  
-T is about 1000  
-  
-For 100% cases, 1 <= n <= 100，1 <= |s| <= 10, 1 <= v <= 1000  
+输入包括多组测试数据，每组测试数据占一行并且只有一个正整数m（m<10000000）,当m=0时表示输入结束。  
   
   
 
@@ -52,7 +47,7 @@ For 100% cases, 1 <= n <= 100，1 <= |s| <= 10, 1 <= v <= 1000
         <div class="part" title="Output">
 {% endraw %}
   
-As for each case, you need to output a single line. there should be 1 integer in the line which represents the highest value luras can earn if she choose in the best way.  
+对每组测试数据输出一行结果，结果中包括到第一次产生循环时的所有整数。  
   
   
 
@@ -63,16 +58,11 @@ As for each case, you need to output a single line. there should be 1 integer in
             <div class="input part" title="Sample Input">
 {% endraw %}
   
-2  
-5  
-english 1  
-english 2  
-english 3  
-math 10  
-cook 100  
-2  
-a 1  
-a 2  
+Original	Transformed  
+1234   
+67834807  
+0  
+  
   
 
 {% raw %}
@@ -80,9 +70,9 @@ a 2
             <div class="output part" title="Sample Output">
 {% endraw %}
   
-Copy  
-115  
-3  
+Original	Transformed  
+1234   30   9   81   65   61   37   58   89   145   42   20   4   16   37     
+67834807   287   117   51   26   40   16   37   58   89   145   42   20   4   16     
   
 
 {% raw %}
@@ -99,7 +89,7 @@ Copy
 
 
 # 代码
-<div><div class="fold_hider"><div class="close hider_title">点击显/隐题目</div></div><div class="fold">```cpp 挖水井 https://github.com/OhYee/ACM.github.io/blob/master/COGS/185.%E6%8C%96%E6%B0%B4%E4%BA%95.cpp 代码备份
+<div><div class="fold_hider"><div class="close hider_title">点击显/隐题目</div></div><div class="fold">```cpp 会绕圈的数 https://github.com/OhYee/ACM.github.io/blob/master/AOJ/759.%E4%BC%9A%E7%BB%95%E5%9C%88%E7%9A%84%E6%95%B0.cpp 代码备份
 
 ```
 </div>
