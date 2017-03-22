@@ -19,7 +19,7 @@ date: 2016-03-26 22:48:00
 
 > Dijkstra算法是一种常见的计算正权图上的单源最短路的算法，能同时用在有向图和无向图上。
 
-[>Dijkstra算法的解释<](/Algorithm/Dijkstra.html)
+[>Dijkstra算法的解释<](/post/Algorithm/Dijkstra.html)
 
 其以**BFS**为基础进行优化。
 

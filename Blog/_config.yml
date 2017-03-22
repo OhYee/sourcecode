@@ -151,6 +151,7 @@ tag_map:
  遗传算法: Genetic_Algorithm
  概率: probability
  数据库: Database
+ 枚举: enum
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
