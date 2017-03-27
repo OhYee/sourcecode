@@ -1,6 +1,6 @@
 ---
-title: AOJ 838.今年多少岁
-date: 2017-03-19 20:49:32
+title: AOJ 846.勤劳的出题人
+date: 2017-03-27 23:44:01
 categories: 题解
 tags:
  - AOJ
@@ -12,9 +12,11 @@ tags:
     <div class="oj">   
         <div class="part" title="Description">
 {% endraw %}
-小明出生于1937年7月7日，问对于给定的日期，小明几周岁了，不足一周年的部分可以忽略。  
-  
-注意：1938年7月6日，小明0周岁，1938年7月7日小明1周岁，同理1939年7月6日，小明1周岁，1939年7月7日，小明2周岁。  
+小蓝最近要办一场程序设计比赛, 要出一些题目.  
+从无到有原创一道题是很难的一件事情, 好在小蓝平时积累了m道现成的题目, 记这m道题的编号为1到m, 这m道题的复杂度记为bi(1<=i<=m).  
+另外为了保证比赛的质量, 小蓝指定了一个复杂度标准, 即, 小蓝至少需要出n道题, 复杂度分别恰好是ai(1<=i<=n).  
+小蓝可以通过降低题目难度将现成的一道难度为c的题目改编成难度为d(d<=c)的题目, 一道现成题最多使用一次; 也可以原创一道任意难度的题目, 鉴于原创的难度, 小蓝希望原创的题目越少越好.  
+现在请你帮忙判断, 小蓝至少需要原创多少道题.  
   
   
 
@@ -23,8 +25,10 @@ tags:
         <div class="part" title="Input">
 {% endraw %}
   
-一个整数t(1<=t<=100)，表示数据组数  
-对于每组测试数据，三个整数，逗号隔开，分别表示给定日期的年、月、日。给定的日期保证合法， 而且一定是小明出生后的日期，且小明的岁数保证在100以内。  
+第一行: 两个数, n和m,(1 <= n, m <= 3000)  
+第二行: n个数, 即a1, a2, ..., an;  
+第三行: m个数, 即b1, b2, ..., bm  
+(1 <= ai, bi <= 1000,000)  
   
   
 
@@ -33,7 +37,7 @@ tags:
         <div class="part" title="Output">
 {% endraw %}
   
-对于每一组数据，输出一个整数，表示小明的周岁数。  
+一个整数, 即小蓝至少需要原创的题目数  
   
   
 
@@ -44,9 +48,9 @@ tags:
             <div class="input part" title="Sample Input">
 {% endraw %}
   
-2  
-1938 7 6  
-1938 7 7  
+3 5  
+1 2 3  
+1 1 1 1 4  
   
   
 
@@ -55,7 +59,6 @@ tags:
             <div class="output part" title="Sample Output">
 {% endraw %}
   
-0  
 1  
   
 
@@ -73,7 +76,7 @@ tags:
 
 
 # 代码
-<div><div class="fold_hider"><div class="close hider_title">点击显/隐题目</div></div><div class="fold">```cpp 今年多少岁 https://github.com/OhYee/ACM.github.io/blob/master/AOJ/838.%E4%BB%8A%E5%B9%B4%E5%A4%9A%E5%B0%91%E5%B2%81.cpp 代码备份
+<div><div class="fold_hider"><div class="close hider_title">点击显/隐代码</div></div><div class="fold">```cpp 勤劳的出题人 https://github.com/OhYee/ACM.github.io/blob/master/AOJ/846.%E5%8B%A4%E5%8A%B3%E7%9A%84%E5%87%BA%E9%A2%98%E4%BA%BA.cpp 代码备份
 
 ```
 </div>
