@@ -152,6 +152,7 @@ tag_map:
  概率: probability
  数据库: Database
  枚举: enum
+ 服务器: server
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date

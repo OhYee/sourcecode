@@ -31,6 +31,14 @@ tags:
  - <code>int num;</code>
 - 按键框
  - <kbd>Ctrl + A</kbd>
+- 并且新版的 Next 主题内建标签有了这种 note  
+ - {% note defult %}deafult{% endnote %}  
+ - {% note primary %}primary{% endnote %}  
+ - {% note success %}success{% endnote %}  
+ - {% note info %}info{% endnote %}  
+ - {% note warning %}warning{% endnote %}  
+ - {% note danger %}danger{% endnote %}  
+
 ----
 
 然后又顺手重新弄了下 OJ 题目的 CSS (稍微好看了那么一点)  
