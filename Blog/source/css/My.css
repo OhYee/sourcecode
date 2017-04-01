@@ -1,5 +1,10 @@
 /*@import "black.css";*/
 
+/* 文章里插入的img的外边距 */
+.posts-expand .post-body img {
+    margin: 10px 10px 10px 10px;
+}
+
 /*阴影*/
 html{
     text-shadow: 1px 1px 1px rgba(85,85,85,0.3);

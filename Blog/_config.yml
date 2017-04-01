@@ -69,6 +69,7 @@ category_map:
  算法: Algorithm
  随笔: Writing
  题解: Answer
+ 知乎: Zhihu
 tag_map:
  Trie树: Trie
  javascript: Javascript
