@@ -4,8 +4,8 @@ import time
 import urllib.request
 
 # 格式
-str1="""{% raw %}
-<div><div class="fold_hider"><div class="close hider_title">点击显/隐题目</div></div><div class="fold">
+str1="""
+{% fold 点击显/隐题目 %}{% raw %}
     <div class="oj">   
         <div class="part" title="Description">
 {% endraw %}
@@ -37,8 +37,7 @@ $
             <div class="clear"></div>
         </div>
     </div>
-</div></div>
-{% endraw %}"""
+{% endraw %}{% endfold %}"""
 
 
 # 删除空行
@@ -105,7 +104,7 @@ title = '---\ntitle: '+oj+" "+num+"."+name+"\ndate: "+GetNowTime()+"\ncategories
 url = oj+"/"+num+"."+name+".cpp"
 url = " https://github.com/OhYee/ACM.github.io/blob/master/" + urllib.request.quote(url)
 
-code = "\n\n<!--more-->\n# 题解\n\n\n\n# 代码\n<div><div class=\"fold_hider\"><div class=\"close hider_title\">点击显/隐代码</div></div><div class=\"fold\">```cpp "+ name + url+" 代码备份\n\n```\n</div>"
+code = "\n\n<!--more-->\n# 题解\n\n\n\n# 代码\n{% fold 点击显/隐代码 %}```cpp "+ name + url+" 代码备份\n\n```\n{% endfold %}"
 
 
 # 强制转换为 utf8

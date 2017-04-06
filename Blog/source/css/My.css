@@ -161,6 +161,7 @@ code{
 /* OJ题目及代码段部分隐藏 CSS 效果 */
 .hider_title{
     font-family: "Microsoft Yahei";
+    cursor:pointer;
 }
 .close:after{
     content: "▼";
@@ -168,6 +169,9 @@ code{
 .open:after{
     content: "▲";
 }
+
+/*
 figure table{
-    /*display: none;*/
+    display: none;
 }
+*/
