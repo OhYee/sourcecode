@@ -1,15 +1,17 @@
 //确保 jauery 加载完成
 $(document).ready(function(){
 
-    $(document).on('touchend click', '.fold_hider', function(){
-                $('>.fold', this.parentNode).slideToggle();
-                $('>:first', this).toggleClass('open');
+    $(document).on('click', '.fold_hider', function(){
+        $('>.fold', this.parentNode).slideToggle();
+        $('>:first', this).toggleClass('open');
     });
+
     //默认情况下折叠
     $("div.fold").css("display","none");
     //备案信息
     $("div.copyright").before("<div class='beian'><span>豫ICP备17000379号</span></div>");
 });
+
 
 
     //$("div.oj").before("<div class='oj_hider'><div class='close hider_title'>点击显/隐题目</div></div>");

@@ -22,6 +22,8 @@ keywords:
 在 [Hexo + C++ 便携套装](/post/Note/Portable.html) 里,介绍了将 VS Code portable 化的基础思路  
 经过改进,将该功能改的更加完美  
 
+[Github](https://github.com/OhYee/Portable)
+
 <!--more-->
 
 # 准备工作
