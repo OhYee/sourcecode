@@ -72,6 +72,7 @@ void make_failed(){
                 Q.push(Tree[t].children[i]);
     }
 }
+
 string show_word(int p){
     string s="";
     stack<char> stk;
@@ -90,9 +91,9 @@ string show_word(int p){
 int solve(string s){
     int ans = 0;
     int size = s.size();
-    int T_iter = 0;   //树
-    int S_iter = 0;   //字符串
-    while(S_iter<=size){
+    int T_iter = 0;//树
+    int S_iter = 0;//字符串
+    while(S_iter < size){
         if(Tree[T_iter].children[s[S_iter]-'a']){
             //匹配成功
             T_iter = Tree[T_iter].children[s[S_iter]-'a'];
@@ -103,7 +104,12 @@ int solve(string s){
                 S_iter++;
             T_iter = Tree[T_iter].failed;
         }
-        ans+=Tree[T_iter].end;
+        
+        if(Tree[T_iter].end){
+            //单词结束
+            ans += Tree[T_iter].end;
+            Tree[T_iter].end = 0;//删除单词
+        }
     }
     return ans;
 }
@@ -128,6 +134,19 @@ int main(){
             push(s);
         }
         make_failed();
+
+        //show
+        // for(int i=0;i<=pos;i++){
+        //     cout << i << "(" << Tree[i].ch << ")" << endl;
+        //     cout << "parent: " << Tree[i].parent << "(" << Tree[Tree[i].parent].ch << ")" << endl;
+        //     cout << "failed: " << Tree[i].failed << "(" << Tree[Tree[i].failed].ch << ")" << endl;
+        //     for(int j=0;j<26;j++){
+        //         if(Tree[i].children[j])
+        //             cout << Tree[i].children[j] << "(" << Tree[Tree[i].children[j]].ch << ")" << " ";
+        //     }
+        //     cout << endl;
+        // }
+
         cin >> s;
         cout << solve(s) << endl;
     }

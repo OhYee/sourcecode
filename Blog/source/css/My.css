@@ -1,8 +1,13 @@
 /*@import "black.css";*/
 
 /* 文章里插入的img的外边距 */
-.posts-expand .post-body img {
+.posts-expand .fancybox img {
     margin: 10px 10px 10px 10px;
+}
+
+/* 加粗 边距 */
+b,strong{
+    margin: 0px 5px 0px 5px;
 }
 
 /*阴影*/
