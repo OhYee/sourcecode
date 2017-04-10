@@ -1,14 +1,17 @@
 ---
-title: About
+title: Something about me
 date: 2016-06-07 01:14:40
 comments: false
 ---
 {% cq %}
-<p style="font-size:30px">欢迎来到OhYee的博客</p>
+<p style="font-size:30px">欢迎来到 OhYee 的博客</p>
 {% endcq %}
 
 {% raw %}
 <style>
+    .post-header{
+        display: none;
+    }
     .about_left{ 
         float:left;
         width:45%;
@@ -120,7 +123,29 @@ comments: false
                             <a href="https://github.com/OhYee/ACM.github.io" target="_blank" rel="external">写过的大部分C/C++</a>
                         </li>
                         <li>
-                            娱乐性大于实用性的项目
+                            没人用的<b>软件</b>
+                            <ul>
+                                <li>
+                                    <a href="/software/Transparency/" target="_blank" rel="external">窗口透明化工具</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            不务正业去做<b>视频</b>
+                            <ul>
+                                <li>
+                                    <a href='http://www.bilibili.com/video/av3197097/' target="_blank" rel="external">我的世界已坠入爱河</a>
+                                </li>
+                                <li>
+                                    <a href='http://www.bilibili.com/video/av9039463/' target="_blank" rel="external">Blessing 安大版</a>
+                                </li>
+                                <li>
+                                    辅导员评选介绍视频
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            娱乐性大于实用性的<b>项目</b>
                             <ul>
                                 <li>
                                     <a href="https://github.com/ohyee" target="_blank" rel="external">Github</a>
@@ -141,6 +166,9 @@ comments: false
                     <ul>
                         <li>
                             NOIP复赛二等奖
+                        </li>
+                        <li>
+                            2016 ACM/ICPC 亚洲赛区 青岛站 铜奖
                         </li>
                     </ul>
                 </li>
@@ -200,6 +228,15 @@ comments: false
                         </li>
                         <li>
                             ACM
+                        </li>
+                        <li>
+                            VS Code
+                        </li>
+                        <li>
+                            魔兽世界
+                        </li>
+                        <li>
+                            守望先锋
                         </li>
                     </ul>
                 </li>
