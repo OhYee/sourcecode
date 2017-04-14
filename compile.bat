@@ -6,7 +6,7 @@ set path=%path%;%cd%\..\Support\MinGW\bin\;%cd%\..\Support\MinGW\lib\;%cd%\..\Su
 
 if exist %1.exe del %1.exe 
 
-g++ -g -Wall -std=c++11 %1 -o %1.exe 
+clang++ -g -Wall -std=c++11 %1 -o %1.exe -O2
 
 ::if exist %1.exe %1.exe
 

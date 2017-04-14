@@ -2,7 +2,7 @@
 {   
 
     // 字体 字号 字形
-    "editor.fontFamily": "Consolas",
+    "editor.fontFamily": "Consolas,'微软雅黑'",
     "editor.fontSize": 25,
     "editor.glyphMargin": true,
 
@@ -28,6 +28,7 @@
     //代码格式化
     "C_Cpp.clang_format_style": "file",
     "C_Cpp.clang_format_fallbackStyle": "WebKit",
+    "C_Cpp.clang_format_sortIncludes": true,
 
     // 控制换行的行的缩进。可以是"none"、 "same" 或 "indent"。
     "editor.wrappingIndent": "indent",
@@ -40,15 +41,18 @@
     //"editor.wrappingColumn": 120,
 
     // 控制是否应换行。换行依据为 min(editor.wrappingColumn, viewportWidthInColumns)。
-    "editor.wordWrap": true,
+    "editor.wordWrap": "on",
 
     // markdown 风格
     "markdown.styles": ["${workspaceRoot}/.vscode/markdown.css"],
 
+    //缩进body和head
+    "html.format.indentInnerHtml": true,
+
     // 控制是否显示 minimap
     "editor.minimap.enabled": true,
-
-    // 可执行 GIT 的路径
-    "git.path": "${workspaceRoot}/../support/git/",
-    "python.linting.pylintEnabled": false
+    "files.associations": {
+        "*.cpp": "cpp",
+        "ctime": "cpp"
+    }
 }

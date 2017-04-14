@@ -1,35 +1,25 @@
 {
     "version": "0.1.0",
-    "command": " ",//需要多个指令 因此留空 以下面的参数为指令
-    "isShellCommand": true,
-    "showOutput": "always",
-    "echoCommand": false,
-    "suppressTaskName": true,
     "tasks": [
         {
             "taskName": "g++",
-            //"command": "g++",
-            "args": ["g++","-g","${file}","-o","${file}.exe"],    // 编译命令参数
+            "command": "g++",
+            "isShellCommand": true,
+            "showOutput": "silent",
+            "echoCommand": false,
+            "suppressTaskName": true,
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${file}.exe"
+            ], // 编译命令参数
             "problemMatcher": {
                 "owner": "cpp",
-                "fileLocation": ["relative", "${workspaceRoot}"],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
-            }
-         },
-         {
-            "taskName": "compile",
-            //"command": "compile.bat",
-            "args": ["compile.bat","${file}"],    // 编译命令参数
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": ["relative", "${workspaceRoot}"],
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
                 "pattern": {
                     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
                     "file": 1,
@@ -41,12 +31,47 @@
             }
         },
         {
-            "taskName": "compile-python",
-            //"command": "compile.bat",
-            "args": ["cpy.bat","${file}"],    // 编译命令参数
+            "taskName": "编译C/C++",
+            "command": "compile.bat",
+            "isShellCommand": true,
+            "showOutput": "silent",
+            "echoCommand": false,
+            "suppressTaskName": true,
+            "args": [
+                "${file}"
+            ], // 编译命令参数
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^.*Code(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$", //文件在Code文件夹下 只截取文件名部分 不截取全路径
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "taskName": "编译Python",
+            "command": "cpy.bat",
+            "isShellCommand": true,
+            "showOutput": "always",
+            "echoCommand": false,
+            "suppressTaskName": true,
+            "args": [
+                "${file}"
+            ], // 编译命令参数
             "problemMatcher": {
                 "owner": "py",
-                "fileLocation": ["relative", "${workspaceRoot}"],
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
                 "pattern": {
                     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
                     "file": 1,
@@ -59,7 +84,15 @@
         },
         {
             "taskName": "echo",
-            "args": ["echo","${workspaceRoot}/.vscode/.clang-format"]    // 编译命令参数
+            "command": "echo",
+            "isShellCommand": true,
+            "showOutput": "silent",
+            "echoCommand": false,
+            "suppressTaskName": true,
+            "args": [
+                "echo",
+                "${workspaceRoot}/.vscode/.clang-format"
+            ] // 编译命令参数
         }
     ]
 }

@@ -154,6 +154,7 @@ tag_map:
  数据库: Database
  枚举: enum
  服务器: server
+ 操作系统: Operating_System
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
