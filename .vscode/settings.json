@@ -6,6 +6,14 @@
     "editor.fontSize": 25,
     "editor.glyphMargin": true,
 
+    //拖拽
+    "editor.dragAndDrop": true,
+
+    //补全
+    "C_Cpp.autocomplete": "Disabled",
+    //关联整个项目
+    "C_Cpp.addWorkspaceRootToIncludePath": false,
+
     // 控制已更新文件的自动保存。接受的值:“off”、"afterDelay”、“onFocusChange”(编辑器失去焦点)、“onWindowChange”(窗口失去焦点)。如果设置为“afterDelay”，则可在 "files.autoSaveDelay" 中配置延迟。
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1,
@@ -49,10 +57,25 @@
     //缩进body和head
     "html.format.indentInnerHtml": true,
 
+    // 控制终端游标的样式。
+    "terminal.integrated.cursorStyle": "line",
+    // 控制终端游标是否闪烁。
+    "terminal.integrated.cursorBlinking": true,
+    // 控制终端保持在缓冲区的最大行数。
+    "terminal.integrated.scrollback": 5000,
+
     // 控制是否显示 minimap
     "editor.minimap.enabled": true,
+    
     "files.associations": {
         "*.cpp": "cpp",
-        "ctime": "cpp"
+        "ctime": "cpp",
+        "iostream": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp",
+        "rope": "cpp",
+        "slist": "cpp",
+        "valarray": "cpp",
+        "ostream": "cpp"
     }
 }

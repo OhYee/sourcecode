@@ -2,7 +2,9 @@
 
 echo Begin
 
-start rpy.bat %1
+python %1
+
+REM start rpy.bat %1
 
 echo Finished
 
