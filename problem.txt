@@ -1,74 +1,40 @@
 ---
-title: AOJ 846.勤劳的出题人
-date: 2017-03-27 23:44:01
+title: AOJ 866.飞越原野
+date: 2017-05-05 11:55:14
 categories: 题解
 tags:
  - AOJ
 ---
 
 # 题目
-{% raw %}
-<div><div class="fold_hider"><div class="close hider_title">点击显/隐题目</div></div><div class="fold">
-    <div class="oj">   
-        <div class="part" title="Description">
-{% endraw %}
-小蓝最近要办一场程序设计比赛, 要出一些题目.  
-从无到有原创一道题是很难的一件事情, 好在小蓝平时积累了m道现成的题目, 记这m道题的编号为1到m, 这m道题的复杂度记为bi(1<=i<=m).  
-另外为了保证比赛的质量, 小蓝指定了一个复杂度标准, 即, 小蓝至少需要出n道题, 复杂度分别恰好是ai(1<=i<=n).  
-小蓝可以通过降低题目难度将现成的一道难度为c的题目改编成难度为d(d<=c)的题目, 一道现成题最多使用一次; 也可以原创一道任意难度的题目, 鉴于原创的难度, 小蓝希望原创的题目越少越好.  
-现在请你帮忙判断, 小蓝至少需要原创多少道题.  
-  
-  
 
-{% raw %}
-        </div>
-        <div class="part" title="Input">
-{% endraw %}
-  
-第一行: 两个数, n和m,(1 <= n, m <= 3000)  
-第二行: n个数, 即a1, a2, ..., an;  
-第三行: m个数, 即b1, b2, ..., bm  
-(1 <= ai, bi <= 1000,000)  
-  
-  
+{% fold 点击显/隐题目 %}
+<div class="oj"><div class="part" title="Description">
+在一片广阔的土地上，有一个鸟人，他需要从这里穿过原野，回到基地。这片原野上，有平地(P)、有湖泊(L)，因为鸟人可以飞，所以呢，有的时候，他可以飞越湖泊。现在，鸟人需要用最快的时间，回到基地。
+假设原野是一个m*n的矩阵，有两种地形，用P和L表示。鸟人只能停留在平地上。他目前处在(1,1)这个位置，而目的地是(m,n)。他可以向上下左右四个方向移动，或者飞行。每移动一格需要1个单位时间。而飞行无论飞多远，都只需要1个单位时间。飞行的途中不可以变方向，也就是说飞行也只能是上下左右四个方向。并且一次飞行最终必须降落在平地上。当然，受到能量的限制，鸟人不能无限制的飞行，他总共最多可以飞行的距离为D。
 
-{% raw %}
-        </div>
-        <div class="part" title="Output">
-{% endraw %}
-  
-一个整数, 即小蓝至少需要原创的题目数  
-  
-  
+</div><div class="part" title="Input">
+第一行是三个整数，m，n，D，三个数都不超过100，下面是一个m*n的矩阵，表示原野
 
-{% raw %}
-        </div>
-        <div class="samp">
-            <div class="clear"></div>
-            <div class="input part" title="Sample Input">
-{% endraw %}
-  
-3 5  
-1 2 3  
-1 1 1 1 4  
-  
-  
+</div><div class="part" title="Output">
+一个整数，为最短时间，如果无法到达，则输出“impossible”
 
-{% raw %}
-            </div>
-            <div class="output part" title="Sample Output">
-{% endraw %}
-  
-1  
-  
+</div><div class="samp"><div class="clear"></div><div class="input part" title="Sample Input">
+4 4 2
+PLLP
+PPLP
+PPPP
+PLLP4 4 2
+PLLP
+PPLP
+PPPP
+PLLP
 
-{% raw %}
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-</div></div>
-{% endraw %}
+</div><div class="output part" title="Sample Output">
+5
+
+</div><div class="clear"></div></div></div>
+{% endfold %}
 
 <!--more-->
 # 题解
@@ -76,7 +42,7 @@ tags:
 
 
 # 代码
-<div><div class="fold_hider"><div class="close hider_title">点击显/隐代码</div></div><div class="fold">```cpp 勤劳的出题人 https://github.com/OhYee/ACM.github.io/blob/master/AOJ/846.%E5%8B%A4%E5%8A%B3%E7%9A%84%E5%87%BA%E9%A2%98%E4%BA%BA.cpp 代码备份
+{% fold 点击显/隐代码 %}```cpp 飞越原野 https://github.com/OhYee/ACM.github.io/blob/master/AOJ/866.%E9%A3%9E%E8%B6%8A%E5%8E%9F%E9%87%8E.cpp 代码备份
 
 ```
-</div>
+{% endfold %}

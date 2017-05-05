@@ -5,56 +5,37 @@ import urllib.request
 
 # 格式
 str1="""
-{% fold 点击显/隐题目 %}{% raw %}
-    <div class="oj">   
-        <div class="part" title="Description">
-{% endraw %}
+{% fold 点击显/隐题目 %}
+<div class="oj"><div class="part" title="Description">
 $
-{% raw %}
-        </div>
-        <div class="part" title="Input">
-{% endraw %}
+</div><div class="part" title="Input">
 $
-{% raw %}
-        </div>
-        <div class="part" title="Output">
-{% endraw %}
+</div><div class="part" title="Output">
 $
-{% raw %}
-        </div>
-        <div class="samp">
-            <div class="clear"></div>
-            <div class="input part" title="Sample Input">
-{% endraw %}
+</div><div class="samp"><div class="clear"></div><div class="input part" title="Sample Input">
 $
-{% raw %}
-            </div>
-            <div class="output part" title="Sample Output">
-{% endraw %}
+</div><div class="output part" title="Sample Output">
 $
-{% raw %}
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-{% endraw %}{% endfold %}"""
+</div><div class="clear"></div></div></div>
+{% endfold %}"""
 
 
 # 删除空行
 def d1(str):
-    str=str.replace('\n\n','\n')
-    return str
-def d2(str):
-    str=str.replace('\n\n','\n')
-    return str
+    str = str.strip()
+    str = str.replace('\n\n','\n')
+    return str+'\n'
 
-# 末尾加两个空格
+def d2(str):
+    return d1(str)
+
+# 末尾加两个空格  不需要了
 def k(str):
-    p = re.compile(r'\n')
-    line = p.split(str)
-    str=''
-    for i in range(0,len(line)):
-        str+=line[i]+'  \n'
+    # p = re.compile(r'\n')
+    # line = p.split(str)
+    # str=''
+    # for i in range(0,len(line)):
+    #     str+=line[i]+'  \n'
     return str
 
 # 获取时间
@@ -86,9 +67,8 @@ ss2 = p2.split(str2)
 str0=''
 
 for i in range(0,5):
-    if i < 3:
         ss2[i] = k(d1(ss2[i]))
-    else:
+else:
         ss2[i] = k(d2(ss2[i]))
 
 for i in range(0, 5):
