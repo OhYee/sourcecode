@@ -38,7 +38,7 @@
             "echoCommand": false,
             "suppressTaskName": true,
             "args": [
-                "g++ -g -Wall ${file} std=c++14 -o ${file}.exe -O2 && start cmd /c \"${file}.exe & pause && del /Q ${file}.exe\""
+                "g++ -g -Wall ${file} -std=c++11 -o ${file}.exe -O2 && start cmd /c \"${file}.exe & pause && del /Q ${file}.exe\""
             ], // 编译命令参数
             "problemMatcher": {
                 "owner": "cpp",
@@ -63,7 +63,7 @@
             "echoCommand": false,
             "suppressTaskName": false,
             "args": [
-                "g++ -g -Wall ${file} -o -std=c++14 ${file}.exe -O2 && ${file}.exe && del /Q ${file}.exe"
+                "g++ -g -Wall ${file} -o -std=c++11 ${file}.exe -O2 && ${file}.exe && del /Q ${file}.exe"
             ], // 编译命令参数
             "problemMatcher": {
                 "owner": "cpp",
