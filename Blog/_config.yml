@@ -201,6 +201,7 @@ deploy:
   type: git
   repo: 
     OhYee: git@vps.oyohyee.com:hexo.git,master
+    #OhYee: git@45.32.252.162:/home/git/hexo.git,master
     #github: git@github.com:ohyee/ohyee.github.io.git,master
     #coding: git@git.coding.net:OhYee/OhYee.git,master
     #github: https://github.com/OhYee/OhYee.github.io.git
