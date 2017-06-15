@@ -38,7 +38,7 @@
             "echoCommand": false,
             "suppressTaskName": true,
             "args": [
-                "g++ -g -Wall -finput-charset=\"GB 2312\" -fexec-charset=\"GB 2312\"  ${file} -std=c++11 -o ${file}.exe -O2 && start cmd /c \"${file}.exe & pause && del /Q ${file}.exe\""
+                "g++ -g -Wall ${file} -std=c++11 -o ${file}.exe -O2 && start cmd /c \"${file}.exe & pause && del /Q ${file}.exe\""
             ], // 编译命令参数
             "problemMatcher": {
                 "owner": "cpp",
@@ -50,7 +50,7 @@
                     "file": 1,
                     "line": 2,
                     "column": 3,
-                    "severity": 4,
+                    "severity": 1,
                     "message": 5
                 }
             }
