@@ -3,7 +3,6 @@
   修复 Nunjucks 的 tag 里写 ```代码块```，最终都会渲染成 undefined 的问题
   https://github.com/hexojs/hexo/issues/2400
 */
-
 const rEscapeContent = /<escape(?:[^>]*)>([\s\S]*?)<\/escape>/g;
 const placeholder = '\uFFFD';
 const rPlaceholder = /(?:<|&lt;)\!--\uFFFD(\d+)--(?:>|&gt;)/g;

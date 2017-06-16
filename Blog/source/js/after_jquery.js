@@ -9,7 +9,10 @@ $(document).ready(function(){
     //默认情况下折叠
     $("div.fold").css("display","none");
     //备案信息
-    $("div.copyright").before("<div class='beian'><span>豫ICP备17000379号</span></div>");
+    //$("div.copyright").after("<div class='beian'><span>豫ICP备17000379号</span></div>");
+
+    
+    
 });
 
 

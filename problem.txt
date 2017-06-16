@@ -1,6 +1,6 @@
 ---
-title: AOJ 863.分书问题
-date: 2017-04-26 21:00:54
+title: AOJ 866.飞跃原野
+date: 2017-06-16 18:31:39
 categories: 题解
 tags:
  - AOJ
@@ -10,24 +10,26 @@ tags:
 
 {% fold 点击显/隐题目 %}
 <div class="oj"><div class="part" title="Description">
-已知有n本书（从1～n编号）和n个人（从1～n编号），每个人都有一个自己喜爱的书的列表，现在请你编写一个程序，设计一种分书方案，使得每个人都能获得一本书，且这本书一定要在他的喜爱列表中。
+在一片广阔的土地上，有一个鸟人，他需要从这里穿过原野，回到基地。这片原野上，有平地(P)、有湖泊(L)，因为鸟人可以飞，所以呢，有的时候，他可以飞越湖泊。现在，鸟人需要用最快的时间，回到基地。
+假设原野是一个m*n的矩阵，有两种地形，用P和L表示。鸟人只能停留在平地上。他目前处在(1,1)这个位置，而目的地是(m,n)。他可以向上下左右四个方向移动，或者飞行。每移动一格需要1个单位时间。而飞行无论飞多远，都只需要1个单位时间。飞行的途中不可以变方向，也就是说飞行也只能是上下左右四个方向。并且一次飞行最终必须降落在平地上。当然，受到能量的限制，鸟人不能无限制的飞行，他总共最多可以飞行的距离为D。
 
 </div><div class="part" title="Input">
-输入数据共若干行，第一行为一个正整数n（n <= 20），从第2行到第n+1行，每行有n个0或1组成，第k行表示编号为k-1的人对这n本书的喜好列表，0表示不喜欢，1表示喜欢。
+第一行是三个整数，m，n，D，三个数都不超过100，下面是一个m*n的矩阵，表示原野
 
 </div><div class="part" title="Output">
-输出数据仅一个整数，表示符合条件的分配方案的总数。
+一个整数，为最短时间，如果无法到达，则输出“impossible”
 
 </div><div class="samp"><div class="clear"></div><div class="input part" title="Sample Input">
-5
-00110
-11001
-01100
-00010
-01001
+Original	Transformed
+4 4 2
+PLLP
+PPLP
+PPPP
+PLLP
 
 </div><div class="output part" title="Sample Output">
-1
+Original	Transformed
+5
 
 </div><div class="clear"></div></div></div>
 {% endfold %}
@@ -38,7 +40,7 @@ tags:
 
 
 # 代码
-{% fold 点击显/隐代码 %}```cpp 分书问题 https://github.com/OhYee/ACM.github.io/blob/master/AOJ/863.%E5%88%86%E4%B9%A6%E9%97%AE%E9%A2%98.cpp 代码备份
+{% fold 点击显/隐代码 %}```cpp 飞跃原野 https://github.com/OhYee/ACM.github.io/blob/master/AOJ/866.%E9%A3%9E%E8%B7%83%E5%8E%9F%E9%87%8E.cpp 代码备份
 
 ```
 {% endfold %}

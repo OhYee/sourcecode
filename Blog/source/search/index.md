@@ -27,15 +27,19 @@ comments: false
         //$("#MobileSearch").attr("height",parseInt($(window).height())-270 +"px");
     }else{
         //PC
-        document.write("<div id='bdcs-frame-box'><\/div>");
+        document.write("<div id='bdcs-frame-box' style='align:center;'><\/div>");
         var bdcsFrameSid="14190290798740403696";
-        var bdcsFrameWidth = 600;//parseInt($("#content").css('width'));
+        var bdcsFrameWidth = 1500;
         var bdcsFrameWt = 1;
         var bdcsFrameHt = 2;
         var bdcsFrameResultNum = 10;
-        var bdcsFrameBgColor = "#ffffff";
+        var bdcsFrameBgColor = "#3F3F3F";
         document.write("<script type='text/javascript' src='http://zhannei.baidu.com/static/js/iframe.js'><\/script>");
+        $(document).ready(function(){
+            $('#bdcs-frame-box').css({"width":"100%"});
+        });
     }
-</script>
 
+
+</script>
 {% endraw %}

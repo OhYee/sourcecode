@@ -1,0 +1,94 @@
+
+/* Bootstrap 部分 CSS 效果 */
+kbd {
+    font-family: Consolas;
+	padding: 2px 4px;
+	font-size: 90%;
+	color: #fff;
+	background-color: #333;
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
+	box-shadow: inset 0 -1px 0 rgba(0,0,0,.25)
+}
+
+code{
+    font-family: Consolas;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    margin: 0px 2px 0px 2px;
+}
+.label{
+    font-family: Consolas;
+    display: inline;
+    color: #fff;
+    padding: 1px 3px 2px 3px;
+    margin: 0px 2px 0px 2px;
+    border-radius: 2px;
+}
+.label-red{
+    background: #d9534f;
+}
+.label-green{
+    background: #5cb85c;
+}
+.label-blue{
+    background: #428bca;
+}
+.label-sky{
+    background: #5bc0de;
+}
+.label-orange{
+    background: #f0ad4e;
+}
+
+/* OJ 题目部分 CSS 效果 */
+.oj{
+    display: block;
+    background: #555;
+    color: #ddd;
+    border-radius: 5px;
+    padding: 5px 20px 5px 20px;
+    height: 100%;
+}
+.part:before{
+    content: attr(title);
+    color: #fff;
+    font-weight: bold; 
+    font-size: 20px;
+}
+.clear {
+        clear: both;
+}
+.samp{
+    font-family: "Consolas";
+    display: block;
+}
+.input,
+.output{
+    display: block;
+    width: 45%;
+    height: 100%;
+}
+.input{
+    float: left;
+}
+.output{
+    float: right;
+}
+.oj blockquote{
+    /* 引用在 .oj 类中 显示颜色修改 */
+    background: #888;
+    color: #fff
+}
+
+/* OJ题目及代码段部分隐藏 CSS 效果 */
+.hider_title{
+    font-family: "Microsoft Yahei";
+    cursor:pointer;
+}
+.close:after{
+    content: "▼";
+}
+.open:after{
+    content: "▲";
+}

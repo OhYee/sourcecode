@@ -37,7 +37,7 @@ comments: false
     .about_block li{
         margin-left: -20px;
     }
-    .friends2 li{
+    #friends li{
         display: inline;
         padding: 0px 20px 0px 0px;
     }
@@ -249,14 +249,63 @@ comments: false
     </div>
     <script>
     $(document).ready(function(){
-        $(".friends2").html($(".links-of-blogroll-list").html());
+        //$(".friends2").html($(".links-of-blogroll-list").html());
     });
     </script>
+    <!--
     <h3 id="friends">
             <a href="#friends" class="headerlink" title="friends"></a>
             # 友情链接
     </h3>
     <ul class="friends2">
     </ul>
+    -->
+    <br>
+    <br>
+    <div id='friends'>
+        <span style="font-weight: bold;font-size: 20px;">
+            #友情链接
+        </span>
+        <ul>
+            <li>
+                <a href="http://hakale.cn/" title="Hakale" target="_blank">Hakale</a>
+            </li>
+            <li>
+                <a href="http://blog.csdn.net/acblacktea" title="ACBlackTea" target="_blank">ACBlackTea</a>
+            </li>
+            
+            <li>
+                <a href="http://blog.csdn.net/snow_me" title="Wilbert" target="_blank">Wilbert</a>
+            </li>
+            
+            <li>
+                <a href="http://blog.csdn.net/adjky/" title="ADjky" target="_blank">ADjky</a>
+            </li>
+            
+            <li>
+                <a href="http://blog.csdn.net/JACK_JYH/" title="JACK_JYH" target="_blank">JACK_JYH</a>
+            </li>
+            
+            <li>
+                <a href="http://blog.csdn.net/qq_35323001" title="Super丶xd" target="_blank">Super丶xd</a>
+            </li>
+            
+            <li>
+                <a href="http://blog.csdn.net/pengwill97" title="Pengwill" target="_blank">Pengwill</a>
+            </li>
+            
+            <li>
+                <a href="http://blog.csdn.net/Mr_Saltyfish" title="Mr_Saltyfish" target="_blank">Mr_Saltyfish</a>
+            </li>
+            
+            <li>
+                <a href="http://www.cnblogs.com/wmrv587/" title="wmr" target="_blank">wmr</a>
+            </li>
+            
+            <li>
+                <a href="http://www.cnblogs.com/robin1998/" title="Robin" target="_blank">Robin</a>
+            </li>
+        </ul>
+    </div>
 </div>
 {% endraw %}
