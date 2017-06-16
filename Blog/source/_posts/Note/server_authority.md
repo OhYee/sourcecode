@@ -15,12 +15,16 @@ keywords:
 <!--more-->
 
 看了下报错的信息  
+{% note danger %}
+```
 <!-- Web.Config Configuration File -->
 <configuration>
     <system.web>
         <customErrors mode="Off"/>
     </system.web>
 </configuration>
+```
+{% endnote %}
 
 网站关了提示报错  
 先去根目录的 `web.config` 修改下配置，打开报错  

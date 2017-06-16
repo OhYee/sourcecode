@@ -1,0 +1,10 @@
+/* 去除手机端按钮 */
+.slider-trigger{
+    display: none;
+}
+
+/* 当开启fancybox图片查看功能时，a链接css会产生冲突 */
+a.fancy-ctn.fancybox {
+    background-color: transparent ;
+    border: 0;
+}

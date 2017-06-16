@@ -3,7 +3,12 @@ title: Something about me
 date: 2016-06-07 01:14:40
 comments: false
 ---
+
+
 {% cq %}
+
+<img src="/logo.svg" alt="OhYee" width='100px' height='auto'/>
+
 <p style="font-size:30px">欢迎来到 OhYee 的博客</p>
 {% endcq %}
 
