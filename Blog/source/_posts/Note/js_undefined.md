@@ -4,6 +4,7 @@ date: 2017-06-17 01:32:34
 categories: 笔记
 tags: 
   - javascript
+  - spfk
 ---
 在新换的 spfk 主题里的 main.js 中有这样一段代码  
 {% fold 点击显/隐代码%}```javascript main.js
@@ -59,6 +60,10 @@ if(yiliaConfig.fancybox === true){
         if(isFancy.length != 0){
             var imgArr = $(".article-inner img");
             for(var i=0,len=imgArr.length;i<len;i++){
+                var flag = imgArr.eq(i).attr("no-fancybox");
+                if(flag=="true")
+                    continue;
+                
                 var src = imgArr.eq(i).attr("src");
                 var title = imgArr.eq(i).attr("alt");
                 var width = imgArr.eq(i).attr("width");
@@ -87,6 +92,7 @@ if(yiliaConfig.fancybox === true){
                 temp+=" /></a>"
 
                 imgArr.eq(i).replaceWith(temp);
+                
             }
             $(".article-inner .fancy-ctn").fancybox();
         }

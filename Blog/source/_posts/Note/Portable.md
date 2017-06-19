@@ -5,7 +5,7 @@ categories: 笔记
 tags:
 - portable
 - Hexo
-- git
+- Git
 - nodejs
 - vscode
 ---

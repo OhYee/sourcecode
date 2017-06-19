@@ -5,7 +5,7 @@ categories: 笔记
 tags: 
   - javascript
   - jquery
-  - css
+  - CSS
   - Hexo
   - bootstrap
 ---

@@ -9,5 +9,13 @@ host = window.location.host
 if(host=="ohyee.coding.me")
     window.location.href = window.location.href.replace(/ohyee.coding.me/,"www.oyohyee.com")
 
+//百度站长统计
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c3c4a93be88257973d97af02f735ed4e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
 
 //alert("加载完成");
