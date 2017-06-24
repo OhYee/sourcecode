@@ -63,11 +63,11 @@ duoshuo:
   # http://<要填的部分>.duoshuo.com (domain只填上<>里的内容，不要填整个网址)
 
 gitment:
-  on: false
-  owner: O
-  repo: luuman.github.io
-  client_id: 
-  client_secret: 
+  on: true
+  owner: OhYee
+  repo: OhYee.github.io
+  client_id: 300bdf519730fd67e69c
+  client_secret: 9a496df1c4da10cec1ec233379b9b3ef6a448c2e
 
 youyan:
   #on: true
