@@ -1,3 +1,7 @@
+---
+title: 评论
+date: 2017-06-24 12:52:55
+---
 <div id="gitments"></div>
 <script src="<%- config.root %>js/gitment.browser.js"></script>
 <script>

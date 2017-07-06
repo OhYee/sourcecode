@@ -153,10 +153,14 @@ $line-numbers
       line-height: 28px
     li
       margin-left: 20px
+      ol
+        li:before
+          content: ""
   ol
     li
       list-style: decimal
       margin: 0 10px
+
 
   li:hover
     background-color: #2E2E2E
@@ -164,8 +168,11 @@ $line-numbers
   //ul缩进问题
   ul
     li
-      margin-left: 40px;
-      text-indent: -20px;
+      margin-left: 40px
+      text-indent: -20px
+  ol
+    li:before
+      content: ""
 
   /*
   .highlight::before

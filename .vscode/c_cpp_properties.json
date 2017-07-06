@@ -3,20 +3,47 @@
         {
             "name": "Win32",
             "includePath": [
-                            "${workspaceRoot}/../Support/MinGW",
-                            "${workspaceRoot}/../Support/MinGW/include",
-                            "${workspaceRoot}/../Support/MinGW/lib/gcc/mingw32/4.8.1/include",
-                            "${workspaceRoot}/../Support/MinGW/lib/gcc/mingw32/4.8.1/include/c++"
+                "${workspaceRoot}/../Support/MinGW",
+                "${workspaceRoot}/../Support/MinGW/include",
+                "${workspaceRoot}/../Support/MinGW/lib/gcc/mingw32/4.8.1/include",
+                "${workspaceRoot}/../Support/MinGW/lib/gcc/mingw32/4.8.1/include/c++"
             ],
-            "browse" : {
-                "limitSymbolsToIncludedHeaders" : true,
-                "databaseFilename" : ""
-            }
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "",
+                "path": [
+                    "${workspaceRoot}/../Support/MinGW",
+                    "${workspaceRoot}/../Support/MinGW/include",
+                    "${workspaceRoot}/../Support/MinGW/lib/gcc/mingw32/4.8.1/include",
+                    "${workspaceRoot}/../Support/MinGW/lib/gcc/mingw32/4.8.1/include/c++"
+                ]
+            },
+            "intelliSenseMode": "msvc-x64"
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "/usr/include/c++/6/tr1",
+                "/usr/include/c++/6",
+                "/usr/include/x86_64-linux-gnu/bits",
+                "/usr/include"
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "",
+                "path": [
+                    "/usr/include/c++/6/tr1",
+                    "/usr/include/c++/6",
+                    "/usr/include/x86_64-linux-gnu/bits",
+                    "/usr/include"
+                ]
+            },
+            "intelliSenseMode": "msvc-x64"
         }
     ],
-    "clang_format" : {
-        "style" : "file",
-        "fallback-style" : "LLVM",
-        "sort-includes" : true
+    "clang_format": {
+        "style": "file",
+        "fallback-style": "LLVM",
+        "sort-includes": true
     }
 }

@@ -2,7 +2,7 @@
 {   
 
     // 字体 字号 字形
-    "editor.fontFamily": "Consolas,'微软雅黑','Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'YaHei Consolas Hybrid',Consolas,'微软雅黑','Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
     "editor.fontSize": 25,
     "editor.glyphMargin": true,
 
@@ -124,6 +124,23 @@
         "tuple": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "vector": "cpp",
+        "stdlib.h": "c",
+        "libio.h": "c",
+        "stdio.h": "c",
+        "stdio2.h": "c",
+        "inet.h": "c",
+        "in.h": "c",
+        "byteorder.h": "c",
+        "little_endian.h": "c",
+        "fcntl-linux.h": "c",
+        "unp.h": "c",
+        "timex.h": "c",
+        "socket.h": "c",
+        "time.h": "c",
+        "types.h": "c",
+        "unistd.h": "c",
+        "memory.h": "c"
     }
 }

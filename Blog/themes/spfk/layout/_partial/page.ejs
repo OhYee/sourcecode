@@ -38,9 +38,7 @@
 
     <div class="tagcloud">
         <div class="tags">
-            <%- list_categories({
-                depth: 1,
-            }) %>
+            <%- list_categories() %>
 
             <hr>
             <br>
@@ -53,16 +51,22 @@
     </div>
 
     <style>
+        .article-entry ul{
+            text-align: left;
+        }
         .category-list a {
             color: white;
+            padding-left: 30px;
         }
         
         .category-list li{
-            display: inline-block;
+            /*display: inline-block;*/
             margin: 0 1em .5em 0;
             padding: 4px;
             /*border: 1px solid lightgray;*/
             font-size: 1.2em;
+            margin: 0px;
+            padding: 0px;
         }
         .category-list-count {
             color: white;
@@ -82,9 +86,7 @@
             font-size: .9em;
         }
         */
-        .article-entry ul li:before{
-            display: none;
-        }
+        
         .article-inner  {
             text-align: center;
         }
