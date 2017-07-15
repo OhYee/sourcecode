@@ -20,6 +20,11 @@ li ul li,
     font-size: 20px;
 }
 
+/* 段间距 */
+.article-entry p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
 /* gitment */
 div#gitments li{
