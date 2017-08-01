@@ -1,36 +1,41 @@
 ---
-title: Codeforces 820B.Mister B and Angle in Polygon
-date: 2017-06-28 01:57:13
+title: AOJ 898.黑匣子
+date: 2017-08-01 11:01:37
 categories: 题解
 tags:
- - Codeforces
+ - AOJ
 ---
 
 # 题目
 
 {% fold 点击显/隐题目 %}
 <div class="oj"><div class="part" title="Description">
-On one quiet day all of sudden Mister B decided to draw angle a on his field. Aliens have already visited his field and left many different geometric figures on it. One of the figures is regular convex n-gon (regular convex polygon with n sides).
+Description
+我们使用黑匣子的一个简单模型。它能存放一个整数序列和一个特别的变量i。在初始时刻，黑匣子为空且i等于0。这个黑匣子能执行一系列的命令。有两类命令：
+ADD(x)：把元素x放入黑匣子；GET：把i加1的同时，输出黑匣子内所有整数中第i小的数。牢记第i小的数是当黑匣子中的元素已非降序排序后位于第i位的元素。
+下面的表是一个11个命令的例子：
 
-That's why Mister B decided to use this polygon. Now Mister B must find three distinct vertices v1, v2, v3 such that the angle (where v2 is the vertex of the angle, and v1 and v3 lie on its sides) is as close as possible to a. In other words, the value should be minimum possible.
-
-If there are many optimal solutions, Mister B should be satisfied with any of them.
+现需要一个有效的算法处理给定的一系列命令。ADD和GET命令的总数至多个有30000个。定义ADD命令的个数为M个，GET命令的个数为N个。我们用下面得两个整数序列描述命令序列：
+1．A(1),A(2),……,A(M)：加入黑匣子的元素序列。所有的数均为绝对值不超过2000000的整数。例如在上例中A=(3,1,-4,2,8,-1000,2)。
+2．u(1),u(2),……,u(N)：u(i)表示第i个GET命令在第u(i)个ADD命令之后，例如在上例中，u=(1,2,6,6)。
+你可以假定自然数序列u(1),u(2),……,u(N)以非降序排列，N≤M，且对于每一个p（1≤p≤N）有p≤u(p)≤M。
 
 </div><div class="part" title="Input">
-First and only line contains two space-separated integers n and a (3?≤?n?≤?105, 1?≤?a?≤?180) — the number of vertices in the polygon and the needed angle, in degrees.
+第一行存放M和N的值,第二行存放 A(1),A(2),……,A(M) ,第三行存放u(1),u(2),……,u(N)。
 
 </div><div class="part" title="Output">
-Print three space-separated integers: the vertices v1, v2, v3, which form . If there are multiple optimal solutions, print any of them. The vertices are numbered from 1 to n in clockwise order.
+输出黑匣子的处理结果。
 
 </div><div class="samp"><div class="clear"></div><div class="input part" title="Sample Input">
-3 15
-4 67
-4 68
+7 4
+3 1 -4 2 8 -1000 2
+1 2 6 6
 
 </div><div class="output part" title="Sample Output">
-1 2 3
-2 1 3
-4 1 2
+3
+3
+1
+2
 
 </div><div class="clear"></div></div></div>
 {% endfold %}
@@ -41,7 +46,7 @@ Print three space-separated integers: the vertices v1, v2, v3, which form . If t
 
 
 # 代码
-{% fold 点击显/隐代码 %}```cpp Mister B and Angle in Polygon https://github.com/OhYee/ACM.github.io/blob/master/Codeforces/820B.Mister%20B%20and%20Angle%20in%20Polygon.cpp 代码备份
+{% fold 点击显/隐代码 %}```cpp 黑匣子 https://github.com/OhYee/ACM.github.io/blob/master/AOJ/898.%E9%BB%91%E5%8C%A3%E5%AD%90.cpp 代码备份
 
 ```
 {% endfold %}

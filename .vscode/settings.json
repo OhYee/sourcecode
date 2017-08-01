@@ -7,6 +7,9 @@
     "editor.glyphMargin": true,
 
 
+    "workbench.statusBar.visible": true,
+    "window.menuBarVisibility": "toggle",
+    
     //拖拽
     "editor.dragAndDrop": true,
 
@@ -141,6 +144,7 @@
         "time.h": "c",
         "types.h": "c",
         "unistd.h": "c",
-        "memory.h": "c"
+        "memory.h": "c",
+        "12.1.c": "cpp"
     }
 }
