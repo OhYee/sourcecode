@@ -1,316 +1,145 @@
 ---
-title: Something about me
-date: 2016-06-07 01:14:40
-comments: false
+layout: page      # 必须
+title: 关于  # 必须，页面名称
+description: Something about me.       # 页面二级标题，描述性文字
+comments: false     # 禁用评论，可选，默认开启
+reward: true       # 禁用打赏，可选，默认开启
 ---
 
-
 {% cq %}
-
-<img src="/logo.svg" alt="OhYee" width='100px' height='auto'/>
-
-<p style="font-size:30px">欢迎来到 OhYee 的博客</p>
+**欢迎来到我的博客**
 {% endcq %}
 
-{% raw %}
-<style>
-    .post-header{
-        display: none;
-    }
-    .about_left{ 
-        float:left;
-        width:45%;
-        height:100%;
-    }
-    .about_right{
-        float:right;
-        width:45%;
-        height:100%;
-    }
-    .clear {
-        clear: both;
-    }
-    .about_block{
-        width:24%;
-        height: 100%;
-        float: left;
-        font-size: 10px;
-    }
-    .about_block ul{
-        margin-left: 0 px;
-    }
-    .about_block li{
-        margin-left: -20px;
-    }
-    #friends li{
-        display: inline;
-        padding: 0px 20px 0px 0px;
-    }
-</style>
-<script src="/js/jquery.js"></script>
-<div class="about">
-    <div class="clear">
-    </div>
-    <div class="about_left">
-        <h1 id="About-me">
-            <a href="#About-me" class="headerlink" title="About me"></a>
-            About me
-        </h1>
-        <p>
-            <em>
-                一个想要进ACM World Final的渣渣
-            </em>
-        </p>
-        <p>
-            Contact me
-            <ul>
-                <li>
-                    Mail：<a href="mailto:oyohyee@oyohyee.com" target="_blank" rel="external">oyohyee@oyohyee.com</a>
-                </li>
-                <li>
-                    QQ: <a href="http://wpa.qq.com/msgrd?v=3&uin=896817156&site=qq&menu=yes">896817156</a>
-                </li>
-                <li>
-                    twitter: <a href="https://twitter.com/OYOhYee" target="_blank" rel="external">@oyohyee</a>
-                </li>
-                <li>
-                    知乎账号: <a href="https://www.zhihu.com/people/kong-chen-hao" target="_blank" rel="external">孔晨皓</a>
-                </li>
-                <li>
-                    Page: <a href="http://www.oyohyee.com">www.oyohyee.com</a>
-                </li>
-            </ul>
-        </p>
-    </div>
-    <div class="about_right">
-        <h1 id="About-the-blog">
-            <a href="#About-the-blog" class="headerlink" title="About the blog"></a>
-            About the blog
-        </h1>
-        <p>
-            这是OhYee记录自己学习与生活的地方。
-            <br>
-            善用<strong>搜索</strong>和<strong>标签</strong>找到你想要的东西
-            <br>
-            你在这里或许能收获：
-            <ul>
-                <li>
-                    基础的<strong><a href="../categories/Algorithm/">算法</a></strong>知识
-                </li>
-                <li>
-                    一些题目的<strong><a href="../categories/Answer/">题解</a></strong>及<strong><a href="https://github.com/OhYee/ACM.github.io" target="_blank" rel="external">OhYee的代码备份</a></strong>
-                </li>
-                <li>
-                    <strong><a href="/templates.html" target="_blank" rel="external">常见模板</a></strong>
-                </li>
-            </ul>
-        </p>
-        <p>
-            当然，如果你不知道自己为什么会来到这里，也可以参照<strong><a href="/404.html">404页面</a></strong>的问题，来找到自己需要的东西哦！
-            <br>
-        </p>
-    </div>
-    <div class="clear">
-    </div>
-    <div class="about_bottom">
-        <div class="about_block">
-            <ul>
-                <li>
-                    我做过什么
-                    <ul>
-                        <li>
-                            <a href="http://www.oyohyee.com/">这个博客</a>
-                        </li>
-                        <li>
-                            <a href="/categories/Answer/">ACM题解</a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/OhYee/ACM.github.io" target="_blank" rel="external">写过的大部分C/C++</a>
-                        </li>
-                        <li>
-                            没人用的<b>软件</b>
-                            <ul>
-                                <li>
-                                    <a href="/software/Transparency/" target="_blank" rel="external">窗口透明化工具</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            不务正业去做<b>视频</b>
-                            <ul>
-                                <li>
-                                    <a href='http://www.bilibili.com/video/av3197097/' target="_blank" rel="external">我的世界已坠入爱河</a>
-                                </li>
-                                <li>
-                                    <a href='http://www.bilibili.com/video/av9039463/' target="_blank" rel="external">Blessing 安大版</a>
-                                </li>
-                                <li>
-                                    辅导员评选介绍视频
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            娱乐性大于实用性的<b>项目</b>
-                            <ul>
-                                <li>
-                                    <a href="https://github.com/ohyee" target="_blank" rel="external">Github</a>
-                                </li>
-                                <li>
-                                    <a href="https://coding.net/u/OhYee" target="_blank" rel="external">Coding</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="about_block">
-            <ul>
-                <li>
-                    我曾经得到过
-                    <ul>
-                        <li>
-                            NOIP复赛二等奖
-                        </li>
-                        <li>
-                            2016 ACM/ICPC 亚洲赛区 青岛站 铜奖
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="about_block">
-            <ul>
-                <li>
-                    我正在学
-                    <ul>
-                        <li>
-                            C++
-                        </li>
-                        <li>
-                            HTML(Div+Css)
-                        </li>
-                        <li>
-                            Javascript
-                        </li>
-                        <li>
-                            Java
-                        </li>
-                        <li>
-                            PHP+Mysql
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    我准备学
-                    <ul>
-                        <li>
-                            汇编
-                        </li>
-                        <li>
-                            Python
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="about_block">
-            <ul>
-                <li>
-                    My tag
-                    <ul>
-                        <li>
-                            LOVELIVE!
-                        </li>
-                        <li>
-                            C++
-                        </li>
-                        <li>
-                            安徽大学
-                        </li>
-                        <li>
-                            宅
-                        </li>
-                        <li>
-                            ACM
-                        </li>
-                        <li>
-                            VS Code
-                        </li>
-                        <li>
-                            魔兽世界
-                        </li>
-                        <li>
-                            守望先锋
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <div class="clear">
-        </div>
-    </div>
-    <div class="clear">
-    </div>
-    <script>
-    $(document).ready(function(){
-        //$(".friends2").html($(".links-of-blogroll-list").html());
-    });
-    </script>
-    <!--
-    <h3 id="friends">
-            <a href="#friends" class="headerlink" title="friends"></a>
-            # 友情链接
-    </h3>
-    <ul class="friends2">
-    </ul>
-    -->
-    <br>
-    <br>
-    <div id='friends'>
-        <span style="font-weight: bold;font-size: 20px;">
-            #友情链接
-        </span>
-        <ul>
-            <li>
-                <a href="http://hakale.cn/" title="Hakale" target="_blank">Hakale</a>
-            </li>
-            <li>
-                <a href="http://blog.csdn.net/acblacktea" title="ACBlackTea" target="_blank">ACBlackTea</a>
-            </li>
-            
-            <li>
-                <a href="http://blog.csdn.net/snow_me" title="Wilbert" target="_blank">Wilbert</a>
-            </li>
-            
-            <li>
-                <a href="http://blog.csdn.net/adjky/" title="ADjky" target="_blank">ADjky</a>
-            </li>
-            
-            <li>
-                <a href="http://blog.csdn.net/JACK_JYH/" title="JACK_JYH" target="_blank">JACK_JYH</a>
-            </li>
-            
-            <li>
-                <a href="http://blog.csdn.net/qq_35323001" title="Super丶xd" target="_blank">Super丶xd</a>
-            </li>
-            
-            <li>
-                <a href="http://blog.csdn.net/pengwill97" title="Pengwill" target="_blank">Pengwill</a>
-            </li>
-            
-            <li>
-                <a href="http://blog.csdn.net/Mr_Saltyfish" title="Mr_Saltyfish" target="_blank">Mr_Saltyfish</a>
-            </li>
-            
-            <li>
-                <a href="http://www.cnblogs.com/wmrv587/" title="wmr" target="_blank">wmr</a>
-            </li>
-            
-            <li>
-                <a href="http://www.cnblogs.com/robin1998/" title="Robin" target="_blank">Robin</a>
-            </li>
-        </ul>
-    </div>
-</div>
-{% endraw %}
+
+@column-2{
+
+@card{
+
+# About Me
+一个啥都不精的渣渣  
+
+Contact me:
+- Mail：[oyohyee@oyohyee.com](mailto:oyohyee@oyohyee.com)
+- QQ: [896817156](http://wpa.qq.com/msgrd?v=3&uin=896817156&site=qq&menu=yes)
+- 知乎账号: [孔晨皓](https://www.zhihu.com/people/kong-chen-hao)
+- Page: [www.oyohyee.com](https://www.oyohyee.com/)
+
+}
+
+@card{
+
+# About the blog
+
+这是我记录代码学习历程的地方。 
+善用搜索和[标签](/tags)找到你想要的东西 
+你在这里或许能收获： 
+- 基础的算法知识 
+- 一些题目的[题解](/categories/Answer)及代码 
+- 常见[模板](/templates.html)
+
+当然，如果你不知道自己为什么会来到这里，也可以参照[404页面](/404.html)的问题，来找到自己需要的东西哦！
+
+}
+
+}
+
+@column-3{
+
+@card{
+
+# 我做过这些
+- [这个博客](http://www.oyohyee.com/) 
+    - [ACM题解](/categories/Answer/) 
+    - [写过的大部分代码](https://github.com/OhYee/ACM.github.io)
+- 没人用的软件 
+    - [窗口透明化工具](/software/Transparency/)
+- 不务正业去做视频 
+    - [我的世界已坠入爱河](http://www.bilibili.com/video/av3197097/)
+    - [Blessing 安大版](http://www.bilibili.com/video/av9039463/)
+    - 辅导员评选介绍视频 
+- 娱乐性大于实用性的项目 
+    - [Github](https://github.com/ohyee) 
+    - [Coding](https://coding.net/u/OhYee) 
+
+}
+
+@card{
+
+# 我获得过这些
+- [NOIP复赛二等奖](noip.jpg)
+- [2016 ACM/ICPC 亚洲赛区 青岛站 铜奖](qingdao.jpg)
+
+}
+
+@card{
+
+# 我在学习这些
+- C++ 
+- HTML(Div+Css) 
+- Javascript 
+- Java 
+- PHP+Mysql 
+- 我准备学 
+- Python 
+
+}
+
+}
+
+@card{
+
+# 友情链接
+- [Hakale](http://hakale.cn/)
+- [ACBlackTea](http://blog.csdn.net/acblacktea)
+- [Wilbert](http://blog.csdn.net/snow_me)
+- [ADjky](http://blog.csdn.net/adjky/)
+- [JACK_JYH](http://blog.csdn.net/JACK_JYH/)
+- [Super丶xd](http://blog.csdn.net/qq_35323001)
+- [Pengwill](http://blog.csdn.net/pengwill97)
+- [Mr_Saltyfish](http://blog.csdn.net/Mr_Saltyfish)
+- [wmr](http://www.cnblogs.com/wmrv587/)
+- [Robin](http://www.cnblogs.com/robin1998/)
+
+}
+
+@timeline{
+
+##### 2015
+
+@item{
+###### 9月
+
+就读于安徽大学
+
+}
+
+@item{
+###### 11月24日
+
+购买[oyohyee.com](oyohyee.com)域名
+
+}
+
+##### 2016
+
+@item{
+###### 6月3日
+[第一篇Hexo博文](/post/hello_world.html)产生
+
+}
+
+@item{
+###### 12月11日
+购买腾讯云VPS主机
+
+}
+
+##### 2017
+
+@item{
+###### 8月7日
+主题更换为[indigo](https://github.com/yscoder/hexo-theme-indigo)
+
+}
+
+}
