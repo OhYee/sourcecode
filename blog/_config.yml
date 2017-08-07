@@ -1,0 +1,233 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: OhYee's Blog
+subtitle: 随手记录一些东西
+description: OhYee在学习算法、编程和生活中的记录
+keywords:
+ - OhYee
+ - ACM
+ - OYOhYee
+ - 博客
+ - 题解
+ - C++
+author: OhYee
+email: oyohyee@oyohyee.com
+language: zh-CN
+timezone: Hongkong
+since: 2016
+
+
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+url: https://www.oyohyee.com
+root: /
+permalink: /post/:title.html
+permalink_defaults:
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:  
+- js/*.js
+- css/*.css
+- README.md
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: false
+  auto_detect: false
+  tab_replace: true
+
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+ 专题: Topic 
+ 笔记: Note
+ 算法: Algorithm
+ 随笔: Writing
+ 题解: Answer
+ 知乎: Zhihu
+ UNIX网络编程: UPN
+ UNIX环境高级编程: APUE
+tag_map:
+ Trie树: Trie
+ javascript: Javascript
+ 二分: Division
+ 京胜杯: JingShengBei
+ 位运算: Bit
+ 全排列: ASP
+ 动态内存: Memory
+ 动态规划: Dp
+ 博弈: Game
+ 同余: Congruence
+ 向量(vector): Vector
+ 哈希(hash): Hash
+ 图论: Graph
+ 威佐夫博奕: Wythoff
+ 字符串(string): String
+ 学习报告: Study
+ 尼姆博弈: Nim
+ 工具: Tools
+ 巴什博奕: Bash
+ 并查集: Union-Find
+ 康托: Contour
+ 影评: Film_Reviem
+ 快速幂取模: Raising_Modulo_Numbers
+ 打表: List
+ 拓扑排序: TopoSort 
+ 排序: Sort
+ 数学: Math
+ 易语言: E
+ 映射(map): Map
+ 暴力: Violence
+ 最大连续子序列: MCS
+ 最小生成树: MST
+ 最短路: Shortest_Path
+ 最长上升子序列: LIS
+ 最长公共子序列: LCS
+ 栈(stack): Stack
+ 树: Tree
+ 模拟: Simulation
+ 欧几里得算法: Euclid
+ 电工电子基础技能: Electrica
+ 网络流: Network_Flow
+ 背包问题: PackageProblem
+ 记忆化搜索: Memory_Search
+ 读入输出: IO
+ 质数: Prime
+ 贪心算法: Greed
+ 辗转相除法: gcd
+ 逆序数: Inverse_number
+ 递归与分治: Recursion
+ 递推: Recurrence
+ 链表(list): List
+ 队列(queue): Queue
+ 集合(set): Set
+ 高精度算法: High_precision
+ 魔兽: WOW
+ 迭代加深: Iteration
+ Nim Staircase博奕: Nim Staircase
+ 最大矩形: Max_Rectangle
+ 最大上升子序列: MIS
+ 三星(SAMSUNG): SAMSUNG
+ 最大不连续子序列: MUS
+ 丑数: Ugly_number
+ 状态压缩: State_compression
+ ST算法: ST
+ RMQ问题: RMQ
+ 线段树: Segment_tree
+ 母函数: Generating_function
+ Havel-Hakimi定理: Havel-Hakimi
+ 约瑟夫环问题: Joseph_problem
+ 树形dp: Tree_dp
+ 算法竞赛入门经典: White_book
+ 最大流最小割: Maxflow_Minimalcut
+ 强连通分量: Strongly_connected_components
+ 剪枝: Pruning
+ 搜索: Search
+ 中途相遇法: Midway_encounter_method
+ 二分图匹配: Bipartite_Matching
+ 匈牙利算法: Hungary
+ 遗传算法: Genetic_Algorithm
+ 概率: probability
+ 数据库: Database
+ 枚举: enum
+ 服务器: server
+ 操作系统: Operating_System
+ 概率dp: Probability_DP
+ 矩阵: Matrix
+ 快速矩阵幂: PowMatrix
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD HH:mm:ss
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+# theme: next
+# theme: spfk
+#theme: light
+theme: indigo
+
+# Local Search
+search:
+  path: search.xml
+  field: all
+
+sitemap:
+  path: sitemap.xml
+  
+baidusitemap:
+    path: baidusitemap.xml
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 0
+
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: true
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true
+
+# Deployment
+## Docs: http://hexo.io/docs/deployment.html
+#deploy:
+ # type: git
+  #repository:
+  # - git@github.com:ohyee/ohyee.github.io.git,master
+   #- git@git.coding.net:OhYee/OhYee.git,master
+  # - ssh://ggit@git.coding.net/OhYee/OhYee.git,master
+  # branch: master
+deploy:
+  type: git
+  repo: 
+    OhYee: git@vps.oyohyee.com:hexo.git,master
+    #OhYee: git@45.32.252.162:/home/git/hexo.git,master
+    #github: git@github.com:ohyee/ohyee.github.io.git,master
+    #coding: git@git.coding.net:OhYee/OhYee.git,master
+    #github: https://github.com/OhYee/OhYee.github.io.git
+    #coding: https://git.coding.net/OhYee/OhYee.git,master

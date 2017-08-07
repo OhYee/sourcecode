@@ -1,0 +1,87 @@
+/*黑色主题*/
+/*主题*/
+body {
+    color: #bbb;
+    background: #333;
+}
+
+/*最顶部的header*/
+.site-meta {
+    background: #000
+}
+
+/*侧边栏 & 主体*/
+.sidebar-inner,
+.header-inner,
+.content-wrap
+{
+    color: #bbb;
+    background: #222
+}
+
+
+
+/*导航栏菜单*/
+.menu .menu-item a:hover,
+.menu-item-active a {
+    background: #555;
+    border-bottom-color: #6cf;
+}
+.menu-item-active a:after {
+    background-color: #6cf;
+}
+.header a,
+.sidebar a {
+    color: #bbb; 
+}
+
+/*post主体*/
+.content-wrap
+{
+    color: #bbb;
+}
+
+/*单行代码块*/
+code{
+  color: #999;
+  background: #444;
+}
+
+/*标题*/
+.posts-expand .post-title-link,
+.post-title,
+.post-title-link{
+    color: #fff
+}
+
+
+/*more*/
+.btn:hover, .post-more-link .btn:hover {
+    border-color: #555;
+    color: #999;
+    background: #555;
+}
+.post-more-link .btn {
+    color: #fff;
+    font-size: 14px;
+    background: #777;
+    border-radius: 2px;
+    line-height: 2;
+}
+
+/*引用*/
+blockquote {
+    color: #bbb;
+}
+
+/*标签云*/
+.tag-cloud-tags a{
+    background: rgba(102,204,255,0.5);
+    border-radius: 10px;
+    padding: 5px;
+}
+.tag-cloud-tags a:hover{
+    background: rgba(102,204,255,1);
+
+}
+

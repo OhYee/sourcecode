@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /vendors/
+Disallow: /css/
+Disallow: /js/
+Disallow: /categories/
+Disallow: /archives/
+Disallow: /page/
+Disallow: /tags/
+Sitemap: http://www.oyohyee.com/sitemap.xml
+Sitemap: http://www.oyohyee.com/baidusitemap.xml

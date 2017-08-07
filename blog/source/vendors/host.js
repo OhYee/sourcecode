@@ -1,0 +1,3 @@
+function Coding(){
+    coding = true;
+}
