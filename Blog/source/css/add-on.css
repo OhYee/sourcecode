@@ -43,15 +43,15 @@ code{
 /* OJ 题目部分 CSS 效果 */
 .oj{
     display: block;
-    background: #555;
-    color: #ddd;
+    background: #eee;
+    color: #444;
     border-radius: 5px;
     padding: 5px 20px 5px 20px;
     height: 100%;
 }
 .part:before{
     content: attr(title);
-    color: #fff;
+    color: #000;
     font-weight: bold; 
     font-size: 20px;
 }
@@ -85,12 +85,12 @@ code{
     font-family: "Microsoft Yahei";
     cursor: pointer;
     font-weight: bold;
-    background-color: #555;
+    /* background-color: #555; */
     width: auto;
 }
 .fold_parent{
     padding: 5px;
-    background-color: #555;
+    /* background-color: #555; */
     border-radius: 5px;
 }
 .close:after{

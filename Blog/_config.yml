@@ -4,7 +4,7 @@
 
 # Site
 title: OhYee's Blog
-subtitle: 随手记录一下~
+subtitle: 随手记录一些东西
 description: OhYee在学习算法、编程和生活中的记录
 keywords:
  - OhYee
@@ -15,9 +15,7 @@ keywords:
  - C++
 author: OhYee
 email: oyohyee@oyohyee.com
-language: 
-  - zh-Hans
-  - zh-CN
+language: zh-CN
 timezone: Hongkong
 since: 2016
 
@@ -55,9 +53,10 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace: true
+
 
 # Category & Tag
 default_category: uncategorized
@@ -155,6 +154,9 @@ tag_map:
  枚举: enum
  服务器: server
  操作系统: Operating_System
+ 概率dp: Probability_DP
+ 矩阵: Matrix
+ 快速矩阵幂: PowMatrix
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
@@ -172,14 +174,14 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 # theme: next
-theme: spfk
+# theme: spfk
+#theme: light
+theme: indigo
 
 # Local Search
 search:
   path: search.xml
-  field: post
-  format: excerpt
-  limit: 100000
+  field: all
 
 sitemap:
   path: sitemap.xml
@@ -187,6 +189,29 @@ sitemap:
 baidusitemap:
     path: baidusitemap.xml
 
+feed:
+  type: atom
+  path: atom.xml
+  limit: 0
+
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: true
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html

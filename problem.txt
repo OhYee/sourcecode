@@ -1,41 +1,37 @@
 ---
-title: AOJ 898.ºÚÏ»×Ó
-date: 2017-08-01 11:01:37
+title: POJ 2151.Check the difficulty of problems
+date: 2017-08-05 16:51:34
 categories: Ìâ½â
 tags:
- - AOJ
+ - POJ
 ---
 
 # ÌâÄ¿
 
 {% fold µã»÷ÏÔ/ÒşÌâÄ¿ %}
 <div class="oj"><div class="part" title="Description">
-Description
-ÎÒÃÇÊ¹ÓÃºÚÏ»×ÓµÄÒ»¸ö¼òµ¥Ä£ĞÍ¡£ËüÄÜ´æ·ÅÒ»¸öÕûÊıĞòÁĞºÍÒ»¸öÌØ±ğµÄ±äÁ¿i¡£ÔÚ³õÊ¼Ê±¿Ì£¬ºÚÏ»×ÓÎª¿ÕÇÒiµÈÓÚ0¡£Õâ¸öºÚÏ»×ÓÄÜÖ´ĞĞÒ»ÏµÁĞµÄÃüÁî¡£ÓĞÁ½ÀàÃüÁî£º
-ADD(x)£º°ÑÔªËØx·ÅÈëºÚÏ»×Ó£»GET£º°Ñi¼Ó1µÄÍ¬Ê±£¬Êä³öºÚÏ»×ÓÄÚËùÓĞÕûÊıÖĞµÚiĞ¡µÄÊı¡£ÀÎ¼ÇµÚiĞ¡µÄÊıÊÇµ±ºÚÏ»×ÓÖĞµÄÔªËØÒÑ·Ç½µĞòÅÅĞòºóÎ»ÓÚµÚiÎ»µÄÔªËØ¡£
-ÏÂÃæµÄ±íÊÇÒ»¸ö11¸öÃüÁîµÄÀı×Ó£º
+Organizing a programming contest is not an easy job. To avoid making the problems too difficult, the organizer usually expect the contest result satisfy the following two terms: 
+1. All of the teams solve at least one problem. 
+2. The champion (One of those teams that solve the most problems) solves at least a certain number of problems. 
 
-ÏÖĞèÒªÒ»¸öÓĞĞ§µÄËã·¨´¦Àí¸ø¶¨µÄÒ»ÏµÁĞÃüÁî¡£ADDºÍGETÃüÁîµÄ×ÜÊıÖÁ¶à¸öÓĞ30000¸ö¡£¶¨ÒåADDÃüÁîµÄ¸öÊıÎªM¸ö£¬GETÃüÁîµÄ¸öÊıÎªN¸ö¡£ÎÒÃÇÓÃÏÂÃæµÃÁ½¸öÕûÊıĞòÁĞÃèÊöÃüÁîĞòÁĞ£º
-1£®A(1),A(2),¡­¡­,A(M)£º¼ÓÈëºÚÏ»×ÓµÄÔªËØĞòÁĞ¡£ËùÓĞµÄÊı¾ùÎª¾ø¶ÔÖµ²»³¬¹ı2000000µÄÕûÊı¡£ÀıÈçÔÚÉÏÀıÖĞA=(3,1,-4,2,8,-1000,2)¡£
-2£®u(1),u(2),¡­¡­,u(N)£ºu(i)±íÊ¾µÚi¸öGETÃüÁîÔÚµÚu(i)¸öADDÃüÁîÖ®ºó£¬ÀıÈçÔÚÉÏÀıÖĞ£¬u=(1,2,6,6)¡£
-Äã¿ÉÒÔ¼Ù¶¨×ÔÈ»ÊıĞòÁĞu(1),u(2),¡­¡­,u(N)ÒÔ·Ç½µĞòÅÅÁĞ£¬N¡ÜM£¬ÇÒ¶ÔÓÚÃ¿Ò»¸öp£¨1¡Üp¡ÜN£©ÓĞp¡Üu(p)¡ÜM¡£
+Now the organizer has studied out the contest problems, and through the result of preliminary contest, the organizer can estimate the probability that a certain team can successfully solve a certain problem. 
+
+Given the number of contest problems M, the number of teams T, and the number of problems N that the organizer expect the champion solve at least. We also assume that team i solves problem j with the probability Pij (1 <= i <= T, 1<= j <= M). Well, can you calculate the probability that all of the teams solve at least one problem, and at the same time the champion team solves at least N problems?
 
 </div><div class="part" title="Input">
-µÚÒ»ĞĞ´æ·ÅMºÍNµÄÖµ,µÚ¶şĞĞ´æ·Å A(1),A(2),¡­¡­,A(M) ,µÚÈıĞĞ´æ·Åu(1),u(2),¡­¡­,u(N)¡£
+The input consists of several test cases. The first line of each test case contains three integers M (0 < M <= 30), T (1 < T <= 1000) and N (0 < N <= M). Each of the following T lines contains M floating-point numbers in the range of [0,1]. In these T lines, the j-th number in the i-th line is just Pij. A test case of M = T = N = 0 indicates the end of input, and should not be processed.
 
 </div><div class="part" title="Output">
-Êä³öºÚÏ»×ÓµÄ´¦Àí½á¹û¡£
+For each test case, please output the answer in a separate line. The result should be rounded to three digits after the decimal point.
 
 </div><div class="samp"><div class="clear"></div><div class="input part" title="Sample Input">
-7 4
-3 1 -4 2 8 -1000 2
-1 2 6 6
+2 2 2
+0.9 0.9
+1 0.9
+0 0 0
 
 </div><div class="output part" title="Sample Output">
-3
-3
-1
-2
+0.972
 
 </div><div class="clear"></div></div></div>
 {% endfold %}
@@ -46,7 +42,7 @@ ADD(x)£º°ÑÔªËØx·ÅÈëºÚÏ»×Ó£»GET£º°Ñi¼Ó1µÄÍ¬Ê±£¬Êä³öºÚÏ»×ÓÄÚËùÓĞÕûÊıÖĞµÚiĞ¡µÄÊı¡£À
 
 
 # ´úÂë
-{% fold µã»÷ÏÔ/Òş´úÂë %}```cpp ºÚÏ»×Ó https://github.com/OhYee/ACM.github.io/blob/master/AOJ/898.%E9%BB%91%E5%8C%A3%E5%AD%90.cpp ´úÂë±¸·İ
+{% fold µã»÷ÏÔ/Òş´úÂë %}```cpp Check the difficulty of problems https://github.com/OhYee/ACM.github.io/blob/master/POJ/2151.Check%20the%20difficulty%20of%20problems.cpp ´úÂë±¸·İ
 
 ```
 {% endfold %}
