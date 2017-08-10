@@ -1,3 +1,0 @@
-function Coding(){
-    coding = true;
-}
