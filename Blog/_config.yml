@@ -157,6 +157,8 @@ tag_map:
  概率dp: Probability_DP
  矩阵: Matrix
  快速矩阵幂: PowMatrix
+ 暴雪: blizzard
+ 守望先锋: Overwatch
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
