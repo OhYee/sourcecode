@@ -68,6 +68,7 @@ Contact me:
 # 我获得过这些
 - [NOIP复赛二等奖](noip.jpg)
 - [2016 ACM/ICPC 亚洲赛区 青岛站 铜奖](qingdao.jpg)
+- [2017年安徽省"华信智原"杯一等奖](2017.jpg)
 
 }
 
@@ -79,7 +80,6 @@ Contact me:
 - Javascript 
 - Java 
 - PHP+Mysql 
-- 我准备学 
 - Python 
 
 }

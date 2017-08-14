@@ -9,6 +9,11 @@ host = window.location.host
 if(host=="ohyee.coding.me")
     window.location.href = window.location.href.replace(/ohyee.coding.me/,"www.oyohyee.com")
 
+//to https
+protocol = window.location.protocol
+if(protocol == "http:" && host!="localhost:4000")
+  window.location.href = window.location.href.replace("http://","https://")
+
 //百度站长统计
 var _hmt = _hmt || [];
 (function() {

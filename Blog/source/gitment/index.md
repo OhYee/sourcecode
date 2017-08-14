@@ -4,7 +4,7 @@ date: 2017-06-24 12:52:55
 ---
 @card{
 
-评论需要Chrome浏览器支持
+评论需要**Chrome浏览器(内核)**支持
 其他浏览器请通过该[issue](https://github.com/OhYee/OhYee.github.io/issues/5)提交评论内容
 
 }

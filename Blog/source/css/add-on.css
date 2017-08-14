@@ -43,15 +43,15 @@ code{
 /* OJ 题目部分 CSS 效果 */
 .oj{
     display: block;
-    background: #eee;
-    color: #444;
+    background: #f7f7f7;
+    color: #666;
     border-radius: 5px;
     padding: 5px 20px 5px 20px;
     height: 100%;
 }
 .part:before{
     content: attr(title);
-    color: #000;
+    color: #444;
     font-weight: bold; 
     font-size: 20px;
 }
