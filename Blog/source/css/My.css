@@ -9,3 +9,13 @@ code,b,strong{
     margin: 0px 5px 0px 5px;
 }
 
+.digit{
+    color: #fff;
+    background-color: #727272;
+
+    border-radius: 3px;
+    padding: 2px 5px;
+
+    vertical-align:super;
+    font-size: 10px;
+}
