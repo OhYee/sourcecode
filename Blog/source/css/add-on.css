@@ -226,20 +226,10 @@ code{
 
 
 .card-pool{
-    width: auto;
-    /*下面代码是兼容各个浏览器的，并实现了四列，没两列之间间距为30px，*/
-    /* Firefox */
-    -moz-column-count:4;
-    -moz-column-gap:30px;
-    -moz-column-rule:0px solid #ff0000;
-    /* Chrome */
-    -webkit-column-count:4;
-    -webkit-column-gap:30px;
-    -webkit-column-rule:0px solid #ff0000;   
-    /* Opera */
-    -o-column-count:4;
-    -o-column-gap:30px;
-    -o-column-rule:0px solid #ff0000;   
+    columns: 200px;
+    -moz-column: 200px;
+    -webkit-column: 200px;
+    -o-column: 200px;
 }
 .card-card {
     width: 200px;
