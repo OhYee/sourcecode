@@ -120,7 +120,7 @@ name = input("输入题目名称:")
 
 title = '---\ntitle: '+oj+" "+num+"."+name+"\ndate: "+GetNowTime()+"\ncategories: "+'题解'+"\ntags:\n - "+oj+"\n---\n\n# "+'题目'+"\n"
 
-url = "https://github.com/OhYee/ACM.github.io/blob/master/"+oj+"/"+num+"."+name+".cpp"
+url = "https://github.com/OhYee/sourcecode.io/blob/master/"+oj+"/"+num+"."+name+".cpp"
 url = urllib.request.quote(url)
 
 code = "\n\n# 题解\n\n\n\n# 代码\n```cpp "+ name + url+" 代码备份\n\n```"

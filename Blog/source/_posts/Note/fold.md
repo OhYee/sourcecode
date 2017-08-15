@@ -73,7 +73,7 @@ $(document).ready(function(){
 具体可以参考[官方的文档](https://hexo.io/zh-cn/api/tag.html)  
 
 在博客根目录里的 `scripts` 的文件夹里,新建 `fold.js`  
-```js fold.js https://github.com/OhYee/ACM.github.io/blob/master/Blog/scripts/fold.js
+```js fold.js https://github.com/OhYee/sourcecode.io/blob/master/Blog/scripts/fold.js
 /* global hexo */
 // Usage: {% fold ???? %} Something {% endfold %}
 
@@ -96,7 +96,7 @@ hexo.extend.tag.register('fold', fold, {ends: true});
 如果你想**折叠代码块**,那么需要额外加一个 js 文件,实现对代码块的渲染  
 详情参考 [Hexo 自建标签渲染代码段的 Bug 解决方案](/post/Note/hexo_tag.html)   
 
-```js tags.js https://github.com/OhYee/ACM.github.io/blob/master/Blog/scripts/tags.js
+```js tags.js https://github.com/OhYee/sourcecode.io/blob/master/Blog/scripts/tags.js
 /*
   @haohuawu
   修复 Nunjucks 的 tag 里写 ```代码块```，最终都会渲染成 undefined 的问题

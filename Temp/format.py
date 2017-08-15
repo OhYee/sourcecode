@@ -90,7 +90,7 @@ def formatHead(oj,num,name):
     return '---\ntitle: '+oj+" "+num+"."+name+"\ndate: "+GetNowTime()+"\ncategories: "+'题解'+"\ntags:\n - "+oj+"\n---\n\n# "+'题目'+"\n"
 
 def formatCode(name,code):
-    url = 'https://github.com/OhYee/ACM.github.io'
+    url = 'https://github.com/OhYee/sourcecode/tree/master/ACM'
     return "\n\n<!--more-->\n# 题解\n\n\n\n# 代码\n{% fold 点击显/隐代码 %}```cpp "+ name +" "+ url+" 代码备份\n" + code + "\n```\n{% endfold %}" 
 
 
@@ -136,7 +136,7 @@ if __name__=='__main__':
     writeToFile(mdfilename,out)
     print("write mdfile("+mdfilename+")")
 
-    tofilename = "./"+oj+"/"+num+"."+name+".cpp"
+    tofilename = "./ACM/"+oj+"/"+num+"."+name+".cpp"
     os.rename(filename,tofilename)
     print("move code file from" + filename + "to" + tofilename)
      

@@ -17,7 +17,7 @@ date: 2016-07-24 01:04:00
 [**>参考<**](/post/HDU/1506.html)
 <!--more-->
 
-```cpp 最大矩形 https://github.com/OhYee/ACM.github.io/blob/master\Blog\Max%20Rectangle.cpp 代码备份
+```cpp 最大矩形 https://github.com/OhYee/sourcecode/tree/master/ACM 代码备份
 int H[maxn][maxn];
 
 int Left[maxn];

@@ -98,7 +98,7 @@ comments: false
                     基础的<strong><a href="../categories/Algorithm/">算法</a></strong>知识
                 </li>
                 <li>
-                    一些题目的<strong><a href="../categories/Answer/">题解</a></strong>及<strong><a href="https://github.com/OhYee/ACM.github.io" target="_blank" rel="external">OhYee的代码备份</a></strong>
+                    一些题目的<strong><a href="../categories/Answer/">题解</a></strong>及<strong><a href="https://github.com/OhYee/sourcecode/tree/master/ACM 代码备份</a></strong>
                 </li>
                 <li>
                     <strong><a href="/templates.html" target="_blank" rel="external">常见模板</a></strong>
@@ -125,7 +125,7 @@ comments: false
                             <a href="/categories/Answer/">ACM题解</a>
                         </li>
                         <li>
-                            <a href="https://github.com/OhYee/ACM.github.io" target="_blank" rel="external">写过的大部分C/C++</a>
+                            <a href="https://github.com/OhYee/sourcecode.io" target="_blank" rel="external">写过的大部分C/C++</a>
                         </li>
                         <li>
                             没人用的<b>软件</b>
