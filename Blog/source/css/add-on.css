@@ -223,3 +223,41 @@ code{
 .info h6 {
   color: #5bc0de;
 }
+
+
+.card-pool{
+    width: auto;
+    /*下面代码是兼容各个浏览器的，并实现了四列，没两列之间间距为30px，*/
+    /* Firefox */
+    -moz-column-count:4;
+    -moz-column-gap:30px;
+    -moz-column-rule:0px solid #ff0000;
+    /* Chrome */
+    -webkit-column-count:4;
+    -webkit-column-gap:30px;
+    -webkit-column-rule:0px solid #ff0000;   
+    /* Opera */
+    -o-column-count:4;
+    -o-column-gap:30px;
+    -o-column-rule:0px solid #ff0000;   
+}
+.card-card {
+    width: 200px;
+    min-height: 100px;
+    box-shadow: 2px 2px 6px #b5b5b5;
+    padding: 20px 15px;
+    margin: 10px;
+    display: inline-block;
+    font-size: 15px;
+    background-color:#fff;
+}
+.card-head {
+    padding: 10px;
+    font-size: 13px;
+}
+.card-container {
+    padding: 10px;
+}
+.card-foot {
+    padding: 10px;
+}
