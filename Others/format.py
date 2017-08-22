@@ -18,9 +18,7 @@ def regex(content,reg):
     return items
     
 def clear(text):
-    dr = re.compile(r'<[^>]+>',re.S)
-    dd = dr.sub('',text)
-    return dd
+    return re.compile(r'<[^>]+>',re.S).sub('',text)
 
 def getProblem(html):
     vjs = [r'<dd>(.*?)</dd>'] # r'<div class="panel_content">(.*?)</div>', # ,r'<pre>(.*?)</pre>'
@@ -31,9 +29,11 @@ def getProblem(html):
             results.append(clear(content))
     return results
 
+
+
 def getVJ(oj,problemID):
-    url = 'https://vjudge.net/problem/' + oj.lower() + '-' + problemID
-    head = 'https://vjudge.net/problem/description/'
+    url = 'https://cn.vjudge.net/problem/' + oj.lower() + '-' + problemID
+    head = 'https://cn.vjudge.net/problem/description/'
 
     html1 = getHTML(url)
     id = regex(html1,r'data-id=\"(.*?)\"')[0]
@@ -43,9 +43,32 @@ def getVJ(oj,problemID):
     name = regex(html1,r'<h2>(.*?)</h2>')[0]
     results.insert(0,name);
 
-
     return results
 
+def replaceBR(str):
+    str = re.compile(r'<br>',re.S).sub('\n',str)
+    return str
+
+def getAOJProblem(html):
+    results = regex(html,r'<div class="ProblemContent">(.*?)</div>')
+    if len(results) == 4:
+        results[0] += '\n' + results[3]
+        results.pop(3)
+    results.insert(3,regex(html,r'<pre id="PreInput" class="IO">(.*?)</pre>')[0])
+    results.insert(4,regex(html,r'<pre id="PreOutput" class="IO">(.*?)</pre>')[0])
+    return results
+
+def getAOJ(oj,problemID):
+    url = "http://ccpc.ahu.edu.cn:8080/OJ/Problem.aspx?id="+problemID
+    html = getHTML(url)
+
+    results = getAOJProblem(html)
+    name = regex(html,r'<div align="center" class="BigTitle">(.*?)</div>')[0]
+    results.insert(0,name)
+    for i in range(0,len(results)):
+        results[i] = clear(replaceBR(results[i]))
+    return results
+    
 
 
 # ===============
@@ -68,7 +91,7 @@ $
 # 替换格式  
 def d1(str):
     str = str.strip()
-    str = re.compile(r'\n{2,}?',re.S).sub('\n',str)
+    str = re.compile(r'(\n){2,}?',re.S).sub('\n',str)
     str = str.replace('<','&lt;')
     return str+'\n'
 
@@ -118,10 +141,15 @@ if __name__=='__main__':
     oj = input("输入OJ名称:").upper()
     num = input("输入题目编号:")
 
-    results = getVJ(oj,num)
-    name = results[0]
-    print("name: " + name)
+    if oj == "AOJ" :
+        results = getAOJ(oj,num)
+    else:
+        results = getVJ(oj,num)
 
+    name = re.compile(r'\t|\n|\r?',re.S).sub('',results[0])
+    print("name: " + name)
+    # print(results)
+    # exit()
     # for result in results:
     #     print("###########")
     #     print(result)
@@ -138,5 +166,5 @@ if __name__=='__main__':
 
     tofilename = "./ACM/"+oj+"/"+num+"."+name+".cpp"
     os.rename(filename,tofilename)
-    print("move code file from" + filename + "to" + tofilename)
+    print("move code file from " + filename + " to " + tofilename)
      
