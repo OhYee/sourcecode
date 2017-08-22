@@ -142,6 +142,8 @@
         "types.h": "c",
         "unistd.h": "c",
         "memory.h": "c",
-        "12.1.c": "cpp"
+        "12.1.c": "cpp",
+        "string": "cpp",
+        "regex": "cpp"
     }
 }
