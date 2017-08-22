@@ -163,6 +163,7 @@ tag_map:
  数位dp: Digital_DP
  容斥原理: including_excluding_principle
  状压dp: State_compression_DP
+ 正则表达式: RegEx
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
