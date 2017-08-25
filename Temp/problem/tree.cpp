@@ -33,7 +33,7 @@ int Kruskal(int n, int m) {
     sort(e, e + m);
     for (int i = 0; i < m; i++) {
         int x = ufs(e[i].u), y = ufs(e[i].v);
-        //printf("%d %d\n", x, y);
+        // printf("%d %d\n", x, y);
         if (x != y) {
             f[x] = y;
             w += e[i].w;
@@ -93,12 +93,12 @@ int query(int a, int b, int n) {
 }
 
 int main() {
-    int size = 256 << 20; // 256MB
-    char *p = (char *)malloc(size) + size;
-    __asm__("movl %0, %%esp\n" ::"r"(p));
+    // int size = 256 << 20; // 256MB
+    // char *p = (char *)malloc(size) + size;
+    //__asm__("movl %0, %%esp\n" ::"r"(p));
 
-    freopen("in.txt", "r", stdin);
-    freopen("out.txt", "w", stdout);
+    // freopen("in.txt", "r", stdin);
+    // freopen("out.txt", "w", stdout);
     int n, m;
     scanf("%d%d", &n, &m);
 
@@ -111,10 +111,10 @@ int main() {
         scanf("%d%d%d", &u, &v, &w);
         addEdge(u, v, w, i);
     }
-    printf("read finish\n");
+    // printf("read finish\n");
     // printf("%d\n", Kruskal(n, m));
     Kruskal(n, m);
-    printf("build tree finish\n");
+    // printf("build tree finish\n");
 
     parent[1] = 0;
     weight[1] = INF;

@@ -9,7 +9,7 @@ using namespace std;
 * 加边使用函数addedge(u,v)
 */
 const int MAXN = 200005; //点数的最大值
-const int MAXM = 200005; //边数的最大值
+const int MAXM = 2*200005; //边数的最大值
 struct Edge {
     int to, next;
 } edge[MAXM];

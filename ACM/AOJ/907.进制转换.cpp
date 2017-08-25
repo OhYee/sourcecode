@@ -319,10 +319,9 @@ int main() {
             n = n / d;
         }
         for (int i = pos - 1; i >= 0; --i) {
-            if (i<pos-1)
-                printf(" ");
-            printf("%d", ans[i]);
+            printf("%d\n", ans[i]);
         }
         printf("\n");
     }
+    return 0;
 }
