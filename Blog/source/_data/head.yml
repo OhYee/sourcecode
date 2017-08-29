@@ -2,4 +2,4 @@ css:
   "<link href='/css/My.css' rel='stylesheet' type='text/css' />"
 js:
   "<script type='text/javascript' src='/js/My.js'></script>"
-
+digit: "<script type='text/javascript' src='/js/digit.js'></script>"
