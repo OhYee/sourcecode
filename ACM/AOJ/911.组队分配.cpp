@@ -22,21 +22,26 @@ void addEdge(int u, int v) {
 }
 
 void dfs(int t) {
-    printf("dfs(%d)\n", t);
+    // printf("dfs(%d)\n", t);
     dp[t][0] = dp[t][1] = 0;
+    bool emptyChild = false;
     for (auto child : e[t]) {
         if (parent[t] != child) {
             parent[child] = t;
             dfs(child);
-            dp[t][0] += max(dp[child][1], dp[child][0]);
-            dp[t][1] = max(dp[t][1], dp[child][0] + 1);
+            if (dp[child][0] < dp[child][1]) {
+                dp[t][0] += dp[child][1];
+            } else {
+                emptyChild = true;
+                dp[t][0] += dp[child][0];
+            }
         }
     }
-    printf("dp[%d]={%d,%d}\n", t, dp[t][0], dp[t][1]);
+    dp[t][1] = dp[t][0] + emptyChild;
+    // printf("dp[%d]={%d,%d}\n", t, dp[t][0], dp[t][1]);
 }
 
 int main() {
-    int n;
     while (~scanf("%d", &n)) {
         init();
         for (int i = 1; i < n; ++i) {
