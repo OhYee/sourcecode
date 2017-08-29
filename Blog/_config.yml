@@ -164,7 +164,8 @@ tag_map:
  容斥原理: including_excluding_principle
  状压dp: State_compression_DP
  正则表达式: RegEx
-
+ 最近公共祖先: LCA
+ 多路归并: Multiway_merge
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
