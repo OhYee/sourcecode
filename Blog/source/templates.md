@@ -1248,3 +1248,56 @@ int Prim() {
     } return w;
 }
 ```
+
+## 倍增最近公共祖先
+```cpp LCA
+// function() 是需要维护的值的函数,可以是 max() , min() , add() 等内容  
+void dfs(int t, int deep) {
+    depth[t] = deep;
+    for (auto edge : edges[t]) {
+        int child = edge.c;
+        if (parent[t][0] != child) {
+            parent[child][0] = t;
+            weight[child][0] = edge.w;
+            dfs(child, deep + 1);
+        }
+    }
+}
+
+void lca() {
+    for (int j = 1; j < maxlog; ++j) {
+        for (int i = 1; i <= n; ++i) {
+            parent[i][j] = parent[parent[i][j - 1]][j - 1];
+            weight[i][j] = function(weight[i][j - 1], weight[parent[i][j - 1]][j - 1]);
+        }
+    }
+}
+
+int query(int a, int b) {
+    int ans = 0;
+    if (depth[a] < depth[b])
+        swap(a, b);
+    while (depth[a] != depth[b]) {
+        int dis = depth[a] - depth[b];
+        int step = (int)(log(dis) / log(2));
+        // 由于这里还要用到a,因此a要在后面再赋值
+        ans = function(ans, weight[a][step]); 
+        a = parent[a][step];
+    }
+
+    while (a != b) {
+        int step = 0;
+        for (int i = 0; i < maxlog; ++i) {
+            if (parent[a][i] == parent[b][i]) {
+                step = i - (i ? 1 : 0);
+                break;
+            }
+        }
+
+        ans = function(ans, function(weight[a][step], weight[b][step]));
+        a = parent[a][step];
+        b = parent[b][step];
+    }
+    return ans;
+}
+```
