@@ -11,7 +11,7 @@ if(host=="ohyee.coding.me")
 
 //to https
 protocol = window.location.protocol
-if(protocol == "http:" && host!="localhost:4000")
+if(protocol == "http:" && host=="www.oyohyee.com" )
   window.location.href = window.location.href.replace("http://","https://")
 
 //百度站长统计
