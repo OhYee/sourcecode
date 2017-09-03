@@ -19,10 +19,12 @@ reward: true       # 禁用打赏，可选，默认开启
 一个啥都不精的渣渣  
 
 Contact me:
-- Mail：[oyohyee@oyohyee.com](mailto:oyohyee@oyohyee.com)
 - QQ: [896817156](http://wpa.qq.com/msgrd?v=3&uin=896817156&site=qq&menu=yes)
-- 知乎账号: [孔晨皓](https://www.zhihu.com/people/kong-chen-hao)
+- Mail：[oyohyee@oyohyee.com](mailto:oyohyee@oyohyee.com)
 - Page: [www.oyohyee.com](https://www.oyohyee.com/)
+- Github: [OhYee](https://github.com/OhYee)
+- 知乎账号: [孔晨皓](https://www.zhihu.com/people/kong-chen-hao)
+
 
 }
 
@@ -57,9 +59,11 @@ Contact me:
     - [我的世界已坠入爱河](http://www.bilibili.com/video/av3197097/)
     - [Blessing 安大版](http://www.bilibili.com/video/av9039463/)
     - 辅导员评选介绍视频 
-- 娱乐性大于实用性的项目 
+- 乱七八糟的项目 
     - [Github](https://github.com/ohyee) 
-    - [Coding](https://coding.net/u/OhYee) 
+    - [我的项目](/projects/)
+        - [indigo](/projects/indigo)
+        - [U盘版集成开发环境](/projects/portable)
 
 }
 
@@ -86,6 +90,7 @@ Contact me:
 
 }
 
+<!--
 @card{
 
 # 友情链接
@@ -101,6 +106,7 @@ Contact me:
 - [Robin](http://www.cnblogs.com/robin1998/)
 
 }
+
 
 @timeline{
 
@@ -143,3 +149,4 @@ Contact me:
 }
 
 }
+-->
