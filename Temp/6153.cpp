@@ -3,6 +3,8 @@
 #include <cstring>
 using namespace std;
 
+#define Log(format, ...) printf(format, ##__VA_ARGS__)
+
 const int maxn = 1e6 + 5;
 const int mod = 1e9 + 7;
 
@@ -21,21 +23,16 @@ void getNext(char *s) {
     // for (int i = 0; i <= len; ++i)
     //    printf("Next[%d]=%d\n", i, Next[i]);
 }
-void getCnt(int i) {
-    if (i != -1) {
-        ++cnt[i];
-        getCnt(Next[i]);
-    }
-}
+
 int KMP(char *a, char *b) {
     getNext(b);
     int alen = strlen(a);
     int blen = strlen(b);
-    
-    memset(cnt, 0, (blen + 5) * sizeof(int));
-    for (int i = 1; i < blen; ++i) {
-        getCnt(i);
-    }
+
+    // memset(cnt, 0, (blen + 5) * sizeof(int));
+    // for (int i = 1; i < blen; ++i) {
+    //     getCnt(i);
+    // }
 
     int i = 0, j = 0;
     int ans = 0;
@@ -47,10 +44,10 @@ int KMP(char *a, char *b) {
 
         ++i, ++j;
         if (j <= blen) {
-            int w = cnt[j-1] - (back?1:0);
+            int w = cnt[j - 1] - (back ? 1 : 0);
             printf("    %d %d %d\n", i, j, w);
-            ans = (int)((long long)ans + (long long)j *w) % mod;
-            back=false;
+            ans = (int)((long long)ans + (long long)j * w) % mod;
+            back = false;
         }
         if (j == blen) {
             --i;
@@ -81,7 +78,7 @@ int main() {
         scanf("%s%s", s1, s2);
         Reverse(s1);
         Reverse(s2);
-        // printf("%s\n%s\n", s1, s2);
+        Log("%s %s\n", s1, s2);
         printf("%d\n", KMP(s1, s2));
     }
     return 0;
