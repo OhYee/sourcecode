@@ -1,0 +1,18 @@
+<ul id="slide-out" class="side-nav">
+    <li>
+        <div class="user-view">
+            <div class="background">
+                <img src="/static/img/{{ config['sidebar_bg'] }}">
+            </div>
+            <a href="/"><img class="circle" src="/static/img/{{ config['logo'] }}"></a>
+            <a href="/"><span class="white-text name">{{ config['author'] }}</span></a>
+            <a href="mailto:{{ config['email'] }}"><span class="white-text email">{{ config['email'] }}</span></a>
+        </div>
+    </li>
+    {% set menus = config["menu"] %} {% for i in menus %}
+    <li>
+        <a class="waves-effect" href="{{ menus[i].url }}"><i class="material-icons">{{ menus[i].icon }}</i>{{ i }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
