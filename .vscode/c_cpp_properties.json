@@ -1,24 +1,64 @@
 {
+    "version": 2,
+    "clang_format": {
+        "style": "file",
+        "fallback-style": "LLVM",
+        "sort-includes": true
+    },
     "configurations": [
         {
             "name": "Win32",
             "includePath": [
-                "D:/ENV/MinGW",
-                "D:/ENV/MinGW/include",
-                "D:/ENV/MinGW/lib/gcc/mingw32/4.8.1/include",
-                "D:/ENV/MinGW/lib/gcc/mingw32/4.8.1/include/c++"
+                "${workspaceRoot}",
+                "O:/Portable/VSCode/environment/MinGW/include",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/bits",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/backward",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/debug",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/decimal",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/experimental",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/experimental/bits",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/ext",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/ext/pb_ds",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/mingw32",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/mingw32/ext",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/parallel",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/profile",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/profile/impl",
+                "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include-fixed"
             ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE"
+            ],
+            "intelliSenseMode": "msvc-x64",
             "browse": {
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": "",
                 "path": [
-                    "D:/ENV/MinGW",
-                    "D:/ENV/MinGW/include",
-                    "D:/ENV/MinGW/lib/gcc/mingw32/4.8.1/include",
-                    "D:/ENV/MinGW/lib/gcc/mingw32/4.8.1/include/c++"
-                ]
-            },
-            "intelliSenseMode": "msvc-x64"
+                    "${workspaceRoot}",
+                    "O:/Portable/VSCode/environment/MinGW/include",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/bits",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/backward",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/debug",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/decimal",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/experimental",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/experimental/bits",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/ext",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/ext/pb_ds",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/mingw32",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/mingw32/bits",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/mingw32/ext",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/parallel",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/profile",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include/c++/profile/impl",
+                    "O:/Portable/VSCode/environment/MinGW/lib/gcc/mingw32/6.3.0/include-fixed"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
         },
         {
             "name": "Linux",
@@ -40,11 +80,5 @@
             },
             "intelliSenseMode": "msvc-x64"
         }
-    ],
-    "clang_format": {
-        "style": "file",
-        "fallback-style": "LLVM",
-        "sort-includes": true
-    },
-    "version": 2
+    ]
 }
