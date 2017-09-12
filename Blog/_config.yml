@@ -166,6 +166,8 @@ tag_map:
  正则表达式: RegEx
  最近公共祖先: LCA
  多路归并: Multiway_merge
+ 计算几何: geometry
+
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
