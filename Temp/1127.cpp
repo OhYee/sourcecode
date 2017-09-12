@@ -29,14 +29,14 @@ void print(auto mycomplex) {
          << "imag: " << mycomplex.imag() << endl // 虚部
          << "abs: " << abs(mycomplex) << endl    // 模
          << "arg: " << arg(mycomplex) << endl    // 幅角
-         << "norm: " << norm(mycomplex) << endl
-         << "conj: " << conj(mycomplex) << endl
+         << "norm: " << norm(mycomplex) << endl  // 模的平方
+         << "conj: " << conj(mycomplex) << endl  // 共轭
          << "polar: " << polar(mycomplex) << endl
          << "proj: " << proj(mycomplex) << endl;
 }
 
 int main() {
-    complex<double> vec1(3, 4), vec2(1, 1);
+    complex<double> vec1(3, 4), vec2(6, 8);
     
     print(vec1);
     print(vec2);

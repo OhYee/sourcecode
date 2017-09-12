@@ -7,6 +7,9 @@ using namespace std;
 
 #define Log(format, ...) // printf(format, ##__VA_ARGS__)
 
+
+
+
 /* 计算几何模板 */
 const double eps = 1e-8;
 
@@ -19,6 +22,11 @@ struct Segment {
     Vector toVector() { return b - a; }
 };
 
+inline Point read_Point() {
+    double x, y;
+    scanf("%lf%lf", &x, &y);
+    return Point(x, y);
+}
 inline int sgn(const double &x) {
     if (fabs(x) < eps)
         return 0;
@@ -39,25 +47,24 @@ inline int Dot(const Vector &a, const Vector &b) {
     return a.real() * b.real() + a.imag() * b.imag();
 }
 inline double Distance(const Point &a, const Point &b) { return abs(a - b); }
-inline int Dot_Segment(const Vector &p, const Segment &L) {
+inline int Point_Segment(const Vector &p, const Segment &L) {
     return sgn(Cross(L.b - L.a, p - L.a));
 }
 inline bool Segment_Segment(const Segment &L1, const Segment &L2) {
     if (sgn(Distance(L1.a, L1.b)) == 0 || sgn(Distance(L2.a, L2.b)) == 0)
         return 0;
-    return (Dot_Segment(L1.a, L2) * Dot_Segment(L1.b, L2) <= 0) &&
-           (Dot_Segment(L2.a, L1) * Dot_Segment(L2.b, L1) <= 0);
+    return (Point_Segment(L1.a, L2) * Point_Segment(L1.b, L2) <= 0) &&
+           (Point_Segment(L2.a, L1) * Point_Segment(L2.b, L1) <= 0);
 }
-inline bool Segment_Line(const Segment &Seg, const Segment &Line) {
+inline int Segment_Line(const Segment &Seg, const Segment &Line) {
     Log("(%.f,%.f)->(%.f,%.f)   (%.f,%.f)->(%.f,%.f)\n", Seg.a.real(),
         Seg.a.imag(), Seg.b.real(), Seg.b.imag(), Line.a.real(), Line.a.imag(),
         Line.b.real(), Line.b.imag());
     if (sgn(Distance(Line.a, Line.b)) == 0)
         return 0;
-    return Dot_Segment(Seg.a, Line) * Dot_Segment(Seg.b, Line) <= 0;
+    return Point_Segment(Seg.a, Line) * Point_Segment(Seg.b, Line) <= 0;
 }
-
-inline int getPoint(const Segment L1, const Segment L2) {
+inline int getPoint(const Segment L1, const Segment L2, Point &p) {
     double a = L1.b.real() - L1.a.real();
     double b = L2.b.real() - L2.a.real();
     double c = L1.b.imag() - L1.a.imag();
@@ -73,57 +80,41 @@ inline int getPoint(const Segment L1, const Segment L2) {
     double t = (d * g - b * h) / f;
     double s = (-c * g + a * h) / f;
 
-
+    p = Point(L1.a.real() + t * a, L1.a.imag() + t * c);
     // 在延长线上
-    if (t < 0 || t > 1)
+    if (t < 0 || t > 1 || s < 0 || s > 1)
         return 0;
 
     // 线段相交
     return 1;
 }
 
-const int maxn = 105;
-Segment s[maxn];
-vector<Point> p;
-int n;
 
-bool crossAllSegment(Segment L) {
-    bool ok = true;
-    for (int i = 0; i < n && ok; ++i)
-        ok &= (getPoint(s[i], L) > 0);
-    Log("crossAllSegment( (%.f,%.f)->(%.f,%.f) ) %d\n", L.a.real(), L.a.imag(),
-        L.b.real(), L.b.imag(), ok);
-    return ok;
-}
 
-// 判断两个线段上的点自由组合连城线段是否能与所有线段相交
-bool judge(int a, int b) { return crossAllSegment(Segment(p[a], p[b])); }
 
 int main() {
     int T;
     scanf("%d", &T);
+    printf("INTERSECTING LINES OUTPUT\n");
     while (T--) {
-        scanf("%d", &n);
-        p.clear();
+        Point L1a = read_Point();
+        Point L1b = read_Point();
+        Point L2a = read_Point();
+        Point L2b = read_Point();
 
-        for (int i = 0; i < n; ++i) {
-            double x1, y1, x2, y2;
-            scanf("%lf%lf%lf%lf", &x1, &y1, &x2, &y2);
-            s[i].a = Point(x1, y1);
-            s[i].b = Point(x2, y2);
-            p.push_back(s[i].a);
-            p.push_back(s[i].b);
+        Segment L1 = Segment(L1a, L1b);
+        Segment L2 = Segment(L2a, L2b);
+        Point p;
+        int state = getPoint(L1, L2, p);
+
+        if (state >= 0) {
+            printf("POINT %.2f %.2f\n", p.real(), p.imag());
+        } else if (Point_Segment(L1.a, L2) == 0) {
+            printf("LINE\n");
+        } else {
+            printf("NONE\n");
         }
-
-        p.erase(unique(p.begin(), p.end()), p.end());
-
-        bool ok = false;
-        int sz = p.size();
-        for (int i = 0; i < sz && !ok; ++i)
-            for (int j = i + 1; j < sz && !ok; ++j)
-                ok |= judge(i, j);
-
-        printf("%s\n", (ok || sz == 1) ? "Yes!" : "No!");
     }
+    printf("END OF OUTPUT\n");
     return 0;
 }
