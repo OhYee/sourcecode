@@ -30,8 +30,7 @@ void dfs(int t) {
         if (parent[t] != child) {
             parent[child] = t;
             dfs(child);
-            dp[t] +=
-                dp[child] * (1 - K[child]) + 1.0 * E[child] / 100;
+            dp[t] += dp[child] * (1 - K[child]) + 1.0 * E[child] / 100;
             Log("t:%d child:%d  dp+= %.9f + %.9f\n", t, child,
                 dp[child] * (1 - K[child]), 1.0 * E[child] / 100);
         }
@@ -53,7 +52,7 @@ int main() {
         }
         for (int i = 1; i <= n; ++i) {
             int k, e;
-            scanf("%d%d", &K, &E);
+            scanf("%d%d", &k, &e);
             K[i] = 1.0 * k / 100;
             E[i] = 1.0 * e / 100;
         }
