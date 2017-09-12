@@ -18,11 +18,14 @@ def test():
 def test2():
     return render_template('test2.html', config=get_config())
 
+@app.route('/login')
+def login():
+    return render_template('login.html', config=get_config())
+
 @app.errorhandler(404)
 def page_not_found(error):
     print("404",error)
     return render_template('404.html', config=get_config(), error=error), 404
-
 
 if __name__ == '__main__':
     config = get_config()
