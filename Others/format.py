@@ -91,7 +91,7 @@ $
 # 替换格式  
 def d1(str):
     str = str.strip()
-    str = re.compile(r'(\n){2,}?',re.S).sub('\n',str)
+    str = re.compile(r'(\n){1,}',re.S).sub('\n',str)
     str = str.replace('<','&lt;')
     return str+'\n'
 

@@ -167,6 +167,7 @@ tag_map:
  最近公共祖先: LCA
  多路归并: Multiway_merge
  计算几何: geometry
+ 凸包: Convex_Hull
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
