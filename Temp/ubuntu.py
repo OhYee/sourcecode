@@ -76,7 +76,7 @@ class myThread (threading.Thread):
 
 if __name__ == '__main__':
     global num
-    num = 25496006
+    num = 25545705
 
     global tot,alive
     tot=0
@@ -85,7 +85,7 @@ if __name__ == '__main__':
     threadLock = threading.Lock()
     threads = []
     while 1:
-        for i in range(10):
+        for i in range(50):
             thread = myThread("thread-"+str(i))
             thread.start()
             threads.append(thread)
