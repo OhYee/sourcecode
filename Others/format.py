@@ -91,7 +91,7 @@ $
 # 替换格式  
 def d1(str):
     str = str.strip()
-    str = re.compile(r'(\n){2,}?',re.S).sub('\n',str)
+    str = re.compile(r'(\n){1,}',re.S).sub('\n',str)
     str = str.replace('<','&lt;')
     return str+'\n'
 
@@ -131,6 +131,9 @@ def readFromFile(filename):
     return str
 
 def writeToFile(filename,text):
+    dirname = os.path.dirname(filename)
+    if os.path.exists(dirname) == False:
+        os.makedirs(dirname)
     f=open(filename,"w",encoding='UTF-8')
     f.write(text)
     f.close()

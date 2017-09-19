@@ -166,6 +166,9 @@ tag_map:
  正则表达式: RegEx
  最近公共祖先: LCA
  多路归并: Multiway_merge
+ 计算几何: geometry
+ 凸包: Convex_Hull
+
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
@@ -185,6 +188,17 @@ pagination_dir: page
 # theme: spfk
 #theme: light
 theme: indigo
+
+marked:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: true
+  smartLists: true
+  smartypants: true
+  modifyAnchors: ''
+  autolink: true
 
 # Local Search
 search:

@@ -1,0 +1,17 @@
+{
+    "title": "My Site",
+    "sidebar_bg": "sidebar_bg.jpg",
+    "logo": "logo.svg",
+    "author": "OhYee",
+    "email": "oyohyee@oyohyee.com",
+    "menu": {
+        "主页": {
+            "url": "/",
+            "icon": "home"
+        },
+        "关于": {
+            "url": "/about",
+            "icon": "credit_card"
+        }
+    }
+}
