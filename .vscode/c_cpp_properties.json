@@ -46,5 +46,5 @@
         "fallback-style": "LLVM",
         "sort-includes": true
     },
-    "version": 2
+    "version": 3
 }
