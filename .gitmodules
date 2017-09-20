@@ -1,3 +1,6 @@
 [submodule "Blog/themes/indigo"]
 	path = Blog/themes/indigo
 	url = git@github.com:OhYee/hexo-theme-indigo.git
+[submodule "beard"]
+	path = beard
+	url = git@github.com:OhYee/beard.git
