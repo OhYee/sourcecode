@@ -144,7 +144,7 @@
             "suppressTaskName": true,
             "args": [
                 "echo",
-                "${fileBasenameNoExtension}"
+                "${workspaceRoot}/../VSCode/environment/MinGW/include"
             ] // 编译命令参数
         }
     ]

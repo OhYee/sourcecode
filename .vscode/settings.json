@@ -42,6 +42,9 @@
     "C_Cpp.clang_format_style": "file",
     "C_Cpp.clang_format_fallbackStyle": "WebKit",
     "C_Cpp.clang_format_sortIncludes": true,
+    "C_Cpp.intelliSenseEngine":"Tag Parser",
+    "C_Cpp.intelliSenseEngineFallback": "Disabled",
+    "C_Cpp.errorSquiggles": "Disabled",
 
     // 控制换行的行的缩进。可以是"none"、 "same" 或 "indent"。
     "editor.wrappingIndent": "indent",
