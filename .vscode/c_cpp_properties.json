@@ -80,15 +80,5 @@
             },
             "intelliSenseMode": "msvc-x64"
         }
-<<<<<<< HEAD
-    ],
-    "clang_format": {
-        "style": "file",
-        "fallback-style": "LLVM",
-        "sort-includes": true
-    },
-    "version": 3
-=======
     ]
->>>>>>> 63b1675ab09b247dcba63d44ec0b668fcfa5ef48
 }
