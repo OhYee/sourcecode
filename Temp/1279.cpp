@@ -16,6 +16,8 @@ inline int sgn(const double &x) {
         return 0;
     return x > 0 ? 1 : -1;
 }
+struct Vector;
+inline double Cross(const Vector &a, const Vector &b);
 
 struct Vector {
     double x, y;
@@ -28,7 +30,7 @@ struct Vector {
     bool operator<(const Vector &rhs) const {
         if (sgn(y - rhs.y) == 0)
             return sgn(x - rhs.x) < 0;
-        return sgn(y - rhs.y) < 0;
+        return sgn(y - rhs.y) > 0;
     }
     Vector operator+(const Vector &rhs) const {
         return Vector(x + rhs.x, y + rhs.y);
@@ -52,14 +54,14 @@ struct Segment {
     Segment(Point _a, Point _b) : a(_a), b(_b) {}
     bool operator<(const Segment &rhs) const {
         double angle1 = getAngle();
-        double angle2 = rhs.getAngle;
+        double angle2 = rhs.getAngle();
         if (sgn(angle1 - angle2) == 0)
             return sgn(Cross(rhs.toVector(), a)) > 0;
-        return angle1 > angle2;
+        return sgn(angle1 - angle2) < 0;
     }
-    double getAngle() { return (b - a).getAngle(); }
+    double getAngle() const { return toVector().getAngle(); }
     Vector toVector() const { return b - a; }
-    double distance() const { return (b - a).distance(); }
+    double distance() const { return toVector().distance(); }
     void print(bool flag = 0) const {
         a.print();
         Log(" -> ");
@@ -244,28 +246,48 @@ int Convex_Hull(Point p[], int numOfPoint, bool vis[], Point ans[],
     * @param begin          起始位置
     * @return   返回凸包上点的个数
     */
-int Half_Plane(Segment s[], int numOfSide, bool vis[], Point ans[]) {
-    int front = 0;
+int Half_Plane(Segment s[], int numOfSide, Point ans[]) {
+    sort(s, s + numOfSide);
+    for (int i = 0; i < numOfSide; ++i)
+        s[i].print(), Log(" %.4f\n", s[i].getAngle());
+
+    int front = -1;
     int rear = 0;
+    Segment q[numOfSide];
 
-    for (int i = 0; i < n; ++i) {
-        while (front - rear >= 3 && Cross(s[i], ans[front]) < 0)
-            --front;
-        while (front - rear >= 3 && Cross(s[i], ans[rear]) < 0)
-            ++rear;
-        Point intersect;
-        Segment_Segment(ans[front], s[i], intersect);
-        ans[++front] = intersect;
+    for (int i = 0; i < numOfSide; ++i) {
+        Log("Segment:"), s[i].print(1);
+        while (front > rear && Point_Segment(ans[front], s[i]) < 0) {
+            ans[front].print(), Log(" pop from %d\n", front);
+            front--;
+        }
+        while (front > rear && Point_Segment(ans[rear], s[i]) < 0) {
+            ans[rear].print(), Log(" pop from %d\n", rear);
+            rear++;
+        }
+
+        if (front - rear < 0) {
+            q[++front] = s[i];
+            Log("add "), s[i].print(1);
+        } else {
+            Point p;
+            Segment_Segment(s[i], q[front], &p);
+            ans[++front] = p;
+            q[front] = s[i];
+            Log("add "), p.print(1);
+        }
     }
-
-    for (int i = 0; i < front - rear; ++i)
-        ans[i] = ans[i + front - rear];
+    int len = front - rear+1;
+    for (int i = 0; i < len; ++i)
+        ans[i] = ans[i + rear];
+    return len;
 }
 
 const int maxn = 1505;
 bool vis[maxn];
 Point p[maxn];
 Point ans[maxn];
+Segment s[maxn];
 
 int main() {
     int T;
@@ -277,9 +299,14 @@ int main() {
             p[i] = read_Point();
             p[i].n = i;
         }
-        sort(p, p + n);
-        memset(vis, false, sizeof(bool) * (n + 5));
-        int len = Convex_Hull(p, n, vis, ans);
+        for (int i = 0; i < n; ++i)
+            s[i] = Segment(p[(i + 1) % n], p[i]);
+        for (int i = 0; i < n; ++i) {
+            s[i].print(1);
+        }
+
+        int len = Half_Plane(s, n, ans);
+        printf("%d\n", len);
         for (int i = 0; i < len; ++i) {
             ans[i].print(1);
         }
