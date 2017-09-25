@@ -5,7 +5,7 @@
 
 using namespace std;
 
-#define Log(format, ...) printf(format, ##__VA_ARGS__)
+#define Log(format, ...) // printf(format, ##__VA_ARGS__)
 
 /* 计算几何模板 */
 
@@ -248,39 +248,39 @@ int Convex_Hull(Point p[], int numOfPoint, bool vis[], Point ans[],
     */
 int Half_Plane(Segment s[], int numOfSide, Point ans[]) {
     sort(s, s + numOfSide);
-    for (int i = 0; i < numOfSide; ++i)
-        s[i].print(), Log(" %.4f\n", s[i].getAngle());
 
     int front = -1;
     int rear = 0;
     Segment q[numOfSide];
 
-    for (int i = 0; i < numOfSide; ++i) {
-        Log("Segment:"), s[i].print(1);
-        while (front > rear && Point_Segment(ans[front], s[i]) < 0) {
-            ans[front].print(), Log(" pop from %d\n", front);
+    for (int i = 0; i <= numOfSide; ++i) {
+        int it = i % numOfSide;
+        while (front > rear && Point_Segment(ans[front], s[it]) < 0)
             front--;
-        }
-        while (front > rear && Point_Segment(ans[rear], s[i]) < 0) {
-            ans[rear].print(), Log(" pop from %d\n", rear);
+
+        while (front > rear && Point_Segment(ans[rear], s[it]) < 0)
             rear++;
-        }
 
         if (front - rear < 0) {
-            q[++front] = s[i];
-            Log("add "), s[i].print(1);
+            q[++front] = s[it];
         } else {
             Point p;
-            Segment_Segment(s[i], q[front], &p);
+            Segment_Segment(s[it], q[front], &p);
             ans[++front] = p;
-            q[front] = s[i];
-            Log("add "), p.print(1);
+            q[front] = s[it];
         }
     }
-    int len = front - rear+1;
-    for (int i = 0; i < len; ++i)
-        ans[i] = ans[i + rear];
-    return len;
+
+    for (int i = 0; i < front - rear + 1; ++i) {
+        if (ans[i + rear] != ans[i])
+            ans[i] = ans[i + rear];
+        else {
+            --i;
+            ++rear;
+        }
+    }
+
+    return front - rear + 1;
 }
 
 const int maxn = 1505;
@@ -306,7 +306,6 @@ int main() {
         }
 
         int len = Half_Plane(s, n, ans);
-        printf("%d\n", len);
         for (int i = 0; i < len; ++i) {
             ans[i].print(1);
         }

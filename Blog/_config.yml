@@ -168,6 +168,7 @@ tag_map:
  多路归并: Multiway_merge
  计算几何: geometry
  凸包: Convex_Hull
+ 计蒜客: jisuanke
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date

@@ -148,6 +148,7 @@
         "12.1.c": "cpp",
         "string": "cpp",
         "regex": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "climits": "cpp"
     }
 }

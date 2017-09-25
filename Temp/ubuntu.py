@@ -76,7 +76,7 @@ class myThread (threading.Thread):
 
 if __name__ == '__main__':
     global num
-    num = 25545705
+    num = 25596793
 
     global tot,alive
     tot=0
