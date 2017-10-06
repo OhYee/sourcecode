@@ -91,6 +91,86 @@ int GetChange(int num1,int num2) {
 ```
 
 
+## lowbit函数
+```cpp
+int lowbit(int x){
+    return x&(-x);    
+} 
+```
+由于程序数据用补码保存，负数是其绝对值取反+1  
+`1（0001）`  
+`-1（1111）`  
+`1&（-1）=0001`  
+
+其意义是将只保留最低位的1  
+换成10进制后就是2i（i是最低位的1的位数）
+
+
+
+## 判断最后一位
+`x&1;` 可以取得x最后一位是1还是0
+
+## +1
+将一个数+1，可以将其最后一个0变成1，比其低的位变成0
+
+## -1
+将一个数-1，可以将其最后一个1变成0，比其低的位变成1
+
+## 计算二进制中1的个数
+```cpp
+int bitCount(int i) {
+    i = i - ((i >>> 1) & 0x55555555);
+    i = (i & 0x33333333) + ((i >>> 2) & 0x33333333);
+    i = (i + (i >>> 4)) & 0x0f0f0f0f;
+    i = i + (i >>> 8);
+    i = i + (i >>> 16);
+    return i & 0x3f;
+}
+```
+
+
+## 返回右起第一个1的位置
+Returns one plus the index of the least significant 1-bit of x, or if x is zero, returns zero.
+```cpp
+int __builtin_ffs (unsigned int x)
+int __builtin_ffsl (unsigned long)
+int __builtin_ffsll (unsigned long long)
+```
+
+## 返回左起第一个1之前0的个数
+Returns the number of leading 0-bits in x, starting at the most significant bit position. If x is 0, the result is undefined.
+```cpp
+int __builtin_clz (unsigned int x)
+int __builtin_clzl (unsigned long)
+int __builtin_clzll (unsigned long long)
+```
+
+
+## 返回右起第一个1之后的0的个数
+Returns the number of trailing 0-bits in x, starting at the least significant bit position. If x is 0, the result is undefined.
+```cpp
+int __builtin_ctz (unsigned int x)
+int __builtin_ctzl (unsigned long)
+int __builtin_ctzll (unsigned long long)
+```
+
+
+## 返回1的个数
+Returns the number of 1-bits in x.
+```cpp
+int __builtin_popcount (unsigned int x)
+int __builtin_popcountl (unsigned long)
+int __builtin_popcountll (unsigned long long)
+```
+
+## 返回1的个数的奇偶性
+Returns the parity of x, i.e. the number of 1-bits in x modulo 2.
+```cpp
+int __builtin_parity (unsigned int x)
+int __builtin_parityl (unsigned long)
+int __builtin_parityll (unsigned long long)
+```
+
 ## RMQ问题
 
 ### ST算法

@@ -10,7 +10,7 @@ using namespace std;
 /* 计算几何模板 */
 
 const double eps = 1e-8;
-const double INF = 9e50;
+const double INF = 0x4242424242424242;
 inline int sgn(const double &x) {
     if (fabs(x) < eps)
         return 0;
@@ -37,6 +37,12 @@ struct Vector {
     }
     Vector operator-(const Vector &rhs) const {
         return Vector(x - rhs.x, y - rhs.y);
+    }
+    Vector operator*(const double &rhs) const {
+        return Vector(x * rhs, y * rhs);
+    }
+    Vector operator/(const double &rhs) const {
+        return Vector(x / rhs, y / rhs);
     }
     double getAngle() { return atan2(y, x); }
     double squre() const { return x * x + y * y; }
@@ -119,6 +125,16 @@ inline double Distance(const Point &a, const Point &b) {
     */
 inline int Point_Segment(const Vector &p, const Segment &L) {
     return sgn(Cross(L.b - L.a, p - L.a));
+}
+
+bool GetIntersection(const Segment L1, const Segment L2, Point *p = NULL) {
+    double v = Cross(L1.b, L2.b);
+    if (sgn(v) == 0)
+        return false;
+    double t = Cross(L2.b, L1.a - L2.a) / v;
+    if (p != NULL)
+        *p = L1.a + L1.b * t;
+    return true;
 }
 
 /**
@@ -247,40 +263,80 @@ int Convex_Hull(Point p[], int numOfPoint, bool vis[], Point ans[],
     * @return   返回凸包上点的个数
     */
 int Half_Plane(Segment s[], int numOfSide, Point ans[]) {
+    // s[numOfSide++] = Segment(Point(INF, INF), Point(-INF, INF));
+    // s[numOfSide++] = Segment(Point(-INF, INF), Point(-INF, -INF));
+    // s[numOfSide++] = Segment(Point(-INF, -INF), Point(INF, -INF));
+    // s[numOfSide++] = Segment(Point(INF, -INF), Point(INF, INF));
     sort(s, s + numOfSide);
 
-    int front = -1;
-    int rear = 0;
+    Log("\n\nHalf_Plane\n");
+
+    int del = 0;
+    for (int i = 1; i < numOfSide; ++i) {
+        if (sgn(s[i].getAngle() - s[del].getAngle()) != 0)
+            s[++del] = s[i];
+    }
+    numOfSide = del + 1;
+
+    for (int i = 0; i < numOfSide; ++i)
+        s[i].print(1);
+
+    int front = -1, rear = 0;
     Segment q[numOfSide];
 
     for (int i = 0; i <= numOfSide; ++i) {
         int it = i % numOfSide;
-        while (front > rear && Point_Segment(ans[front], s[it]) < 0)
-            front--;
 
-        while (front > rear && Point_Segment(ans[rear], s[it]) < 0)
+        Log("%d Testing", i);
+        s[it].print(1);
+
+        while (front > rear && Point_Segment(ans[front], s[it]) < 0) {
+            front--;
+            Log("\tHead pop\n");
+        }
+
+        while (front > rear && Point_Segment(ans[rear], s[it]) < 0) {
             rear++;
+            Log("\tRear pop\n");
+        }
 
         if (front - rear < 0) {
             q[++front] = s[it];
+            Log("Add ");
+            s[it].print(1);
         } else {
             Point p;
-            Segment_Segment(s[it], q[front], &p);
-            ans[++front] = p;
-            q[front] = s[it];
+            int po = Segment_Segment(s[it], q[front], &p);
+            if (po == 0 || po == 1) {
+                ans[++front] = p;
+                q[front] = s[it];
+                Log("Add ");
+                p.print(0);
+                Log(" ");
+                s[it].print(1);
+            } else {
+                Log("ERROR\n");
+            }
         }
+
+        Log("front:%d rear:%d\t", front, rear);
+        for (int j = rear + 1; j <= front; ++j) {
+            ans[j].print();
+            Log(" ");
+        }
+        Log("\n\n");
     }
 
-    for (int i = 0; i < front - rear + 1; ++i) {
-        if (ans[i + rear] != ans[i])
-            ans[i] = ans[i + rear];
-        else {
-            --i;
-            ++rear;
+    Log("front:%d rear:%d\n", front, rear);
+    int len = front - rear;
+    for (int i = 0; i < len; ++i)
+        ans[i] = ans[rear + i + 1];
+    for (int i = 1; i < len; ++i)
+        if (ans[i] == ans[i - 1]) {
+            ans[i] = ans[i + 1];
+            len--;
         }
-    }
-
-    return front - rear + 1;
+    return len;
 }
 
 const int maxn = 1505;
@@ -301,15 +357,13 @@ int main() {
         }
         for (int i = 0; i < n; ++i)
             s[i] = Segment(p[(i + 1) % n], p[i]);
-        for (int i = 0; i < n; ++i) {
-            s[i].print(1);
-        }
 
         int len = Half_Plane(s, n, ans);
         for (int i = 0; i < len; ++i) {
             ans[i].print(1);
         }
-        printf("%.2f\n", getArea(ans, len));
+
+        printf("%s\n", len > 1 ? "YES" : "NO");
     }
     return 0;
 }
