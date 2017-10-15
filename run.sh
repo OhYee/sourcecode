@@ -1,6 +1,9 @@
-#!/bin/sh 
-g++ -g -Wall "$1" -o "$1.out" -std=c++17 -O2
-if [ -e "$1.out" ]; then
-    "$1.out" <in.txt
-    rm -f "$1.out"
+input=./$1
+output=./$1.out
+g++ -g -Wall "$input" -o "$output" -O2 -std=c++17
+if [ -e "$output" ]; then
+    "$output" <in.txt
+    rm -f "$output"
+else
+    echo "error"
 fi

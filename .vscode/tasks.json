@@ -45,8 +45,8 @@
             "linux": {
                 "command": "sh",
                 "args": [
-                    "./run.sh",
-                    "${file}"
+                    "run.sh",
+                    "${relativeFile}"
                 ] // 编译命令参数
                 
 
