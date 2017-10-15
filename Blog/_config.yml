@@ -169,6 +169,7 @@ tag_map:
  计算几何: geometry
  凸包: Convex_Hull
  计蒜客: jisuanke
+ 半平面交: Half_Plane
 
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
