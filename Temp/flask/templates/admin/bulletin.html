@@ -1,0 +1,27 @@
+<form action="/admin/bulletin_add" method="post">
+    <input type=text name=title>
+    <input type=text name=content>
+    <input type=submit value=提交>
+</form>
+
+<table>
+    <tr>
+        <th>编号</th>
+        <th>标题</th>
+        <th>内容</th>
+        <th>删除</th>
+    </tr>
+    {% for bulletin in bulletins %}
+    <tr>
+        <td>{{ bulletin[0] }}</td>
+        <td>{{ bulletin[1] }}</td>
+        <td>{{ bulletin[2] }}</td>
+        <td>
+            <form action="/admin/bulletin_del" method="post">
+                <input type=hidden name=id value={{ bulletin[0] }}>
+                <input type=submit value=删除>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>

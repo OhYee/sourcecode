@@ -1,0 +1,45 @@
+<form action="/admin/visitor_add" method="post">
+    <input type=text name=name>
+    <input type=text name=begintime>
+    <input type=text name=endtime>
+    <input type=text name=student>
+    <input type=submit value=提交>
+</form>
+
+<table>
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>到访时间</th>
+        <th>离开时间</th>
+        <th>学生学号</th>
+        <th>学生姓名</th>
+    </tr>
+    {% for visitor in visitors %}
+    <tr>
+        <form action="/admin/visitor_update" method="post">
+            <td>
+                <input type=text name=id value={{ visitor[0] }}>
+            </td>
+            <td>
+                <input type=text name=id value={{ visitor[1] }}>
+            </td>
+            <td>
+                <input type=text name=id value={{ visitor[2] }}>
+            </td>
+            <td>
+                <input type=text name=id value={{ visitor[3] }}>
+            </td>
+            <td>
+                <input type=text name=id value={{ visitor[4] }}>
+            </td>
+            <td>
+                <input disabled type=text name=id value={{ visitor[5] }}>
+            </td>
+            <td>
+                <input type=submit value=修改>
+            </td>
+        </form>
+    </tr>
+    {% endfor %}
+</table>
