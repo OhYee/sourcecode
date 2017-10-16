@@ -17,7 +17,7 @@ def writeToFile(filename,text):
     f.close()
 
 if __name__=='__main__':
-    host = getHTML("https://raw.githubusercontent.com/racaljk/hosts/master/hosts")
+    host = getHTML("https://raw.githubusercontent.com/googlehosts/hosts/master/hosts-files/hosts")
     writeToFile("./hosts",host)
     sysstr = platform.system()
     if(sysstr =="Windows"):
