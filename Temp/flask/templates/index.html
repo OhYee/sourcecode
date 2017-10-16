@@ -15,10 +15,11 @@
                 <div id="main-card" class="card valign-wrapper">
                     <div class="container valign">
                         {% if error %}
-                        <span class="pink-text">登陆失败</span>{% endif %}
+                        <span class="pink-text">登陆失败</span>
+                        {% endif %}
                         <form action="/login" method="post">
                             <div class="input-field">
-                                <i class="material-icons prefix">account_circle</i>
+                                <i class="material-icons prefix">account_box</i>
                                 <input id="name" name="username" type="text" class="validate">
                                 <label for="name">学号</label>
                             </div>

@@ -103,7 +103,11 @@ def visitor_update():
         sql.add_visitor(request.form["id"],request.form['name'],request.form['begintime'],request.form['endtime'],request.form['student'])
     return redirect(url_for('visitor'))
 
-
+@app.route('/admin/visitor_delete',methods=["POST","GET"])
+def visitor_delete():
+    if request.method == 'POST':
+        sql.del_visitor(request.form["id"])
+    return redirect(url_for('visitor'))
 
 
 
@@ -132,7 +136,11 @@ def valuables_update():
         sql.add_valuables(request.form["id"],request.form['name'],request.form['student'],request.form['time'])
     return redirect(url_for('valuables'))
 
-
+@app.route('/admin/valuables_delete',methods=["POST","GET"])
+def valuables_delete():
+    if request.method == 'POST':
+        sql.del_valuables(request.form["id"])
+    return redirect(url_for('valuables'))
 
 
 
@@ -153,7 +161,11 @@ def cost_update():
         sql.add_cost(request.form["id"],request.form['sushelou'],request.form['qinshihao'],request.form['water'],request.form['electric'],request.form['time'])
     return redirect(url_for('cost'))
 
-
+@app.route('/admin/cost_delete',methods=["POST","GET"])
+def cost_delete():
+    if request.method == 'POST':
+        sql.del_cost(request.form["id"])
+    return redirect(url_for('cost'))
 
 
 @app.route('/admin/bulletin')
@@ -179,8 +191,31 @@ def bulletin_del():
 @app.route('/student')
 def student():
     if("id" in session and session["id"]!=admin):
-        return render_template('student/student.html',username=session["id"])
+        student = sql.getStudent(session["id"])
+        costs = sql.get_costOfStudent(student[4],student[5])
+        print(costs)
+        return render_template('student/student.html',bulletins=sql.get_bulletin(),student=student,costs=costs)
     return redirect(url_for('index'))
+
+@app.route('/student/password')
+def student_password():
+    if("id" in session and session["id"]!=admin):
+        student = sql.getStudent(session["id"])
+        return render_template('student/password.html',student=student,ok=False)
+    return redirect(url_for('index'))
+
+@app.route('/student/password#')
+def student_password_ok():
+    if("id" in session and session["id"]!=admin):
+        student = sql.getStudent(session["id"])
+        return render_template('student/password.html',student=student,ok=True)
+    return redirect(url_for('index'))
+
+@app.route('/student/change',methods=["POST","GET"])
+def student_change():
+    if request.method == 'POST':
+        sql.student_update(request.form['oldid'],request.form['id'],request.form['password'],request.form['realname'],request.form['sex'],request.form['sushelou'],request.form['qinshihao'])
+    return redirect(url_for('student_password_ok'))
 
 @app.route('/init')
 def init():

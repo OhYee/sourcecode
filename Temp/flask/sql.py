@@ -12,10 +12,11 @@ def login(username,password):
     conn = connect_database()
     c = conn.cursor()
     c.execute("select password from user where id='%s';" %(username))
-    if len(c.fetchall())==0:
+    res = c.fetchall()
+    if len(res)==0:
         print("no user")
         return False
-    passwordmd5 = c.fetchone()[0]
+    passwordmd5 = res[0][0]
     if md5(password) == passwordmd5:
         print("login successful.")
         conn.close()
@@ -82,6 +83,19 @@ def getStudents():
     t = c.fetchall()
     conn.close()
     return t
+
+def getStudent(Id):
+    print("id:",Id)
+
+    conn = connect_database()
+    c = conn.cursor()
+    c.execute("select * from user where id == '%s';"%Id) #  limit 1
+    t = c.fetchall()
+    conn.close()
+    if len(t)==0:
+        return ""
+    return t[0]
+
 def getStudentName(Id):
     print("id:",Id)
 
@@ -263,7 +277,14 @@ def getLastIDofcost():
 
     conn.close()
     return Id
-
+# 水电费 - 获取指定宿舍水电费
+def get_costOfStudent(sushelou,qinshihao):
+    conn = connect_database()
+    c = conn.cursor()
+    c.execute("select * from cost  where sushelou=='%s' and qinshihao=='%s' order by Id DESC;"%(sushelou,qinshihao))
+    res = c.fetchall()
+    conn.close()
+    return res
 
 
 

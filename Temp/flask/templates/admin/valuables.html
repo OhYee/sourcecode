@@ -1,44 +1,104 @@
-{% if isAdmin %}
-<form action="/admin/valuables_add" method="post">
-    <input type=text name=name>
-    <input type=text name=student>
-    <input type=text name=time>
-    <input type=submit value=提交>
-</form>
+<!doctype html>
+<html>
 
-<table>
-    <tr>
-        <th>编号</th>
-        <th>物品名称</th>
-        <th>学生学号</th>
-        <th>时间</th>
-        <th>学生姓名</th>
-    </tr>
-    {% for valuables in valuabless %}
-    <tr>
-        <form action="/admin/valuables_update" method="post">
-            <td>
-                <input type=text readonly name=id value={{ valuables[0] }}>
-            </td>
-            <td>
-                <input type=text name=name value={{ valuables[1] }}>
-            </td>
-            <td>
-                <input type=text name=student value={{ valuables[2] }}>
-            </td>
-            <td>
-                <input type=text name=time value={{ valuables[3] }}>
-            </td>
-            <td>
-                <input type=text disabled value={{ valuables[4] }}>
-            </td>
-            <td>
-                <input type=submit value=修改>
-            </td>
-        </form>
-    </tr>
-    {% endfor %}
-</table>
-{% else %}
-{% include '/admin/notadmin.html' %}
-{% endif %}
+    <head>
+        <title>贵重物品管理</title>
+        {% include './layout/head.html' %}
+
+    </head>
+
+    <body>
+
+        {% include './admin/header.html' %}
+        <script>
+            $('.nav4').toggleClass('active');
+        </script>
+        <main>
+            <div class="container">
+                <div id="main-card" class="card valign-wrapper">
+                    <div class="container valign">
+
+
+
+                        {% if isAdmin %}
+                        <form action="/admin/valuables_add" method="post">
+
+                            <div class="input-field">
+                                <input id="name" name="name" type="text" class="validate">
+                                <label for="name">贵重物品名称</label>
+                            </div>
+                            <div class="input-field">
+                                <input id="student" name="student" type="text" class="validate">
+                                <label for="student">学生学号</label>
+                            </div>
+                            <div class="input-field">
+                                <input id="time" name="time" type="text" class="validate">
+                                <label for="time">时间</label>
+                            </div>
+                            <button class="btn waves-effect waves-light right blue" type="submit" name="action">提交
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div id="main-card" class="card valign-wrapper">
+                    <div class="container valign">
+                        <table class="bordered highlight centered">
+                            <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>物品名称</th>
+                                    <th>学生学号</th>
+                                    <th>时间</th>
+                                    <th>学生姓名</th>
+                                    <th>修改</th>
+                                    <th>删除</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for valuables in valuabless %}
+                                <tr>
+                                    <form action="/admin/valuables_update" method="post">
+                                        <td>
+                                            <input type=text readonly name=id value={{ valuables[0] }}>
+                                        </td>
+                                        <td>
+                                            <input type=text name=name value={{ valuables[1] }}>
+                                        </td>
+                                        <td>
+                                            <input type=text name=student value={{ valuables[2] }}>
+                                        </td>
+                                        <td>
+                                            <input type=text name=time value={{ valuables[3] }}>
+                                        </td>
+                                        <td>
+                                            <input type=text disabled value={{ valuables[4] }}>
+                                        </td>
+                                        <td>
+                                            <button class="btn waves-effect waves-light right blue lighten-2" type="submit" name="action">修改
+                                            </button>
+                                        </td>
+                                    </form>
+                                    <td>
+                                        <form action="/admin/valuables_delete" method="post">
+                                            <input type=hidden name=id value={{ valuables[0] }}>
+                                            <button class="btn waves-effect waves-light right blue lighten-2" type="submit" name="action">删除
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% else %} {% include '/admin/notadmin.html' %} {% endif %}
+
+
+                    </div>
+                </div>
+            </div>
+        </main>
+        {% include './layout/footer.html' %}
+
+    </body>
+
+</html>
