@@ -12,6 +12,9 @@ def login(username,password):
     conn = connect_database()
     c = conn.cursor()
     c.execute("select password from user where id='%s';" %(username))
+    if len(c.fetchall())==0:
+        print("no user")
+        return False
     passwordmd5 = c.fetchone()[0]
     if md5(password) == passwordmd5:
         print("login successful.")
@@ -35,6 +38,7 @@ def reg(Id,password,realname,sex,sushelou,qinshihao):
 
     # uid = getLastID(conn);
     # uid = str(int(uid)+1)
+    
     password = md5(password)
 
     string = "insert into USER(id,password,realname,sex,sushelou,qinshihao) values('%s','%s','%s','%s','%s','%s');"
@@ -44,6 +48,23 @@ def reg(Id,password,realname,sex,sushelou,qinshihao):
     print("register successful.")
     conn.close()
     return True
+
+def student_update(oldid,Id,password,realname,sex,sushelou,qinshihao):
+    conn = connect_database()
+    c = conn.cursor()
+
+    c.execute( "select password from user where id = '%s'"%(Id))
+    if password != c.fetchall()[0][0]:
+        password=md5(password)
+
+    string = "update user set id='%s',password='%s',realname='%s',sex='%s',sushelou='%s',qinshihao='%s' where id=='%s';"
+    c.execute( string % (Id,password,realname,sex,sushelou,qinshihao,oldid))
+
+    conn.commit()
+    print("register successful.")
+    conn.close()
+    return True
+
 # 学生管理 - 删除
 def delete(Id):
     conn = connect_database()
@@ -92,7 +113,7 @@ def del_bulletin(Id):
     conn.commit()
     conn.close()
 # 公告管理 - 增加公告
-def add_bulletin(title,content):
+def add_bulletin(title,time,content):
     conn = connect_database()
     c = conn.cursor()
 
@@ -104,8 +125,8 @@ def add_bulletin(title,content):
         Id = int(res[0][0])
     Id += 1
 
-    string = "insert into bulletin(id,title,content) values('%s','%s','%s');"
-    c.execute( string % (str(Id),title,content))
+    string = "insert into bulletin(id,title,time,content) values('%s','%s','%s','%s');"
+    c.execute( string % (str(Id),title,time,content))
 
     conn.commit()
     conn.close()
@@ -129,7 +150,7 @@ def add_visitor(Id,name,begintime,endtime,student):
 
     conn.commit()
     conn.close()
-# 外来人员管理 - 更新记录
+# 外来人员管理 - 删除记录
 def del_visitor(Id):
     conn = connect_database()
     c = conn.cursor()
@@ -155,29 +176,148 @@ def getLastIDofVisitor():
 
 
 
+# 贵重物品登记
+# 贵重物品 - 获取
+def get_valuables():
+    conn = connect_database()
+    c = conn.cursor()
+    c.execute("select * from valuables order by id DESC;")
+    t = c.fetchall()
+    conn.close()
+    return t
+# 贵重物品 - 新建
+def add_valuables(Id,name,student,time):
+    conn = connect_database()
+    c = conn.cursor()
+    string = "insert into valuables(id,name,student,time) values('%s','%s','%s','%s');"
+    c.execute( string % (str(Id),name,student,time))
+
+    conn.commit()
+    conn.close()
+# 贵重物品 - 删除
+def del_valuables(Id):
+    conn = connect_database()
+    c = conn.cursor()
+
+    c.execute("delete from valuables where id == '%s';"%(Id))
+
+    conn.commit()
+    conn.close()
+# 贵重物品 - 获取最后一条记录
+def getLastIDofValuables():
+    conn = connect_database()
+    c = conn.cursor()
+
+    c.execute("select * from valuables order by id DESC limit 1;")
+    res = c.fetchall()
+    if len(res)==0:
+        Id = 0
+    else:
+        Id = int(res[0][0])
+
+    conn.close()
+    return Id
+
+
+
+
+
+# 水电费
+# 水电费 - 获取
+def get_cost():
+    conn = connect_database()
+    c = conn.cursor()
+    c.execute("select * from cost order by id DESC;")
+    t = c.fetchall()
+    conn.close()
+    return t
+# 水电费 - 新建
+def add_cost(Id,sushelou,qinshihao,water,electric,time):
+    conn = connect_database()
+    c = conn.cursor()
+    string = "insert into cost(id,sushelou,qinshihao,water,electric,time) values('%s','%s','%s','%s','%s','%s');"
+    c.execute( string % (str(Id),sushelou,qinshihao,water,electric,time))
+
+    conn.commit()
+    conn.close()
+# 水电费 - 删除
+def del_cost(Id):
+    conn = connect_database()
+    c = conn.cursor()
+
+    c.execute("delete from cost where id == '%s';"%(Id))
+
+    conn.commit()
+    conn.close()
+# 水电费 - 获取最后一条记录
+def getLastIDofcost():
+    conn = connect_database()
+    c = conn.cursor()
+
+    c.execute("select * from cost order by id DESC limit 1;")
+    res = c.fetchall()
+    if len(res)==0:
+        Id = 0
+    else:
+        Id = int(res[0][0])
+
+    conn.close()
+    return Id
+
+
 
 
 def create_table(conn):
     c = conn.cursor()
     c.execute('''create table user
-        (   id          text    not null,
-            password    text    not null,
-            realname    text    not null,
+        (   id          text        not null,
+            password    text        not null,
+            realname    text        not null,
             sex         text,
             sushelou    text,
             qinshihao   text,
             PRIMARY KEY(id))''')
     c.execute('''create table bulletin
-        (   id          text    not null,
-            title      text     not null,
-            content    text,
+        (   id          text        not null,
+            title       text        not null,
+            time        text,
+            content     text,
             PRIMARY KEY(id))''')
     c.execute('''create table visitor
-        (   id            text    not null,
-            name          text    not null,
-            begintime     text,
-            endtime       text,
-            student       text,
+        (   id          text        not null,
+            name        text        not null,
+            begintime   text,
+            endtime     text,
+            student     text,
+            PRIMARY KEY(id))''')
+    c.execute('''create table valuables
+        (   id          text    not null,
+            name        text    not null,
+            student    text    not null,
+            time         text,
+            PRIMARY KEY(id))''')
+    c.execute('''create table cost
+        (   id          text        not null,
+            sushelou    text        not null,
+            qinshihao   text        not null,
+            water       REAL        not null,
+            electric    REAL        not null,
+            time        text,
+            PRIMARY KEY(id))''')
+    c.execute('''create table talk
+        (   id          text        not null,
+            id2         text        not null,
+            student     text        not null,
+            content     text        not null,
+            time        text        not null,
+            PRIMARY KEY(id))''')
+    c.execute('''create table repair
+        (   id          text    not null,
+            student     text    not null,
+            sushelou    text    not null,
+            qinshihao   text    not null,
+            content     text,
+            time        text,
             PRIMARY KEY(id))''')
     print ("Table created successfully")
     
@@ -185,13 +325,9 @@ def create_table(conn):
 def test():
     conn = connect_database()
     c = conn.cursor()
-    c.execute('''create table visitor
-        (   id            text    not null,
-            name          text    not null,
-            begintime     text,
-            endtime       text,
-            student       text,
-            PRIMARY KEY(id))''')
+
+
+
     conn.close()
 
 def connect_database():
