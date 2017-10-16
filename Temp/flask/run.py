@@ -6,11 +6,27 @@ import sql
 app = Flask(__name__)
 app.secret_key='\xf1\x92Y\xdf\x8ejY\x04\x96\xb4V\x88\xfb\xfc\xb5\x18F\xa3\xee\xb9\xb9t\x01\xf0\x96'
 
+@app.route('/test')
+def t():
+    return render_template('test.html',isAdmin=isAdmin(session))
+
 @app.route('/')
 def index():
-    if 'id' in session and session['id'] == 'admin':
-        return redirect(url_for('admin'))
-    return render_template('index.html', config=get_config())
+    if 'id' in session:
+        if session['id'] == 'admin':
+            return redirect(url_for('admin'))
+        else:
+            return redirect(url_for('student'))
+    return render_template('index.html', error=False)
+
+@app.route('/#')
+def index_error():
+    if 'id' in session:
+        if session['id'] == 'admin':
+            return redirect(url_for('admin'))
+        else:
+            return redirect(url_for('student'))
+    return render_template('index.html', error=True)
 
 @app.route('/login',methods=["POST","GET"])
 def login():
@@ -21,8 +37,9 @@ def login():
             # 管理员
             session['id'] = username
         else:
-            pass
-        return redirect(url_for('index'))
+            if sql.login(username,passwd):
+                session['id'] = username
+    return redirect(url_for('index_error'))
 
 
 @app.route('/logout')
@@ -55,8 +72,7 @@ def delete():
 @app.route('/admin/change',methods=["POST","GET"])
 def change():
     if request.method == 'POST':
-        sql.delete(request.form['oldid'])
-        sql.reg(request.form['id'],request.form['password'],request.form['realname'],request.form['sex'],request.form['sushelou'],request.form['qinshihao'])
+        sql.student_update(request.form['oldid'],request.form['id'],request.form['password'],request.form['realname'],request.form['sex'],request.form['sushelou'],request.form['qinshihao'])
     return redirect(url_for('admin_student'))
 
 
@@ -89,6 +105,57 @@ def visitor_update():
 
 
 
+
+
+
+@app.route('/admin/valuables')
+def valuables():
+    val = sql.get_valuables()
+    length = len(val)
+    newval = []
+    for i in range(0,length):
+        temp = [val[i][j] for j in range(0,4)]
+        temp.append(sql.getStudentName(temp[2]))
+        newval.append(temp)
+    return render_template('admin/valuables.html',isAdmin=isAdmin(session),valuabless=newval)
+
+@app.route('/admin/valuables_add',methods=["POST","GET"])
+def valuables_add():
+    if request.method == 'POST':
+        sql.add_valuables(sql.getLastIDofValuables()+1,request.form['name'],request.form['student'],request.form['time'])
+    return redirect(url_for('valuables'))
+
+@app.route('/admin/valuables_update',methods=["POST","GET"])
+def valuables_update():
+    if request.method == 'POST':
+        sql.del_valuables(request.form["id"])
+        sql.add_valuables(request.form["id"],request.form['name'],request.form['student'],request.form['time'])
+    return redirect(url_for('valuables'))
+
+
+
+
+
+@app.route('/admin/cost')
+def cost():
+    return render_template('admin/cost.html',isAdmin=isAdmin(session),costs=sql.get_cost())
+
+@app.route('/admin/cost_add',methods=["POST","GET"])
+def cost_add():
+    if request.method == 'POST':
+        sql.add_cost(sql.getLastIDofcost()+1,request.form['sushelou'],request.form['qinshihao'],request.form['water'],request.form['electric'],request.form['time'])
+    return redirect(url_for('cost'))
+
+@app.route('/admin/cost_update',methods=["POST","GET"])
+def cost_update():
+    if request.method == 'POST':
+        sql.del_cost(request.form["id"])
+        sql.add_cost(request.form["id"],request.form['sushelou'],request.form['qinshihao'],request.form['water'],request.form['electric'],request.form['time'])
+    return redirect(url_for('cost'))
+
+
+
+
 @app.route('/admin/bulletin')
 def bulletin():
     return render_template('admin/bulletin.html',isAdmin=isAdmin(session),bulletins=sql.get_bulletin())
@@ -96,7 +163,7 @@ def bulletin():
 @app.route('/admin/bulletin_add',methods=["POST","GET"])
 def bulletin_add():
     if request.method == 'POST':
-        sql.add_bulletin(request.form['title'],request.form['content'])
+        sql.add_bulletin(request.form['title'],request.form['time'],request.form['content'])
     return redirect(url_for('bulletin'))
 
 @app.route('/admin/bulletin_del',methods=["POST","GET"])
@@ -104,6 +171,16 @@ def bulletin_del():
     if request.method == 'POST':
         sql.del_bulletin(request.form['id'])
     return redirect(url_for('bulletin'))
+
+
+
+
+
+@app.route('/student')
+def student():
+    if("id" in session and session["id"]!=admin):
+        return render_template('student/student.html',username=session["id"])
+    return redirect(url_for('index'))
 
 @app.route('/init')
 def init():
