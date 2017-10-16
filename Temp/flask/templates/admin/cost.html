@@ -1,0 +1,51 @@
+{% if isAdmin %}
+<form action="/admin/cost_add" method="post">
+    <input type=text name=sushelou>
+    <input type=text name=qinshihao>
+    <input type=text name=water>
+    <input type=text name=electric>
+    <input type=text name=time>
+    <input type=submit value=提交>
+</form>
+
+<table>
+    <tr>
+        <th>编号</th>
+        <th>宿舍楼</th>
+        <th>寝室号</th>
+        <th>水费</th>
+        <th>电费</th>
+        <th>登记时间</th>
+    </tr>
+    {% for cost in costs %}
+    <tr>
+        <form action="/admin/cost_update" method="post">
+            <input type=hidden name=id value={{ cost[0] }}>
+            <td>
+                <input type=text disabled value={{ cost[0] }}>
+            </td>
+            <td>
+                <input type=text name=sushelou value={{ cost[1] }}>
+            </td>
+            <td>
+                <input type=text name=qinshihao value={{ cost[2] }}>
+            </td>
+            <td>
+                <input type=text name=water value={{ cost[3] }}>
+            </td>
+            <td>
+                <input type=text name=electric value={{ cost[4] }}>
+            </td>
+            <td>
+                <input type=text name=time value={{ cost[5] }}>
+            </td>
+            <td>
+                <input type=submit value=修改>
+            </td>
+        </form>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+{% include '/admin/notadmin.html' %}
+{% endif %}

@@ -1,0 +1,8 @@
+main{
+    min-height: 350px;
+}
+#main-card{
+    min-height: 300px;
+    margin: 50px;
+    padding: 50px;
+}

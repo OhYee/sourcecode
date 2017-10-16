@@ -1,0 +1,44 @@
+{% if isAdmin %}
+<form action="/admin/valuables_add" method="post">
+    <input type=text name=name>
+    <input type=text name=student>
+    <input type=text name=time>
+    <input type=submit value=提交>
+</form>
+
+<table>
+    <tr>
+        <th>编号</th>
+        <th>物品名称</th>
+        <th>学生学号</th>
+        <th>时间</th>
+        <th>学生姓名</th>
+    </tr>
+    {% for valuables in valuabless %}
+    <tr>
+        <form action="/admin/valuables_update" method="post">
+            <td>
+                <input type=text readonly name=id value={{ valuables[0] }}>
+            </td>
+            <td>
+                <input type=text name=name value={{ valuables[1] }}>
+            </td>
+            <td>
+                <input type=text name=student value={{ valuables[2] }}>
+            </td>
+            <td>
+                <input type=text name=time value={{ valuables[3] }}>
+            </td>
+            <td>
+                <input type=text disabled value={{ valuables[4] }}>
+            </td>
+            <td>
+                <input type=submit value=修改>
+            </td>
+        </form>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+{% include '/admin/notadmin.html' %}
+{% endif %}

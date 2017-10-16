@@ -1,3 +1,4 @@
+{% if isAdmin %}
 <form action="/admin/visitor_add" method="post">
     <input type=text name=name>
     <input type=text name=begintime>
@@ -18,23 +19,24 @@
     {% for visitor in visitors %}
     <tr>
         <form action="/admin/visitor_update" method="post">
+            <input type=hidden name=id value={{ visitor[0] }}>
             <td>
-                <input type=text name=id value={{ visitor[0] }}>
+                <input type=text disabled value={{ visitor[0] }}>
             </td>
             <td>
-                <input type=text name=id value={{ visitor[1] }}>
+                <input type=text name=name value={{ visitor[1] }}>
             </td>
             <td>
-                <input type=text name=id value={{ visitor[2] }}>
+                <input type=text name=begintime value={{ visitor[2] }}>
             </td>
             <td>
-                <input type=text name=id value={{ visitor[3] }}>
+                <input type=text name=endtime value={{ visitor[3] }}>
             </td>
             <td>
-                <input type=text name=id value={{ visitor[4] }}>
+                <input type=text name=student value={{ visitor[4] }}>
             </td>
             <td>
-                <input disabled type=text name=id value={{ visitor[5] }}>
+                <input disabled type=text value={{ visitor[5] }}>
             </td>
             <td>
                 <input type=submit value=修改>
@@ -43,3 +45,6 @@
     </tr>
     {% endfor %}
 </table>
+{% else %}
+{% include '/admin/notadmin.html' %}
+{% endif %}
