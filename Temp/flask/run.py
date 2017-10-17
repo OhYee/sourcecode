@@ -2,9 +2,13 @@ from flask import Flask,render_template,session,redirect,url_for,request
 from config import get_config
 from admin import isAdmin
 import sql
+import time
 
 app = Flask(__name__)
 app.secret_key='\xf1\x92Y\xdf\x8ejY\x04\x96\xb4V\x88\xfb\xfc\xb5\x18F\xa3\xee\xb9\xb9t\x01\xf0\x96'
+
+def gettime():
+    return time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
 
 @app.route('/test')
 def t():
@@ -175,7 +179,9 @@ def bulletin():
 @app.route('/admin/bulletin_add',methods=["POST","GET"])
 def bulletin_add():
     if request.method == 'POST':
-        sql.add_bulletin(request.form['title'],request.form['time'],request.form['content'])
+        content = request.form['content']
+        content = content.replace('\n','<br>')
+        sql.add_bulletin(request.form['title'],request.form['time'],content)
     return redirect(url_for('bulletin'))
 
 @app.route('/admin/bulletin_del',methods=["POST","GET"])
@@ -216,6 +222,35 @@ def student_change():
     if request.method == 'POST':
         sql.student_update(request.form['oldid'],request.form['id'],request.form['password'],request.form['realname'],request.form['sex'],request.form['sushelou'],request.form['qinshihao'])
     return redirect(url_for('student_password_ok'))
+
+@app.route('/student/repair',methods=["POST","GET"])
+def student_repair():
+    if("id" in session and session["id"]!=admin):
+        student = sql.getStudent(session["id"])
+        repairs = sql.get_repair(student[0])
+        return render_template('student/repair.html',student=student,repairs=repairs)
+    return redirect(url_for('index'))
+
+@app.route('/student/repair_add',methods=["POST","GET"])
+def repair_add():
+    if request.method == 'POST':
+        sql.add_repair(sql.getLastIDofrepair()+1,request.form['student'],request.form['sushelou'],request.form['qinshihao'],request.form['time'],request.form['content'])
+    return redirect(url_for('student_repair'))
+
+@app.route('/student/disscuss',methods=["POST","GET"])
+def student_disscuss():
+    if("id" in session and session["id"]!=admin):
+        student = sql.getStudent(session["id"])
+        disscusss=sql.get_disscuss()
+        return render_template('student/disscuss.html',student=student,disscusss=disscusss)
+    return redirect(url_for('index'))
+
+@app.route('/student/disscuss_add',methods=["POST","GET"])
+def student_disscuss_add():
+    if request.method == 'POST':
+        nowtime = gettime()
+        sql.add_disscuss(sql.getLastIDofdisscuss()+1,session["id"],request.form['content'],nowtime)
+    return redirect(url_for('student_disscuss'))
 
 @app.route('/init')
 def init():

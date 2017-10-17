@@ -69,7 +69,7 @@
                                     <td>{{ bulletin[0] }}</td>
                                     <td>{{ bulletin[1] }}</td>
                                     <td>{{ bulletin[2] }}</td>
-                                    <td>{{ bulletin[3] }}</td>
+                                    <td>{{ bulletin[3]|safe }}</td>
                                     <td>
                                         <form action="/admin/bulletin_del" method="post">
                                             <input type=hidden name=id value={{ bulletin[0] }}>

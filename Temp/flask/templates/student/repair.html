@@ -15,23 +15,43 @@
                 <div id="main-card" class="card valign-wrapper">
                     <div class="container valign">
 
-
-
-                        {% if isAdmin %}
-                        <form action="/admin/valuables_add" method="post">
-
+                        <form action="/student/repair_add" method="post">
+                            <input name="student" type="hidden" value="{{ student[0] }}">
                             <div class="input-field">
-                                <input id="name" name="name" type="text" class="validate">
-                                <label for="name">贵重物品名称</label>
-                            </div>
-                            <div class="input-field">
-                                <input id="student" name="student" type="text" class="validate">
+                                <input id="student" type="text" disabled class="validate" value="{{ student[0] }}">
                                 <label for="student">学生学号</label>
                             </div>
+
+                            <input name="sushelou" type="hidden" value="{{ student[4] }}">
                             <div class="input-field">
-                                <input id="time" name="time" type="text" class="validate">
+                                <input id="sushelou" type="text" disabled class="validate" value="{{ student[4] }}">
+                                <label for="sushelou">宿舍楼</label>
+                            </div>
+
+                            <input name="qinshihao" type="hidden" value="{{ student[5] }}">
+                            <div class="input-field">
+                                <input id="qinshihao" type="text" disabled class="validate" value="{{ student[5] }}">
+                                <label for="qinshihao">寝室号</label>
+                            </div>
+
+                            <div class="input-field">
+                                <input type="date" name="time" class="datepicker">
+                                <!-- <input id="time"  type="text" class="validate"> -->
                                 <label for="time">时间</label>
                             </div>
+                            <script>
+                                $('.datepicker').pickadate({
+                                    selectMonths: true, // Creates a dropdown to control month
+                                    selectYears: 15 // Creates a dropdown of 15 years to control year
+                                });
+                            </script>
+
+                            <div class="input-field">
+                                <input id="content" name="content" type="text" class="validate">
+                                <label for="content">报修物品名称</label>
+                            </div>
+
+
                             <button class="btn waves-effect waves-light right blue" type="submit" name="action">提交
                                 <i class="material-icons right">send</i>
                             </button>
@@ -44,51 +64,38 @@
                             <thead>
                                 <tr>
                                     <th>编号</th>
-                                    <th>物品名称</th>
                                     <th>学生学号</th>
+                                    <th>寝室楼</th>
+                                    <th>宿舍号</th>
+                                    <th>报修物品</th>
                                     <th>时间</th>
-                                    <th>学生姓名</th>
-                                    <th>修改</th>
-                                    <th>删除</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for valuables in valuabless %}
+                                {% for repair in repairs %}
                                 <tr>
-                                    <form action="/admin/valuables_update" method="post">
-                                        <td>
-                                            <input type=text readonly name=id value={{ valuables[0] }}>
-                                        </td>
-                                        <td>
-                                            <input type=text name=name value={{ valuables[1] }}>
-                                        </td>
-                                        <td>
-                                            <input type=text name=student value={{ valuables[2] }}>
-                                        </td>
-                                        <td>
-                                            <input type=text name=time value={{ valuables[3] }}>
-                                        </td>
-                                        <td>
-                                            <input type=text disabled value={{ valuables[4] }}>
-                                        </td>
-                                        <td>
-                                            <button class="btn waves-effect waves-light right blue lighten-2" type="submit" name="action">修改
-                                            </button>
-                                        </td>
-                                    </form>
                                     <td>
-                                        <form action="/admin/valuables_delete" method="post">
-                                            <input type=hidden name=id value={{ valuables[0] }}>
-                                            <button class="btn waves-effect waves-light right blue lighten-2" type="submit" name="action">删除
-                                            </button>
-                                        </form>
+                                        {{ repair[0] }}
+                                    </td>
+                                    <td>
+                                        {{ repair[1] }}
+                                    </td>
+                                    <td>
+                                        {{ repair[2] }}
+                                    </td>
+                                    <td>
+                                        {{ repair[3] }}
+                                    </td>
+                                    <td>
+                                        {{ repair[4] }}
+                                    </td>
+                                    <td>
+                                        {{ repair[5] }}
                                     </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
-                        {% else %} {% include '/admin/notadmin.html' %} {% endif %}
-
 
                     </div>
                 </div>

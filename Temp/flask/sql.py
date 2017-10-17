@@ -287,6 +287,74 @@ def get_costOfStudent(sushelou,qinshihao):
     return res
 
 
+# 报修 - 获取
+def get_repair(student):
+    conn = connect_database()
+    c = conn.cursor()
+    c.execute("select * from repair where student='%s' order by id DESC;"%(student))
+    t = c.fetchall()
+    conn.close()
+    return t
+# 报修 - 新建
+def add_repair(Id,student,sushelou,qinshihao,time,content):
+    conn = connect_database()
+    c = conn.cursor()
+    string = "insert into repair(id,student,sushelou,qinshihao,time,content) values('%s','%s','%s','%s','%s','%s');"
+    c.execute( string % (str(Id),student,sushelou,qinshihao,time,content))
+
+    conn.commit()
+    conn.close()
+# 报修 - 获取当前学生的最后一个id
+def getLastIDofrepair():
+    conn = connect_database()
+    c = conn.cursor()
+
+    c.execute("select * from repair order by id DESC limit 1;")
+    res = c.fetchall()
+    if len(res)==0:
+        Id = 0
+    else:
+        Id = int(res[0][0])
+
+    conn.close()
+    return Id
+
+
+
+
+# 留言板 - 获取所有帖子
+def get_disscuss():
+    conn = connect_database()
+    c = conn.cursor()
+    c.execute("select * from talk order by id DESC;")
+    t = c.fetchall()
+    conn.close()
+    return t
+
+# 留言板 - 发布
+def add_disscuss(Id,student,content,time):
+    conn = connect_database()
+    c = conn.cursor()
+    string = "insert into talk(id,student,content,time) values('%s','%s','%s','%s');"
+    c.execute( string % (str(Id),student,content,time))
+
+    conn.commit()
+    conn.close()
+# 留言板 - 获取最新帖子id
+def getLastIDofdisscuss():
+    conn = connect_database()
+    c = conn.cursor()
+
+    c.execute("select * from talk order by id DESC limit 1;")
+    res = c.fetchall()
+    if len(res)==0:
+        Id = 0
+    else:
+        Id = int(res[0][0])
+
+    conn.close()
+    return Id
+
 
 def create_table(conn):
     c = conn.cursor()
@@ -327,7 +395,6 @@ def create_table(conn):
             PRIMARY KEY(id))''')
     c.execute('''create table talk
         (   id          text        not null,
-            id2         text        not null,
             student     text        not null,
             content     text        not null,
             time        text        not null,
