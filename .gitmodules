@@ -1,6 +1,3 @@
 [submodule "Blog/themes/indigo"]
 	path = Blog/themes/indigo
 	url = git@github.com:OhYee/hexo-theme-indigo.git
-[submodule "DMS"]
-	path = DMS
-	url = git@github.com:OhYee/Dormitory-Manager-System.git
