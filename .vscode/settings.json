@@ -3,7 +3,7 @@
 
     // 字体 字号 字形
     "editor.fontFamily": "'YaHei Consolas Hybrid',Consolas,'微软雅黑','Droid Sans Mono', 'Courier New', monospace, 'Droid Sans Fallback'",
-    "editor.fontSize": 25,
+    "editor.fontSize": 20,
     "editor.glyphMargin": true,
 
 
