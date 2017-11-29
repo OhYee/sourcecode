@@ -50,20 +50,21 @@ def replaceBR(str):
     return str
 
 def getAOJProblem(html):
-    results = regex(html,r'<div class="ProblemContent">(.*?)</div>')
-    if len(results) == 4:
-        results[0] += '\n' + results[3]
-        results.pop(3)
-    results.insert(3,regex(html,r'<pre id="PreInput" class="IO">(.*?)</pre>')[0])
-    results.insert(4,regex(html,r'<pre id="PreOutput" class="IO">(.*?)</pre>')[0])
+    results = regex(html,r'<div class="panel-body">(.*?)</div>')
+    # if len(results) == 4:
+    #     results[0] += '\n' + results[3]
+    #     results.pop(3)
+    # results.insert(3,regex(html,r'<pre id="PreInput" class="IO">(.*?)</pre>')[0])
+    # results.insert(4,regex(html,r'<pre id="PreOutput" class="IO">(.*?)</pre>')[0])
     return results
 
 def getAOJ(oj,problemID):
-    url = "http://ccpc.ahu.edu.cn:8080/OJ/Problem.aspx?id="+problemID
+    url = "http://112.27.234.70:8899/problem.aspx?id="+problemID
     html = getHTML(url)
 
     results = getAOJProblem(html)
-    name = regex(html,r'<div align="center" class="BigTitle">(.*?)</div>')[0]
+    print(results)
+    name = regex(html,r'<div style="font-family:STZhongsong;font-size:30px;text-align:center">(.*?)</div>')[0]
     results.insert(0,name)
     for i in range(0,len(results)):
         results[i] = clear(replaceBR(results[i]))
