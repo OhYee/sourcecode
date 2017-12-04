@@ -45,7 +45,7 @@ Contact me:
 
 }
 
-@column-3{
+@column-2{
 
 @card{
 
@@ -70,21 +70,14 @@ Contact me:
 @card{
 
 # 我获得过这些
-- [NOIP复赛二等奖](noip.jpg)
-- [2016 ACM/ICPC 亚洲赛区 青岛站 铜奖](qingdao.jpg)
-- [2017年安徽省"华信智原"杯一等奖](2017.jpg)
-
-}
-
-@card{
-
-# 我在学习这些
-- C++ 
-- HTML(Div+Css) 
-- Javascript 
-- Java 
-- PHP+Mysql 
-- Python 
+- [二等奖 - NOIP复赛](noip.jpg)
+- [铜奖 - 2016 ACM/ICPC 亚洲赛区 青岛站](qingdao.jpg)
+- [一等奖 - 2017年安徽省"华信智原"杯](2017.jpg)
+- [三等奖 - 第七届全国大学生电子商务"创新、创意以及创业"挑战赛总决赛](3u.png)
+- [铜奖 - 2017 ACM/ICPC 亚洲赛区 沈阳站](shenyang.png)
+- [银奖 - 第三届中国大学生程序设计竞赛(秦皇岛) (2017 CCPC)](qinhuangdao.png)
+- [铜奖 - 2017 ACM/ICPC 亚洲赛区 青岛站 铜奖](qingdao2.png)
+- [第十二次CCF计算机软件能力认证 总分: 360](csp.png)
 
 }
 
