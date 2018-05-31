@@ -1,5 +1,5 @@
 {
-    "version": 3,
+    "version": 4,
     "clang_format": {
         "style": "file",
         "fallback-style": "LLVM",
@@ -58,7 +58,9 @@
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "cStandard": "c11",
+            "cppStandard": "c++17"
         },
         {
             "name": "Linux",

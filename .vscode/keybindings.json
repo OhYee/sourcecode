@@ -1,8 +1,8 @@
 // Place your key bindings in this file to overwrite the defaults
 [
     //调用编译C/C++任务
-    {"key": "f5","command": "workbench.action.tasks.runTask","args": "编译运行C/C++(外部窗口)"},
-    {"key": "f5","command": "workbench.action.tasks.runTask","args": "编译运行C/C++(内部窗口)","when": "inZenMode"},
+    //{"key": "f5","command": "workbench.action.tasks.runTask","args": "编译运行C/C++(外部窗口)"},
+    {"key": "f5","command": "workbench.action.tasks.runTask","args": "编译运行C/C++(内部窗口)"},//,"when": "inZenMode"},
 
     //tasks
     { "key": "f7","command": "workbench.action.tasks.runTask"},

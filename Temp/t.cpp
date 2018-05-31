@@ -1,12 +1,9 @@
 #include <cmath>
-#include <cstdio>
+#include <iostream>
 using namespace std;
-const double PI = acos(-1.0);
 int main() {
-    double a;
-    while (~scanf("%lf", &a)) {
-        double b = a * 2 * PI / 360;
-        printf("%.5f angle=%.5f cos=%.5f sin=%.5f\n", a, b, cos(b), sin(b));
-    }
-    return 0;
+    int a=0;
+    float x=2.5,y=4.7;
+    cout<<x+a%3*(int)(x+y)%2/4<<endl;
 }
+
